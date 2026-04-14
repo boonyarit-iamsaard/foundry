@@ -29,16 +29,8 @@ jobs:
           node-version: 22
           cache: 'pnpm'
 
-      - name: Prepare environment variables
-        run: |
-          echo "NODE_ENV=production" >> .env
-          echo "MAIL_HOST=${{ secrets.MAIL_HOST }}" >> .env
-          echo "MAIL_PORT=${{ secrets.MAIL_PORT }}" >> .env
-          echo "MAIL_USER=${{ secrets.MAIL_USER }}" >> .env
-          echo "MAIL_PASSWORD=${{ secrets.MAIL_PASSWORD }}" >> .env
-          echo "MAIL_FROM_NAME=${{ secrets.MAIL_FROM_NAME }}" >> .env
-          echo "MAIL_FROM_ADDRESS=${{ secrets.MAIL_FROM_ADDRESS }}" >> .env
-          echo "MAIL_TO_ADDRESS=${{ secrets.MAIL_TO_ADDRESS }}" >> .env
+      - name: Prepare CI environment
+        run: cp .env.ci .env
 
       - name: Install dependencies
         run: pnpm install
