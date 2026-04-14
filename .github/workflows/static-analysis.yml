@@ -35,5 +35,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      - name: Build content definitions
+        run: npx velite build --clean
+
       - name: Run static analysis
         run: pnpm run static-analysis
