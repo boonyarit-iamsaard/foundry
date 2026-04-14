@@ -13,7 +13,19 @@ const eslintConfig = [
     languageOptions: {
       parserOptions: {
         projectService: true,
-        allowDefaultProject: ['*.js', '*.ts'],
+        allowDefaultProject: [
+          '*.js',
+          '*.ts',
+          '*.cjs',
+          '*.mjs',
+          '*.cts',
+          '*.mts',
+          '*.config.js',
+          '*.config.cjs',
+          '*.config.mjs',
+          '*.config.ts',
+          '.eslintrc.*',
+        ],
       },
     },
     rules: {
