@@ -30,20 +30,15 @@ const sharedComponents: MDXComponents = {
   p: ({ className, ...props }: ComponentProps<'p'>) => (
     <p className={cn('mb-4', className)} {...props} />
   ),
-  a: ({
-    className,
-    target: _target,
-    rel: _rel,
-    ...props
-  }: ComponentProps<'a'>) => (
+  a: ({ className, ...props }: ComponentProps<'a'>) => (
     <a
       className={cn(
         'text-primary font-medium underline underline-offset-4',
         className,
       )}
+      {...props}
       target="_blank"
       rel="noopener noreferrer"
-      {...props}
     />
   ),
   ul: ({ className, ...props }: ComponentProps<'ul'>) => (
@@ -102,5 +97,7 @@ function useMDXComponent(content: string): MDXContent {
 export const MDX = ({ content, components }: MDXProps) => {
   const Component = useMDXComponent(content);
 
+  // Compiled MDX is memoized by content, so this is stable across renders.
+  // eslint-disable-next-line react-hooks/static-components
   return <Component components={{ ...sharedComponents, ...components }} />;
 };

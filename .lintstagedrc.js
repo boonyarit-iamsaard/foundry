@@ -6,7 +6,7 @@ import { cwd } from 'node:process';
  * @returns {string}
  */
 const buildEslintCommand = (filenames) =>
-  `next lint --file ${filenames.map((f) => relative(cwd(), f)).join(' --file ')}`;
+  `eslint --max-warnings=0 ${filenames.map((f) => relative(cwd(), f)).join(' ')}`;
 
 /**
  * @type {import('lint-staged').Configuration}

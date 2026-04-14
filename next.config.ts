@@ -5,11 +5,10 @@ import createMDX from '@next/mdx';
 import '@/core/configs/env.config';
 
 const isDev = process.argv.includes('dev');
-const isBuild = process.argv.includes('build');
-if (!process.env.VELITE_STARTED && (isDev || isBuild)) {
+if (!process.env.VELITE_STARTED && isDev) {
   process.env.VELITE_STARTED = '1';
   void import('velite')
-    .then((m) => m.build({ watch: isDev, clean: !isDev }))
+    .then((m) => m.build({ watch: true, clean: false }))
     .catch((error) => {
       console.error('Failed to build with Velite:', error);
       process.exit(1);

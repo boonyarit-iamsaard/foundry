@@ -1,16 +1,15 @@
-import {
-  JetBrains_Mono as FontMono,
-  Inter as FontSans,
-} from 'next/font/google';
+import localFont from 'next/font/local';
 
-export const fontSans = FontSans({
+export const fontSans = localFont({
+  src: '../assets/fonts/inter-latin-variable.woff2',
+  display: 'swap',
   variable: '--font-sans',
-  weight: ['400', '500', '600', '700', '800', '900'],
-  subsets: ['latin'],
+  weight: '100 900',
 });
 
-export const fontMono = FontMono({
+export const fontMono = localFont({
+  src: '../assets/fonts/jetbrains-mono-latin-variable.woff2',
+  display: 'swap',
   variable: '--font-mono',
-  weight: ['400', '500', '600', '700', '800'],
-  subsets: ['latin'],
+  weight: '100 800',
 });
