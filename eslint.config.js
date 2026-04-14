@@ -6,7 +6,7 @@ const eslintConfig = [
   ...nextCoreWebVitals,
   ...nextTypescript,
   {
-    ignores: ['.next/**', '.velite/**', 'node_modules/**'],
+    ignores: ['.next/**', '.velite/**', 'node_modules/**', 'public/static/**'],
   },
   {
     files: ['**/*.ts', '**/*.tsx', '**/*.mts', '**/*.cts'],
