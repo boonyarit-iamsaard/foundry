@@ -30,7 +30,7 @@ jobs:
           cache: 'pnpm'
 
       - name: Prepare CI environment
-        run: cp .env.ci .env
+        run: cp .env.ci.example .env
 
       - name: Install dependencies
         run: pnpm install
