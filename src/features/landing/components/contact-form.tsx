@@ -17,13 +17,13 @@ import { Textarea } from '@/common/components/ui/textarea';
 import { useContactForm } from '../hooks/use-contact-form';
 
 export function ContactForm() {
-  const { form, handleSubmitWithAction } = useContactForm();
+  const { form, handleSubmit, isPending } = useContactForm();
 
   return (
     <Form {...form}>
       <form
         id="contact-form"
-        onSubmit={handleSubmitWithAction}
+        onSubmit={handleSubmit}
         className="w-full max-w-lg space-y-4"
       >
         <Card>
@@ -73,8 +73,8 @@ export function ContactForm() {
             />
           </CardContent>
           <CardFooter className="flex items-center justify-center">
-            <Button size="lg" type="submit">
-              Message me
+            <Button size="lg" type="submit" disabled={isPending}>
+              {isPending ? 'Sending...' : 'Message me'}
             </Button>
           </CardFooter>
         </Card>

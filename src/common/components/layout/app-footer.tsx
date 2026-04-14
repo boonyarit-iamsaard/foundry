@@ -1,6 +1,20 @@
+import { env } from '@/core/configs/env.config';
 import { SocialLinks } from '@/common/components/social-links';
+import { TRPCHealthCheck } from '@/features/landing/components/trpc-health-check';
 
-export function AppFooter() {
+import { getServerQueryClient, HydrateClient, trpc } from '@/trpc/server';
+
+export async function AppFooter() {
+  const isDevelopment = env.NODE_ENV === 'development';
+  if (isDevelopment) {
+    await getServerQueryClient().prefetchQuery(
+      trpc.health.check.queryOptions(undefined, {
+        refetchOnWindowFocus: false,
+        retry: false,
+      }),
+    );
+  }
+
   return (
     <footer className="bg-muted py-8">
       <div className="container flex flex-col items-center justify-between gap-4 md:flex-row md:gap-0">
@@ -9,6 +23,11 @@ export function AppFooter() {
             &copy; {new Date().getFullYear()} Boonyarit Iamsa-ard. All rights
             reserved.
           </p>
+          {isDevelopment ? (
+            <HydrateClient>
+              <TRPCHealthCheck />
+            </HydrateClient>
+          ) : null}
           <p className="text-muted-foreground text-xs">
             Awesome color theme from&nbsp;
             <a

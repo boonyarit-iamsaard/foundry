@@ -14,6 +14,8 @@ import { Toaster } from '@/common/components/ui/sonner';
 import { TooltipProvider } from '@/common/components/ui/tooltip';
 import { cn } from '@/common/helpers/cn';
 
+import { TRPCReactProvider } from '@/trpc/client';
+
 type RootLayoutProps = Readonly<{
   children: ReactNode;
 }>;
@@ -61,9 +63,11 @@ export default function RootLayout({ children }: RootLayoutProps) {
           enableSystem
           disableTransitionOnChange
         >
-          <TooltipProvider>
-            <AppLayout>{children}</AppLayout>
-          </TooltipProvider>
+          <TRPCReactProvider>
+            <TooltipProvider>
+              <AppLayout>{children}</AppLayout>
+            </TooltipProvider>
+          </TRPCReactProvider>
           <Analytics />
           <SpeedInsights />
           <Toaster />

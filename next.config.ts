@@ -16,6 +16,9 @@ if (!process.env.VELITE_STARTED && isDev) {
 }
 
 const nextConfig: NextConfig = {
+  images: {
+    qualities: [75, 85, 95],
+  },
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
 };
 

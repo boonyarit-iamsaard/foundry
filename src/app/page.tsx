@@ -4,14 +4,18 @@ import { HeroSection } from '@/features/landing/components/hero-section';
 import { ProjectsSection } from '@/features/landing/components/projects-section';
 import { TechStackSection } from '@/features/landing/components/tech-stack-section';
 
-export default function Page() {
+import { HydrateClient } from '@/trpc/server';
+
+export default async function Page() {
   return (
-    <div className="space-y-16">
-      <HeroSection />
-      <ProjectsSection />
-      <ArticlesSection />
-      <TechStackSection />
-      <CallToActionSection />
-    </div>
+    <HydrateClient>
+      <div className="space-y-16">
+        <HeroSection />
+        <ProjectsSection />
+        <ArticlesSection />
+        <TechStackSection />
+        <CallToActionSection />
+      </div>
+    </HydrateClient>
   );
 }

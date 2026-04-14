@@ -1,42 +1,47 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useHookFormAction } from '@next-safe-action/adapter-react-hook-form/hooks';
+import { useMutation } from '@tanstack/react-query';
+import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 
-import { sendMessageAction } from '../actions/send-message-action';
+import { useTRPC } from '@/trpc/client';
 import { sendMessageSchema } from '../validators/send-message';
 
 export function useContactForm() {
-  const { form, handleSubmitWithAction } = useHookFormAction(
-    sendMessageAction,
-    zodResolver(sendMessageSchema),
-    {
-      actionProps: {
-        onSuccess: () => {
-          toast('Your message has been sent.');
-          form.reset();
-        },
-        onError: (error) => {
-          // TODO: log error
-          console.error(
-            'Failed to send message: ',
-            JSON.stringify(error, null, 2),
-          );
-          toast.error('Failed to send message.');
-          form.reset();
-        },
-      },
-      formProps: {
-        defaultValues: {
-          name: '',
-          email: '',
-          message: '',
-        },
-      },
+  const trpc = useTRPC();
+
+  const form = useForm({
+    defaultValues: {
+      email: '',
+      message: '',
+      name: '',
     },
+    resolver: zodResolver(sendMessageSchema),
+  });
+
+  const sendMessageMutation = useMutation(
+    trpc.contact.sendMessage.mutationOptions({
+      onError: (error) => {
+        console.error(
+          'Failed to send message: ',
+          JSON.stringify(error, null, 2),
+        );
+        toast.error('Failed to send message.');
+        form.reset();
+      },
+      onSuccess: () => {
+        toast('Your message has been sent.');
+        form.reset();
+      },
+    }),
   );
+
+  const handleSubmit = form.handleSubmit(async (values) => {
+    await sendMessageMutation.mutateAsync(values);
+  });
 
   return {
     form,
-    handleSubmitWithAction,
+    handleSubmit,
+    isPending: sendMessageMutation.isPending,
   };
 }
