@@ -17,6 +17,9 @@ if (!process.env.VELITE_STARTED && isDev) {
 
 const nextConfig: NextConfig = {
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
+  images: {
+    qualities: [75, 85],
+  },
 };
 
 const withMDX = createMDX({

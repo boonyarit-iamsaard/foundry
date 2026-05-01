@@ -8,7 +8,7 @@ import { CalendarIcon, MonitorIcon } from 'lucide-react';
 import { Icons } from '@/common/components/icons';
 import { Tag } from '@/common/components/tag';
 import { Badge } from '@/common/components/ui/badge';
-import { Button } from '@/common/components/ui/button';
+import { Button, buttonVariants } from '@/common/components/ui/button';
 import {
   Card,
   CardContent,
@@ -16,11 +16,6 @@ import {
   CardHeader,
   CardTitle,
 } from '@/common/components/ui/card';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from '@/common/components/ui/tooltip';
 import { formatDate } from '@/common/helpers/date';
 
 import type { badgeVariants } from '@/common/components/ui/badge';
@@ -32,6 +27,8 @@ type ProjectCardProps = Readonly<{
 }>;
 
 export function ProjectCard({ project, activeTags }: ProjectCardProps) {
+  const GitHubIcon = Icons.gitHub;
+
   // TODO: improve status colors
   const statusVariants: Record<
     Project['status'],
@@ -89,40 +86,28 @@ export function ProjectCard({ project, activeTags }: ProjectCardProps) {
         <CardFooter className="flex items-center justify-between p-0">
           <div className="flex items-center gap-2">
             {project.preview && (
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Button variant="ghost" size="icon" asChild>
-                    <a
-                      href={project.preview}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <MonitorIcon className="size-5" />
-                    </a>
-                  </Button>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>Live preview</p>
-                </TooltipContent>
-              </Tooltip>
+              <a
+                href={project.preview}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Live preview"
+                title="Live preview"
+                className={buttonVariants({ variant: 'ghost', size: 'icon' })}
+              >
+                <MonitorIcon className="size-5" />
+              </a>
             )}
             {project.github && (
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Button variant="ghost" size="icon" asChild>
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Icons.gitHub className="size-5" />
-                    </a>
-                  </Button>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>GitHub</p>
-                </TooltipContent>
-              </Tooltip>
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+                title="GitHub"
+                className={buttonVariants({ variant: 'ghost', size: 'icon' })}
+              >
+                <GitHubIcon className="size-5" />
+              </a>
             )}
           </div>
           <Button variant="link" asChild className="px-0">
