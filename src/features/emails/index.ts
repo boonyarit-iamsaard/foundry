@@ -6,7 +6,7 @@ import { env } from '@/core/configs/env.config';
 
 export type SendOptions = {
   from: string;
-  to: string;
+  to: string | string[];
   subject: string;
   html: string;
 };

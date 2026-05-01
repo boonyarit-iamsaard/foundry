@@ -2,6 +2,11 @@ import { createEnv } from '@t3-oss/env-nextjs';
 import { z } from 'zod';
 
 const requiredEnvString = z.string().trim().min(1);
+const emailRecipients = z
+  .string()
+  .min(1)
+  .transform((value) => value.split(',').map((address) => address.trim()))
+  .pipe(z.array(z.email()).min(1));
 
 export const env = createEnv({
   server: {
@@ -14,7 +19,7 @@ export const env = createEnv({
     MAIL_PASSWORD: z.string().optional(),
     MAIL_FROM_NAME: z.string().min(1),
     MAIL_FROM_ADDRESS: z.string().min(1),
-    MAIL_TO_ADDRESS: z.string().min(1),
+    MAIL_TO_ADDRESS: emailRecipients,
   },
   client: {
     //
