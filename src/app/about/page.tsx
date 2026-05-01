@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 import { Download } from 'lucide-react';
 
-import profile from '@/core/assets/images/profile.png';
+import profile from '@/core/assets/images/profile.webp';
 import { MDX } from '@/common/components/mdx';
 import { Button } from '@/common/components/ui/button';
 
@@ -24,7 +24,7 @@ export default function AboutPage() {
             src={profile}
             alt="Boonyarit Iamsa-ard"
             fill
-            quality={95}
+            quality={85}
             priority
             sizes="(max-width: 768px) 96px, 128px"
             className="ring-background rounded-full object-cover ring-2"
