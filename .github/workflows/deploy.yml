@@ -16,7 +16,7 @@ concurrency:
 
 jobs:
   deploy-preview:
-    name: Deploy Preview
+    name: Deploy to Vercel
     runs-on: ubuntu-latest
     if: >
       github.event.workflow_run.event == 'pull_request' &&
