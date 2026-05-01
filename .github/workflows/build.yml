@@ -1,10 +1,13 @@
 name: Build Project
 
 on:
-  push:
+  workflow_run:
+    workflows:
+      - Static Analysis
+    types:
+      - completed
     branches:
-      - main
-      - develop
+      - '**'
   pull_request:
     branches:
       - main
@@ -13,10 +16,13 @@ jobs:
   build-project:
     name: Build Project
     runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request' || github.event.workflow_run.conclusion == 'success'
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || github.sha }}
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
