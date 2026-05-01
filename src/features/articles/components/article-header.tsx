@@ -5,11 +5,11 @@ import { formatDate } from '@/common/helpers/date';
 
 import type { Article } from '@/velite';
 
-type ArticleHeaderProps = Readonly<{
+interface ArticleHeaderProps {
   article: Article;
-}>;
+}
 
-export function ArticleHeader({ article }: ArticleHeaderProps) {
+export function ArticleHeader({ article }: Readonly<ArticleHeaderProps>) {
   return (
     <div className="space-y-2">
       <div className="text-muted-foreground flex flex-wrap items-center gap-x-4 gap-y-1 text-sm">

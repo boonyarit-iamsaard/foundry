@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { Download } from 'lucide-react';
 
 import profile from '@/core/assets/images/profile.webp';
-import { MDX } from '@/common/components/mdx';
+import { Mdx } from '@/common/components/mdx';
 import { Button } from '@/common/components/ui/button';
 
 import { about } from '@/velite';
@@ -46,7 +46,7 @@ export default function AboutPage() {
         </Button>
       </div>
       <div className="bg-muted rounded-lg px-16 py-8">
-        <MDX content={about.content} />
+        <Mdx content={about.content} />
       </div>
     </div>
   );

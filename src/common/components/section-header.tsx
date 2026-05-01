@@ -2,17 +2,17 @@ import Link from 'next/link';
 
 import { Button } from '@/common/components/ui/button';
 
-type SectionHeaderProps = Readonly<{
+interface SectionHeaderProps {
   title: string;
   description?: string;
   viewAllLink?: string;
-}>;
+}
 
 export function SectionHeader({
   title,
   description,
   viewAllLink,
-}: SectionHeaderProps) {
+}: Readonly<SectionHeaderProps>) {
   return (
     <div className="space-y-2">
       <div className="flex items-center justify-between">

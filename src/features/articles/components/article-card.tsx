@@ -18,12 +18,15 @@ import { formatDate } from '@/common/helpers/date';
 
 import type { Article } from '@/velite';
 
-type ArticleCardProps = Readonly<{
+interface ArticleCardProps {
   article: Article;
   activeTags?: string[];
-}>;
+}
 
-export function ArticleCard({ article, activeTags }: ArticleCardProps) {
+export function ArticleCard({
+  article,
+  activeTags,
+}: Readonly<ArticleCardProps>) {
   return (
     <Card className="group hover:ring-muted-foreground grid gap-0 overflow-hidden p-0 transition-all hover:ring-2 md:grid-cols-4">
       <div className="bg-muted relative aspect-video md:col-span-1 md:aspect-auto md:h-full">

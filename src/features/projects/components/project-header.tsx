@@ -6,11 +6,11 @@ import { formatDate } from '@/common/helpers/date';
 
 import type { Project } from '@/velite';
 
-type ProjectHeaderProps = Readonly<{
+interface ProjectHeaderProps {
   project: Project;
-}>;
+}
 
-export function ProjectHeader({ project }: ProjectHeaderProps) {
+export function ProjectHeader({ project }: Readonly<ProjectHeaderProps>) {
   return (
     <div className="space-y-2">
       <div className="text-muted-foreground flex items-center gap-2 text-sm">

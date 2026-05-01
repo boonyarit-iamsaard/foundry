@@ -9,15 +9,14 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 
 import { appConfig } from '@/core/configs/app.config';
 import { fontMono, fontSans } from '@/core/styles/fonts';
-import { AppLayout } from '@/common/components/layout/app-layout';
 import { ThemeProvider } from '@/common/components/theme-provider';
 import { Toaster } from '@/common/components/ui/sonner';
 import { TooltipProvider } from '@/common/components/ui/tooltip';
 import { cn } from '@/common/helpers/cn';
 
-type RootLayoutProps = Readonly<{
+interface RootLayoutProps {
   children: ReactNode;
-}>;
+}
 
 export const metadata: Metadata = {
   metadataBase: new URL(appConfig.url),
@@ -46,7 +45,7 @@ export const metadata: Metadata = {
   icons: [],
 };
 
-export default function RootLayout({ children }: RootLayoutProps) {
+export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body
@@ -63,9 +62,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
             enableSystem
             disableTransitionOnChange
           >
-            <TooltipProvider>
-              <AppLayout>{children}</AppLayout>
-            </TooltipProvider>
+            <TooltipProvider>{children}</TooltipProvider>
             <Analytics />
             <SpeedInsights />
             <Toaster />

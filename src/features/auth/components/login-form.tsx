@@ -56,8 +56,8 @@ export function LoginForm() {
             <CardTitle className="text-xl">Verify your identity</CardTitle>
             <CardDescription>
               {step === 'clientTrust'
-                ? 'Enter the verification code sent to your email to trust this device.'
-                : 'Enter your two-factor authentication code.'}
+                ? 'Enter the verification code sent to your email.'
+                : 'Enter your two-factor code.'}
             </CardDescription>
           </CardHeader>
           <CardContent className="flex flex-col items-center">
@@ -136,9 +136,9 @@ export function LoginForm() {
       <form onSubmit={handleCredentialsSubmit} className="w-full">
         <Card>
           <CardHeader>
-            <CardTitle className="text-xl">Sign in</CardTitle>
+            <CardTitle className="text-xl">Owner access</CardTitle>
             <CardDescription>
-              Enter your credentials to access your account
+              Enter your credentials to continue.
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
@@ -204,7 +204,7 @@ export function LoginForm() {
               disabled={isSubmitting}
             >
               {isSubmitting && <Loader2 className="animate-spin" />}
-              Sign in
+              Continue
             </Button>
           </CardFooter>
         </Card>

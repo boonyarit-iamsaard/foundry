@@ -10,6 +10,7 @@ const emailRecipients = z
 
 export const env = createEnv({
   server: {
+    ADMIN_CLERK_USER_IDS: z.string().optional(),
     CLERK_SECRET_KEY: z.string().min(1),
 
     MAIL_FROM_ADDRESS: z.string().min(1),
@@ -29,6 +30,7 @@ export const env = createEnv({
     NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: z.string().min(1),
   },
   runtimeEnv: {
+    ADMIN_CLERK_USER_IDS: process.env.ADMIN_CLERK_USER_IDS,
     CLERK_SECRET_KEY: process.env.CLERK_SECRET_KEY,
 
     MAIL_FROM_ADDRESS: process.env.MAIL_FROM_ADDRESS,

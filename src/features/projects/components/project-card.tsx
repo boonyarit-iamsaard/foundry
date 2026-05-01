@@ -21,12 +21,15 @@ import { formatDate } from '@/common/helpers/date';
 import type { badgeVariants } from '@/common/components/ui/badge';
 import type { Project } from '@/velite';
 
-type ProjectCardProps = Readonly<{
+interface ProjectCardProps {
   project: Project;
   activeTags?: string[];
-}>;
+}
 
-export function ProjectCard({ project, activeTags }: ProjectCardProps) {
+export function ProjectCard({
+  project,
+  activeTags,
+}: Readonly<ProjectCardProps>) {
   const GitHubIcon = Icons.gitHub;
 
   // TODO: improve status colors

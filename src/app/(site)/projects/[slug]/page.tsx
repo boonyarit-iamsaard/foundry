@@ -3,15 +3,15 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 
-import { MDX } from '@/common/components/mdx';
+import { Mdx } from '@/common/components/mdx';
 import { PageHeader } from '@/common/components/page-header';
 import { ProjectHeader } from '@/features/projects/components/project-header';
 
 import { projects } from '@/velite';
 
-type PageProps = Readonly<{
+interface PageProps {
   params: Promise<{ slug: string }>;
-}>;
+}
 
 function getProjectBySlug(slug: string) {
   return projects.find((project) => project.slug === slug);
@@ -58,7 +58,7 @@ export function generateStaticParams() {
 
 export const dynamicParams = false;
 
-export default async function Page({ params }: PageProps) {
+export default async function Page({ params }: Readonly<PageProps>) {
   const { slug } = await params;
 
   const project = getProjectBySlug(slug);
@@ -82,7 +82,7 @@ export default async function Page({ params }: PageProps) {
           />
         </div>
         <div className="bg-muted rounded-b-lg p-4 sm:px-16 sm:py-8">
-          <MDX content={project.content} />
+          <Mdx content={project.content} />
         </div>
       </div>
     </div>

@@ -4,15 +4,15 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 
 import { appConfig } from '@/core/configs/app.config';
-import { MDX } from '@/common/components/mdx';
+import { Mdx } from '@/common/components/mdx';
 import { PageHeader } from '@/common/components/page-header';
 import { ArticleHeader } from '@/features/articles/components/article-header';
 
 import { articles } from '@/velite';
 
-type PageProps = Readonly<{
+interface PageProps {
   params: Promise<{ slug: string }>;
-}>;
+}
 
 function getArticleBySlug(slug: string) {
   return articles.find((article) => article.slug === slug);
@@ -68,7 +68,7 @@ export function generateStaticParams() {
 
 export const dynamicParams = false;
 
-export default async function Page({ params }: PageProps) {
+export default async function Page({ params }: Readonly<PageProps>) {
   const { slug } = await params;
 
   const article = getArticleBySlug(slug);
@@ -93,7 +93,7 @@ export default async function Page({ params }: PageProps) {
           />
         </div>
         <div className="bg-muted rounded-b-lg p-4 sm:px-16 sm:py-8">
-          <MDX content={article.content} />
+          <Mdx content={article.content} />
         </div>
       </div>
     </div>

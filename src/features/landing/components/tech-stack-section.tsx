@@ -4,11 +4,11 @@ import { Badge } from '@/common/components/ui/badge';
 
 import type { IconComponent } from '@/common/components/icons';
 
-type Tool = {
+interface Tool {
   title: string;
   icon: IconComponent;
   group: string;
-};
+}
 
 const tools: Tool[] = [
   {

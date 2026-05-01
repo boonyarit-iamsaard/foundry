@@ -7,68 +7,63 @@ import {
   PageHeaderHeading,
 } from '@/common/components/page-header';
 import { filterByTags } from '@/common/helpers/tag';
-import {
-  ArticleCard,
-  ArticleCardPlaceholder,
-} from '@/features/articles/components/article-card';
+import { ProjectCard } from '@/features/projects/components/project-card';
 
 import type { SearchParams } from '@/common/definitions/search-params';
-import { articles, tags } from '@/velite';
+import { projects, tags } from '@/velite';
 
-type ArticlesPageProps = Readonly<{
+interface ProjectsPageProps {
   searchParams: SearchParams;
-}>;
+}
 
 // TODO: explicitly define keywords
 const keywords = Array.from(
   new Set(
-    articles
-      .flatMap((article) => article.keywords)
+    projects
+      .flatMap((project) => project.keywords)
       .filter((k) => k !== undefined),
   ),
 );
 
 export const metadata: Metadata = {
-  title: 'Articles',
-  description: 'Insights, tutorials, and thoughts on web development.',
+  title: 'Projects',
+  description: 'A showcase of my projects and work.',
   keywords,
 };
 
-export default async function Page({ searchParams }: ArticlesPageProps) {
+export default async function Page({
+  searchParams,
+}: Readonly<ProjectsPageProps>) {
   const { filteredResource, activeTags, resourceTags } = await filterByTags(
-    articles,
+    projects,
     searchParams,
     tags,
-    'articles',
+    'projects',
   );
 
   // TODO: add pagination
   return (
     <div className="py-16">
       <PageHeader>
-        <PageHeaderHeading>Articles</PageHeaderHeading>
+        <PageHeaderHeading>Projects</PageHeaderHeading>
         <PageHeaderDescription>
-          Insights, tutorials, and thoughts on web development.
+          A showcase of my projects and work.
         </PageHeaderDescription>
       </PageHeader>
       <section className="container space-y-8 sm:space-y-12">
         <FilterByTags
           resourceTags={resourceTags}
           activeTags={activeTags}
-          resource="articles"
+          resource="projects"
         />
-        <div className="grid gap-4 sm:gap-8">
-          {filteredResource.length === 0 ? (
-            <ArticleCardPlaceholder />
-          ) : (
-            filteredResource.map((article) => (
-              <ArticleCard
-                key={article.slug}
-                article={article}
-                activeTags={activeTags}
-              />
-            ))
-          )}
+        <div className="grid gap-4 sm:gap-8 md:grid-cols-2">
+          {filteredResource.map((project) => (
+            <ProjectCard
+              key={project.slug}
+              project={project}
+              activeTags={activeTags}
+            />
+          ))}
         </div>
       </section>
     </div>

@@ -5,10 +5,10 @@ import { Button } from '@/common/components/ui/button';
 
 import type { IconComponent } from '@/common/components/icons';
 
-type SocialLink = {
+interface SocialLink {
   href: string;
   icon: IconComponent;
-};
+}
 
 const socialLinks: SocialLink[] = [
   {

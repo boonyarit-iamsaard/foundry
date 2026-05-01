@@ -9,10 +9,10 @@ import { runSync } from '@mdx-js/mdx';
 
 import { cn } from '@/common/helpers/cn';
 
-type MDXProps = {
+interface MdxProps {
   content: string;
   components?: Record<string, ComponentType>;
-};
+}
 
 const sharedComponents: MDXComponents = {
   h2: ({ className, ...props }: ComponentProps<'h2'>) => (
@@ -83,7 +83,7 @@ const sharedComponents: MDXComponents = {
   Image,
 };
 
-function useMDXComponent(content: string): MDXContent {
+function useMdxComponent(content: string): MDXContent {
   return useMemo(() => {
     const { default: Component } = runSync(content, {
       ...runtime,
@@ -94,8 +94,8 @@ function useMDXComponent(content: string): MDXContent {
   }, [content]);
 }
 
-export const MDX = ({ content, components }: MDXProps) => {
-  const Component = useMDXComponent(content);
+export const Mdx = ({ content, components }: MdxProps) => {
+  const Component = useMdxComponent(content);
 
   // Compiled MDX is memoized by content, so this is stable across renders.
   // eslint-disable-next-line react-hooks/static-components

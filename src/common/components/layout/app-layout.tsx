@@ -3,11 +3,11 @@ import type { ReactNode } from 'react';
 import { AppFooter } from './app-footer';
 import { AppHeader } from './app-header';
 
-type AppLayoutProps = Readonly<{
+interface AppLayoutProps {
   children: ReactNode;
-}>;
+}
 
-export function AppLayout({ children }: AppLayoutProps) {
+export function AppLayout({ children }: Readonly<AppLayoutProps>) {
   return (
     <>
       <AppHeader />

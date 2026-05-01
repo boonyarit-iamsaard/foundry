@@ -4,8 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 
-import { useAuth, useClerk } from '@clerk/nextjs';
-import { LogOutIcon, MenuIcon, TerminalSquareIcon } from 'lucide-react';
+import { MenuIcon, TerminalSquareIcon } from 'lucide-react';
 
 import { Button } from '@/common/components/ui/button';
 import {
@@ -56,45 +55,6 @@ function getHeaderClasses(
   }
 
   return headerStateClasses.closedNotScrolled;
-}
-
-function AuthControls({
-  className,
-  isMounted,
-}: Readonly<{ className?: string; isMounted: boolean }>) {
-  const { isSignedIn } = useAuth();
-  const { signOut } = useClerk();
-  const router = useRouter();
-
-  if (!isMounted) {
-    return <div className={cn('flex items-center gap-2', className)} />;
-  }
-
-  if (isSignedIn) {
-    return (
-      <div className={cn('flex items-center gap-2', className)}>
-        <Button variant="ghost" size="sm" asChild>
-          <Link href="/admin">Admin</Link>
-        </Button>
-        <Button
-          variant="ghost"
-          size="icon"
-          onClick={() => signOut(() => router.push('/'))}
-        >
-          <LogOutIcon className="size-4" />
-          <span className="sr-only">Sign out</span>
-        </Button>
-      </div>
-    );
-  }
-
-  return (
-    <div className={cn('flex items-center gap-2', className)}>
-      <Button variant="ghost" size="sm" asChild>
-        <Link href="/login">Sign in</Link>
-      </Button>
-    </div>
-  );
 }
 
 // TODO: this component is getting too complex, break it down and ensure its performance is optimal
@@ -191,13 +151,11 @@ export function AppHeader() {
               ))}
             </NavigationMenuList>
           </NavigationMenu>
-          <AuthControls isMounted={isMounted} />
           <ThemeToggle />
         </div>
 
         {/* Mobile Navigation */}
         <div className="flex items-center gap-2 md:hidden">
-          <AuthControls isMounted={isMounted} />
           <Drawer
             direction="left"
             open={isDrawerOpen}
@@ -243,7 +201,6 @@ export function AppHeader() {
                   ))}
                 </nav>
                 <div className="flex items-center justify-between border-t p-4">
-                  <AuthControls isMounted={isMounted} />
                   <ThemeToggle />
                 </div>
               </DrawerContent>

@@ -1,16 +1,16 @@
 import { render } from '@react-email/components';
 
-type SendMessageTemplateProps = Readonly<{
+interface SendMessageTemplateProps {
   email: string;
   name: string;
   message: string;
-}>;
+}
 
 export default function SendMessageTemplate({
   email,
   name,
   message,
-}: SendMessageTemplateProps) {
+}: Readonly<SendMessageTemplateProps>) {
   return (
     <div style={{ fontFamily: 'system-ui, sans-serif' }}>
       <p>
