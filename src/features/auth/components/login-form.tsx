@@ -1,9 +1,19 @@
 'use client';
 
+import { useState } from 'react';
+
 import { REGEXP_ONLY_DIGITS } from 'input-otp';
+import { Eye, EyeOff, Loader2 } from 'lucide-react';
 
 import { Button } from '@/common/components/ui/button';
-import { Card, CardContent, CardFooter } from '@/common/components/ui/card';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/common/components/ui/card';
 import {
   Form,
   FormControl,
@@ -24,6 +34,8 @@ import { Label } from '@/common/components/ui/label';
 import { useLoginForm } from '../hooks/use-login-form';
 
 export function LoginForm() {
+  const [showPassword, setShowPassword] = useState(false);
+
   const {
     step,
     isSubmitting,
@@ -38,25 +50,31 @@ export function LoginForm() {
 
   if (step === 'clientTrust' || step === 'mfa') {
     return (
-      <form
-        onSubmit={handleVerificationSubmit}
-        className="w-full max-w-lg space-y-4"
-      >
+      <form onSubmit={handleVerificationSubmit} className="w-full">
         <Card>
-          <CardContent className="space-y-4">
-            <p className="text-muted-foreground text-sm">
+          <CardHeader>
+            <CardTitle className="text-xl">Verify your identity</CardTitle>
+            <CardDescription>
               {step === 'clientTrust'
-                ? 'Enter the verification code sent by Clerk to trust this device.'
+                ? 'Enter the verification code sent to your email to trust this device.'
                 : 'Enter your two-factor authentication code.'}
-            </p>
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="flex flex-col items-center">
             <div className="grid gap-2">
-              <Label htmlFor="verification-code">Verification code</Label>
+              <Label htmlFor="verification-code" className="sr-only">
+                Verification code
+              </Label>
               <InputOTP
                 id="verification-code"
                 name="code"
                 maxLength={6}
                 pattern={REGEXP_ONLY_DIGITS}
                 autoFocus
+                // Keep this controlled by plain state. Even with explicit props,
+                // react-hook-form integration has broken input-otp typing here.
+                // input-otp owns a hidden input ref and custom selection/value
+                // synchronization, so avoid routing this field through RHF.
                 value={verificationCode}
                 onChange={setVerificationCode}
               >
@@ -74,27 +92,38 @@ export function LoginForm() {
               </InputOTP>
             </div>
           </CardContent>
-          <CardFooter className="flex flex-col items-center justify-center gap-3">
-            <div className="flex items-center gap-2">
-              <Button size="lg" type="submit" disabled={isSubmitting}>
-                Verify
-              </Button>
+          <CardFooter className="flex flex-col gap-3">
+            <Button
+              className="w-full"
+              size="lg"
+              type="submit"
+              disabled={isSubmitting}
+            >
+              {isSubmitting && <Loader2 className="animate-spin" />}
+              Verify
+            </Button>
+            <p className="text-muted-foreground text-sm">
+              {"Didn't receive a code? "}
               <Button
-                variant="ghost"
+                variant="link"
+                size="sm"
                 type="button"
                 disabled={isSubmitting}
                 onClick={handleResendVerificationCode}
+                className="h-auto p-0 text-sm"
               >
-                Resend code
+                Resend
               </Button>
-            </div>
+            </p>
             <Button
-              variant="link"
+              variant="ghost"
+              size="sm"
               type="button"
               disabled={isSubmitting}
               onClick={handleStartOver}
+              className="text-muted-foreground w-full"
             >
-              Start over
+              Back to sign in
             </Button>
           </CardFooter>
         </Card>
@@ -104,11 +133,14 @@ export function LoginForm() {
 
   return (
     <Form {...credentialsForm}>
-      <form
-        onSubmit={handleCredentialsSubmit}
-        className="w-full max-w-lg space-y-4"
-      >
+      <form onSubmit={handleCredentialsSubmit} className="w-full">
         <Card>
+          <CardHeader>
+            <CardTitle className="text-xl">Sign in</CardTitle>
+            <CardDescription>
+              Enter your credentials to access your account
+            </CardDescription>
+          </CardHeader>
           <CardContent className="space-y-4">
             <FormField
               control={credentialsForm.control}
@@ -117,7 +149,12 @@ export function LoginForm() {
                 <FormItem>
                   <FormLabel>Email</FormLabel>
                   <FormControl>
-                    <Input type="email" placeholder="Your email" {...field} />
+                    <Input
+                      type="email"
+                      placeholder="you@example.com"
+                      autoComplete="email"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -130,19 +167,43 @@ export function LoginForm() {
                 <FormItem>
                   <FormLabel>Password</FormLabel>
                   <FormControl>
-                    <Input
-                      type="password"
-                      placeholder="Your password"
-                      {...field}
-                    />
+                    <div className="relative">
+                      <Input
+                        type={showPassword ? 'text' : 'password'}
+                        placeholder="Your password"
+                        autoComplete="current-password"
+                        className="pr-10"
+                        {...field}
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setShowPassword((prev) => !prev)}
+                        aria-label={
+                          showPassword ? 'Hide password' : 'Show password'
+                        }
+                        className="text-muted-foreground hover:text-foreground absolute inset-y-0 right-3 flex items-center transition-colors"
+                      >
+                        {showPassword ? (
+                          <EyeOff className="size-4" />
+                        ) : (
+                          <Eye className="size-4" />
+                        )}
+                      </button>
+                    </div>
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
           </CardContent>
-          <CardFooter className="flex items-center justify-center">
-            <Button size="lg" type="submit" disabled={isSubmitting}>
+          <CardFooter>
+            <Button
+              className="w-full"
+              size="lg"
+              type="submit"
+              disabled={isSubmitting}
+            >
+              {isSubmitting && <Loader2 className="animate-spin" />}
               Sign in
             </Button>
           </CardFooter>
