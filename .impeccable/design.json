@@ -1,0 +1,218 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-06-28T00:00:00.000Z",
+  "title": "Design System: boonyarit.me",
+  "extensions": {
+    "colorMeta": {
+      "terracotta": {
+        "role": "primary",
+        "displayName": "Terracotta",
+        "canonical": "oklch(0.64 0.17 36.44)",
+        "tonalRamp": [
+          "oklch(0.20 0.06 36.44)",
+          "oklch(0.31 0.10 36.44)",
+          "oklch(0.42 0.13 36.44)",
+          "oklch(0.53 0.16 36.44)",
+          "oklch(0.64 0.17 36.44)",
+          "oklch(0.74 0.13 36.44)",
+          "oklch(0.84 0.08 36.44)",
+          "oklch(0.94 0.03 36.44)"
+        ]
+      },
+      "accent-haze": {
+        "role": "secondary",
+        "displayName": "Accent Haze",
+        "canonical": "oklch(0.91 0.02 243.82)",
+        "tonalRamp": [
+          "oklch(0.22 0.04 243.82)",
+          "oklch(0.32 0.05 243.82)",
+          "oklch(0.43 0.05 243.82)",
+          "oklch(0.55 0.04 243.82)",
+          "oklch(0.66 0.04 243.82)",
+          "oklch(0.77 0.03 243.82)",
+          "oklch(0.85 0.025 243.82)",
+          "oklch(0.91 0.02 243.82)"
+        ]
+      },
+      "cool-paper": {
+        "role": "neutral",
+        "displayName": "Cool Paper",
+        "canonical": "oklch(0.94 0 236.5)",
+        "tonalRamp": [
+          "oklch(0.20 0 236.5)",
+          "oklch(0.32 0 236.5)",
+          "oklch(0.45 0 236.5)",
+          "oklch(0.58 0 236.5)",
+          "oklch(0.70 0 236.5)",
+          "oklch(0.82 0 236.5)",
+          "oklch(0.94 0 236.5)",
+          "oklch(1 0 0)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "oklch(0.32 0 0)",
+        "tonalRamp": [
+          "oklch(0.18 0 0)",
+          "oklch(0.32 0 0)",
+          "oklch(0.45 0 0)",
+          "oklch(0.55 0.02 264.36)",
+          "oklch(0.68 0.01 264.36)",
+          "oklch(0.82 0 0)",
+          "oklch(0.90 0.01 247.88)",
+          "oklch(0.97 0 264.54)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The name in the hero and top-level page titles. Inter 900, tight tracking."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section headings and the hero role line."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Card titles, article and project names."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Prose and descriptions; cap at 65–75ch."
+      },
+      "label": {
+        "displayName": "Label (Mono)",
+        "purpose": "Metadata only — dates, tags, reading time, stack labels. The field-notes voice."
+      }
+    },
+    "shadows": [
+      {
+        "name": "interaction-lift",
+        "value": "0px 1px 3px 0px hsl(0 0% 0% / 0.1), 0px 2px 4px -1px hsl(0 0% 0% / 0.1)",
+        "purpose": "Hover/focus only. Paired with translateY(-2px). The only place a shadow belongs — surfaces are flat at rest."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-standard",
+        "value": "cubic-bezier(0.2, 0, 0, 1)",
+        "purpose": "Default ease-out for state transitions and hover lifts."
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The single terracotta CTA — e.g. 'Contact me'. Flat at rest, lifts on hover.",
+      "html": "<button class=\"ds-btn-primary\">Contact me</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 36px; padding: 8px 16px; background: var(--color-primary, oklch(0.64 0.17 36.44)); color: var(--color-primary-foreground, oklch(1 0 0)); font-family: 'Inter Variable', sans-serif; font-size: 14px; font-weight: 500; border: none; border-radius: 10px; cursor: pointer; transition: background 0.2s, transform 0.2s, box-shadow 0.2s; } .ds-btn-primary:hover { background: oklch(0.64 0.17 36.44 / 0.9); transform: translateY(-2px); box-shadow: 0px 1px 3px 0px hsl(0 0% 0% / 0.1), 0px 2px 4px -1px hsl(0 0% 0% / 0.1); } .ds-btn-primary:focus-visible { outline: none; box-shadow: 0 0 0 3px oklch(0.64 0.17 36.44 / 0.5); }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Quiet companion to the primary CTA — e.g. the 'Resume' download.",
+      "html": "<button class=\"ds-btn-secondary\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4\"/><polyline points=\"7 10 12 15 17 10\"/><line x1=\"12\" x2=\"12\" y1=\"15\" y2=\"3\"/></svg>Resume</button>",
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 36px; padding: 8px 16px; background: var(--color-secondary, oklch(0.97 0 264.54)); color: var(--color-secondary-foreground, oklch(0.45 0.03 256.8)); font-family: 'Inter Variable', sans-serif; font-size: 14px; font-weight: 500; border: none; border-radius: 10px; cursor: pointer; transition: background 0.2s, transform 0.2s; } .ds-btn-secondary:hover { background: oklch(0.97 0 264.54 / 0.8); transform: translateY(-2px); } .ds-btn-secondary:focus-visible { outline: none; box-shadow: 0 0 0 3px oklch(0.64 0.17 36.44 / 0.5); } .ds-btn-secondary svg { width: 16px; height: 16px; }"
+    },
+    {
+      "name": "Tag Chip",
+      "kind": "chip",
+      "refersTo": "badge-tag",
+      "description": "The canonical field-notes element: post tags and stack labels in mono. Hairline border, transparent.",
+      "html": "<span class=\"ds-tag\">typescript</span>",
+      "css": ".ds-tag { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; background: transparent; color: var(--color-foreground, oklch(0.32 0 0)); font-family: 'JetBrains Mono Variable', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.02em; border: 1px solid var(--color-border, oklch(0.9 0.01 247.88)); border-radius: 10px; transition: background 0.2s, color 0.2s; } .ds-tag:hover { background: var(--color-accent, oklch(0.91 0.02 243.82)); color: var(--color-accent-foreground, oklch(0.38 0.14 265.52)); }"
+    },
+    {
+      "name": "Content Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Project/article card. Flat at rest on the cool-paper field; lifts on hover. Mono metadata line.",
+      "html": "<article class=\"ds-card\"><h3 class=\"ds-card-title\">Portfolio</h3><p class=\"ds-card-body\">A content-first personal site built with Next.js and Tailwind.</p><div class=\"ds-card-meta\"><span class=\"ds-tag\">next.js</span><span class=\"ds-tag\">tailwind</span></div></article>",
+      "css": ".ds-card { display: flex; flex-direction: column; gap: 12px; padding: 24px; background: var(--color-card, oklch(1 0 0)); color: var(--color-card-foreground, oklch(0.32 0 0)); border: 1px solid var(--color-border, oklch(0.9 0.01 247.88)); border-radius: 16px; box-shadow: none; transition: transform 0.2s, box-shadow 0.2s; } .ds-card:hover { transform: translateY(-2px); box-shadow: 0px 1px 3px 0px hsl(0 0% 0% / 0.1), 0px 2px 4px -1px hsl(0 0% 0% / 0.1); } .ds-card-title { margin: 0; font-family: 'Inter Variable', sans-serif; font-size: 18px; font-weight: 600; line-height: 1.3; } .ds-card-body { margin: 0; font-family: 'Inter Variable', sans-serif; font-size: 16px; font-weight: 400; line-height: 1.6; color: var(--color-muted-foreground, oklch(0.55 0.02 264.36)); } .ds-card-meta { display: flex; gap: 8px; flex-wrap: wrap; }"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Form field. Transparent, hairline border, terracotta focus ring. No glow.",
+      "html": "<input class=\"ds-input\" type=\"text\" placeholder=\"you@example.com\" />",
+      "css": ".ds-input { display: flex; width: 100%; height: 36px; padding: 4px 12px; background: transparent; color: var(--color-foreground, oklch(0.32 0 0)); font-family: 'Inter Variable', sans-serif; font-size: 14px; border: 1px solid var(--color-input, oklch(0.97 0 264.54)); border-radius: 10px; outline: none; transition: border-color 0.2s, box-shadow 0.2s; } .ds-input::placeholder { color: var(--color-muted-foreground, oklch(0.55 0.02 264.36)); } .ds-input:focus-visible { border-color: var(--color-ring, oklch(0.64 0.17 36.44)); box-shadow: 0 0 0 3px oklch(0.64 0.17 36.44 / 0.5); }"
+    },
+    {
+      "name": "Nav Link",
+      "kind": "nav",
+      "refersTo": "navigation",
+      "description": "Top-nav item. Transparent at rest; accent-haze on hover/active.",
+      "html": "<a class=\"ds-nav-link\" href=\"#\">Articles</a>",
+      "css": ".ds-nav-link { display: inline-flex; align-items: center; height: 36px; padding: 8px 16px; background: transparent; color: var(--color-foreground, oklch(0.32 0 0)); font-family: 'Inter Variable', sans-serif; font-size: 14px; font-weight: 500; text-decoration: none; border-radius: 10px; transition: background 0.2s, color 0.2s; } .ds-nav-link:hover { background: var(--color-accent, oklch(0.91 0.02 243.82)); color: var(--color-accent-foreground, oklch(0.38 0.14 265.52)); } .ds-nav-link:focus-visible { outline: none; box-shadow: 0 0 0 3px oklch(0.64 0.17 36.44 / 0.5); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Engineer's Field Notes",
+    "overview": "This is the working notebook of someone who builds and ships — precise, written by a real person, and confident enough to stay quiet. The system serves three things in order: the person, the work, and the writing. Design never performs; it clears the way for substance. The character is calm and warm: a single warm terracotta carries identity and marks what matters, while everything around it is cool-tinted near-paper and clear ink. A monospace voice surfaces only in the margins — dates, tags, reading time, stack labels — a quiet technical texture that says 'engineer' without becoming a costume. Surfaces are flat at rest; depth is reserved for interaction, so elevation means something when it appears.",
+    "keyCharacteristics": [
+      "One warm accent (terracotta) against cool, quiet neutrals — identity through rarity",
+      "Mono used only for metadata; the field-notes texture, never the whole page",
+      "Flat at rest, elevation on interaction — depth is earned",
+      "Editorial hierarchy and whitespace carry confidence, not density or decoration",
+      "Content-first: the work and the writing are always the loudest element"
+    ],
+    "rules": [
+      {
+        "name": "The One Warm Signal Rule",
+        "body": "Terracotta is the only warm color in the system and appears on ≤10% of any screen. If two things are terracotta, one of them is wrong. Warmth is a signal, not a wash.",
+        "section": "colors"
+      },
+      {
+        "name": "The Cool-Paper Rule",
+        "body": "The light background is cool and neutral, never a warm cream/sand/parchment. If the body bg looks 'cozy,' it has drifted; pull it back toward oklch(0.94 0 236.5).",
+        "section": "colors"
+      },
+      {
+        "name": "The Mono-In-The-Margins Rule",
+        "body": "JetBrains Mono is for metadata only. It never sets a heading, a paragraph, or a CTA. The moment mono carries primary content, the page tips from 'engineer's notes' into 'terminal gimmick' — forbidden.",
+        "section": "typography"
+      },
+      {
+        "name": "The Weight-Not-Family Rule",
+        "body": "Hierarchy in running text comes from Inter's weight (400 → 600 → 700 → 900), not from introducing a second sans. Never pair Inter with another humanist or geometric sans.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat-At-Rest Rule",
+        "body": "No element carries a drop shadow at rest. Cards, badges, inputs, and buttons sit flat on the page until hovered or focused. Shadow is the reward for interaction, never the default.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep terracotta to ≤10% of any screen — it's the one warm signal.",
+      "Do keep the page background cool and neutral (oklch(0.94 0 236.5)); carry warmth through the accent, type, and imagery instead.",
+      "Do use JetBrains Mono only for metadata (dates, tags, reading time, stack).",
+      "Do keep surfaces flat at rest; reserve shadow + a small lift for hover/focus.",
+      "Do separate surfaces with Card-White tonal contrast and 1px Border-Mist.",
+      "Do verify body, muted, and placeholder text at ≥4.5:1; bump toward Ink if close.",
+      "Do cap prose at 65–75ch and use text-wrap: balance on h1–h3.",
+      "Do give every animation a prefers-reduced-motion alternative."
+    ],
+    "donts": [
+      "Don't build flashy 'creative developer' spectacle — no scroll-jacking, WebGL, or cursor trails.",
+      "Don't ship AI-slop SaaS scaffolding: no gradient-text heroes, no uppercase tracked eyebrow above every section, no identical three-card feature grids, no hero-metric template.",
+      "Don't turn mono into a hacker-terminal gimmick — mono never sets headings, body, or CTAs.",
+      "Don't let it read as a generic off-the-shelf template; the mono metadata and flat-at-rest cards carry personal voice — keep them.",
+      "Don't add resting drop shadows to cards, badges, or inputs.",
+      "Don't warm the background into cream/sand/parchment.",
+      "Don't use a border-left/border-right colored stripe as an accent on cards, callouts, or alerts.",
+      "Don't introduce a second sans alongside Inter, or convey meaning by color alone."
+    ]
+  }
+}

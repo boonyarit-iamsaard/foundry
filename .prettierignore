@@ -23,7 +23,6 @@
 # misc
 .DS_Store
 *.pem
-.impeccable
 
 # debug
 npm-debug.log*
