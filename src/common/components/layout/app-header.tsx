@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 
@@ -44,13 +44,12 @@ const headerStateClasses: Record<HeaderState, string> = {
 function getHeaderClasses(
   shouldRenderDrawer: boolean,
   isScrolled: boolean,
-  isMounted: boolean,
 ): string {
   if (shouldRenderDrawer) {
     return headerStateClasses.drawerOpen;
   }
 
-  if (isMounted && isScrolled) {
+  if (isScrolled) {
     return headerStateClasses.closedScrolled;
   }
 
@@ -63,11 +62,10 @@ export function AppHeader() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [shouldRenderDrawer, setShouldRenderDrawer] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
 
-  const handleDrawerOpenChange = (open: boolean) => {
+  const handleDrawerOpenChange = useCallback((open: boolean) => {
     if (open) {
       setShouldRenderDrawer(true);
       requestAnimationFrame(() => setIsDrawerOpen(true));
@@ -79,14 +77,19 @@ export function AppHeader() {
     setTimeout(() => {
       setShouldRenderDrawer(false);
     }, 50);
-  };
+  }, []);
 
   useEffect(() => {
-    if (isDrawerOpen || shouldRenderDrawer) {
-      handleDrawerOpenChange(false);
+    if (!isDrawerOpen && !shouldRenderDrawer) {
+      return;
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pathname]);
+
+    const closeDrawerTimeout = window.setTimeout(() => {
+      handleDrawerOpenChange(false);
+    }, 0);
+
+    return () => window.clearTimeout(closeDrawerTimeout);
+  }, [handleDrawerOpenChange, isDrawerOpen, pathname, shouldRenderDrawer]);
 
   useEffect(() => {
     const threshold = 16;
@@ -114,15 +117,11 @@ export function AppHeader() {
     };
   }, []);
 
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
   return (
     <header
       className={cn(
         'fixed top-0 z-10 w-full transition-colors duration-100 ease-in-out',
-        getHeaderClasses(shouldRenderDrawer, isScrolled, isMounted),
+        getHeaderClasses(shouldRenderDrawer, isScrolled),
       )}
     >
       <div className="container flex h-16 items-center justify-between gap-4">
@@ -174,7 +173,10 @@ export function AppHeader() {
                 <DrawerHeader>
                   <DrawerTitle
                     className="flex items-center gap-2"
-                    onClick={() => router.push('/')}
+                    onClick={() => {
+                      handleDrawerOpenChange(false);
+                      router.push('/');
+                    }}
                   >
                     <TerminalSquareIcon className="h-6 w-6" />
                     <span className="inline-block font-bold">Boonyarit I.</span>
