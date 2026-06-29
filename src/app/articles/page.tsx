@@ -1,46 +1,35 @@
 import type { Metadata } from 'next';
 
-import { FilterByTags } from '@/common/components/filter-by-tags';
 import {
   PageHeader,
   PageHeaderDescription,
   PageHeaderHeading,
 } from '@/common/components/page-header';
-import { filterByTags } from '@/common/helpers/tag';
 import {
   ArticleCard,
   ArticleCardPlaceholder,
 } from '@/features/articles/components/article-card';
+import {
+  getArticleKeywords,
+  getFilteredArticles,
+} from '@/features/evidence/catalog';
+import { FilterByTags } from '@/features/evidence/components/filter-by-tags';
 
 import type { SearchParams } from '@/common/definitions/search-params';
-import { articles, tags } from '@/velite';
 
 type ArticlesPageProps = Readonly<{
   searchParams: SearchParams;
 }>;
 
-// TODO: explicitly define keywords
-const keywords = Array.from(
-  new Set(
-    articles
-      .flatMap((article) => article.keywords)
-      .filter((k) => k !== undefined),
-  ),
-);
-
 export const metadata: Metadata = {
   title: 'Articles',
   description: 'Insights, tutorials, and thoughts on web development.',
-  keywords,
+  keywords: getArticleKeywords(),
 };
 
 export default async function Page({ searchParams }: ArticlesPageProps) {
-  const { filteredResource, activeTags, resourceTags } = await filterByTags(
-    articles,
-    searchParams,
-    tags,
-    'articles',
-  );
+  const { activeTags, items, resourceTags } =
+    await getFilteredArticles(searchParams);
 
   // TODO: add pagination
   return (
@@ -58,10 +47,10 @@ export default async function Page({ searchParams }: ArticlesPageProps) {
           resource="articles"
         />
         <div className="grid gap-4 sm:gap-8">
-          {filteredResource.length === 0 ? (
+          {items.length === 0 ? (
             <ArticleCardPlaceholder />
           ) : (
-            filteredResource.map((article) => (
+            items.map((article) => (
               <ArticleCard
                 key={article.slug}
                 article={article}

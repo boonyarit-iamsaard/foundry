@@ -1,7 +1,7 @@
 import { CalendarIcon, ClockIcon, FileTextIcon } from 'lucide-react';
 
-import { Tag } from '@/common/components/tag';
 import { formatDate } from '@/common/helpers/date';
+import { EvidenceTag } from '@/features/evidence/components/evidence-tag';
 
 import type { Article } from '@/velite';
 
@@ -31,7 +31,7 @@ export function ArticleHeader({ article }: ArticleHeaderProps) {
       </h1>
       <div className="flex flex-wrap gap-1">
         {article.tags.map((tag) => (
-          <Tag key={tag} tag={tag} resource="articles" />
+          <EvidenceTag key={tag} tag={tag} resource="articles" />
         ))}
       </div>
     </div>

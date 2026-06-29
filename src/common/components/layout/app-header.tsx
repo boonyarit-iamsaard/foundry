@@ -1,9 +1,8 @@
 'use client';
 
-import { useCallback, useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
 import { MenuIcon } from 'lucide-react';
 
@@ -27,6 +26,7 @@ import {
 import { cn } from '@/common/helpers/cn';
 
 import { ThemeToggle } from '../theme-toggle';
+import { useAppHeaderBehavior } from './use-app-header-behavior';
 
 const navItems = [
   { href: '/projects', label: 'Projects' },
@@ -58,66 +58,15 @@ function getHeaderClasses(
   return headerStateClasses.closedNotScrolled;
 }
 
-// TODO: this component is getting too complex, break it down and ensure its performance is optimal
-// TODO: re-consider debounce, transition, and animation timing
 export function AppHeader() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [shouldRenderDrawer, setShouldRenderDrawer] = useState(false);
   const router = useRouter();
-  const pathname = usePathname();
-
-  const handleDrawerOpenChange = useCallback((open: boolean) => {
-    if (open) {
-      setShouldRenderDrawer(true);
-      requestAnimationFrame(() => setIsDrawerOpen(true));
-
-      return;
-    }
-
-    setIsDrawerOpen(false);
-    setTimeout(() => {
-      setShouldRenderDrawer(false);
-    }, 50);
-  }, []);
-
-  useEffect(() => {
-    if (!isDrawerOpen && !shouldRenderDrawer) {
-      return;
-    }
-
-    const closeDrawerTimeout = window.setTimeout(() => {
-      handleDrawerOpenChange(false);
-    }, 0);
-
-    return () => window.clearTimeout(closeDrawerTimeout);
-  }, [handleDrawerOpenChange, isDrawerOpen, pathname, shouldRenderDrawer]);
-
-  useEffect(() => {
-    const threshold = 16;
-    let scrollTimeout: number | null = null;
-
-    const handleScroll = () => {
-      if (scrollTimeout) {
-        clearTimeout(scrollTimeout);
-      }
-
-      scrollTimeout = window.setTimeout(() => {
-        setIsScrolled(window.scrollY > threshold);
-      }, 100);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-
-    handleScroll();
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      if (scrollTimeout) {
-        clearTimeout(scrollTimeout);
-      }
-    };
-  }, []);
+  const {
+    handleDrawerOpenChange,
+    isDrawerOpen,
+    isScrolled,
+    pathname,
+    shouldRenderDrawer,
+  } = useAppHeaderBehavior();
 
   return (
     <header

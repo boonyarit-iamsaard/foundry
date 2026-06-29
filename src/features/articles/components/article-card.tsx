@@ -3,7 +3,6 @@ import Link from 'next/link';
 
 import { ClockIcon, FileSearch, FileTextIcon } from 'lucide-react'; // Import new icons
 
-import { Tag } from '@/common/components/tag';
 import { Badge } from '@/common/components/ui/badge';
 import { Button } from '@/common/components/ui/button';
 import {
@@ -15,6 +14,7 @@ import {
   CardTitle,
 } from '@/common/components/ui/card';
 import { formatDate } from '@/common/helpers/date';
+import { EvidenceTag } from '@/features/evidence/components/evidence-tag';
 
 import type { Article } from '@/velite';
 
@@ -65,7 +65,7 @@ export function ArticleCard({ article, activeTags }: ArticleCardProps) {
         <CardFooter className="flex items-center justify-between p-0">
           <div className="flex flex-wrap gap-1">
             {article.tags.map((tag) => (
-              <Tag
+              <EvidenceTag
                 key={tag}
                 tag={tag}
                 activeTags={activeTags}

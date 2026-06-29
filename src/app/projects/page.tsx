@@ -1,43 +1,32 @@
 import type { Metadata } from 'next';
 
-import { FilterByTags } from '@/common/components/filter-by-tags';
 import {
   PageHeader,
   PageHeaderDescription,
   PageHeaderHeading,
 } from '@/common/components/page-header';
-import { filterByTags } from '@/common/helpers/tag';
+import {
+  getFilteredProjects,
+  getProjectKeywords,
+} from '@/features/evidence/catalog';
+import { FilterByTags } from '@/features/evidence/components/filter-by-tags';
 import { ProjectCard } from '@/features/projects/components/project-card';
 
 import type { SearchParams } from '@/common/definitions/search-params';
-import { projects, tags } from '@/velite';
 
 type ProjectsPageProps = Readonly<{
   searchParams: SearchParams;
 }>;
 
-// TODO: explicitly define keywords
-const keywords = Array.from(
-  new Set(
-    projects
-      .flatMap((project) => project.keywords)
-      .filter((k) => k !== undefined),
-  ),
-);
-
 export const metadata: Metadata = {
   title: 'Projects',
   description: 'A showcase of my projects and work.',
-  keywords,
+  keywords: getProjectKeywords(),
 };
 
 export default async function Page({ searchParams }: ProjectsPageProps) {
-  const { filteredResource, activeTags, resourceTags } = await filterByTags(
-    projects,
-    searchParams,
-    tags,
-    'projects',
-  );
+  const { activeTags, items, resourceTags } =
+    await getFilteredProjects(searchParams);
 
   // TODO: add pagination
   return (
@@ -55,7 +44,7 @@ export default async function Page({ searchParams }: ProjectsPageProps) {
           resource="projects"
         />
         <div className="grid gap-4 sm:gap-8 md:grid-cols-2">
-          {filteredResource.map((project) => (
+          {items.map((project) => (
             <ProjectCard
               key={project.slug}
               project={project}

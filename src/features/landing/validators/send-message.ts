@@ -8,3 +8,5 @@ export const sendMessageSchema = z.object({
     .email('Please enter a valid email'),
   message: z.string().min(1, 'Please enter a message'),
 });
+
+export type SendMessageInput = z.infer<typeof sendMessageSchema>;

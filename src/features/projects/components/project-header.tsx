@@ -1,8 +1,8 @@
 import { CalendarIcon } from 'lucide-react';
 
-import { Tag } from '@/common/components/tag';
 import { Badge } from '@/common/components/ui/badge';
 import { formatDate } from '@/common/helpers/date';
+import { EvidenceTag } from '@/features/evidence/components/evidence-tag';
 
 import type { Project } from '@/velite';
 
@@ -25,7 +25,7 @@ export function ProjectHeader({ project }: ProjectHeaderProps) {
       </div>
       <div className="flex flex-wrap gap-1">
         {project.tags.map((tag) => (
-          <Tag key={tag} tag={tag} resource="projects" />
+          <EvidenceTag key={tag} tag={tag} resource="projects" />
         ))}
       </div>
     </div>

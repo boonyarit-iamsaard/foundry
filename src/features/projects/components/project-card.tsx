@@ -7,7 +7,6 @@ import Link from 'next/link';
 import { CalendarIcon, MonitorIcon } from 'lucide-react';
 
 import { Icons } from '@/common/components/icons';
-import { Tag } from '@/common/components/tag';
 import { Badge } from '@/common/components/ui/badge';
 import { Button } from '@/common/components/ui/button';
 import {
@@ -23,6 +22,7 @@ import {
   TooltipTrigger,
 } from '@/common/components/ui/tooltip';
 import { formatDate } from '@/common/helpers/date';
+import { EvidenceTag } from '@/features/evidence/components/evidence-tag';
 
 import type { badgeVariants } from '@/common/components/ui/badge';
 import type { Project } from '@/velite';
@@ -114,7 +114,7 @@ export function ProjectCard({ project, activeTags }: ProjectCardProps) {
           )}
           <div className="flex flex-wrap items-center gap-1">
             {project.tags.map((tag) => (
-              <Tag
+              <EvidenceTag
                 key={tag}
                 tag={tag}
                 resource="projects"

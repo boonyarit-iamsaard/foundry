@@ -1,10 +1,9 @@
 import { SectionHeader } from '@/common/components/section-header';
+import { getLatestProjects } from '@/features/evidence/catalog';
 import { ProjectCard } from '@/features/projects/components/project-card';
 
-import { projects } from '@/velite';
-
 export function ProjectsSection() {
-  const latestProjects = projects.slice(0, 4);
+  const latestProjects = getLatestProjects(4);
 
   return (
     <section className="container space-y-8">

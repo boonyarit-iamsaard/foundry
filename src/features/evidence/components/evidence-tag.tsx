@@ -1,23 +1,24 @@
 import Link from 'next/link';
 
-import { cn } from '../helpers/cn';
-import { Button } from './ui/button';
+import { Button } from '@/common/components/ui/button';
+import { cn } from '@/common/helpers/cn';
+import { getTagFilterHref } from '@/features/evidence/catalog';
 
-type TagProps = Readonly<{
-  tag: string;
-  resource: 'articles' | 'projects';
+import type { EvidenceResource } from '@/features/evidence/catalog';
+
+type EvidenceTagProps = Readonly<{
   activeTags?: string[];
+  resource: EvidenceResource;
+  tag: string;
 }>;
 
-export function Tag({ tag, resource, activeTags = [] }: TagProps) {
+export function EvidenceTag({
+  activeTags = [],
+  resource,
+  tag,
+}: EvidenceTagProps) {
   const isActive = activeTags.includes(tag);
-  const tagsFilter = isActive
-    ? activeTags.filter((t) => t !== tag)
-    : activeTags.concat(tag);
-  const href =
-    tagsFilter.length === 0
-      ? `/${resource}`
-      : `/${resource}?tags=${tagsFilter.join(',')}`;
+  const href = getTagFilterHref({ activeTags, resource, tag });
 
   return (
     <Button

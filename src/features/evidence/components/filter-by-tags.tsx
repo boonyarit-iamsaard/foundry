@@ -1,24 +1,25 @@
-import { Tag as TagComponent } from '@/common/components/tag';
+import { EvidenceTag } from '@/features/evidence/components/evidence-tag';
 
+import type { EvidenceResource } from '@/features/evidence/catalog';
 import type { Tag } from '@/velite';
 
-interface FilterByTagsProps {
-  resourceTags: Tag[];
+type FilterByTagsProps = Readonly<{
   activeTags: string[];
-  resource: 'articles' | 'projects';
-}
+  resource: EvidenceResource;
+  resourceTags: Tag[];
+}>;
 
 export function FilterByTags({
-  resourceTags,
   activeTags,
   resource,
+  resourceTags,
 }: FilterByTagsProps) {
   return (
     <div className="space-y-2">
       <h2 className="text-sm leading-none font-medium">Filter by tags</h2>
       <div className="flex flex-wrap gap-1">
         {resourceTags.map((tag) => (
-          <TagComponent
+          <EvidenceTag
             key={tag.name}
             tag={tag.name}
             activeTags={activeTags}
