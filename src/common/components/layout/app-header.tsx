@@ -1,11 +1,13 @@
 'use client';
 
 import { useCallback, useEffect, useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 
-import { MenuIcon, TerminalSquareIcon } from 'lucide-react';
+import { MenuIcon } from 'lucide-react';
 
+import profile from '@/core/assets/images/profile.webp';
 import { Button } from '@/common/components/ui/button';
 import {
   Drawer,
@@ -126,9 +128,17 @@ export function AppHeader() {
     >
       <div className="container flex h-16 items-center justify-between gap-4">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2" aria-label="Home">
-          <TerminalSquareIcon className="h-6 w-6" />
-          <span className="hidden font-bold sm:inline-block">Boonyarit I.</span>
+        <Link href="/" className="flex items-center gap-2.5" aria-label="Home">
+          <Image
+            src={profile}
+            alt="Boonyarit Iamsa-ard"
+            width={32}
+            height={32}
+            priority
+            sizes="32px"
+            className="ring-border size-8 rounded-full object-cover ring-1"
+          />
+          <span className="font-bold">Boonyarit I.</span>
         </Link>
 
         {/* Desktop Navigation */}
@@ -137,16 +147,15 @@ export function AppHeader() {
             <NavigationMenuList>
               {navItems.map((item) => (
                 <NavigationMenuItem key={item.href}>
-                  <Link href={item.href} legacyBehavior passHref>
-                    <NavigationMenuLink
-                      className={cn(
-                        navigationMenuTriggerStyle(),
-                        'bg-transparent',
-                      )}
-                    >
-                      {item.label}
-                    </NavigationMenuLink>
-                  </Link>
+                  <NavigationMenuLink
+                    asChild
+                    className={cn(
+                      navigationMenuTriggerStyle(),
+                      'bg-transparent',
+                    )}
+                  >
+                    <Link href={item.href}>{item.label}</Link>
+                  </NavigationMenuLink>
                 </NavigationMenuItem>
               ))}
             </NavigationMenuList>
@@ -172,13 +181,20 @@ export function AppHeader() {
               <DrawerContent className="flex flex-col border-r-0 shadow-none">
                 <DrawerHeader>
                   <DrawerTitle
-                    className="flex items-center gap-2"
+                    className="flex items-center gap-2.5"
                     onClick={() => {
                       handleDrawerOpenChange(false);
                       router.push('/');
                     }}
                   >
-                    <TerminalSquareIcon className="h-6 w-6" />
+                    <Image
+                      src={profile}
+                      alt="Boonyarit Iamsa-ard"
+                      width={32}
+                      height={32}
+                      sizes="32px"
+                      className="ring-border size-8 rounded-full object-cover ring-1"
+                    />
                     <span className="inline-block font-bold">Boonyarit I.</span>
                   </DrawerTitle>
                   <DrawerDescription className="sr-only">

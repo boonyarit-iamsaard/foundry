@@ -1,5 +1,6 @@
 import type { VariantProps } from 'class-variance-authority';
 
+import { Fragment } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -73,8 +74,41 @@ export function ProjectCard({ project, activeTags }: ProjectCardProps) {
             </div>
           </div>
         </CardHeader>
-        <CardContent className="text-muted-foreground space-y-4 p-0 text-sm">
-          <p className="line-clamp-2">{project.description}</p>
+        <CardContent className="space-y-4 p-0 text-sm">
+          {project.role || project.problem || project.outcome ? (
+            <dl className="grid grid-cols-[4.5rem_1fr] gap-x-3 gap-y-2 border-t pt-4">
+              {project.role ? (
+                <Fragment>
+                  <dt className="text-muted-foreground font-mono text-xs">
+                    Role
+                  </dt>
+                  <dd className="text-foreground/90">{project.role}</dd>
+                </Fragment>
+              ) : null}
+              {project.problem ? (
+                <Fragment>
+                  <dt className="text-muted-foreground font-mono text-xs">
+                    Problem
+                  </dt>
+                  <dd className="text-muted-foreground line-clamp-2">
+                    {project.problem}
+                  </dd>
+                </Fragment>
+              ) : null}
+              {project.outcome ? (
+                <Fragment>
+                  <dt className="text-primary font-mono text-xs">Outcome</dt>
+                  <dd className="text-foreground/90 line-clamp-2">
+                    {project.outcome}
+                  </dd>
+                </Fragment>
+              ) : null}
+            </dl>
+          ) : (
+            <p className="text-muted-foreground line-clamp-2">
+              {project.description}
+            </p>
+          )}
           <div className="flex flex-wrap items-center gap-1">
             {project.tags.map((tag) => (
               <Tag

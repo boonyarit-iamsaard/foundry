@@ -15,8 +15,10 @@ export function SectionHeader({
 }: SectionHeaderProps) {
   return (
     <div className="space-y-2">
-      <div className="flex items-center justify-between">
-        <h2 className="text-4xl font-bold tracking-tight">{title}</h2>
+      <div className="flex items-center justify-between gap-4">
+        <h2 className="text-3xl font-bold tracking-tight text-balance sm:text-4xl">
+          {title}
+        </h2>
         {viewAllLink ? (
           <Button variant="link" asChild>
             <Link href={viewAllLink}>View all</Link>

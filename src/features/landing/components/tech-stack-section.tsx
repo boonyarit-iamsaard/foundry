@@ -1,83 +1,60 @@
-import { Icons } from '@/common/components/icons';
+import { Fragment } from 'react';
+
 import { SectionHeader } from '@/common/components/section-header';
-import { Badge } from '@/common/components/ui/badge';
 
-import type { IconComponent } from '@/common/components/icons';
-
-type Tool = {
-  title: string;
-  icon: IconComponent;
-  group: string;
+type Capability = {
+  label: string;
+  items: string;
 };
 
-const tools: Tool[] = [
+const capabilities: Capability[] = [
   {
-    title: 'JavaScript',
-    icon: 'javascript',
-    group: 'Languages',
+    label: 'Core',
+    items: 'TypeScript · React · Next.js · Node.js · PostgreSQL',
   },
   {
-    title: 'TypeScript',
-    icon: 'typescript',
-    group: 'Languages',
+    label: 'Backend',
+    items: 'REST APIs · authentication · background jobs · Express · Nest.js',
   },
   {
-    title: 'React',
-    icon: 'react',
-    group: 'Frameworks',
+    label: 'Frontend',
+    items: 'component systems · forms · accessibility · performance',
   },
   {
-    title: 'Next.js',
-    icon: 'nextJs',
-    group: 'Frameworks',
-  },
-  {
-    title: 'Node.js',
-    icon: 'nodeJs',
-    group: 'Frameworks',
-  },
-  {
-    title: 'Express.js',
-    icon: 'express',
-    group: 'Frameworks',
-  },
-  {
-    title: 'Nest.js',
-    icon: 'nestJs',
-    group: 'Frameworks',
-  },
-  {
-    title: 'PostgreSQL',
-    icon: 'postgres',
-    group: 'Databases',
+    label: 'Practice',
+    items:
+      'maintainable architecture · tested flows · refactoring · production deploys',
   },
 ];
 
 export function TechStackSection() {
   return (
-    <section className="container space-y-8">
-      <SectionHeader title="Tools" />
-      <div className="grid grid-cols-2 gap-2 md:grid-cols-4 md:gap-4">
-        {tools.map((tool) => {
-          const IconComponent: IconComponent =
-            typeof tool.icon === 'string' ? Icons[tool.icon] : tool.icon;
-
-          return (
-            <div
-              key={tool.title}
-              className="border-border bg-muted flex flex-col items-center justify-center gap-2 rounded-lg border p-2 font-medium transition-all hover:scale-105 md:p-4"
-            >
-              <div className="flex items-center justify-center">
-                <IconComponent className="size-8 md:size-12" />
-              </div>
-              <div className="text-muted-foreground font-medium">
-                {tool.title}
-              </div>
-              <Badge variant="secondary">{tool.group}</Badge>
-            </div>
-          );
-        })}
-      </div>
+    <section className="container space-y-6">
+      <SectionHeader title="How I build" />
+      <p className="text-muted-foreground max-w-prose text-lg leading-relaxed text-pretty">
+        I keep my toolkit small and well-worn. Most of what I ship is{' '}
+        <span className="text-foreground font-medium">TypeScript</span> end to
+        end — <span className="text-foreground font-medium">React</span> and{' '}
+        <span className="text-foreground font-medium">Next.js</span> on the
+        front, <span className="text-foreground font-medium">Node.js</span> with{' '}
+        <span className="text-foreground font-medium">Express</span> and{' '}
+        <span className="text-foreground font-medium">Nest.js</span> behind it,
+        and <span className="text-foreground font-medium">PostgreSQL</span> when
+        the data needs to be dependable. I&apos;d rather go deep on a few tools
+        that keep a system simple than chase new ones.
+      </p>
+      <dl className="grid gap-x-8 gap-y-4 pt-2 sm:grid-cols-[7rem_1fr]">
+        {capabilities.map((capability) => (
+          <Fragment key={capability.label}>
+            <dt className="text-muted-foreground font-mono text-sm sm:pt-px">
+              {capability.label}
+            </dt>
+            <dd className="text-foreground/90 leading-relaxed">
+              {capability.items}
+            </dd>
+          </Fragment>
+        ))}
+      </dl>
     </section>
   );
 }

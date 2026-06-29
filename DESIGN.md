@@ -7,7 +7,7 @@ colors:
   cool-paper: 'oklch(0.94 0 236.5)'
   card-white: 'oklch(1 0 0)'
   ink: 'oklch(0.32 0 0)'
-  muted-slate: 'oklch(0.55 0.02 264.36)'
+  muted-slate: 'oklch(0.5 0.02 264.36)'
   secondary-mist: 'oklch(0.97 0 264.54)'
   accent-haze: 'oklch(0.91 0.02 243.82)'
   accent-ink: 'oklch(0.38 0.14 265.52)'

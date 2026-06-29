@@ -8,7 +8,11 @@ export function ProjectsSection() {
 
   return (
     <section className="container space-y-8">
-      <SectionHeader title="Projects" viewAllLink="/projects" />
+      <SectionHeader
+        title="Projects"
+        description="Systems I've designed, built, and shipped end to end."
+        viewAllLink="/projects"
+      />
       <div className="grid gap-4 md:grid-cols-2">
         {latestProjects.map((project) => (
           <ProjectCard key={project.slug} project={project} />

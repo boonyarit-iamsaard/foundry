@@ -97,6 +97,10 @@ const projects = defineCollection({
       slug: s.slug('project'),
       tags: s.array(tag),
       keywords,
+      // Case-note fields (optional): surfaced on project cards as evidence.
+      role: s.string().max(80).optional(),
+      problem: s.string().max(280).optional(),
+      outcome: s.string().max(280).optional(),
       github: s.string().url().optional(),
       preview: s.string().url().optional(),
       date: s.isodate(),
