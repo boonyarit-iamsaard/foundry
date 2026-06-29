@@ -1,6 +1,9 @@
 {
   "default": true,
   "MD013": false,
+  "MD033": {
+    "allowed_elements": ["FieldNote"]
+  },
   "MD024": {
     "siblings_only": true
   },

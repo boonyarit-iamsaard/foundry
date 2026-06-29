@@ -21,8 +21,11 @@ export function useContactForm() {
             'Failed to send message: ',
             JSON.stringify(error, null, 2),
           );
-          toast.error('Failed to send message.');
-          form.reset();
+          // Keep the user's input so they can retry; never wipe a failed send.
+          toast.error("Couldn't send your message", {
+            description:
+              'Your text is still here — try again, or email boonyarit.iamsaard@gmail.com directly.',
+          });
         },
       },
       formProps: {

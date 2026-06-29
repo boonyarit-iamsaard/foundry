@@ -33,19 +33,22 @@ type ProjectCardProps = Readonly<{
 }>;
 
 export function ProjectCard({ project, activeTags }: ProjectCardProps) {
-  // TODO: improve status colors
+  // Quiet, non-alarming status scale: solid for the live/proven projects,
+  // outline for the lower-key ones. No red (it reads as an error) and no
+  // terracotta (reserved as the single warm signal), and the label text
+  // carries the meaning, not the color alone.
   const statusVariants: Record<
     Project['status'],
     VariantProps<typeof badgeVariants>['variant']
   > = {
-    active: 'default',
+    active: 'secondary',
     stable: 'secondary',
     maintenance: 'outline',
-    experimental: 'destructive',
+    experimental: 'outline',
   };
 
   return (
-    <Card className="group hover:ring-muted-foreground gap-0 overflow-hidden p-0 transition-all hover:ring-2">
+    <Card className="group gap-0 overflow-hidden p-0 transition-all hover:-translate-y-0.5 hover:shadow-md">
       <div className="bg-muted relative aspect-video">
         <Image
           src={project.cover}

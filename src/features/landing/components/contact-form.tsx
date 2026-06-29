@@ -1,5 +1,7 @@
 'use client';
 
+import { Loader2Icon } from 'lucide-react';
+
 import { SocialLinks } from '@/common/components/social-links';
 import { Button } from '@/common/components/ui/button';
 import { Card, CardContent, CardFooter } from '@/common/components/ui/card';
@@ -18,6 +20,7 @@ import { useContactForm } from '../hooks/use-contact-form';
 
 export function ContactForm() {
   const { form, handleSubmitWithAction } = useContactForm();
+  const isSubmitting = form.formState.isSubmitting;
 
   return (
     <Form {...form}>
@@ -73,8 +76,15 @@ export function ContactForm() {
             />
           </CardContent>
           <CardFooter className="flex items-center justify-center">
-            <Button size="lg" type="submit">
-              Message me
+            <Button size="lg" type="submit" disabled={isSubmitting}>
+              {isSubmitting ? (
+                <>
+                  <Loader2Icon className="size-4 animate-spin" />
+                  Sending…
+                </>
+              ) : (
+                'Message me'
+              )}
             </Button>
           </CardFooter>
         </Card>

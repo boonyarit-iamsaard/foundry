@@ -13,7 +13,7 @@ export function HeroSection() {
         className="hero-grid pointer-events-none absolute inset-0 -z-10"
       />
       <div className="container flex min-h-[80svh] flex-col justify-center gap-6 py-16">
-        <div className="flex flex-col gap-4">
+        <div className="animate-rise flex flex-col gap-4">
           <p className="text-muted-foreground font-mono text-sm tracking-tight">
             Software Engineer · Bangkok, Thailand
           </p>
@@ -24,13 +24,19 @@ export function HeroSection() {
             Aircraft mechanic turned software engineer.
           </p>
         </div>
-        <p className="text-muted-foreground max-w-2xl text-lg leading-relaxed text-pretty">
+        <p
+          className="text-muted-foreground animate-rise max-w-2xl text-lg leading-relaxed text-pretty"
+          style={{ animationDelay: '120ms' }}
+        >
           I spent years as an aircraft mechanic, where precision wasn&apos;t
           optional. When the pandemic changed everything, I taught myself to
           ship production software — and now build business systems people can
           rely on, across more than one stack.
         </p>
-        <div className="flex flex-col gap-5 pt-2 sm:flex-row sm:items-center">
+        <div
+          className="animate-rise flex flex-col gap-5 pt-2 sm:flex-row sm:items-center"
+          style={{ animationDelay: '240ms' }}
+        >
           <div className="flex gap-2">
             <Button asChild size="lg">
               <Link href="#contact-form">Get in touch</Link>

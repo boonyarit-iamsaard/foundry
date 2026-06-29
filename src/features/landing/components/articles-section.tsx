@@ -11,7 +11,7 @@ export function ArticlesSection() {
   return (
     <section className="container space-y-8">
       <SectionHeader
-        title="Latest Articles"
+        title="Articles"
         description="Long-form notes on how I build and what I've learned along the way."
         viewAllLink="/articles"
       />

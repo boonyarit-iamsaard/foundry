@@ -9,15 +9,15 @@ export function AppFooter() {
             &copy; {new Date().getFullYear()} Boonyarit Iamsa-ard. All rights
             reserved.
           </p>
-          <p className="text-muted-foreground text-xs">
-            Awesome color theme from&nbsp;
+          <p className="text-muted-foreground font-mono text-xs">
+            Built with Next.js · color theme tuned with{' '}
             <a
               href="https://tweakcn.com/editor/theme"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-primary underline underline-offset-4"
             >
-              tweakcn.com
+              tweakcn
             </a>
           </p>
         </div>

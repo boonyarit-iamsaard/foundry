@@ -22,10 +22,12 @@ export function Tag({ tag, resource, activeTags = [] }: TagProps) {
   return (
     <Button
       asChild
-      variant={isActive ? 'default' : 'secondary'}
+      variant={isActive ? 'default' : 'ghost'}
       className={cn(
-        'h-auto rounded-full px-2.5 py-0.5 shadow-none',
-        !isActive && 'bg-card',
+        'h-auto rounded-md border px-2 py-0.5 font-mono text-xs font-medium tracking-wide shadow-none',
+        isActive
+          ? 'border-transparent'
+          : 'border-border text-foreground bg-transparent',
       )}
     >
       <Link href={href} scroll={false}>
