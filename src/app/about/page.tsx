@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { Download } from 'lucide-react';
 
 import profile from '@/core/assets/images/profile.webp';
+import { FieldNote } from '@/common/components/field-note';
 import { MDX } from '@/common/components/mdx';
 import { Button } from '@/common/components/ui/button';
 
@@ -12,7 +13,7 @@ import { about } from '@/velite';
 
 export const metadata: Metadata = {
   title: 'About',
-  description: 'Learn more about Boonyarit Iamsa-ard',
+  description: about.description,
 };
 
 export default function AboutPage() {
@@ -46,7 +47,7 @@ export default function AboutPage() {
         </Button>
       </div>
       <div className="bg-muted rounded-lg px-16 py-8">
-        <MDX content={about.content} />
+        <MDX content={about.content} components={{ FieldNote }} />
       </div>
     </div>
   );

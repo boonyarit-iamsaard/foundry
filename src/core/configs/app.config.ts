@@ -9,53 +9,41 @@ export const appConfig = {
     },
   ],
   creator: '@boonyarit_iam',
-  title: 'Boonyarit I.',
+  title: 'Boonyarit Iamsa-ard — Software Engineer',
   description:
-    'A Full Stack Developer based in Bangkok, Thailand 🇹🇭 with a passion for building scalable and maintainable web applications.',
+    'Boonyarit Iamsa-ard — a Bangkok software engineer who builds business systems people can rely on, across TypeScript and Java/Spring.',
   links: {
     linkedIn: 'https://www.linkedin.com/in/boonyarit-iamsaard/',
     github: 'https://github.com/boonyarit-iamsaard',
     email: 'mailto:boonyarit.iamsaard@gmail.com',
   },
   keywords: [
-    // Primary Keywords
-    'full stack developer',
-    'react developer',
-    'next.js developer',
-    'node.js developer',
-    'typescript developer',
+    // Role & expertise
     'software engineer',
-    'web developer portfolio',
+    'full stack engineer',
+    'system design',
+    'backend engineer',
 
-    // Secondary Keywords
-    'next.js portfolio website',
-    'tailwind css developer',
-    'frontend developer',
-    'backend developer',
-    'javascript developer',
-    'web app developer',
-    'api developer',
-    'full stack projects',
-    'developer case studies',
+    // Stack
+    'typescript',
+    'react',
+    'next.js',
+    'node.js',
+    'java',
+    'spring boot',
+    'microservices',
+    'postgresql',
 
-    // Personal Branding Keywords
+    // Domain
+    'fintech',
+    'enterprise systems',
+
+    // Personal branding
     'boonyarit iamsa-ard',
     'boonyarit.me',
-    'boonyarit portfolio',
-    'boonyarit full stack developer',
 
-    // Long-Tail Keywords
-    'how to structure a next.js project',
-    'best react portfolio templates',
-    'next.js with typescript setup',
-    'node.js authentication example',
-    'seo for developer portfolios',
-    'freelance react developer in thailand',
-    'full stack developer resume website',
-
-    // Geo Keywords
-    'developer in thailand',
-    'thai web developer portfolio',
+    // Geo
+    'software engineer bangkok',
     'software engineer thailand',
   ],
   openGraph: {

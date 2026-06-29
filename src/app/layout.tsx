@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(appConfig.url),
   title: {
     default: appConfig.title,
-    template: '%s | ' + appConfig.title,
+    template: '%s · Boonyarit Iamsa-ard',
   },
   description: appConfig.description,
   authors: appConfig.authors,
