@@ -47,3 +47,6 @@ pnpm-lock.yaml
 
 # CI
 .pnpm-store
+
+# SonarQube
+/.sonar-reports/

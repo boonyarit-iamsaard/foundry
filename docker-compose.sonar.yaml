@@ -1,0 +1,25 @@
+# One-off SonarQube stack for `pnpm sonar:scan`. Each run starts it under its
+# own Compose project name and removes every container, volume, and network
+# afterwards, so nothing here is named globally or persisted.
+
+services:
+  sonarqube:
+    image: sonarqube:community
+    # No database is configured, so SonarQube uses its embedded one, meant for
+    # evaluation only, which suits a stack that never outlives one scan.
+    environment:
+      # Local development only; avoids changing host Elasticsearch limits.
+      SONAR_ES_BOOTSTRAP_CHECKS_DISABLE: 'true'
+    ports:
+      # A free loopback port, so a run never collides with anything else.
+      - '127.0.0.1::9000'
+
+  scanner:
+    image: sonarsource/sonar-scanner-cli:latest
+    profiles: ['scan']
+    environment:
+      SONAR_HOST_URL: http://sonarqube:9000
+      SONAR_TOKEN: ${SONAR_TOKEN:-}
+    volumes:
+      - .:/usr/src:ro
+    command: ['-Dsonar.working.directory=/tmp/scannerwork']

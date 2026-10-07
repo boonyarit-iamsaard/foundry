@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "velite build --clean && next build",
+    "ci": "velite build --clean && pnpm run static-analysis && next build",
     "dev": "next dev --turbopack",
     "dev:email": "email dev --dir src/features/emails/templates --port 4000",
     "format": "prettier --write .",
@@ -13,6 +14,8 @@
     "lint:check": "eslint . --max-warnings=0",
     "prepare": "husky",
     "security:audit": "pnpm audit --audit-level=moderate",
+    "sonar:clean": "tsx scripts/sonar-clean.ts",
+    "sonar:scan": "tsx scripts/sonar-scan.ts",
     "start": "next start",
     "static-analysis": "prettier --check . && pnpm run lint:check && pnpm run type-check",
     "type-check": "next typegen && tsc --noEmit"
@@ -73,6 +76,7 @@
     "prettier-plugin-tailwindcss": "^0.8.1",
     "react-email": "6.6.5",
     "tailwindcss": "^4.3.3",
+    "tsx": "^4.23.15",
     "typescript": "^6.0.3",
     "velite": "^0.4.0"
   },
