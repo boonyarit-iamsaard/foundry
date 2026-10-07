@@ -5,7 +5,7 @@ import { articles } from '@/velite';
 
 export function ArticlesSection() {
   const latestArticles = articles
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .toSorted((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .slice(0, 4);
 
   return (

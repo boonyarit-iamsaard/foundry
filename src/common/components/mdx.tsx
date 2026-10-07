@@ -15,17 +15,21 @@ type MDXProps = {
 };
 
 const sharedComponents: MDXComponents = {
-  h2: ({ className, ...props }: ComponentProps<'h2'>) => (
+  h2: ({ className, children, ...props }: ComponentProps<'h2'>) => (
     <h2
       className={cn('mb-4 text-2xl font-bold tracking-tight', className)}
       {...props}
-    />
+    >
+      {children}
+    </h2>
   ),
-  h3: ({ className, ...props }: ComponentProps<'h3'>) => (
+  h3: ({ className, children, ...props }: ComponentProps<'h3'>) => (
     <h3
       className={cn('mb-4 text-xl font-bold tracking-tight', className)}
       {...props}
-    />
+    >
+      {children}
+    </h3>
   ),
   p: ({ className, ...props }: ComponentProps<'p'>) => (
     <p className={cn('mb-4', className)} {...props} />

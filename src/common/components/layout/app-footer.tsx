@@ -10,7 +10,7 @@ export function AppFooter() {
             reserved.
           </p>
           <p className="text-muted-foreground text-xs">
-            Awesome color theme from&nbsp;
+            Awesome color theme from{' '}
             <a
               href="https://tweakcn.com/editor/theme"
               target="_blank"

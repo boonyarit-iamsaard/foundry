@@ -6,7 +6,7 @@ export function PageHeader({
   children,
   className,
   ...props
-}: HTMLAttributes<HTMLDivElement>) {
+}: Readonly<HTMLAttributes<HTMLDivElement>>) {
   return (
     <section className={cn('container', className)} {...props}>
       <div className="flex flex-col items-start gap-2 py-8 sm:py-12">
@@ -18,8 +18,9 @@ export function PageHeader({
 
 export function PageHeaderHeading({
   className,
+  children,
   ...props
-}: HTMLAttributes<HTMLHeadingElement>) {
+}: Readonly<HTMLAttributes<HTMLHeadingElement>>) {
   return (
     <h1
       className={cn(
@@ -27,14 +28,16 @@ export function PageHeaderHeading({
         className,
       )}
       {...props}
-    />
+    >
+      {children}
+    </h1>
   );
 }
 
 export function PageHeaderDescription({
   className,
   ...props
-}: HTMLAttributes<HTMLParagraphElement>) {
+}: Readonly<HTMLAttributes<HTMLParagraphElement>>) {
   return (
     <p
       className={cn(

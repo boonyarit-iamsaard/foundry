@@ -8,7 +8,7 @@ import { renderSendMessageTemplate } from '@/features/emails/templates/send-mess
 import { sendMessageSchema } from '../validators/send-message';
 
 export const sendMessageAction = actionClient
-  .schema(sendMessageSchema)
+  .inputSchema(sendMessageSchema)
   .action(async ({ parsedInput }) => {
     const { name, email, message } = parsedInput;
 
