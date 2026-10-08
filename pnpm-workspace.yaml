@@ -23,4 +23,8 @@ verifyDepsBeforeRun: error
 verifyStoreIntegrity: true
 
 overrides:
-  postcss: 8.5.15
+  # next pins an older postcss; keep every copy at or above the GHSA fix floor.
+  postcss: ^8.5.23
+  # GHSA fixes need sharp 0.35.5; velite 0.4.0 still declares ^0.34.5. Drop
+  # this once velite accepts sharp 0.35.
+  velite>sharp: ^0.35.5
