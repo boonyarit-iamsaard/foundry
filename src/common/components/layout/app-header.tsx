@@ -79,6 +79,7 @@ export function AppHeader() {
     }, 50);
   }, []);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: pathname closes the drawer on route change
   useEffect(() => {
     if (!isDrawerOpen && !shouldRenderDrawer) {
       return;
@@ -190,7 +191,7 @@ export function AppHeader() {
                       key={item.href}
                       href={item.href}
                       className={cn(
-                        'flex items-center rounded-md px-4 py-3 text-sm font-medium transition-colors',
+                        'flex items-center rounded-md px-4 py-3 font-medium text-sm transition-colors',
                         'hover:bg-muted',
                         pathname === item.href
                           ? 'bg-muted text-foreground'

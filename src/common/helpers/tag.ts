@@ -1,5 +1,5 @@
-import type { SearchParams } from '../definitions/search-params';
 import type { Tag } from '@/velite';
+import type { SearchParams } from '../definitions/search-params';
 import { tagsParamSchema } from '../validators/tag';
 
 type BaseResource = {

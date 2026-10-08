@@ -1,9 +1,8 @@
 import { MailIcon } from 'lucide-react';
 
+import type { IconComponent } from '@/common/components/icons';
 import { Icons } from '@/common/components/icons';
 import { Button } from '@/common/components/ui/button';
-
-import type { IconComponent } from '@/common/components/icons';
 
 type SocialLink = {
   href: string;

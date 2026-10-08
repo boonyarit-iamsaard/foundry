@@ -6,10 +6,10 @@ import {
   PageHeaderDescription,
   PageHeaderHeading,
 } from '@/common/components/page-header';
+import type { SearchParams } from '@/common/definitions/search-params';
 import { filterByTags } from '@/common/helpers/tag';
 import { ProjectCard } from '@/features/projects/components/project-card';
 
-import type { SearchParams } from '@/common/definitions/search-params';
 import { projects, tags } from '@/velite';
 
 type ProjectsPageProps = Readonly<{

@@ -13,12 +13,12 @@ type ProjectHeaderProps = Readonly<{
 export function ProjectHeader({ project }: ProjectHeaderProps) {
   return (
     <div className="space-y-2">
-      <div className="text-muted-foreground flex items-center gap-2 text-sm">
+      <div className="flex items-center gap-2 text-muted-foreground text-sm">
         <CalendarIcon className="inline-block size-4" />
         <p>Since {formatDate(project.date)}</p>
       </div>
       <div className="flex items-center gap-2">
-        <h1 className="text-2xl font-black tracking-tight sm:text-4xl">
+        <h1 className="font-black text-2xl tracking-tight sm:text-4xl">
           {project.title}
         </h1>
         <Badge>{project.status}</Badge>

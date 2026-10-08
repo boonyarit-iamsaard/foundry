@@ -81,7 +81,7 @@ export default async function Page({ params }: PageProps) {
             className="object-cover"
           />
         </div>
-        <div className="bg-muted rounded-b-lg p-4 sm:px-16 sm:py-8">
+        <div className="rounded-b-lg bg-muted p-4 sm:px-16 sm:py-8">
           <MDX content={project.content} />
         </div>
       </div>

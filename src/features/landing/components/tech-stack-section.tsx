@@ -1,8 +1,7 @@
+import type { IconComponent } from '@/common/components/icons';
 import { Icons } from '@/common/components/icons';
 import { SectionHeader } from '@/common/components/section-header';
 import { Badge } from '@/common/components/ui/badge';
-
-import type { IconComponent } from '@/common/components/icons';
 
 type Tool = {
   title: string;
@@ -65,12 +64,12 @@ export function TechStackSection() {
           return (
             <div
               key={tool.title}
-              className="border-border bg-muted flex flex-col items-center justify-center gap-2 rounded-lg border p-2 font-medium transition-all hover:scale-105 md:p-4"
+              className="flex flex-col items-center justify-center gap-2 rounded-lg border border-border bg-muted p-2 font-medium transition-all hover:scale-105 md:p-4"
             >
               <div className="flex items-center justify-center">
                 <IconComponent className="size-8 md:size-12" />
               </div>
-              <div className="text-muted-foreground font-medium">
+              <div className="font-medium text-muted-foreground">
                 {tool.title}
               </div>
               <Badge variant="secondary">{tool.group}</Badge>

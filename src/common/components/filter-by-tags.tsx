@@ -15,7 +15,7 @@ export function FilterByTags({
 }: Readonly<FilterByTagsProps>) {
   return (
     <div className="space-y-2">
-      <h2 className="text-sm leading-none font-medium">Filter by tags</h2>
+      <h2 className="font-medium text-sm leading-none">Filter by tags</h2>
       <div className="flex flex-wrap gap-1">
         {resourceTags.map((tag) => (
           <TagComponent

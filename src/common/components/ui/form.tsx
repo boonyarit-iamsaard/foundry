@@ -1,5 +1,6 @@
 'use client';
 
+import type * as LabelPrimitive from '@radix-ui/react-label';
 import type { ControllerProps, FieldPath, FieldValues } from 'react-hook-form';
 
 import * as React from 'react';
@@ -14,8 +15,6 @@ import {
 
 import { Label } from '@/common/components/ui/label';
 import { cn } from '@/common/helpers/cn';
-
-import type * as LabelPrimitive from '@radix-ui/react-label';
 
 const Form = FormProvider;
 
@@ -161,12 +160,12 @@ function FormMessage({ className, ...props }: React.ComponentProps<'p'>) {
 }
 
 export {
-  useFormField,
   Form,
-  FormItem,
-  FormLabel,
   FormControl,
   FormDescription,
-  FormMessage,
   FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+  useFormField,
 };

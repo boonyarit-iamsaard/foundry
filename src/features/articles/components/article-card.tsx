@@ -25,8 +25,8 @@ type ArticleCardProps = Readonly<{
 
 export function ArticleCard({ article, activeTags }: ArticleCardProps) {
   return (
-    <Card className="group hover:ring-muted-foreground grid gap-0 overflow-hidden p-0 transition-all hover:ring-2 md:grid-cols-4">
-      <div className="bg-muted relative aspect-video md:col-span-1 md:aspect-auto md:h-full">
+    <Card className="group grid gap-0 overflow-hidden p-0 transition-all hover:ring-2 hover:ring-muted-foreground md:grid-cols-4">
+      <div className="relative aspect-video bg-muted md:col-span-1 md:aspect-auto md:h-full">
         <Image
           src={article.cover}
           alt={article.title}
@@ -40,12 +40,12 @@ export function ArticleCard({ article, activeTags }: ArticleCardProps) {
       <div className="flex flex-col p-6 md:col-span-3">
         <CardHeader className="mb-2 p-0">
           <div className="flex flex-col gap-2">
-            <CardTitle className="text-lg font-bold">
+            <CardTitle className="font-bold text-lg">
               <Link href={article.permalink} className="hover:text-primary">
                 {article.title}
               </Link>
             </CardTitle>
-            <CardDescription className="text-muted-foreground flex flex-wrap items-center gap-2 text-sm">
+            <CardDescription className="flex flex-wrap items-center gap-2 text-muted-foreground text-sm">
               <time>{formatDate(article.date)}</time>
               <span className="flex items-center gap-1">
                 <ClockIcon className="inline-block size-4" />
@@ -59,7 +59,7 @@ export function ArticleCard({ article, activeTags }: ArticleCardProps) {
             </CardDescription>
           </div>
         </CardHeader>
-        <CardContent className="text-muted-foreground mb-4 line-clamp-2 justify-start p-0 text-sm">
+        <CardContent className="mb-4 line-clamp-2 justify-start p-0 text-muted-foreground text-sm">
           {article.description}
         </CardContent>
         <CardFooter className="flex items-center justify-between p-0">
@@ -86,7 +86,7 @@ export function ArticleCardPlaceholder() {
   return (
     <Card className="items-center py-8">
       <CardContent className="text-center">
-        <FileSearch className="text-muted-foreground mx-auto mb-4 size-12" />
+        <FileSearch className="mx-auto mb-4 size-12 text-muted-foreground" />
         <CardTitle className="text-xl">No articles found</CardTitle>
         <CardDescription className="mt-1">
           Try removing some filters or check back later

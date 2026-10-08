@@ -6,13 +6,13 @@ import {
   PageHeaderDescription,
   PageHeaderHeading,
 } from '@/common/components/page-header';
+import type { SearchParams } from '@/common/definitions/search-params';
 import { filterByTags } from '@/common/helpers/tag';
 import {
   ArticleCard,
   ArticleCardPlaceholder,
 } from '@/features/articles/components/article-card';
 
-import type { SearchParams } from '@/common/definitions/search-params';
 import { articles, tags } from '@/velite';
 
 type ArticlesPageProps = Readonly<{

@@ -20,23 +20,23 @@ export function HeroSection() {
               quality={85}
               priority
               sizes="(max-width: 768px) 96px, 128px"
-              className="ring-muted rounded-full object-cover ring-2"
+              className="rounded-full object-cover ring-2 ring-muted"
             />
           </div>
         </div>
         <div className="flex flex-col items-center gap-4 text-center">
           <div className="space-y-1">
-            <p className="text-muted-foreground text-lg font-semibold">
+            <p className="font-semibold text-lg text-muted-foreground">
               Hi, I&apos;m
             </p>
-            <h1 className="text-2xl font-black tracking-tight sm:text-4xl">
+            <h1 className="font-black text-2xl tracking-tight sm:text-4xl">
               Boonyarit Iamsa-ard
             </h1>
-            <h2 className="text-lg font-bold tracking-tight sm:text-2xl">
+            <h2 className="font-bold text-lg tracking-tight sm:text-2xl">
               A Full Stack Developer
             </h2>
           </div>
-          <p className="text-muted-foreground text-lg">
+          <p className="text-lg text-muted-foreground">
             I focus on building scalable and maintainable web applications.
           </p>
           <div className="flex flex-col items-center gap-4 pt-4">

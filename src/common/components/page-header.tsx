@@ -24,7 +24,7 @@ export function PageHeaderHeading({
   return (
     <h1
       className={cn(
-        'text-2xl leading-tight font-bold tracking-tighter sm:text-4xl',
+        'font-bold text-2xl leading-tight tracking-tighter sm:text-4xl',
         className,
       )}
       {...props}
@@ -41,7 +41,7 @@ export function PageHeaderDescription({
   return (
     <p
       className={cn(
-        'text-foreground line-clamp-1 text-base font-light text-balance sm:text-lg',
+        'line-clamp-1 text-balance font-light text-base text-foreground sm:text-lg',
         className,
       )}
       {...props}
