@@ -5,16 +5,10 @@ updates:
     schedule:
       interval: weekly
     open-pull-requests-limit: 5
-    ignore:
-      # eslint-plugin-react (via eslint-config-next) crashes on ESLint 10.
-      # Remove once eslint-config-next supports it. See #15.
-      - dependency-name: eslint
-        update-types: ['version-update:semver-major']
     groups:
       next:
         patterns:
           - next
-          - eslint-config-next
           - '@next/*'
       react:
         patterns:
@@ -22,16 +16,10 @@ updates:
           - react-dom
           - '@types/react'
           - '@types/react-dom'
-      eslint:
-        patterns:
-          - eslint
-          - eslint-*
-          - '@stylistic/eslint-plugin-js'
       tailwind:
         patterns:
           - tailwindcss
           - '@tailwindcss/*'
-          - prettier-plugin-tailwindcss
 
   - package-ecosystem: github-actions
     directory: /

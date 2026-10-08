@@ -4,7 +4,6 @@ packages:
 allowBuilds:
   esbuild: true
   sharp: true
-  unrs-resolver: true
 
 minimumReleaseAge: 1440
 
@@ -14,4 +13,3 @@ overrides:
 onlyBuiltDependencies:
   - esbuild
   - sharp
-  - unrs-resolver

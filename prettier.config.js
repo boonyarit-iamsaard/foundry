@@ -1,32 +1,9 @@
-/** @type {import("@ianvs/prettier-plugin-sort-imports").PrettierConfig} */
+// Prettier formats Markdown, MDX, and YAML. Biome formats everything else; see
+// biome.json.
+
+/** @type {import("prettier").Config} */
 const config = {
   singleQuote: true,
-  importOrder: [
-    '<BUILT_IN_MODULES>',
-    '',
-    '<TYPES>',
-    '',
-    '^(react/(.*)$)|^(react$)',
-    '^(next/(.*)$)|^(next$)',
-    '',
-    '<THIRD_PARTY_MODULES>',
-    '',
-    '^@/app/(.*)$',
-    '^@/assets/(.*)$',
-    '^@/core/(.*)$',
-    '^@/common/(.*)$',
-    '^@/features/(.*)$',
-    '',
-    '<TYPES>^[.|..|@]',
-    '^@/',
-    '^[../]',
-    '^[./]',
-  ],
-  importOrderParserPlugins: ['typescript', 'jsx', 'decorators-legacy'],
-  plugins: [
-    '@ianvs/prettier-plugin-sort-imports',
-    'prettier-plugin-tailwindcss',
-  ],
 };
 
 export default config;
