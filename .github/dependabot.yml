@@ -5,6 +5,9 @@ updates:
     schedule:
       interval: weekly
     open-pull-requests-limit: 5
+    # Waits before proposing a release, so a bad publish has time to surface.
+    cooldown:
+      default-days: 3
     groups:
       next:
         patterns:
@@ -20,9 +23,22 @@ updates:
         patterns:
           - tailwindcss
           - '@tailwindcss/*'
+    # The runtime and toolchain move to a new major when the owner decides, not
+    # when a release appears. A Node major also changes `.nvmrc`, CI, and
+    # `engines`, so bump them together.
+    ignore:
+      - dependency-name: '@types/node'
+        update-types: ['version-update:semver-major']
+      - dependency-name: typescript
+        update-types: ['version-update:semver-major']
+      - dependency-name: '@biomejs/biome'
+        update-types: ['version-update:semver-major']
 
+  # Without this the SHA pins rot.
   - package-ecosystem: github-actions
     directory: /
     schedule:
       interval: weekly
     open-pull-requests-limit: 5
+    cooldown:
+      default-days: 3
