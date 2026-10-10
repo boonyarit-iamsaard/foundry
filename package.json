@@ -50,7 +50,7 @@
     "nodemailer": "^10.0.14",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
-    "react-hook-form": "^7.80.0",
+    "react-hook-form": "^7.89.0",
     "resend": "^6.16.0",
     "sharp": "^0.35.5",
     "shiki": "^4.5.0",
