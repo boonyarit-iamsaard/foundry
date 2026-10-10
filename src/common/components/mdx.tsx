@@ -15,17 +15,21 @@ type MDXProps = {
 };
 
 const sharedComponents: MDXComponents = {
-  h2: ({ className, ...props }: ComponentProps<'h2'>) => (
+  h2: ({ className, children, ...props }: ComponentProps<'h2'>) => (
     <h2
-      className={cn('mb-4 text-2xl font-bold tracking-tight', className)}
+      className={cn('mb-4 font-bold text-2xl tracking-tight', className)}
       {...props}
-    />
+    >
+      {children}
+    </h2>
   ),
-  h3: ({ className, ...props }: ComponentProps<'h3'>) => (
+  h3: ({ className, children, ...props }: ComponentProps<'h3'>) => (
     <h3
-      className={cn('mb-4 text-xl font-bold tracking-tight', className)}
+      className={cn('mb-4 font-bold text-xl tracking-tight', className)}
       {...props}
-    />
+    >
+      {children}
+    </h3>
   ),
   p: ({ className, ...props }: ComponentProps<'p'>) => (
     <p className={cn('mb-4', className)} {...props} />
@@ -33,7 +37,7 @@ const sharedComponents: MDXComponents = {
   a: ({ className, ...props }: ComponentProps<'a'>) => (
     <a
       className={cn(
-        'text-primary font-medium underline underline-offset-4',
+        'font-medium text-primary underline underline-offset-4',
         className,
       )}
       {...props}
@@ -59,7 +63,7 @@ const sharedComponents: MDXComponents = {
   blockquote: ({ className, ...props }: ComponentProps<'blockquote'>) => (
     <blockquote
       className={cn(
-        'text-muted-foreground mt-6 border-l-2 pl-6 italic',
+        'mt-6 border-l-2 pl-6 text-muted-foreground italic',
         className,
       )}
       {...props}
@@ -68,7 +72,7 @@ const sharedComponents: MDXComponents = {
   code: ({ className, ...props }: ComponentProps<'code'>) => (
     <code
       className={cn(
-        'not-[pre>code]:bg-accent not-[pre>code]:text-accent-foreground relative rounded font-mono not-[pre>code]:px-1 not-[pre>code]:py-0.5 not-[pre>code]:transition-colors not-[pre>code]:duration-500',
+        'relative rounded not-[pre>code]:bg-accent not-[pre>code]:px-1 not-[pre>code]:py-0.5 font-mono not-[pre>code]:text-accent-foreground not-[pre>code]:transition-colors not-[pre>code]:duration-500',
         className,
       )}
       {...props}
@@ -98,6 +102,5 @@ export const MDX = ({ content, components }: MDXProps) => {
   const Component = useMDXComponent(content);
 
   // Compiled MDX is memoized by content, so this is stable across renders.
-  // eslint-disable-next-line react-hooks/static-components
   return <Component components={{ ...sharedComponents, ...components }} />;
 };

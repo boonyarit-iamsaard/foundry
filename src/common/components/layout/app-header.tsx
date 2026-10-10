@@ -56,8 +56,6 @@ function getHeaderClasses(
   return headerStateClasses.closedNotScrolled;
 }
 
-// TODO: this component is getting too complex, break it down and ensure its performance is optimal
-// TODO: re-consider debounce, transition, and animation timing
 export function AppHeader() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -79,6 +77,7 @@ export function AppHeader() {
     }, 50);
   }, []);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: pathname closes the drawer on route change
   useEffect(() => {
     if (!isDrawerOpen && !shouldRenderDrawer) {
       return;
@@ -137,16 +136,15 @@ export function AppHeader() {
             <NavigationMenuList>
               {navItems.map((item) => (
                 <NavigationMenuItem key={item.href}>
-                  <Link href={item.href} legacyBehavior passHref>
-                    <NavigationMenuLink
-                      className={cn(
-                        navigationMenuTriggerStyle(),
-                        'bg-transparent',
-                      )}
-                    >
-                      {item.label}
-                    </NavigationMenuLink>
-                  </Link>
+                  <NavigationMenuLink
+                    asChild
+                    className={cn(
+                      navigationMenuTriggerStyle(),
+                      'bg-transparent',
+                    )}
+                  >
+                    <Link href={item.href}>{item.label}</Link>
+                  </NavigationMenuLink>
                 </NavigationMenuItem>
               ))}
             </NavigationMenuList>
@@ -191,7 +189,7 @@ export function AppHeader() {
                       key={item.href}
                       href={item.href}
                       className={cn(
-                        'flex items-center rounded-md px-4 py-3 text-sm font-medium transition-colors',
+                        'flex items-center rounded-md px-4 py-3 font-medium text-sm transition-colors',
                         'hover:bg-muted',
                         pathname === item.href
                           ? 'bg-muted text-foreground'

@@ -1,4 +1,3 @@
-// TODO: define missing images and icons
 export const appConfig = {
   name: 'boonyarit.me',
   url: new URL('https://boonyarit.me'),

@@ -6,23 +6,25 @@ import {
   PageHeaderDescription,
   PageHeaderHeading,
 } from '@/common/components/page-header';
+import type { SearchParams } from '@/common/definitions/search-params';
 import { filterByTags } from '@/common/helpers/tag';
 import {
   ArticleCard,
   ArticleCardPlaceholder,
 } from '@/features/articles/components/article-card';
+import { listedArticles } from '@/features/articles/visibility';
 
-import type { SearchParams } from '@/common/definitions/search-params';
 import { articles, tags } from '@/velite';
+
+const listed = listedArticles(articles);
 
 type ArticlesPageProps = Readonly<{
   searchParams: SearchParams;
 }>;
 
-// TODO: explicitly define keywords
 const keywords = Array.from(
   new Set(
-    articles
+    listed
       .flatMap((article) => article.keywords)
       .filter((k) => k !== undefined),
   ),
@@ -36,13 +38,12 @@ export const metadata: Metadata = {
 
 export default async function Page({ searchParams }: ArticlesPageProps) {
   const { filteredResource, activeTags, resourceTags } = await filterByTags(
-    articles,
+    listed,
     searchParams,
     tags,
     'articles',
   );
 
-  // TODO: add pagination
   return (
     <div className="py-16">
       <PageHeader>

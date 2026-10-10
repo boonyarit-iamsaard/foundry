@@ -16,7 +16,7 @@ export function SectionHeader({
   return (
     <div className="space-y-2">
       <div className="flex items-center justify-between">
-        <h2 className="text-4xl font-bold tracking-tight">{title}</h2>
+        <h2 className="font-bold text-4xl tracking-tight">{title}</h2>
         {viewAllLink ? (
           <Button variant="link" asChild>
             <Link href={viewAllLink}>View all</Link>

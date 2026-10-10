@@ -4,14 +4,27 @@ packages:
 allowBuilds:
   esbuild: true
   sharp: true
-  unrs-resolver: true
 
-minimumReleaseAge: 1440
+dangerouslyAllowAllBuilds: false
+# Makes a skipped build a hard failure, not a silent one.
+strictDepBuilds: true
+
+# 3 days. For an urgent advisory, exempt the one fixed package through
+# minimumReleaseAgeExclude instead of lowering this.
+minimumReleaseAge: 4320
+
+# Judge only the last 30 days: pre-2023 releases predate provenance and trip
+# this constantly.
+trustPolicy: no-downgrade
+trustPolicyIgnoreAfter: 43200
+
+engineStrict: true
+verifyDepsBeforeRun: error
+verifyStoreIntegrity: true
 
 overrides:
-  postcss: 8.5.15
-
-onlyBuiltDependencies:
-  - esbuild
-  - sharp
-  - unrs-resolver
+  # next pins an older postcss; keep every copy at or above the GHSA fix floor.
+  postcss: ^8.5.23
+  # GHSA fixes need sharp 0.35.5; velite 0.4.0 still declares ^0.34.5. Drop
+  # this once velite accepts sharp 0.35.
+  velite>sharp: ^0.35.5

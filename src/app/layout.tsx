@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(appConfig.url),
   title: {
     default: appConfig.title,
-    template: '%s | ' + appConfig.title,
+    template: `%s | ${appConfig.title}`,
   },
   description: appConfig.description,
   authors: appConfig.authors,
@@ -50,7 +50,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          'bg-background text-foreground relative flex min-h-dvh flex-col font-sans antialiased',
+          'relative flex min-h-dvh flex-col bg-background font-sans text-foreground antialiased',
           fontSans.variable,
           fontMono.variable,
         )}

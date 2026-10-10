@@ -28,7 +28,6 @@ export async function generateMetadata({
     return {};
   }
 
-  // TODO: define SEO configuration in 'core/configs/app.config.ts'
   return {
     title: article.title,
     description: article.description,
@@ -87,12 +86,11 @@ export default async function Page({ params }: PageProps) {
             src={article.cover}
             alt={article.title}
             fill
-            // TODO: improve sizes property
-            sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+            sizes="(max-width: 56rem) calc(100vw - 2rem), 54rem"
             className="object-cover"
           />
         </div>
-        <div className="bg-muted rounded-b-lg p-4 sm:px-16 sm:py-8">
+        <div className="rounded-b-lg bg-muted p-4 sm:px-16 sm:py-8">
           <MDX content={article.content} />
         </div>
       </div>

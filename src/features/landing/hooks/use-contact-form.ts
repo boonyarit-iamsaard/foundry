@@ -16,11 +16,7 @@ export function useContactForm() {
           form.reset();
         },
         onError: (error) => {
-          // TODO: log error
-          console.error(
-            'Failed to send message: ',
-            JSON.stringify(error, null, 2),
-          );
+          console.error('Failed to send message:', error);
           toast.error('Failed to send message.');
           form.reset();
         },

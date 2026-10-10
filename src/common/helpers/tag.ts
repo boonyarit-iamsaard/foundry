@@ -1,5 +1,5 @@
-import type { SearchParams } from '../definitions/search-params';
 import type { Tag } from '@/velite';
+import type { SearchParams } from '../definitions/search-params';
 import { tagsParamSchema } from '../validators/tag';
 
 type BaseResource = {
@@ -34,7 +34,7 @@ const getActiveResourceTags = (
   selectedTags: string[],
   tags: Tag[],
 ): { activeTags: string[]; resourceTags: Tag[] } => {
-  const resourceTags = tags.filter((tag) => tag.resource === resource);
+  const resourceTags = tags.filter((tag) => tag.count[resource] > 0);
   const activeTags = selectedTags.filter((tag) =>
     resourceTags.some((t) => t.name === tag),
   );
@@ -66,7 +66,6 @@ export async function filterByTags<T extends BaseResource>(
         activeTags.length === 0 ||
         item.tags.some((tag) => activeTags.includes(tag)),
     )
-    // TODO: consider date-fns
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   return {

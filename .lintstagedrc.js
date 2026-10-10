@@ -1,19 +1,11 @@
-import { relative } from 'node:path';
-import { cwd } from 'node:process';
-
-/**
- * @param {string[]} filenames
- * @returns {string}
- */
-const buildEslintCommand = (filenames) =>
-  `eslint --max-warnings=0 ${filenames.map((f) => relative(cwd(), f)).join(' ')}`;
-
 /**
  * @type {import('lint-staged').Configuration}
  */
 const config = {
-  '*': ['prettier --check --ignore-unknown'],
-  '*.{js,jsx,ts,tsx,cjs,mjs}': [buildEslintCommand],
+  '*.{js,jsx,ts,tsx,cjs,mjs,json,jsonc,css}': [
+    'biome check --error-on-warnings --no-errors-on-unmatched --files-ignore-unknown=true',
+  ],
+  '*.{md,mdx,yaml,yml}': ['prettier --check'],
 };
 
 export default config;

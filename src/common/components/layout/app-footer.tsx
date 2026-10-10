@@ -10,12 +10,12 @@ export function AppFooter() {
             reserved.
           </p>
           <p className="text-muted-foreground text-xs">
-            Awesome color theme from&nbsp;
+            Awesome color theme from{' '}
             <a
               href="https://tweakcn.com/editor/theme"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-primary underline underline-offset-4"
+              className="underline underline-offset-4 hover:text-primary"
             >
               tweakcn.com
             </a>

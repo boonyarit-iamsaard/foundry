@@ -27,14 +27,14 @@ export default function AboutPage() {
             quality={85}
             priority
             sizes="(max-width: 768px) 96px, 128px"
-            className="ring-background rounded-full object-cover ring-2"
+            className="rounded-full object-cover ring-2 ring-background"
           />
         </div>
-        <h1 className="text-2xl font-bold tracking-tight md:text-4xl">
+        <h1 className="font-bold text-2xl tracking-tight md:text-4xl">
           Boonyarit Iamsa-ard
         </h1>
         <div className="flex flex-col gap-2">
-          <p className="text-muted-foreground font-medium italic sm:text-lg">
+          <p className="font-medium text-muted-foreground italic sm:text-lg">
             Iterate, learn, and improve along the way.
           </p>
         </div>
@@ -45,7 +45,7 @@ export default function AboutPage() {
           </a>
         </Button>
       </div>
-      <div className="bg-muted rounded-lg px-16 py-8">
+      <div className="rounded-lg bg-muted px-16 py-8">
         <MDX content={about.content} />
       </div>
     </div>

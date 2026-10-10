@@ -30,6 +30,12 @@ cp .env.ci.example .env
 
 ## Verification
 
+Run everything the CI checks run, in one command:
+
+```sh
+pnpm run ci
+```
+
 Generate content types before running static analysis directly:
 
 ```sh
@@ -50,6 +56,23 @@ To run the reusable GitHub Actions checks locally with `act`:
 ```sh
 act workflow_call -W .github/workflows/checks.yml
 ```
+
+### SonarQube
+
+Run a one-off SonarQube scan of `src/` with Docker:
+
+```sh
+pnpm sonar:scan
+```
+
+The scan starts a throwaway SonarQube Community Build stack on a free loopback port. It analyzes the code and writes the issues and security hotspots to `.sonar-reports/issues.json` and `.sonar-reports/issues.md`. Then it removes every container, volume and network it created, even when the scan fails or you interrupt it. The reports are Git-ignored. No credentials are saved.
+
+| Flag             | Effect                                                                               |
+| ---------------- | ------------------------------------------------------------------------------------ |
+| `--keep`         | Leave SonarQube running and print its URL and admin password; the reports link to it |
+| `--purge-images` | Also remove the SonarQube and scanner images, which the next scan downloads again    |
+
+`pnpm sonar:clean` removes a kept or abandoned stack without scanning and also accepts `--purge-images`.
 
 ## Supply Chain
 
