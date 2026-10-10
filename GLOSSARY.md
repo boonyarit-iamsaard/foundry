@@ -9,7 +9,7 @@ The personal site of Boonyarit Iamsa-ard: articles he writes and projects he bui
 ### Article status
 
 **Article status**:
-Whether an article is visible to readers.
+Whether, and where, an article is visible to readers.
 _Avoid_: status (alone), state
 
 **Draft**:
@@ -19,6 +19,10 @@ _Avoid_: unpublished, hidden
 **Published**:
 An article visible to everyone on the live site.
 _Avoid_: live, public
+
+**Archived**:
+An article no longer listed anywhere on the site, whose page still works so existing links keep resolving.
+_Avoid_: deprecated, removed, unlisted
 
 ### Project status
 
