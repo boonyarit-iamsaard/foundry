@@ -34,7 +34,7 @@ const getActiveResourceTags = (
   selectedTags: string[],
   tags: Tag[],
 ): { activeTags: string[]; resourceTags: Tag[] } => {
-  const resourceTags = tags.filter((tag) => tag.resource === resource);
+  const resourceTags = tags.filter((tag) => tag.count[resource] > 0);
   const activeTags = selectedTags.filter((tag) =>
     resourceTags.some((t) => t.name === tag),
   );
