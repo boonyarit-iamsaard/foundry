@@ -87,8 +87,7 @@ export default async function Page({ params }: PageProps) {
             src={article.cover}
             alt={article.title}
             fill
-            // TODO: improve sizes property
-            sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+            sizes="(max-width: 56rem) calc(100vw - 2rem), 54rem"
             className="object-cover"
           />
         </div>
