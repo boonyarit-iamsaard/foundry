@@ -16,9 +16,9 @@ export const sendMessageAction = actionClient
     const html = await renderSendMessageTemplate({ email, name, message });
     try {
       await mailer.send({
-        // TODO: reconsider from email format
-        from: env.MAIL_FROM_ADDRESS,
+        from: `${env.MAIL_FROM_NAME} <${env.MAIL_FROM_ADDRESS}>`,
         to: env.MAIL_TO_ADDRESS,
+        replyTo: email,
         subject: `Message from ${name}`,
         html,
       });
@@ -28,8 +28,7 @@ export const sendMessageAction = actionClient
         message: 'Message sent successfully',
       };
     } catch (error) {
-      // TODO: log error
-      console.error('Failed to send message: ', JSON.stringify(error, null, 2));
+      console.error('Failed to send message:', error);
 
       throw new Error('Failed to send message');
     }

@@ -7,6 +7,7 @@ import { env } from '@/core/configs/env.config';
 export type SendOptions = {
   from: string;
   to: string | string[];
+  replyTo?: string;
   subject: string;
   html: string;
 };
@@ -25,8 +26,20 @@ type SmtpConfig = z.infer<typeof smtpConfigSchema>;
 function createResendMailer(apiKey: string) {
   const resend = new Resend(apiKey);
 
-  async function send({ from, to, subject, html }: SendOptions) {
-    return await resend.emails.send({ from, to, subject, html });
+  async function send({ from, to, replyTo, subject, html }: SendOptions) {
+    // Resend reports failures in the result instead of throwing.
+    const { data, error } = await resend.emails.send({
+      from,
+      to,
+      replyTo,
+      subject,
+      html,
+    });
+    if (error) {
+      throw new Error(error.message, { cause: error });
+    }
+
+    return data;
   }
 
   return { send };
@@ -43,8 +56,8 @@ function createSmtpMailer({ host, pass, port, user }: SmtpConfig) {
     },
   });
 
-  async function send({ from, to, subject, html }: SendOptions) {
-    return await transporter.sendMail({ from, to, subject, html });
+  async function send({ from, to, replyTo, subject, html }: SendOptions) {
+    return await transporter.sendMail({ from, to, replyTo, subject, html });
   }
 
   return { send };
