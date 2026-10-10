@@ -45,6 +45,9 @@ jobs:
       - name: Run static analysis
         run: pnpm run static-analysis
 
+      - name: Run tests
+        run: pnpm run test
+
   build-project:
     name: Build Project
     runs-on: ubuntu-latest

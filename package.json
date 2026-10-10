@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "velite build --clean && next build",
-    "ci": "velite build --clean && pnpm run static-analysis && next build",
+    "ci": "velite build --clean && pnpm run static-analysis && pnpm run test && next build",
     "dev": "next dev --turbopack",
     "dev:email": "email dev --dir src/features/emails/templates --port 4000",
     "format": "biome format --write && prettier --write \"**/*.{md,mdx,yaml,yml}\"",
@@ -18,6 +18,8 @@
     "sonar:scan": "tsx scripts/sonar-scan.ts",
     "start": "next start",
     "static-analysis": "biome ci --error-on-warnings && prettier --check \"**/*.{md,mdx,yaml,yml}\" && pnpm run type-check",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "type-check": "next typegen && tsc --noEmit"
   },
   "dependencies": {
@@ -75,7 +77,8 @@
     "tailwindcss": "^4.3.3",
     "tsx": "^4.23.15",
     "typescript": "^6.0.3",
-    "velite": "^0.4.0"
+    "velite": "^0.4.0",
+    "vitest": "^5.0.3"
   },
   "engines": {
     "node": ">=24.0.0 <25.0.0",
