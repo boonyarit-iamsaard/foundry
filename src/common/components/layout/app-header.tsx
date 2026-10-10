@@ -56,8 +56,6 @@ function getHeaderClasses(
   return headerStateClasses.closedNotScrolled;
 }
 
-// TODO: this component is getting too complex, break it down and ensure its performance is optimal
-// TODO: re-consider debounce, transition, and animation timing
 export function AppHeader() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);

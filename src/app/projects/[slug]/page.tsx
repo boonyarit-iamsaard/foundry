@@ -27,7 +27,6 @@ export async function generateMetadata({
     return {};
   }
 
-  // TODO: define SEO configuration in 'core/configs/app.config.ts'
   return {
     title: project.title,
     description: project.description,

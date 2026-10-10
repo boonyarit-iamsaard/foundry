@@ -28,7 +28,6 @@ export async function generateMetadata({
     return {};
   }
 
-  // TODO: define SEO configuration in 'core/configs/app.config.ts'
   return {
     title: article.title,
     description: article.description,
