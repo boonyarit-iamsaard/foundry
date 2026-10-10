@@ -80,6 +80,7 @@ export function ProjectCard({ project, activeTags }: ProjectCardProps) {
                       href={project.preview}
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label="Live preview"
                     >
                       <MonitorIcon className="size-5" />
                     </a>
@@ -98,6 +99,7 @@ export function ProjectCard({ project, activeTags }: ProjectCardProps) {
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label="GitHub"
                     >
                       <Icons.gitHub className="size-5" />
                     </a>
