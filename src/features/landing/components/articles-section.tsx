@@ -1,10 +1,11 @@
 import { SectionHeader } from '@/common/components/section-header';
 import { ArticleCard } from '@/features/articles/components/article-card';
+import { listedArticles } from '@/features/articles/visibility';
 
 import { articles } from '@/velite';
 
 export function ArticlesSection() {
-  const latestArticles = articles
+  const latestArticles = listedArticles(articles)
     .toSorted((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .slice(0, 4);
 

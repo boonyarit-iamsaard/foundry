@@ -12,8 +12,11 @@ import {
   ArticleCard,
   ArticleCardPlaceholder,
 } from '@/features/articles/components/article-card';
+import { listedArticles } from '@/features/articles/visibility';
 
 import { articles, tags } from '@/velite';
+
+const listed = listedArticles(articles);
 
 type ArticlesPageProps = Readonly<{
   searchParams: SearchParams;
@@ -21,7 +24,7 @@ type ArticlesPageProps = Readonly<{
 
 const keywords = Array.from(
   new Set(
-    articles
+    listed
       .flatMap((article) => article.keywords)
       .filter((k) => k !== undefined),
   ),
@@ -35,7 +38,7 @@ export const metadata: Metadata = {
 
 export default async function Page({ searchParams }: ArticlesPageProps) {
   const { filteredResource, activeTags, resourceTags } = await filterByTags(
-    articles,
+    listed,
     searchParams,
     tags,
     'articles',

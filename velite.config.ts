@@ -2,6 +2,10 @@ import rehypeShiki from '@shikijs/rehype';
 import { defineCollection, defineConfig, s } from 'velite';
 
 import type { Article, Project, Tag } from '@/velite';
+import {
+  listedArticles,
+  visibleArticles,
+} from './src/features/articles/visibility';
 
 // TODO: reconsider refactoring this configuration again
 
@@ -152,7 +156,15 @@ export default defineConfig({
     ],
   },
   prepare({ articles, projects, tags }) {
-    const tagsFromArticles = getTags(articles, tags);
+    articles.splice(
+      0,
+      articles.length,
+      ...visibleArticles(articles, process.env.NODE_ENV),
+    );
+    // Tags and their counts follow what readers can browse to.
+    const listed = listedArticles(articles);
+
+    const tagsFromArticles = getTags(listed, tags);
     const tagsFromProjects = getTags(projects, tags);
 
     const allTags: Array<{ name: string; resource: 'articles' | 'projects' }> =
@@ -175,6 +187,6 @@ export default defineConfig({
       });
     });
 
-    updateTagCounts(tags, articles, projects);
+    updateTagCounts(tags, listed, projects);
   },
 });
