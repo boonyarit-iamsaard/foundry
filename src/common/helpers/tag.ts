@@ -66,7 +66,6 @@ export async function filterByTags<T extends BaseResource>(
         activeTags.length === 0 ||
         item.tags.some((tag) => activeTags.includes(tag)),
     )
-    // TODO: consider date-fns
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   return {

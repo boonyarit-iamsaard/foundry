@@ -19,7 +19,6 @@ type ArticlesPageProps = Readonly<{
   searchParams: SearchParams;
 }>;
 
-// TODO: explicitly define keywords
 const keywords = Array.from(
   new Set(
     articles
@@ -42,7 +41,6 @@ export default async function Page({ searchParams }: ArticlesPageProps) {
     'articles',
   );
 
-  // TODO: add pagination
   return (
     <div className="py-16">
       <PageHeader>
