@@ -1,8 +1,8 @@
 import { CalendarIcon } from 'lucide-react';
 
 import { Tag } from '@/common/components/tag';
-import { Badge } from '@/common/components/ui/badge';
 import { formatDate } from '@/common/helpers/date';
+import { ProjectStatusBadge } from '@/features/projects/components/project-status-badge';
 
 import type { Project } from '@/velite';
 
@@ -21,7 +21,7 @@ export function ProjectHeader({ project }: ProjectHeaderProps) {
         <h1 className="font-black text-2xl tracking-tight sm:text-4xl">
           {project.title}
         </h1>
-        <Badge>{project.status}</Badge>
+        <ProjectStatusBadge status={project.status} />
       </div>
       <div className="flex flex-wrap gap-1">
         {project.tags.map((tag) => (

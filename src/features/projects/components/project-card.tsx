@@ -1,5 +1,3 @@
-import type { VariantProps } from 'class-variance-authority';
-
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -7,8 +5,6 @@ import { CalendarIcon, MonitorIcon } from 'lucide-react';
 
 import { Icons } from '@/common/components/icons';
 import { Tag } from '@/common/components/tag';
-import type { badgeVariants } from '@/common/components/ui/badge';
-import { Badge } from '@/common/components/ui/badge';
 import { Button } from '@/common/components/ui/button';
 import {
   Card,
@@ -23,6 +19,7 @@ import {
   TooltipTrigger,
 } from '@/common/components/ui/tooltip';
 import { formatDate } from '@/common/helpers/date';
+import { ProjectStatusBadge } from '@/features/projects/components/project-status-badge';
 
 import type { Project } from '@/velite';
 
@@ -32,17 +29,6 @@ type ProjectCardProps = Readonly<{
 }>;
 
 export function ProjectCard({ project, activeTags }: ProjectCardProps) {
-  // TODO: improve status colors
-  const statusVariants: Record<
-    Project['status'],
-    VariantProps<typeof badgeVariants>['variant']
-  > = {
-    active: 'default',
-    stable: 'secondary',
-    maintenance: 'outline',
-    experimental: 'destructive',
-  };
-
   return (
     <Card className="group gap-0 overflow-hidden p-0 transition-all hover:ring-2 hover:ring-muted-foreground">
       <div className="relative aspect-video bg-muted">
@@ -63,9 +49,7 @@ export function ProjectCard({ project, activeTags }: ProjectCardProps) {
               <Link href={project.permalink} className="hover:text-primary">
                 {project.title}
               </Link>
-              <Badge variant={statusVariants[project.status]}>
-                {project.status}
-              </Badge>
+              <ProjectStatusBadge status={project.status} />
             </CardTitle>
             <div className="flex items-center gap-2 text-muted-foreground text-sm">
               <CalendarIcon className="inline-block size-4" />
