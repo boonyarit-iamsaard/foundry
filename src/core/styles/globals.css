@@ -144,7 +144,14 @@
 
   html {
     scrollbar-color: var(--border) var(--board);
+    scrollbar-gutter: stable;
     scroll-padding-top: 5rem;
+  }
+
+  /* The gutter is already reserved, so the drawer's scroll lock must not add its own offset. */
+  html body[data-scroll-locked] {
+    /* biome-ignore lint/complexity/noImportantStyles: overrides react-remove-scroll-bar's own !important */
+    margin-right: 0 !important;
   }
 
   body {

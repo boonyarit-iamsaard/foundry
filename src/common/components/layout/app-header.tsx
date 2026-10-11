@@ -136,11 +136,13 @@ export function AppHeader() {
               className="object-cover grayscale-[35%]"
             />
           </span>
-          <span className="font-display font-extrabold text-[1.375rem] uppercase leading-none tracking-[0.03em]">
-            Boonyarit Iamsa-ard
-          </span>
-          <span className="stamp hidden self-end pb-px text-muted-foreground text-xs lg:inline">
-            Software Engineer
+          <span className="flex items-baseline gap-2.5">
+            <span className="font-display font-extrabold text-[1.375rem] uppercase leading-none tracking-[0.03em]">
+              Boonyarit Iamsa-ard
+            </span>
+            <span className="stamp hidden text-muted-foreground text-xs leading-none lg:inline">
+              Software Engineer
+            </span>
           </span>
         </Link>
 

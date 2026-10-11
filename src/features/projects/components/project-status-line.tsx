@@ -74,7 +74,7 @@ export function ProjectStatusKey({
     >
       <dt className="sr-only">Project status outline key</dt>
       {projectStatuses.map((status) => (
-        <dd key={status}>
+        <dd key={status} className="flex">
           <ProjectStatusLine status={status} />
         </dd>
       ))}
