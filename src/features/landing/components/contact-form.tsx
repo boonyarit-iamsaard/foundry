@@ -1,8 +1,8 @@
 'use client';
 
-import { SocialLinks } from '@/common/components/social-links';
+import { SendIcon } from 'lucide-react';
+
 import { Button } from '@/common/components/ui/button';
-import { Card, CardContent, CardFooter } from '@/common/components/ui/card';
 import {
   Form,
   FormControl,
@@ -16,76 +16,73 @@ import { Textarea } from '@/common/components/ui/textarea';
 
 import { useContactForm } from '../hooks/use-contact-form';
 
+const labelClassName = 'stamp text-foreground text-xs';
+
 export function ContactForm() {
-  const { form, handleSubmitWithAction } = useContactForm();
+  const { form, handleSubmitWithAction, isSending } = useContactForm();
 
   return (
     <Form {...form}>
       <form
         id="contact-form"
         onSubmit={handleSubmitWithAction}
-        className="w-full max-w-lg space-y-4"
+        className="space-y-5"
+        noValidate
       >
-        <Card>
-          <CardContent className="space-y-4">
-            <FormField
-              control={form.control}
-              name="name"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Name</FormLabel>
-                  <FormControl>
-                    <Input placeholder="What should I call you?" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="email"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Email</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Your email" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="message"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Message</FormLabel>
-                  <FormControl>
-                    <Textarea
-                      placeholder="Type your message here..."
-                      className="min-h-32"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </CardContent>
-          <CardFooter className="flex items-center justify-center">
-            <Button size="lg" type="submit">
-              Message me
-            </Button>
-          </CardFooter>
-        </Card>
-        <div className="relative w-full text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-border after:border-t">
-          <span className="relative z-10 bg-background px-2 text-muted-foreground">
-            Or find me on
-          </span>
+        <div className="grid gap-5 sm:grid-cols-2">
+          <FormField
+            control={form.control}
+            name="name"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className={labelClassName}>Name</FormLabel>
+                <FormControl>
+                  <Input autoComplete="name" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className={labelClassName}>Email</FormLabel>
+                <FormControl>
+                  <Input type="email" autoComplete="email" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
         </div>
-        <div className="flex items-center justify-center">
-          <SocialLinks />
-        </div>
+        <FormField
+          control={form.control}
+          name="message"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className={labelClassName}>Message</FormLabel>
+              <FormControl>
+                <Textarea
+                  placeholder="The role, or the project you have in mind"
+                  className="min-h-40"
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <Button
+          size="lg"
+          type="submit"
+          className="w-full sm:w-auto"
+          disabled={isSending}
+        >
+          <SendIcon aria-hidden="true" />
+          {isSending ? 'Sending…' : 'Send message'}
+        </Button>
       </form>
     </Form>
   );

@@ -6,19 +6,21 @@ import { sendMessageAction } from '../actions/send-message-action';
 import { sendMessageSchema } from '../validators/send-message';
 
 export function useContactForm() {
-  const { form, handleSubmitWithAction } = useHookFormAction(
+  const { action, form, handleSubmitWithAction } = useHookFormAction(
     sendMessageAction,
     zodResolver(sendMessageSchema),
     {
       actionProps: {
         onSuccess: () => {
-          toast('Your message has been sent.');
+          toast('Message sent. I’ll reply to the email you gave.');
           form.reset();
         },
         onError: (error) => {
           console.error('Failed to send message:', error);
-          toast.error('Failed to send message.');
-          form.reset();
+          // Keep what they wrote so a retry costs nothing.
+          toast.error(
+            'Your message didn’t send. Try again, or email me directly.',
+          );
         },
       },
       formProps: {
@@ -34,5 +36,6 @@ export function useContactForm() {
   return {
     form,
     handleSubmitWithAction,
+    isSending: action.isExecuting,
   };
 }

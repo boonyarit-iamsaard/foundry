@@ -1,53 +1,54 @@
 import type { Metadata } from 'next';
 
-import Image from 'next/image';
+import { DownloadIcon } from 'lucide-react';
 
-import { Download } from 'lucide-react';
-
-import profile from '@/core/assets/images/profile.webp';
+import { appConfig } from '@/core/configs/app.config';
+import { Slot } from '@/common/components/board/slot';
 import { MDX } from '@/common/components/mdx';
+import { SocialLinks } from '@/common/components/social-links';
 import { Button } from '@/common/components/ui/button';
 
 import { about } from '@/velite';
 
 export const metadata: Metadata = {
   title: 'About',
-  description: 'Learn more about Boonyarit Iamsa-ard',
+  description: about.description,
 };
 
 export default function AboutPage() {
   return (
-    <div className="container-content py-16">
-      <div className="flex aspect-video w-full flex-col items-center justify-center gap-4 text-center">
-        <div className="relative size-24 md:size-32">
-          <Image
-            src={profile}
-            alt="Boonyarit Iamsa-ard"
-            fill
-            quality={85}
-            priority
-            sizes="(max-width: 768px) 96px, 128px"
-            className="rounded-full object-cover ring-2 ring-background"
-          />
-        </div>
-        <h1 className="font-bold text-2xl tracking-tight md:text-4xl">
-          Boonyarit Iamsa-ard
-        </h1>
-        <div className="flex flex-col gap-2">
-          <p className="font-medium text-muted-foreground italic sm:text-lg">
-            Iterate, learn, and improve along the way.
+    <div>
+      <section className="container pt-14 pb-12 sm:pt-20">
+        <div className="space-y-6">
+          <h1 className="font-display font-extrabold text-[clamp(3rem,7vw,6rem)] uppercase leading-[0.86]">
+            Boonyarit Iamsa-ard
+          </h1>
+          <p className="stamp text-muted-foreground">
+            Software Engineer · Bangkok, Thailand
           </p>
+          <p className="max-w-[52ch] text-lg sm:text-xl">
+            Aircraft mechanic turned software engineer. I build backend
+            services, web apps and mobile apps, and I check my work before it
+            leaves my hands.
+          </p>
+          <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
+            <Button asChild size="lg">
+              <a href={appConfig.resume} download>
+                <DownloadIcon aria-hidden="true" />
+                Download resume
+              </a>
+            </Button>
+            <SocialLinks />
+          </div>
         </div>
-        <Button asChild size="lg" className="gap-2">
-          <a href="/assets/boonyarit-iamsaard-2025-04-15.pdf" download>
-            <Download className="size-4" />
-            Resume
-          </a>
-        </Button>
-      </div>
-      <div className="rounded-lg bg-muted px-16 py-8">
-        <MDX content={about.content} />
-      </div>
+      </section>
+      <section className="pegboard border-paint border-t-2 py-14">
+        <div className="container-content">
+          <Slot code="L-02" plateClassName="px-5 py-8 sm:px-10 sm:py-12">
+            <MDX content={about.content} />
+          </Slot>
+        </div>
+      </section>
     </div>
   );
 }

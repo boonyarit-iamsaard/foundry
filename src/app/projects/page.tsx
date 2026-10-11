@@ -1,14 +1,11 @@
 import type { Metadata } from 'next';
 
 import { FilterByTags } from '@/common/components/filter-by-tags';
-import {
-  PageHeader,
-  PageHeaderDescription,
-  PageHeaderHeading,
-} from '@/common/components/page-header';
+import { PageHeader } from '@/common/components/page-header';
 import type { SearchParams } from '@/common/definitions/search-params';
 import { filterByTags } from '@/common/helpers/tag';
 import { ProjectCard } from '@/features/projects/components/project-card';
+import { ProjectStatusKey } from '@/features/projects/status-line';
 
 import { projects, tags } from '@/velite';
 
@@ -24,9 +21,11 @@ const keywords = Array.from(
   ),
 );
 
+const description = 'Things I have built, and where each one is in its life.';
+
 export const metadata: Metadata = {
   title: 'Projects',
-  description: 'A showcase of my projects and work.',
+  description,
   keywords,
 };
 
@@ -39,27 +38,38 @@ export default async function Page({ searchParams }: ProjectsPageProps) {
   );
 
   return (
-    <div className="py-16">
-      <PageHeader>
-        <PageHeaderHeading>Projects</PageHeaderHeading>
-        <PageHeaderDescription>
-          A showcase of my projects and work.
-        </PageHeaderDescription>
+    <div>
+      <PageHeader title="Projects" description={description}>
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-2 pt-2">
+          <span className="stamp text-muted-foreground text-xs">
+            Outline shows status
+          </span>
+          <ProjectStatusKey />
+        </div>
       </PageHeader>
-      <section className="container space-y-8 sm:space-y-12">
-        <FilterByTags
-          resourceTags={resourceTags}
-          activeTags={activeTags}
-          resource="projects"
-        />
-        <div className="grid gap-4 sm:gap-8 md:grid-cols-2">
-          {filteredResource.map((project) => (
-            <ProjectCard
-              key={project.slug}
-              project={project}
-              activeTags={activeTags}
-            />
-          ))}
+      <section
+        aria-label="Projects"
+        className="pegboard border-paint border-t-2"
+      >
+        <div className="container space-y-10 pt-10 pb-20">
+          <FilterByTags
+            resourceTags={resourceTags}
+            activeTags={activeTags}
+            resource="projects"
+          />
+          <div className="grid gap-x-6 gap-y-10 md:grid-cols-2">
+            {filteredResource.map((project) => (
+              <ProjectCard
+                key={project.slug}
+                project={project}
+                activeTags={activeTags}
+                wide={filteredResource.length === 1}
+                className={
+                  filteredResource.length === 1 ? 'md:col-span-2' : undefined
+                }
+              />
+            ))}
+          </div>
         </div>
       </section>
     </div>

@@ -1,69 +1,100 @@
+import type { CSSProperties } from 'react';
+
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { ClockIcon, FileSearch, FileTextIcon } from 'lucide-react'; // Import new icons
-
+import { Slot } from '@/common/components/board/slot';
 import { Tag } from '@/common/components/tag';
-import { Badge } from '@/common/components/ui/badge';
-import { Button } from '@/common/components/ui/button';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from '@/common/components/ui/card';
+import { cn } from '@/common/helpers/cn';
 import { formatDate } from '@/common/helpers/date';
+import { slotCode } from '@/common/helpers/slot-code';
 
 import type { Article } from '@/velite';
+import { articles } from '@/velite';
 
 type ArticleCardProps = Readonly<{
   article: Article;
   activeTags?: string[];
+  /** Drop the cover and tags for a tight slot on the home board. */
+  compact?: boolean;
+  className?: string;
+  plateClassName?: string;
+  style?: CSSProperties;
 }>;
 
-export function ArticleCard({ article, activeTags }: ArticleCardProps) {
+export function ArticleCard({
+  article,
+  activeTags,
+  compact = false,
+  className,
+  plateClassName,
+  style,
+}: ArticleCardProps) {
+  const meta = (
+    <p className="flex flex-wrap gap-x-3 text-muted-foreground text-sm tabular-nums">
+      <time dateTime={new Date(article.date).toISOString()}>
+        {formatDate(article.date)}
+      </time>
+      <span>{article.metadata.readingTime} min read</span>
+      {article.status === 'draft' ? (
+        <span className="stamp text-destructive text-xs">Draft</span>
+      ) : null}
+    </p>
+  );
+
+  const title = (
+    <h3
+      className={cn(
+        'font-bold font-display uppercase leading-[0.98] tracking-[0.01em]',
+        compact ? 'text-2xl' : 'text-3xl',
+      )}
+    >
+      <Link
+        href={article.permalink}
+        className="after:absolute after:inset-0 after:z-10 focus-visible:outline-none"
+      >
+        {article.title}
+      </Link>
+    </h3>
+  );
+
   return (
-    <Card className="group grid gap-0 overflow-hidden p-0 transition-all hover:ring-2 hover:ring-muted-foreground md:grid-cols-4">
-      <div className="relative aspect-video bg-muted md:col-span-1 md:aspect-auto md:h-full">
-        <Image
-          src={article.cover}
-          alt={article.title}
-          fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 25vw"
-          className="object-cover transition-transform duration-300 will-change-transform group-hover:scale-105"
-          priority={false}
-          quality={85}
-        />
-      </div>
-      <div className="flex flex-col p-6 md:col-span-3">
-        <CardHeader className="mb-2 p-0">
-          <div className="flex flex-col gap-2">
-            <CardTitle className="font-bold text-lg">
-              <Link href={article.permalink} className="hover:text-primary">
-                {article.title}
-              </Link>
-            </CardTitle>
-            <CardDescription className="flex flex-wrap items-center gap-2 text-muted-foreground text-sm">
-              <time>{formatDate(article.date)}</time>
-              <span className="flex items-center gap-1">
-                <ClockIcon className="inline-block size-4" />
-                {article.metadata.readingTime} min read
-              </span>
-              <span className="flex items-center gap-1">
-                <FileTextIcon className="inline-block size-4" />
-                {article.metadata.wordCount} words
-              </span>
-              {article.status === 'draft' ? <Badge>draft</Badge> : null}
-            </CardDescription>
-          </div>
-        </CardHeader>
-        <CardContent className="mb-4 line-clamp-2 justify-start p-0 text-muted-foreground text-sm">
+    <Slot
+      code={slotCode('W', articles, article.slug)}
+      lift
+      className={className}
+      style={style}
+      plateClassName={cn(
+        'grid overflow-hidden',
+        !compact && 'sm:grid-cols-[minmax(0,2fr)_minmax(0,5fr)]',
+        plateClassName,
+      )}
+    >
+      {compact ? null : (
+        <div className="relative aspect-[16/9] border-paint border-b-2 sm:aspect-auto sm:border-r-2 sm:border-b-0">
+          <Image
+            src={article.cover}
+            alt=""
+            fill
+            sizes="(max-width: 640px) 100vw, 30vw"
+            className="object-cover"
+            quality={85}
+          />
+        </div>
+      )}
+      <div className="flex flex-col gap-3 p-5">
+        {meta}
+        {title}
+        <p
+          className={cn(
+            'text-muted-foreground',
+            compact ? 'line-clamp-3' : 'max-w-[62ch]',
+          )}
+        >
           {article.description}
-        </CardContent>
-        <CardFooter className="flex items-center justify-between p-0">
-          <div className="flex flex-wrap gap-1">
+        </p>
+        {compact ? null : (
+          <div className="mt-auto flex flex-wrap gap-1.5 pt-1">
             {article.tags.map((tag) => (
               <Tag
                 key={tag}
@@ -73,25 +104,8 @@ export function ArticleCard({ article, activeTags }: ArticleCardProps) {
               />
             ))}
           </div>
-          <Button variant="link" asChild className="px-0">
-            <Link href={article.permalink}>Read more</Link>
-          </Button>
-        </CardFooter>
+        )}
       </div>
-    </Card>
-  );
-}
-
-export function ArticleCardPlaceholder() {
-  return (
-    <Card className="items-center py-8">
-      <CardContent className="text-center">
-        <FileSearch className="mx-auto mb-4 size-12 text-muted-foreground" />
-        <CardTitle className="text-xl">No articles found</CardTitle>
-        <CardDescription className="mt-1">
-          Try removing some filters or check back later
-        </CardDescription>
-      </CardContent>
-    </Card>
+    </Slot>
   );
 }

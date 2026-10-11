@@ -1,0 +1,126 @@
+import type { ComponentProps, ReactNode } from 'react';
+
+import { cn } from '@/common/helpers/cn';
+
+/**
+ * How a slot's painted outline is drawn. Projects use it to carry their
+ * project status, so state reads from the line itself and never from colour.
+ */
+export type SlotLine = 'solid' | 'dashed' | 'heavy' | 'dashdot';
+
+const lineClasses: Record<SlotLine, string> = {
+  solid: 'border-2 border-solid',
+  dashed: 'border-2 border-dashed',
+  heavy: 'border-[3.5px] border-solid',
+  // CSS borders have no chain line; DashDotOutline draws it over a clear border.
+  dashdot: 'border-[2.5px] border-transparent',
+};
+
+type SlotProps = Readonly<
+  Omit<ComponentProps<'div'>, 'children'> & {
+    /**
+     * Position code stencilled on the slot's label tape, e.g. "P-01". A slot
+     * without one is plain fixture: outline and shadow, no tape.
+     */
+    code?: string;
+    line?: SlotLine;
+    /** Lift the plate off its painted shadow on hover and focus. */
+    lift?: boolean;
+    plateClassName?: string;
+    children: ReactNode;
+  }
+>;
+
+/**
+ * One outlined place on the board. The item (the plate) sits inside its
+ * painted shadow; lifting it shows exactly where it belongs.
+ */
+export function Slot({
+  code,
+  line = 'solid',
+  lift = false,
+  className,
+  plateClassName,
+  children,
+  ...props
+}: SlotProps) {
+  return (
+    <div
+      data-slot-code={code}
+      className={cn(
+        'group/slot relative rounded-lg border-paint p-1.5 has-[a:focus-visible]:outline-2 has-[a:focus-visible]:outline-ring has-[a:focus-visible]:outline-offset-4',
+        lineClasses[line],
+        className,
+      )}
+      {...props}
+    >
+      {line === 'dashdot' ? <DashDotOutline /> : null}
+      {code ? (
+        <span className="tape absolute -top-3 left-4 z-20">{code}</span>
+      ) : null}
+      <div
+        aria-hidden="true"
+        className="absolute inset-1.5 flex items-end justify-end rounded-md bg-paint p-2"
+      >
+        {code ? (
+          <span className="font-bold font-stencil text-paint-ink text-xs tracking-[0.12em]">
+            {code}
+          </span>
+        ) : null}
+      </div>
+      <div
+        className={cn(
+          'relative z-10 h-full rounded-md bg-plate text-card-foreground',
+          lift &&
+            'transition-[translate,box-shadow] duration-500 ease-lift group-focus-within/slot:shadow-(--lift-shadow) group-hover/slot:shadow-(--lift-shadow) motion-safe:group-hover/slot:-translate-x-1 motion-safe:group-hover/slot:-translate-y-2 motion-safe:group-focus-within/slot:-translate-x-1 motion-safe:group-focus-within/slot:-translate-y-2',
+          plateClassName,
+        )}
+      >
+        {children}
+      </div>
+    </div>
+  );
+}
+
+/** A chain line (long dash, dot) drawn on the centre of the slot's border. */
+function DashDotOutline() {
+  return (
+    <svg
+      aria-hidden="true"
+      className="pointer-events-none absolute -top-[1.25px] -left-[1.25px] h-[calc(100%+2.5px)] w-[calc(100%+2.5px)] overflow-visible"
+    >
+      <rect
+        width="100%"
+        height="100%"
+        rx="8"
+        fill="none"
+        strokeWidth="2.5"
+        strokeDasharray="12 4 2.5 4"
+        className="stroke-paint"
+      />
+    </svg>
+  );
+}
+
+/**
+ * An outline whose item is missing: the silhouette shows, no plate on it.
+ */
+export function EmptySlot({
+  code,
+  className,
+  children,
+}: Readonly<{ code: string; className?: string; children?: ReactNode }>) {
+  return (
+    <div
+      className={cn(
+        'relative rounded-lg border-2 border-paint border-solid p-1.5',
+        className,
+      )}
+    >
+      <span className="tape absolute -top-3 left-4 z-20">{code}</span>
+      <div className="flex h-full items-center justify-center rounded-md bg-paint p-6 text-paint-ink">
+        {children}
+      </div>
+    </div>
+  );
+}
