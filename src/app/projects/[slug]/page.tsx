@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
 
-import Image from 'next/image';
 import { notFound } from 'next/navigation';
 
+import { AuthorSlot } from '@/common/components/board/author-slot';
+import { DetailBody } from '@/common/components/detail-body';
 import { MDX } from '@/common/components/mdx';
-import { PageHeader } from '@/common/components/page-header';
+import { projectCode } from '@/features/projects/code';
 import { ProjectHeader } from '@/features/projects/components/project-header';
 
 import { projects } from '@/velite';
@@ -66,24 +67,12 @@ export default async function Page({ params }: PageProps) {
   }
 
   return (
-    <div className="py-16">
-      <PageHeader className="container-content">
-        <ProjectHeader project={project} />
-      </PageHeader>
-      <div className="container-content">
-        <div className="relative aspect-video w-full overflow-hidden rounded-t-lg">
-          <Image
-            src={project.cover}
-            alt={project.title}
-            fill
-            sizes="(max-width: 56rem) calc(100vw - 2rem), 54rem"
-            className="object-cover"
-          />
-        </div>
-        <div className="rounded-b-lg bg-muted p-4 sm:px-16 sm:py-8">
-          <MDX content={project.content} />
-        </div>
-      </div>
-    </div>
+    <article className="container-content pb-24">
+      <ProjectHeader project={project} />
+      <DetailBody code={projectCode(project.slug)} cover={project.cover}>
+        <MDX content={project.content} />
+      </DetailBody>
+      <AuthorSlot heading="Built by Boonyarit Iamsa-ard" className="mt-14" />
+    </article>
   );
 }

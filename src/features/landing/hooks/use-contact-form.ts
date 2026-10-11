@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useHookFormAction } from '@next-safe-action/adapter-react-hook-form/hooks';
 import { toast } from 'sonner';
@@ -6,19 +8,23 @@ import { sendMessageAction } from '../actions/send-message-action';
 import { sendMessageSchema } from '../validators/send-message';
 
 export function useContactForm() {
-  const { form, handleSubmitWithAction } = useHookFormAction(
+  // The address the last message was sent from; set only after a send lands.
+  const [sentTo, setSentTo] = useState<string | null>(null);
+  const { action, form, handleSubmitWithAction } = useHookFormAction(
     sendMessageAction,
     zodResolver(sendMessageSchema),
     {
       actionProps: {
-        onSuccess: () => {
-          toast('Your message has been sent.');
+        onSuccess: ({ input }) => {
+          setSentTo(input.email);
           form.reset();
         },
         onError: (error) => {
           console.error('Failed to send message:', error);
-          toast.error('Failed to send message.');
-          form.reset();
+          // Keep what they wrote so a retry costs nothing.
+          toast.error(
+            'Your message didn’t send. Try again, or email me directly.',
+          );
         },
       },
       formProps: {
@@ -34,5 +40,8 @@ export function useContactForm() {
   return {
     form,
     handleSubmitWithAction,
+    isSending: action.isExecuting,
+    sentTo,
+    startOver: () => setSentTo(null),
   };
 }

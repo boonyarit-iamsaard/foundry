@@ -1,0 +1,513 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-11T02:57:54.610054+00:00",
+  "title": "Design System: Boonyarit Iamsa-ard",
+  "extensions": {
+    "colorMeta": {
+      "board": {
+        "role": "neutral",
+        "displayName": "Powder-Coat Board",
+        "canonical": "oklch(0.872 0.005 165)",
+        "tonalRamp": [
+          "oklch(0.15 0.005 165)",
+          "oklch(0.26 0.005 165)",
+          "oklch(0.37 0.005 165)",
+          "oklch(0.48 0.005 165)",
+          "oklch(0.6 0.005 165)",
+          "oklch(0.72 0.005 165)",
+          "oklch(0.84 0.005 165)",
+          "oklch(0.95 0.005 165)"
+        ]
+      },
+      "board-perforation": {
+        "role": "neutral",
+        "displayName": "Perforation Grey",
+        "canonical": "oklch(0.8 0.006 165)",
+        "tonalRamp": [
+          "oklch(0.15 0.006 165)",
+          "oklch(0.26 0.006 165)",
+          "oklch(0.37 0.006 165)",
+          "oklch(0.48 0.006 165)",
+          "oklch(0.6 0.006 165)",
+          "oklch(0.72 0.006 165)",
+          "oklch(0.84 0.006 165)",
+          "oklch(0.95 0.006 165)"
+        ]
+      },
+      "plate": {
+        "role": "neutral",
+        "displayName": "Enamel Plate",
+        "canonical": "oklch(0.968 0.003 165)",
+        "tonalRamp": [
+          "oklch(0.15 0.003 165)",
+          "oklch(0.26 0.003 165)",
+          "oklch(0.37 0.003 165)",
+          "oklch(0.48 0.003 165)",
+          "oklch(0.6 0.003 165)",
+          "oklch(0.72 0.003 165)",
+          "oklch(0.84 0.003 165)",
+          "oklch(0.95 0.003 165)"
+        ]
+      },
+      "plate-recess": {
+        "role": "neutral",
+        "displayName": "Plate Recess",
+        "canonical": "oklch(0.92 0.004 165)",
+        "tonalRamp": [
+          "oklch(0.15 0.004 165)",
+          "oklch(0.26 0.004 165)",
+          "oklch(0.37 0.004 165)",
+          "oklch(0.48 0.004 165)",
+          "oklch(0.6 0.004 165)",
+          "oklch(0.72 0.004 165)",
+          "oklch(0.84 0.004 165)",
+          "oklch(0.95 0.004 165)"
+        ]
+      },
+      "ink-paint": {
+        "role": "primary",
+        "displayName": "Paint Ink",
+        "canonical": "oklch(0.21 0.008 250)",
+        "tonalRamp": [
+          "oklch(0.15 0.008 250)",
+          "oklch(0.26 0.008 250)",
+          "oklch(0.37 0.008 250)",
+          "oklch(0.48 0.008 250)",
+          "oklch(0.6 0.008 250)",
+          "oklch(0.72 0.008 250)",
+          "oklch(0.84 0.008 250)",
+          "oklch(0.95 0.008 250)"
+        ]
+      },
+      "ink-muted": {
+        "role": "neutral",
+        "displayName": "Stamped Grey",
+        "canonical": "oklch(0.42 0.01 250)",
+        "tonalRamp": [
+          "oklch(0.15 0.01 250)",
+          "oklch(0.26 0.01 250)",
+          "oklch(0.37 0.01 250)",
+          "oklch(0.48 0.01 250)",
+          "oklch(0.6 0.01 250)",
+          "oklch(0.72 0.01 250)",
+          "oklch(0.84 0.01 250)",
+          "oklch(0.95 0.01 250)"
+        ]
+      },
+      "rim-grey": {
+        "role": "neutral",
+        "displayName": "Rim Grey",
+        "canonical": "oklch(0.62 0.008 220)",
+        "tonalRamp": [
+          "oklch(0.15 0.008 220)",
+          "oklch(0.26 0.008 220)",
+          "oklch(0.37 0.008 220)",
+          "oklch(0.48 0.008 220)",
+          "oklch(0.6 0.008 220)",
+          "oklch(0.72 0.008 220)",
+          "oklch(0.84 0.008 220)",
+          "oklch(0.95 0.008 220)"
+        ]
+      },
+      "field-edge": {
+        "role": "neutral",
+        "displayName": "Field Edge",
+        "canonical": "oklch(0.55 0.01 220)",
+        "tonalRamp": [
+          "oklch(0.15 0.01 220)",
+          "oklch(0.26 0.01 220)",
+          "oklch(0.37 0.01 220)",
+          "oklch(0.48 0.01 220)",
+          "oklch(0.6 0.01 220)",
+          "oklch(0.72 0.01 220)",
+          "oklch(0.84 0.01 220)",
+          "oklch(0.95 0.01 220)"
+        ]
+      },
+      "safety-yellow": {
+        "role": "primary",
+        "displayName": "Safety Yellow",
+        "canonical": "oklch(0.86 0.17 92)",
+        "tonalRamp": [
+          "oklch(0.15 0.17 92)",
+          "oklch(0.26 0.17 92)",
+          "oklch(0.37 0.17 92)",
+          "oklch(0.48 0.17 92)",
+          "oklch(0.6 0.17 92)",
+          "oklch(0.72 0.17 92)",
+          "oklch(0.84 0.17 92)",
+          "oklch(0.95 0.17 92)"
+        ]
+      },
+      "tape-ink": {
+        "role": "neutral",
+        "displayName": "Tape Ink",
+        "canonical": "oklch(0.2 0.01 250)",
+        "tonalRamp": [
+          "oklch(0.15 0.01 250)",
+          "oklch(0.26 0.01 250)",
+          "oklch(0.37 0.01 250)",
+          "oklch(0.48 0.01 250)",
+          "oklch(0.6 0.01 250)",
+          "oklch(0.72 0.01 250)",
+          "oklch(0.84 0.01 250)",
+          "oklch(0.95 0.01 250)"
+        ]
+      },
+      "fault-red": {
+        "role": "status",
+        "displayName": "Fault Red",
+        "canonical": "oklch(0.5 0.19 27)",
+        "tonalRamp": [
+          "oklch(0.15 0.19 27)",
+          "oklch(0.26 0.19 27)",
+          "oklch(0.37 0.19 27)",
+          "oklch(0.48 0.19 27)",
+          "oklch(0.6 0.19 27)",
+          "oklch(0.72 0.19 27)",
+          "oklch(0.84 0.19 27)",
+          "oklch(0.95 0.19 27)"
+        ]
+      },
+      "foam": {
+        "role": "neutral",
+        "displayName": "Tool Foam (night board)",
+        "canonical": "oklch(0.225 0.002 90)",
+        "tonalRamp": [
+          "oklch(0.15 0.002 90)",
+          "oklch(0.26 0.002 90)",
+          "oklch(0.37 0.002 90)",
+          "oklch(0.48 0.002 90)",
+          "oklch(0.6 0.002 90)",
+          "oklch(0.72 0.002 90)",
+          "oklch(0.84 0.002 90)",
+          "oklch(0.95 0.002 90)"
+        ]
+      },
+      "foam-plate": {
+        "role": "neutral",
+        "displayName": "Foam Plate (night plate)",
+        "canonical": "oklch(0.29 0.003 90)",
+        "tonalRamp": [
+          "oklch(0.15 0.003 90)",
+          "oklch(0.26 0.003 90)",
+          "oklch(0.37 0.003 90)",
+          "oklch(0.48 0.003 90)",
+          "oklch(0.6 0.003 90)",
+          "oklch(0.72 0.003 90)",
+          "oklch(0.84 0.003 90)",
+          "oklch(0.95 0.003 90)"
+        ]
+      },
+      "foam-recess": {
+        "role": "neutral",
+        "displayName": "Foam Recess",
+        "canonical": "oklch(0.33 0.003 90)",
+        "tonalRamp": [
+          "oklch(0.15 0.003 90)",
+          "oklch(0.26 0.003 90)",
+          "oklch(0.37 0.003 90)",
+          "oklch(0.48 0.003 90)",
+          "oklch(0.6 0.003 90)",
+          "oklch(0.72 0.003 90)",
+          "oklch(0.84 0.003 90)",
+          "oklch(0.95 0.003 90)"
+        ]
+      },
+      "foam-text": {
+        "role": "neutral",
+        "displayName": "Foam Text",
+        "canonical": "oklch(0.94 0.004 165)",
+        "tonalRamp": [
+          "oklch(0.15 0.004 165)",
+          "oklch(0.26 0.004 165)",
+          "oklch(0.37 0.004 165)",
+          "oklch(0.48 0.004 165)",
+          "oklch(0.6 0.004 165)",
+          "oklch(0.72 0.004 165)",
+          "oklch(0.84 0.004 165)",
+          "oklch(0.95 0.004 165)"
+        ]
+      },
+      "foam-muted": {
+        "role": "neutral",
+        "displayName": "Foam Muted",
+        "canonical": "oklch(0.76 0.003 90)",
+        "tonalRamp": [
+          "oklch(0.15 0.003 90)",
+          "oklch(0.26 0.003 90)",
+          "oklch(0.37 0.003 90)",
+          "oklch(0.48 0.003 90)",
+          "oklch(0.6 0.003 90)",
+          "oklch(0.72 0.003 90)",
+          "oklch(0.84 0.003 90)",
+          "oklch(0.95 0.003 90)"
+        ]
+      },
+      "foam-rim": {
+        "role": "neutral",
+        "displayName": "Foam Rim",
+        "canonical": "oklch(0.48 0.003 90)",
+        "tonalRamp": [
+          "oklch(0.15 0.003 90)",
+          "oklch(0.26 0.003 90)",
+          "oklch(0.37 0.003 90)",
+          "oklch(0.48 0.003 90)",
+          "oklch(0.6 0.003 90)",
+          "oklch(0.72 0.003 90)",
+          "oklch(0.84 0.003 90)",
+          "oklch(0.95 0.003 90)"
+        ]
+      },
+      "foam-field-edge": {
+        "role": "neutral",
+        "displayName": "Foam Field Edge",
+        "canonical": "oklch(0.55 0.003 90)",
+        "tonalRamp": [
+          "oklch(0.15 0.003 90)",
+          "oklch(0.26 0.003 90)",
+          "oklch(0.37 0.003 90)",
+          "oklch(0.48 0.003 90)",
+          "oklch(0.6 0.003 90)",
+          "oklch(0.72 0.003 90)",
+          "oklch(0.84 0.003 90)",
+          "oklch(0.95 0.003 90)"
+        ]
+      },
+      "foam-fault": {
+        "role": "status",
+        "displayName": "Night Fault Red",
+        "canonical": "oklch(0.7 0.17 30)",
+        "tonalRamp": [
+          "oklch(0.15 0.17 30)",
+          "oklch(0.26 0.17 30)",
+          "oklch(0.37 0.17 30)",
+          "oklch(0.48 0.17 30)",
+          "oklch(0.6 0.17 30)",
+          "oklch(0.72 0.17 30)",
+          "oklch(0.84 0.17 30)",
+          "oklch(0.95 0.17 30)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Home name plate and page titles; Big Shoulders 800 uppercase."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section headings and detail-page titles."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Project and article titles on plates; in-article h2/h3."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Running prose in Barlow, capped at 62-68ch."
+      },
+      "label": {
+        "displayName": "Stamp",
+        "purpose": "Uppercase tracked labels: metadata, nav, tags, form labels, utility links."
+      },
+      "code-stencil": {
+        "displayName": "Stencil Code",
+        "purpose": "Position codes on tape and painted shadows only. Never words."
+      },
+      "mono": {
+        "displayName": "Mono",
+        "purpose": "Code blocks and inline code in articles."
+      }
+    },
+    "shadows": [
+      {
+        "name": "lift-day",
+        "value": "0 14px 24px -10px oklch(0.2 0.01 250 / 0.35), 0 3px 6px -2px oklch(0.2 0.01 250 / 0.2)",
+        "purpose": "A linked plate lifted off its painted shadow on hover/focus, and the first frame of the arrival settle (day)."
+      },
+      {
+        "name": "lift-night",
+        "value": "0 16px 28px -10px oklch(0 0 0 / 0.6), 0 3px 6px -2px oklch(0 0 0 / 0.4)",
+        "purpose": "Same lift on the night foam."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-lift",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "All state transitions and both authored motions."
+      },
+      {
+        "name": "lift",
+        "value": "translate(-4px, -8px) over 500ms",
+        "purpose": "Linked plate lifts on hover/focus; translation only under prefers-reduced-motion: no-preference."
+      },
+      {
+        "name": "settle",
+        "value": "800ms, delay index*80ms + 120ms, from translate(-4px,-10px) with lift shadow",
+        "purpose": "Home plates settle into their outlines on arrival; visible from first frame; disabled under reduced motion."
+      },
+      {
+        "name": "state",
+        "value": "200ms",
+        "purpose": "Colour and border transitions on buttons, tags, nav, fields."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      }
+    ],
+    "containers": [
+      {
+        "name": "board",
+        "value": "max 80rem, 1rem/2rem side padding"
+      },
+      {
+        "name": "reading",
+        "value": "max 46rem, 1rem/2rem side padding"
+      }
+    ],
+    "pegboard": {
+      "value": "radial-gradient(circle, board-perforation 0 2px, transparent 2.5px) at 28px pitch, offset 14px",
+      "purpose": "Open board areas, day only; night perforation is transparent."
+    }
+  },
+  "components": [
+    {
+      "name": "Slot",
+      "kind": "card",
+      "refersTo": "slot-plate",
+      "description": "The board unit: painted outline, 6px gap, painted shadow with stencil code, enamel plate on top; tape code above. Lifts on hover when linked.",
+      "html": "<a class=\"ds-slot\" href=\"#\"><span class=\"ds-slot-tape\">P-01</span><span class=\"ds-slot-paint\"><span>P-01</span></span><span class=\"ds-slot-plate\"><span class=\"ds-slot-title\">BOONYARIT.ME</span><span class=\"ds-slot-desc\">My personal portfolio website</span></span></a>",
+      "css": ".ds-slot{position:relative;display:block;width:280px;padding:6px;border:2px solid var(--paint,oklch(0.21 0.008 250));border-radius:8px;text-decoration:none;color:inherit}.ds-slot-tape{position:absolute;top:-12px;left:16px;z-index:3;background:var(--tape,oklch(0.86 0.17 92));color:var(--tape-ink,oklch(0.2 0.01 250));font-family:'Big Shoulders Stencil',sans-serif;font-weight:700;font-size:0.8125rem;letter-spacing:0.08em;padding:2px 8px 1px;border-radius:1px}.ds-slot-paint{position:absolute;inset:6px;display:flex;align-items:flex-end;justify-content:flex-end;padding:8px;border-radius:6px;background:var(--paint,oklch(0.21 0.008 250));color:var(--paint-ink,oklch(0.872 0.005 165));font-family:'Big Shoulders Stencil',sans-serif;font-weight:700;font-size:0.75rem;letter-spacing:0.12em}.ds-slot-plate{position:relative;z-index:2;display:flex;flex-direction:column;gap:12px;padding:20px;border-radius:6px;background:var(--plate,oklch(0.968 0.003 165));transition:translate 500ms cubic-bezier(0.16,1,0.3,1),box-shadow 500ms cubic-bezier(0.16,1,0.3,1)}.ds-slot:hover .ds-slot-plate,.ds-slot:focus-visible .ds-slot-plate{translate:-4px -8px;box-shadow:0 14px 24px -10px oklch(0.2 0.01 250 / 0.35),0 3px 6px -2px oklch(0.2 0.01 250 / 0.2)}.ds-slot:focus-visible{outline:2px solid var(--ring,oklch(0.21 0.008 250));outline-offset:4px}.ds-slot-title{font-family:'Big Shoulders',sans-serif;font-weight:700;font-size:1.875rem;line-height:0.95;text-transform:uppercase}.ds-slot-desc{font-family:Barlow,sans-serif;color:oklch(0.42 0.01 250)}"
+    },
+    {
+      "name": "Status Line",
+      "kind": "custom",
+      "refersTo": "slot-plate",
+      "description": "Project status shown as the outline's line type plus a stamp name.",
+      "html": "<span class=\"ds-status\"><span class=\"ds-status-solid\"></span>STABLE</span> <span class=\"ds-status\"><span class=\"ds-status-dashed\"></span>EXPERIMENTAL</span> <span class=\"ds-status\"><span class=\"ds-status-heavy\"></span>ACTIVE</span> <span class=\"ds-status\"><svg width=\"24\" height=\"3\" style=\"overflow:visible\"><line x1=\"0\" y1=\"1.5\" x2=\"24\" y2=\"1.5\" stroke=\"oklch(0.21 0.008 250)\" stroke-width=\"2.5\" stroke-dasharray=\"8 3 2 3\"/></svg>MAINTENANCE</span>",
+      "css": ".ds-status{display:inline-flex;align-items:center;gap:8px;margin-right:24px;font-family:'Big Shoulders',sans-serif;font-weight:700;font-size:0.75rem;letter-spacing:0.1em}.ds-status-solid,.ds-status-dashed,.ds-status-heavy{display:inline-block;width:24px;border-top:2px solid oklch(0.21 0.008 250)}.ds-status-dashed{border-top-style:dashed}.ds-status-heavy{border-top-width:3.5px}"
+    },
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Paint-ink fill by day, yellow by night; resume download and form submit.",
+      "html": "<button class=\"ds-btn-primary\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 15V3\"/><path d=\"M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4\"/><path d=\"m7 10 5 5 5-5\"/></svg>DOWNLOAD</button>",
+      "css": ".ds-btn-primary{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 16px;border:0;border-radius:4px;background:var(--primary,oklch(0.21 0.008 250));color:var(--primary-foreground,oklch(0.968 0.003 165));font-family:'Big Shoulders',sans-serif;font-weight:700;font-size:0.9375rem;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:background-color 200ms cubic-bezier(0.16,1,0.3,1),translate 200ms}.ds-btn-primary:hover{background:oklch(0.21 0.008 250 / 0.88)}.ds-btn-primary:active{translate:0 1px}.ds-btn-primary:focus-visible{outline:2px solid oklch(0.21 0.008 250);outline-offset:3px}"
+    },
+    {
+      "name": "Tape Button",
+      "kind": "button",
+      "refersTo": "button-tape",
+      "description": "Safety-yellow call on the home contact slot.",
+      "html": "<button class=\"ds-btn-tape\">WRITE TO ME</button>",
+      "css": ".ds-btn-tape{display:inline-flex;align-items:center;height:40px;padding:0 16px;border:0;border-radius:4px;background:var(--tape,oklch(0.86 0.17 92));color:var(--tape-ink,oklch(0.2 0.01 250));font-family:'Big Shoulders',sans-serif;font-weight:700;font-size:0.9375rem;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:background-color 200ms}.ds-btn-tape:hover{background:oklch(0.86 0.17 92 / 0.85)}.ds-btn-tape:active{translate:0 1px}.ds-btn-tape:focus-visible{outline:2px solid oklch(0.21 0.008 250);outline-offset:3px}"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "2px foreground stroke; inverts on hover. Secondary actions.",
+      "html": "<button class=\"ds-btn-outline\">DOWNLOAD RESUME</button>",
+      "css": ".ds-btn-outline{display:inline-flex;align-items:center;height:40px;padding:0 16px;border:2px solid oklch(0.21 0.008 250);border-radius:4px;background:transparent;color:oklch(0.21 0.008 250);font-family:'Big Shoulders',sans-serif;font-weight:700;font-size:0.9375rem;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:background-color 200ms,color 200ms}.ds-btn-outline:hover{background:oklch(0.21 0.008 250);color:oklch(0.872 0.005 165)}.ds-btn-outline:focus-visible{outline:2px solid oklch(0.21 0.008 250);outline-offset:3px}"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "2px field-edge stroke on enamel, stamp label above.",
+      "html": "<label class=\"ds-field\"><span>EMAIL</span><input class=\"ds-input\" type=\"email\" placeholder=\"you@company.com\"></label>",
+      "css": ".ds-field{display:grid;gap:8px;width:280px}.ds-field span{font-family:'Big Shoulders',sans-serif;font-weight:700;font-size:0.75rem;letter-spacing:0.1em}.ds-input{height:44px;padding:8px 12px;border:2px solid var(--input,oklch(0.55 0.01 220));border-radius:4px;background:var(--plate,oklch(0.968 0.003 165));color:oklch(0.21 0.008 250);font-family:Barlow,sans-serif;font-size:1rem;outline:none;transition:border-color 200ms}.ds-input::placeholder{color:oklch(0.42 0.01 250)}.ds-input:hover{border-color:oklch(0.21 0.008 250 / 0.7)}.ds-input:focus-visible{border-color:oklch(0.21 0.008 250);outline:2px solid oklch(0.21 0.008 250);outline-offset:3px}"
+    },
+    {
+      "name": "Tag",
+      "kind": "chip",
+      "refersTo": "tag",
+      "description": "Stamp filter chip; selected fills with safety yellow.",
+      "html": "<a class=\"ds-tag\" href=\"#\">NEXTJS</a> <a class=\"ds-tag ds-tag-active\" href=\"#\" aria-pressed=\"true\">TYPESCRIPT</a>",
+      "css": ".ds-tag{display:inline-flex;align-items:center;height:28px;padding:0 8px;border:1.5px solid oklch(0.21 0.008 250 / 0.4);border-radius:2px;color:oklch(0.21 0.008 250);font-family:'Big Shoulders',sans-serif;font-weight:700;font-size:0.75rem;letter-spacing:0.1em;text-decoration:none;transition:border-color 200ms}.ds-tag:hover{border-color:oklch(0.21 0.008 250)}.ds-tag-active{border-color:oklch(0.86 0.17 92);background:oklch(0.86 0.17 92);color:oklch(0.2 0.01 250)}.ds-tag:focus-visible{outline:2px solid oklch(0.21 0.008 250);outline-offset:3px}"
+    },
+    {
+      "name": "Header Navigation",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Placard rail: framed 32px avatar, display name, stamp links; current page on yellow.",
+      "html": "<nav class=\"ds-nav\"><span class=\"ds-nav-name\"><span class=\"ds-nav-avatar\"></span>BOONYARIT IAMSA-ARD</span><a href=\"#\">PROJECTS</a><a href=\"#\" aria-current=\"page\">ARTICLES</a><a href=\"#\">ABOUT</a></nav>",
+      "css": ".ds-nav{display:flex;align-items:center;gap:4px;height:64px;padding:0 16px;background:var(--board,oklch(0.872 0.005 165))}.ds-nav-name{display:flex;align-items:center;gap:12px;margin-right:auto;font-family:'Big Shoulders',sans-serif;font-weight:800;font-size:1.375rem;letter-spacing:0.03em}.ds-nav-avatar{width:32px;height:32px;border:2px solid oklch(0.21 0.008 250);border-radius:3px;background:oklch(0.62 0.008 220)}.ds-nav a{display:inline-flex;align-items:center;height:36px;padding:0 12px;border-radius:4px;color:oklch(0.21 0.008 250);font-family:'Big Shoulders',sans-serif;font-weight:700;font-size:0.875rem;letter-spacing:0.1em;text-decoration:none;transition:background-color 200ms}.ds-nav a:hover{background:oklch(0.21 0.008 250 / 0.08)}.ds-nav a[aria-current=page]{background:oklch(0.86 0.17 92);color:oklch(0.2 0.01 250)}.ds-nav a:focus-visible{outline:2px solid oklch(0.21 0.008 250);outline-offset:3px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Shadow Board",
+    "overview": "The site is a hangar tool-control board. Every piece of work (a project, an article, the contact form, the resume) hangs as an enamel plate inside its own painted outline, labelled with a yellow tape strip carrying a stencilled position code. A visitor reads the board the way a mechanic reads a tool board at shift change: everything has a place, and every place is accounted for. The home board closes with an inventory line (\"Board check: 6 of 6 slots filled\") that makes the claim literal.\n\nDay and night are two materials, not one palette inverted. Day is a cool grey powder-coated board with a faint perforation, plates in near-white enamel, outlines painted ink-black. Night is charcoal tool foam: no perforation, plates in a lighter charcoal, and the painted outlines turn safety yellow, as if the foam's under-layer shows through the cut-outs. Yellow label tape is the only chromatic accent in both.\n\nDensity is moderate and structured: a 12-column board on desktop, slots of unequal size, generous section breaks. Type is condensed, uppercase, and industrial for display and labels; body copy stays in a plain, readable sans in the owner's first-person voice. Motion is limited to two authored behaviours: plates settle into their outlines on arrival, and linked plates lift off their painted shadow on hover or focus.",
+    "keyCharacteristics": [
+      "Every unit of content is a slot: painted outline, 6px gap, plate inside.",
+      "Position codes (B-00, C-nn, R-01, L-nn, P-nn, W-nn) on yellow stencil tape at each slot's top-left.",
+      "Project status is drawn as the outline's line type, never as colour.",
+      "Painted shadow is ink-black by day and safety yellow by night.",
+      "Condensed uppercase display (Big Shoulders) over a plain humanist body (Barlow).",
+      "Flat at rest; the only shadow belongs to a lifted plate."
+    ],
+    "rules": [
+      {
+        "name": "The One Tape Rule",
+        "body": "Safety yellow is the only accent. No second hue enters the board; red is reserved for faults.",
+        "section": "colors"
+      },
+      {
+        "name": "The Night Paint Rule",
+        "body": "The painted outline and shadow swap from ink to yellow at night, and the code on the painted shadow swaps to dark ink. Anything drawn \"in paint\" (slot rims, the theme-toggle rim, header and footer rules, section dividers, cover borders) follows the swap through the `paint` token, never a fixed colour.",
+        "section": "colors"
+      },
+      {
+        "name": "The Stencil Is For Codes Rule",
+        "body": "Big Shoulders Stencil sets position codes (B-00, P-01, W-02, 404) and nothing else. Words never go on the stencilled tape strip.",
+        "section": "typography"
+      },
+      {
+        "name": "The Uppercase Lettering Rule",
+        "body": "Every Big Shoulders setting is uppercase; Barlow is never uppercase. If it shouts, it is lettering on the board; if it speaks, it is Barlow.",
+        "section": "typography"
+      },
+      {
+        "name": "The Lift Reveals Rule",
+        "body": "A plate lifts only when the whole slot is a link. Lifting must expose something true: the painted shadow and its code. Static slots (name plate, contact form, path, reading plates) never lift.",
+        "section": "elevation"
+      },
+      {
+        "name": "The One Arrival Rule",
+        "body": "On load, home plates settle into their outlines in sequence (800ms, 80ms stagger, ease-lift `cubic-bezier(0.16, 1, 0.3, 1)`), visible from the first frame. Both motions respect reduced motion.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do put every unit of content in a slot: painted outline, 6px gap, plate.",
+      "Do give each slot a position code on tape (prefix by kind: B board, C contact, R resume, L long-form, P project, W writing) and number content oldest-first so codes stay stable.",
+      "Do encode project status with the outline's line type (solid, dashed, heavy, chain) and show the key wherever several statuses appear together.",
+      "Do route every painted element through the `paint` token so it turns yellow at night.",
+      "Do keep long-form text on a plate in the 46rem reading column, capped at about 68ch.",
+      "Do keep the face to the 32px header avatar only."
+    ],
+    "donts": [
+      "Don't put words on the stencilled tape strip, or use Big Shoulders Stencil for anything but codes.",
+      "Don't signal project status with colour, badges or pills.",
+      "Don't introduce a second accent hue; red is for faults only.",
+      "Don't add shadows at rest or lift a slot that is not a link.",
+      "Don't round anything beyond 8px or make pill and circle shapes.",
+      "Don't set long-form reading text directly on the perforated pegboard.",
+      "Don't reintroduce a portrait slot or a large photo of the owner on any page."
+    ]
+  }
+}

@@ -1,11 +1,14 @@
 'use client';
 
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 
-import { MenuIcon, TerminalSquareIcon } from 'lucide-react';
+import { ArrowRightIcon, DownloadIcon, MenuIcon } from 'lucide-react';
 
+import profile from '@/core/assets/images/profile.webp';
+import { appConfig } from '@/core/configs/app.config';
 import { Button } from '@/common/components/ui/button';
 import {
   Drawer,
@@ -15,13 +18,6 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from '@/common/components/ui/drawer';
-import {
-  NavigationMenu,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  navigationMenuTriggerStyle,
-} from '@/common/components/ui/navigation-menu';
 import { cn } from '@/common/helpers/cn';
 
 import { ThemeToggle } from '../theme-toggle';
@@ -35,11 +31,44 @@ const navItems = [
 type HeaderState = 'drawerOpen' | 'closedScrolled' | 'closedNotScrolled';
 
 const headerStateClasses: Record<HeaderState, string> = {
-  drawerOpen: 'border-transparent bg-transparent ring-transparent',
-  closedScrolled:
-    'backdrop-blur border-border bg-background/80 ring-border ring-1',
-  closedNotScrolled: 'backdrop-blur bg-transparent',
+  drawerOpen: 'border-transparent',
+  closedScrolled: 'border-paint',
+  closedNotScrolled: 'border-transparent',
 };
+
+function isCurrent(pathname: string, href: string): boolean {
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
+
+/**
+ * On the home page the hero already sets the name large, so the header
+ * wordmark waits until the hero heading scrolls out of view.
+ */
+function useHeroInView(pathname: string): boolean {
+  const [isInView, setIsInView] = useState(pathname === '/');
+
+  useEffect(() => {
+    const heading =
+      pathname === '/' ? document.getElementById('board-heading') : null;
+
+    if (!heading) {
+      setIsInView(false);
+
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => setIsInView(entries[0]?.isIntersecting ?? false),
+      { rootMargin: '-64px 0px 0px 0px' },
+    );
+
+    observer.observe(heading);
+
+    return () => observer.disconnect();
+  }, [pathname]);
+
+  return isInView;
+}
 
 function getHeaderClasses(
   shouldRenderDrawer: boolean,
@@ -60,8 +89,8 @@ export function AppHeader() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [shouldRenderDrawer, setShouldRenderDrawer] = useState(false);
-  const router = useRouter();
   const pathname = usePathname();
+  const isHeroInView = useHeroInView(pathname);
 
   const handleDrawerOpenChange = useCallback((open: boolean) => {
     if (open) {
@@ -77,18 +106,18 @@ export function AppHeader() {
     }, 50);
   }, []);
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: pathname closes the drawer on route change
+  // Close the drawer only when the route actually changes. Reacting to the
+  // drawer's own open state here would close it the moment it opens.
+  const previousPathnameRef = useRef(pathname);
+
   useEffect(() => {
-    if (!isDrawerOpen && !shouldRenderDrawer) {
+    if (previousPathnameRef.current === pathname) {
       return;
     }
 
-    const closeDrawerTimeout = window.setTimeout(() => {
-      handleDrawerOpenChange(false);
-    }, 0);
-
-    return () => window.clearTimeout(closeDrawerTimeout);
-  }, [handleDrawerOpenChange, isDrawerOpen, pathname, shouldRenderDrawer]);
+    previousPathnameRef.current = pathname;
+    handleDrawerOpenChange(false);
+  }, [handleDrawerOpenChange, pathname]);
 
   useEffect(() => {
     const threshold = 16;
@@ -119,40 +148,74 @@ export function AppHeader() {
   return (
     <header
       className={cn(
-        'fixed top-0 z-10 w-full transition-colors duration-100 ease-in-out',
+        'sticky top-0 z-30 w-full border-b-2 bg-board transition-colors duration-200',
         getHeaderClasses(shouldRenderDrawer, isScrolled),
       )}
     >
       <div className="container flex h-16 items-center justify-between gap-4">
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-2" aria-label="Home">
-          <TerminalSquareIcon className="h-6 w-6" />
-          <span className="hidden font-bold sm:inline-block">Boonyarit I.</span>
+        <Link
+          href="/"
+          className="flex items-center"
+          aria-label="Boonyarit Iamsa-ard, home"
+        >
+          <span className="relative block size-8 shrink-0 overflow-hidden rounded-[3px] border-2 border-paint">
+            <Image
+              src={profile}
+              alt=""
+              fill
+              sizes="32px"
+              className="object-cover grayscale-[35%]"
+            />
+          </span>
+          {/* Collapses to nothing while hidden, so the link shrinks to the avatar. */}
+          <span
+            aria-hidden={isHeroInView || undefined}
+            className={cn(
+              'grid transition-[grid-template-columns,opacity] duration-300 ease-out motion-reduce:transition-none',
+              isHeroInView ? 'grid-cols-[0fr] opacity-0' : 'grid-cols-[1fr]',
+            )}
+          >
+            <span className="min-w-0 overflow-hidden">
+              <span className="flex items-baseline gap-2.5 whitespace-nowrap pl-3">
+                <span className="font-display font-extrabold text-[1.375rem] uppercase leading-none tracking-[0.03em]">
+                  Boonyarit Iamsa-ard
+                </span>
+                <span className="stamp hidden text-muted-foreground text-xs leading-none lg:inline">
+                  Software Engineer
+                </span>
+              </span>
+            </span>
+          </span>
         </Link>
 
-        {/* Desktop Navigation */}
-        <div className="hidden items-center gap-2 md:flex md:flex-1 md:justify-end">
-          <NavigationMenu viewport={false}>
-            <NavigationMenuList>
-              {navItems.map((item) => (
-                <NavigationMenuItem key={item.href}>
-                  <NavigationMenuLink
-                    asChild
-                    className={cn(
-                      navigationMenuTriggerStyle(),
-                      'bg-transparent',
-                    )}
-                  >
-                    <Link href={item.href}>{item.label}</Link>
-                  </NavigationMenuLink>
-                </NavigationMenuItem>
-              ))}
-            </NavigationMenuList>
-          </NavigationMenu>
+        <div className="hidden items-center gap-6 md:flex">
+          <nav aria-label="Main">
+            <ul className="flex items-center gap-1">
+              {navItems.map((item) => {
+                const current = isCurrent(pathname, item.href);
+
+                return (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      aria-current={current ? 'page' : undefined}
+                      className={cn(
+                        'stamp inline-flex h-9 items-center rounded-sm border-2 px-3 transition-colors duration-200',
+                        current
+                          ? 'border-tape-edge bg-tape text-tape-ink'
+                          : 'border-transparent text-foreground hover:bg-foreground/8',
+                      )}
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
           <ThemeToggle />
         </div>
 
-        {/* Mobile Navigation */}
         <div className="flex items-center md:hidden">
           <Drawer
             direction="left"
@@ -162,46 +225,74 @@ export function AppHeader() {
           >
             <DrawerTrigger asChild>
               <Button variant="ghost" size="icon">
-                <MenuIcon className="h-5 w-5" />
-                <span className="sr-only">Toggle Menu</span>
+                <MenuIcon className="size-5" />
+                <span className="sr-only">Open menu</span>
               </Button>
             </DrawerTrigger>
             {shouldRenderDrawer ? (
-              <DrawerContent className="flex flex-col border-r-0 shadow-none">
-                <DrawerHeader>
-                  <DrawerTitle
-                    className="flex items-center gap-2"
-                    onClick={() => {
-                      handleDrawerOpenChange(false);
-                      router.push('/');
-                    }}
-                  >
-                    <TerminalSquareIcon className="h-6 w-6" />
-                    <span className="inline-block font-bold">Boonyarit I.</span>
+              <DrawerContent className="pegboard flex flex-col border-paint border-r-2 shadow-none">
+                <DrawerHeader className="bg-board">
+                  <DrawerTitle className="text-left font-display font-extrabold text-xl uppercase tracking-[0.03em]">
+                    <Link
+                      href="/"
+                      onClick={() => handleDrawerOpenChange(false)}
+                    >
+                      Boonyarit Iamsa-ard
+                    </Link>
                   </DrawerTitle>
                   <DrawerDescription className="sr-only">
                     Navigate to different sections of the website.
                   </DrawerDescription>
                 </DrawerHeader>
-                <nav className="flex flex-1 flex-col gap-4 px-4 py-2">
-                  {navItems.map((item) => (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      className={cn(
-                        'flex items-center rounded-md px-4 py-3 font-medium text-sm transition-colors',
-                        'hover:bg-muted',
-                        pathname === item.href
-                          ? 'bg-muted text-foreground'
-                          : 'text-muted-foreground hover:text-foreground',
-                      )}
-                      onClick={() => handleDrawerOpenChange(false)}
+                <nav
+                  aria-label="Main"
+                  className="flex flex-1 flex-col gap-3 px-4 py-4"
+                >
+                  {navItems.map((item) => {
+                    const current = isCurrent(pathname, item.href);
+
+                    return (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        aria-current={current ? 'page' : undefined}
+                        className={cn(
+                          'flex items-center rounded-sm border-2 border-paint px-4 py-3 font-bold font-display text-lg uppercase tracking-[0.08em]',
+                          current ? 'bg-tape text-tape-ink' : 'bg-plate',
+                        )}
+                        onClick={() => handleDrawerOpenChange(false)}
+                      >
+                        {item.label}
+                      </Link>
+                    );
+                  })}
+                  <div className="mt-auto grid gap-3 pt-6">
+                    <Button asChild variant="tape" size="lg">
+                      <Link
+                        href="/#contact"
+                        onClick={() => handleDrawerOpenChange(false)}
+                      >
+                        Write to me
+                        <ArrowRightIcon aria-hidden="true" />
+                      </Link>
+                    </Button>
+                    <Button
+                      asChild
+                      variant="outline"
+                      size="lg"
+                      className="bg-plate"
                     >
-                      {item.label}
-                    </Link>
-                  ))}
+                      <a href={appConfig.resume} download>
+                        <DownloadIcon aria-hidden="true" />
+                        Download resume
+                      </a>
+                    </Button>
+                  </div>
                 </nav>
-                <div className="flex items-center justify-end border-t p-4">
+                <div className="flex items-center justify-between border-paint border-t-2 bg-board p-4">
+                  <span className="stamp text-muted-foreground text-xs">
+                    Theme
+                  </span>
                   <ThemeToggle />
                 </div>
               </DrawerContent>

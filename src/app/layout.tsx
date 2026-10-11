@@ -7,7 +7,12 @@ import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
 import { appConfig } from '@/core/configs/app.config';
-import { fontMono, fontSans } from '@/core/styles/fonts';
+import {
+  fontDisplay,
+  fontMono,
+  fontSans,
+  fontStencil,
+} from '@/core/styles/fonts';
 import { AppLayout } from '@/common/components/layout/app-layout';
 import { ThemeProvider } from '@/common/components/theme-provider';
 import { Toaster } from '@/common/components/ui/sonner';
@@ -21,7 +26,7 @@ type RootLayoutProps = Readonly<{
 export const metadata: Metadata = {
   metadataBase: new URL(appConfig.url),
   title: {
-    default: appConfig.title,
+    default: `${appConfig.title} · Software Engineer`,
     template: `%s | ${appConfig.title}`,
   },
   description: appConfig.description,
@@ -42,7 +47,6 @@ export const metadata: Metadata = {
     creator: appConfig.creator,
     images: [],
   },
-  icons: [],
 };
 
 export default function RootLayout({ children }: RootLayoutProps) {
@@ -52,6 +56,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
         className={cn(
           'relative flex min-h-dvh flex-col bg-background font-sans text-foreground antialiased',
           fontSans.variable,
+          fontDisplay.variable,
+          fontStencil.variable,
           fontMono.variable,
         )}
       >

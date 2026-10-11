@@ -1,22 +1,49 @@
-'use client';
+import { DownloadIcon } from 'lucide-react';
+
+import { appConfig } from '@/core/configs/app.config';
+import { Slot } from '@/common/components/board/slot';
+import { SocialLinks } from '@/common/components/social-links';
+import { Button } from '@/common/components/ui/button';
 
 import { ContactForm } from './contact-form';
 
 export function CallToActionSection() {
   return (
     <section
-      data-section="call-to-action"
-      className="container flex flex-col items-center justify-center gap-8 py-16"
+      id="contact"
+      aria-labelledby="contact-heading"
+      className="pegboard border-paint border-t-2"
     >
-      <div className="space-y-4 text-center">
-        <h2 className="font-bold text-2xl tracking-tight sm:text-4xl">
-          Want to work together?
-        </h2>
-        <p className="text-lg text-muted-foreground">
-          Let&apos;s connect and discuss your next project.
-        </p>
+      <div className="container grid gap-12 py-20 sm:py-28 lg:grid-cols-12 lg:gap-8">
+        <div className="space-y-6 lg:col-span-5">
+          <h2 id="contact-heading" className="type-headline">
+            Write to me
+          </h2>
+          <div className="max-w-[44ch] space-y-3 text-lg">
+            <p>
+              If you&apos;re hiring, tell me about the role and the team. If you
+              have a project, tell me what it should do and when you need it.
+            </p>
+            <p className="text-muted-foreground">
+              The message comes straight to my inbox.
+            </p>
+          </div>
+          <Button asChild variant="outline">
+            <a href={appConfig.resume} download>
+              <DownloadIcon aria-hidden="true" />
+              Download resume
+            </a>
+          </Button>
+          <SocialLinks className="pt-2" />
+        </div>
+        <Slot
+          code="C-02"
+          className="lg:col-span-6 lg:col-start-7"
+          plateClassName="p-6 sm:p-8"
+        >
+          <ContactForm />
+        </Slot>
       </div>
-      <ContactForm />
     </section>
   );
 }

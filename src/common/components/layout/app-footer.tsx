@@ -1,27 +1,36 @@
+import Link from 'next/link';
+
+import { appConfig } from '@/core/configs/app.config';
 import { SocialLinks } from '@/common/components/social-links';
 
 export function AppFooter() {
   return (
-    <footer className="bg-muted py-8">
-      <div className="container flex flex-col items-center justify-between gap-4 md:flex-row md:gap-0">
-        <div className="flex flex-col items-center gap-1 md:items-start">
-          <p className="text-sm">
-            &copy; {new Date().getFullYear()} Boonyarit Iamsa-ard. All rights
-            reserved.
+    <footer className="border-paint border-t-2 bg-board">
+      <div className="container flex flex-col gap-6 py-8 md:flex-row md:items-center md:justify-between">
+        <div className="space-y-1">
+          <p className="font-display font-extrabold text-lg uppercase tracking-[0.03em]">
+            Boonyarit Iamsa-ard
           </p>
-          <p className="text-muted-foreground text-xs">
-            Awesome color theme from{' '}
-            <a
-              href="https://tweakcn.com/editor/theme"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline underline-offset-4 hover:text-primary"
-            >
-              tweakcn.com
-            </a>
+          <p className="text-muted-foreground text-sm">
+            &copy; {new Date().getFullYear()} · Software engineer in Bangkok,
+            Thailand
           </p>
         </div>
-        <SocialLinks />
+        <div className="flex flex-col gap-4 md:items-end">
+          <ul className="flex flex-wrap items-center gap-x-5 gap-y-2">
+            <li>
+              <Link href="/#contact" className="stamp tape-link">
+                Write to me
+              </Link>
+            </li>
+            <li>
+              <a href={appConfig.resume} download className="stamp tape-link">
+                Download resume
+              </a>
+            </li>
+          </ul>
+          <SocialLinks />
+        </div>
       </div>
     </footer>
   );

@@ -16,7 +16,13 @@ if (!process.env.VELITE_STARTED && isDev) {
 }
 
 const nextConfig: NextConfig = {
+  // AGENTS.md is hand-written; stop `next dev` from managing a block in it.
+  agentRules: false,
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
+  images: {
+    // 75 is Next's default; card covers ask for 85.
+    qualities: [75, 85],
+  },
 };
 
 const withMDX = createMDX({

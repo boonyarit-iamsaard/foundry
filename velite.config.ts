@@ -1,4 +1,5 @@
 import rehypeShiki from '@shikijs/rehype';
+import { createCssVariablesTheme } from 'shiki/core';
 import { defineCollection, defineConfig, s } from 'velite';
 
 import { buildTags } from './src/common/helpers/build-tags';
@@ -122,7 +123,9 @@ export default defineConfig({
       [
         rehypeShiki,
         {
-          theme: 'dracula',
+          // Colours come from --shiki-* tokens in globals.css, so code follows
+          // the board's palette in both themes.
+          theme: createCssVariablesTheme(),
         },
       ],
     ],

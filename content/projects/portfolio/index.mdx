@@ -1,24 +1,22 @@
 ---
 title: boonyarit.me
-description: My personal portfolio website (this site)
+description: My personal site, where I publish articles and projects and people can get in touch (this site)
 tags: ['nextjs', 'typescript', 'tailwind']
 keywords:
   [
     'blog',
     'dark mode',
     'developer portfolio',
-    'digital resume',
     'frontend development',
     'full-stack development',
     'mdx',
     'next.js',
-    'performance optimization',
     'personal website',
     'portfolio',
     'react',
     'responsive design',
     'seo',
-    'shadcn ui',
+    'radix ui',
     'software engineer',
     'ssg',
     'static site generation',
@@ -38,32 +36,24 @@ status: active
 
 ## Overview
 
-**boonyarit.me** is my personal portfolio website, meticulously crafted to showcase my projects, technical skills, and professional journey. It acts as a dynamic digital resume and a central hub for potential employers, collaborators, and fellow developers. The core goal was to build a modern, performant, and accessible online presence that truly reflects my passion for web development and commitment to quality. This project is under active development, with ongoing improvements and feature additions.
+**boonyarit.me** is my personal site. It's where I publish what I write and what I build, and where hiring teams and clients can reach me or download my resume. I build and maintain it myself, and it's still under active development.
 
-## Key Features
+## The design
 
-- **Fully Responsive Design**: Ensures a seamless and intuitive experience across all devices, from large desktops to small mobile screens.
-- **Integrated Blog**: A dedicated space where I share technical insights, development tutorials, and updates on my latest projects.
-- **User-Friendly Dark Mode**: Offers a comfortable viewing experience in low-light conditions with an easy-to-toggle theme switcher.
-- **Highly Performance Optimized**: Engineered for speed using modern web techniques, resulting in fast load times and smooth user interactions.
-- **SEO Enhanced**: Implemented with SEO best practices, including structured data and relevant meta tags, to maximize visibility on search engines.
+The site is laid out like a hangar tool board. On a shadow board every tool has its own painted outline, so anyone can see at a glance that nothing is missing. Here, every article and project hangs in its own outlined slot, labelled with a position code on yellow tape. A project's status is drawn as its outline: solid for stable, heavy for active, dashed for experimental, and a dash-dot line for maintenance.
 
-## Development Process
+Day mode is a grey powder-coated board. Night mode is charcoal tool foam with yellow outlines, like the under-layer that shows when a tool is out of its cut-out.
 
-This portfolio was built using the **Next.js App Router** and **TypeScript**, providing a modern, type-safe foundation. Content management leverages **Velite** to process local **MDX** files (projects, articles) into type-safe JSON data during the build. This approach enables efficient **Static Site Generation (SSG)** for content-heavy pages, ensuring fast load times and excellent SEO.
+## How it's built
 
-The user interface was crafted with **Tailwind CSS** for utility-first styling, complemented by pre-built, accessible components from **Shadcn UI**. This combination allowed for rapid development while maintaining a consistent design language. Key considerations included:
-
-- **Performance:** Leveraging Next.js features like automatic code splitting, font optimization (`src/core/styles/fonts.ts`), and built-in image optimization. SSG further minimizes server load and improves TTFB (Time to First Byte).
-- **Content Integration:** Using `@next/mdx` and `rehypeShiki` (via Velite config) for seamless rendering and syntax highlighting of Markdown content.
-- **Modularity:** Organizing the codebase using a feature-sliced structure (`src/features`) to enhance maintainability and scalability.
-- **Deployment:** The site is deployed globally via **Vercel**, taking advantage of its seamless Git integration and CDN for optimal performance and availability.
+- **Next.js App Router and TypeScript.** Most pages are generated statically at build time.
+- **Velite** turns local MDX files (articles, projects and the about page) into typed data during the build, with syntax highlighting from Shiki.
+- **Tailwind CSS** for styling, with Radix primitives for accessible menus, drawers and form controls. Fonts (Big Shoulders and Barlow) are self-hosted.
+- **Contact form:** a type-safe server action validates input with Zod and sends the message by email, through Resend or SMTP depending on configuration.
+- **Checks:** GitHub Actions runs Biome, TypeScript, Vitest, a dependency audit and a production build on every change. Locally, each commit is linted and formatted, and its message is checked against Conventional Commits.
+- **Hosting:** deployed on Vercel.
 
 ## Links
 
-- [Live Site](https://boonyarit.me)
-- [GitHub Repo](https://github.com/boonyarit-iamsaard/portfolio)
-
-## Get in Touch
-
-Interested in collaborating, discussing a project, or learning more about my work? Feel free to reach out via [email](mailto:boonyarit.iamsaard@gmail.com) or connect with me on [LinkedIn](https://www.linkedin.com/in/boonyarit-iamsaard/).
+- [Live site](https://boonyarit.me)
+- [Source on GitHub](https://github.com/boonyarit-iamsaard/portfolio)

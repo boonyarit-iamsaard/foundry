@@ -8,9 +8,10 @@ export const appConfig = {
     },
   ],
   creator: '@boonyarit_iam',
-  title: 'Boonyarit I.',
+  title: 'Boonyarit Iamsa-ard',
   description:
-    'A Full Stack Developer based in Bangkok, Thailand 🇹🇭 with a passion for building scalable and maintainable web applications.',
+    'Software engineer in Bangkok, Thailand. Former aircraft mechanic building backend, web and mobile software that is checked before it ships.',
+  resume: '/assets/boonyarit-iamsaard-2025-04-15.pdf',
   links: {
     linkedIn: 'https://www.linkedin.com/in/boonyarit-iamsaard/',
     github: 'https://github.com/boonyarit-iamsaard',
@@ -18,12 +19,11 @@ export const appConfig = {
   },
   keywords: [
     // Primary Keywords
-    'full stack developer',
+    'software engineer',
     'react developer',
     'next.js developer',
     'node.js developer',
     'typescript developer',
-    'software engineer',
     'web developer portfolio',
 
     // Secondary Keywords
@@ -34,14 +34,13 @@ export const appConfig = {
     'javascript developer',
     'web app developer',
     'api developer',
-    'full stack projects',
     'developer case studies',
 
     // Personal Branding Keywords
     'boonyarit iamsa-ard',
     'boonyarit.me',
     'boonyarit portfolio',
-    'boonyarit full stack developer',
+    'boonyarit software engineer',
 
     // Long-Tail Keywords
     'how to structure a next.js project',
@@ -50,7 +49,7 @@ export const appConfig = {
     'node.js authentication example',
     'seo for developer portfolios',
     'freelance react developer in thailand',
-    'full stack developer resume website',
+    'software engineer resume website',
 
     // Geo Keywords
     'developer in thailand',
@@ -63,7 +62,6 @@ export const appConfig = {
   twitter: {
     images: [],
   },
-  icons: [],
 };
 
 export type AppConfig = typeof appConfig;

@@ -1,50 +1,31 @@
-import type { HTMLAttributes } from 'react';
+import type { ReactNode } from 'react';
 
 import { cn } from '../helpers/cn';
 
+type PageHeaderProps = Readonly<{
+  title: string;
+  description?: string;
+  className?: string;
+  children?: ReactNode;
+}>;
+
 export function PageHeader({
-  children,
-  className,
-  ...props
-}: Readonly<HTMLAttributes<HTMLDivElement>>) {
-  return (
-    <section className={cn('container', className)} {...props}>
-      <div className="flex flex-col items-start gap-2 py-8 sm:py-12">
-        {children}
-      </div>
-    </section>
-  );
-}
-
-export function PageHeaderHeading({
+  title,
+  description,
   className,
   children,
-  ...props
-}: Readonly<HTMLAttributes<HTMLHeadingElement>>) {
+}: PageHeaderProps) {
   return (
-    <h1
-      className={cn(
-        'font-bold text-2xl leading-tight tracking-tighter sm:text-4xl',
-        className,
-      )}
-      {...props}
+    <header
+      className={cn('container space-y-5 pt-14 pb-10 sm:pt-20', className)}
     >
+      <h1 className="type-display">{title}</h1>
+      {description ? (
+        <p className="max-w-[56ch] text-lg text-muted-foreground sm:text-xl">
+          {description}
+        </p>
+      ) : null}
       {children}
-    </h1>
-  );
-}
-
-export function PageHeaderDescription({
-  className,
-  ...props
-}: Readonly<HTMLAttributes<HTMLParagraphElement>>) {
-  return (
-    <p
-      className={cn(
-        'line-clamp-1 text-balance font-light text-base text-foreground sm:text-lg',
-        className,
-      )}
-      {...props}
-    />
+    </header>
   );
 }

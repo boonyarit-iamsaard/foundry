@@ -1,8 +1,10 @@
 'use client';
 
-import { SocialLinks } from '@/common/components/social-links';
+import { useEffect, useRef } from 'react';
+
+import { CheckIcon, SendIcon } from 'lucide-react';
+
 import { Button } from '@/common/components/ui/button';
-import { Card, CardContent, CardFooter } from '@/common/components/ui/card';
 import {
   Form,
   FormControl,
@@ -16,76 +18,121 @@ import { Textarea } from '@/common/components/ui/textarea';
 
 import { useContactForm } from '../hooks/use-contact-form';
 
+const labelClassName = 'stamp font-bold text-foreground text-xs';
+
 export function ContactForm() {
-  const { form, handleSubmitWithAction } = useContactForm();
+  const { form, handleSubmitWithAction, isSending, sentTo, startOver } =
+    useContactForm();
+  const confirmationRef = useRef<HTMLHeadingElement>(null);
+  const isStartingOverRef = useRef(false);
+
+  // The form and the confirmation replace each other, so move focus with them.
+  useEffect(() => {
+    if (sentTo) {
+      confirmationRef.current?.focus();
+    } else if (isStartingOverRef.current) {
+      isStartingOverRef.current = false;
+      form.setFocus('name');
+    }
+  }, [sentTo, form]);
+
+  const handleStartOver = () => {
+    isStartingOverRef.current = true;
+    startOver();
+  };
+
+  if (sentTo) {
+    return (
+      <div className="flex min-h-80 flex-col items-start gap-5">
+        <CheckIcon className="size-8" aria-hidden="true" />
+        <div className="space-y-3">
+          <h3
+            ref={confirmationRef}
+            tabIndex={-1}
+            className="font-bold font-display text-[1.875rem] uppercase leading-[0.95] focus:outline-none"
+          >
+            Message sent
+          </h3>
+          <output className="block max-w-[44ch] text-lg">
+            It&apos;s in my inbox. I&apos;ll reply to{' '}
+            <span className="font-semibold">{sentTo}</span>.
+          </output>
+        </div>
+        <Button variant="outline" className="mt-auto" onClick={handleStartOver}>
+          Send another
+        </Button>
+      </div>
+    );
+  }
 
   return (
     <Form {...form}>
       <form
         id="contact-form"
         onSubmit={handleSubmitWithAction}
-        className="w-full max-w-lg space-y-4"
+        className="space-y-5"
+        noValidate
       >
-        <Card>
-          <CardContent className="space-y-4">
-            <FormField
-              control={form.control}
-              name="name"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Name</FormLabel>
-                  <FormControl>
-                    <Input placeholder="What should I call you?" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="email"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Email</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Your email" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="message"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Message</FormLabel>
-                  <FormControl>
-                    <Textarea
-                      placeholder="Type your message here..."
-                      className="min-h-32"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </CardContent>
-          <CardFooter className="flex items-center justify-center">
-            <Button size="lg" type="submit">
-              Message me
-            </Button>
-          </CardFooter>
-        </Card>
-        <div className="relative w-full text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-border after:border-t">
-          <span className="relative z-10 bg-background px-2 text-muted-foreground">
-            Or find me on
-          </span>
+        <div className="grid gap-5 sm:grid-cols-2">
+          <FormField
+            control={form.control}
+            name="name"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className={labelClassName}>Name</FormLabel>
+                <FormControl>
+                  <Input autoComplete="name" required {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className={labelClassName}>Email</FormLabel>
+                <FormControl>
+                  <Input
+                    type="email"
+                    autoComplete="email"
+                    required
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
         </div>
-        <div className="flex items-center justify-center">
-          <SocialLinks />
-        </div>
+        <FormField
+          control={form.control}
+          name="message"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className={labelClassName}>Message</FormLabel>
+              <FormControl>
+                <Textarea
+                  placeholder="The role, or the project you have in mind"
+                  className="min-h-40"
+                  required
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <Button
+          size="lg"
+          type="submit"
+          className="w-full sm:w-auto"
+          disabled={isSending}
+        >
+          <SendIcon aria-hidden="true" />
+          {isSending ? 'Sending…' : 'Send message'}
+        </Button>
       </form>
     </Form>
   );

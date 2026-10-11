@@ -1,7 +1,6 @@
 import Link from 'next/link';
 
 import { cn } from '../helpers/cn';
-import { Button } from './ui/button';
 
 type TagProps = Readonly<{
   tag: string;
@@ -20,17 +19,18 @@ export function Tag({ tag, resource, activeTags = [] }: TagProps) {
       : `/${resource}?tags=${tagsFilter.join(',')}`;
 
   return (
-    <Button
-      asChild
-      variant={isActive ? 'default' : 'secondary'}
+    <Link
+      href={href}
+      scroll={false}
+      aria-current={isActive ? 'true' : undefined}
       className={cn(
-        'h-auto rounded-full px-2.5 py-0.5 shadow-none',
-        !isActive && 'bg-card',
+        'stamp relative z-20 inline-flex h-7 items-center rounded-[2px] border-[1.5px] px-2 text-xs transition-colors duration-200 pointer-coarse:after:absolute pointer-coarse:after:inset-x-0 pointer-coarse:after:-inset-y-2',
+        isActive
+          ? 'border-tape-edge bg-tape text-tape-ink'
+          : 'border-foreground/40 text-foreground hover:border-foreground',
       )}
     >
-      <Link href={href} scroll={false}>
-        #{tag}
-      </Link>
-    </Button>
+      {tag}
+    </Link>
   );
 }
