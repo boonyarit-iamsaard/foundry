@@ -1,5 +1,8 @@
 import type { Metadata } from 'next';
 
+import Link from 'next/link';
+
+import { EmptySlot } from '@/common/components/board/slot';
 import { FilterByTags } from '@/common/components/filter-by-tags';
 import { PageHeader } from '@/common/components/page-header';
 import type { SearchParams } from '@/common/definitions/search-params';
@@ -67,20 +70,36 @@ export default async function Page({ searchParams }: ProjectsPageProps) {
               resource="projects"
             />
           ) : null}
-          <div className="grid gap-x-6 gap-y-10 md:grid-cols-2">
-            {filteredResource.map((project, index) => (
-              <ProjectCard
-                key={project.slug}
-                project={project}
-                eager={index === 0}
-                activeTags={activeTags}
-                wide={filteredResource.length === 1}
-                className={
-                  filteredResource.length === 1 ? 'md:col-span-2' : undefined
-                }
-              />
-            ))}
-          </div>
+          {filteredResource.length === 0 ? (
+            <EmptySlot code="P-00" className="min-h-48">
+              <div className="space-y-1 text-center">
+                <p className="font-bold font-display text-2xl uppercase">
+                  Nothing in this slot
+                </p>
+                <p>
+                  No projects match these tags.{' '}
+                  <Link href="/projects" className="tape-link font-semibold">
+                    Clear the filter
+                  </Link>
+                </p>
+              </div>
+            </EmptySlot>
+          ) : (
+            <div className="grid gap-x-6 gap-y-10 md:grid-cols-2">
+              {filteredResource.map((project, index) => (
+                <ProjectCard
+                  key={project.slug}
+                  project={project}
+                  eager={index === 0}
+                  activeTags={activeTags}
+                  wide={filteredResource.length === 1}
+                  className={
+                    filteredResource.length === 1 ? 'md:col-span-2' : undefined
+                  }
+                />
+              ))}
+            </div>
+          )}
         </div>
       </section>
     </div>
