@@ -47,7 +47,6 @@ export const metadata: Metadata = {
     creator: appConfig.creator,
     images: [],
   },
-  icons: [],
 };
 
 export default function RootLayout({ children }: RootLayoutProps) {

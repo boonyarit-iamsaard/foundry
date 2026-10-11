@@ -62,7 +62,6 @@ export const appConfig = {
   twitter: {
     images: [],
   },
-  icons: [],
 };
 
 export type AppConfig = typeof appConfig;
