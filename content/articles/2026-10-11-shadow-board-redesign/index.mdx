@@ -1,0 +1,102 @@
+---
+title: Redesigning My Site with an AI Design Tool
+description: How I redesigned this site with an AI design tool, which parts of its proposals I accepted, and where I overrode it.
+tags: ['design']
+keywords:
+  [
+    'ai',
+    'design review',
+    'design tool',
+    'impeccable',
+    'portfolio',
+    'redesign',
+    'shadow board',
+    'visual design',
+  ]
+cover: cover.webp
+slug: shadow-board-redesign
+date: 2026-10-11 13:00:00
+status: draft
+---
+
+{/* Raw material from the spec, one comment per line. Prettier mangles multi-line MDX comments, so keep each comment on a single line. */}
+
+## The old site
+
+{/* - A generic stack of sections: a large round portrait, equal cards, a "Tools" logo grid. */}
+{/* - The titles didn't agree: "Full Stack Developer" in the hero, "Backend Engineer" on About. */}
+{/* - One line on settling on Software Engineer. */}
+{/* - Before state: commit 8afb6ab. The cover is a day-theme split, before on the left and after on the right. */}
+
+## What I told it at init
+
+{/* Six questions in about five minutes: */}
+{/* - The title change, plus Spring Boot and React Native, with the resume as a placeholder. */}
+{/* - Audiences: all of them, with hiring teams and freelance clients winning when they conflict. */}
+{/* - Keep the contact form, the resume, both themes and the mechanic story. */}
+{/* - The first impression to give: careful, reliable. */}
+{/* - What would feel wrong: gimmicky, generic, loud and sparse, all four. */}
+{/* - Scope: the whole site. */}
+{/* The no-inventories rule came from an earlier session's rejection of a resume-style tech grid, not from init. */}
+
+## The directions, and why the Shadow Board
+
+{/* - Eight directions. The roll assigned The Drawing Set: engineering drawing sheets, each page a numbered sheet; its risk a blueprint costume. */}
+{/* - The tool's own pick was The Shadow Board. Its risk line: drift into a tool inventory, and costume. */}
+{/* - He picked the Shadow Board because a shadow board is the hangar wall he actually worked at. Chose in about 90 seconds. */}
+{/* - Six challengers declined, each donating one idea: */}
+{/* – Normalled Jackfield (patch bay): project status shown by line pattern. */}
+{/* – Teletext Service: durable page addresses. */}
+{/* – Camcorder Viewfinder. */}
+{/* – Timetable Slide Rack: airline nostalgia, the costume he ruled out. */}
+{/* – Paper Automata. */}
+{/* – Rain-night Cityscape. */}
+{/* - The risk came true: the build shipped a "What I build" list grouped by area. Review caught it; the earlier no-inventories rule decided the fix: three short first-person paragraphs. */}
+
+![The redesigned home page in the night theme](./home-night.webp)
+
+![A card lifted off the board, showing the stencil code painted on its shadow](./card-lift.webp)
+
+![The 404 page, an empty slot on the board](./not-found.webp)
+
+## Where I agreed, and why
+
+{/* - He accepted the later critique and polish pass as proposed. */}
+{/* - Show the reasoning on at least one item instead of asserting agreement. */}
+{/* - The pass covered: type scale, name once per screen, author slot, contact confirmation, tape edge, code colours, outline resume button, "Write to me", emoji removal, favicon, drawn portfolio cover, conditional project status key and filter. */}
+{/* - The portfolio cover is a drawn spec sheet, not a screenshot. */}
+
+## Where I overrode it
+
+{/* - Audience balance: mid-build he stopped it, because the build leaned toward hiring teams while freelance clients had equal weight. */}
+{/* - Portrait: he asked for his face to matter much less, then suggested the header avatar. When the finish reviewer wanted the portrait back because the original plan had it, his request held and the brief was amended. */}
+{/* - Prose headings: the approved system set article headings in uppercase Big Shoulders. Seeing a real article, he moved them to Barlow in sentence case, because full-sentence headings shouted. */}
+{/* - Also his: header alignment, scrollbar gutter. */}
+
+## Layered review
+
+{/* Each layer caught what the others couldn't. */}
+{/* - Him, on a phone. Reviewing the preview, he screen-recorded the mobile drawer closing right after it opened. */}
+{/* – Live since June 28: a dependency-modernization commit added the drawer's own open state to a route-change effect to satisfy the exhaustive-deps lint rule, so opening the drawer scheduled its close. */}
+{/* – Lint, types, tests and every review agent had passed over it. It predates the redesign; the redesign's review surfaced it. */}
+{/* – A cloud agent wrote the fix and its before/after Playwright check. */}
+{/* - The two-axis agent review (standards and spec, in parallel), run after the redesign commit. Lint and type-check passed throughout; all of this was invisible to tooling: */}
+{/* – Accessibility: outline-none on buttons, inputs and textareas overrode the global focus ring, so the submit button showed no keyboard focus. The card's ring lit up when any link inside it was focused. */}
+{/* – Spec drift: static slots (contact, resume) lifted on hover; code type and the Maintenance chain-line dash drifted from DESIGN.md; two slots and a night input border were undocumented. */}
+{/* – Copy: the categorized tool list; a bare "status". */}
+{/* – Images: a 205KB PNG cover with no provenance; session notes and a private quote in the design brief (scrubbed). */}
+{/* – Code: dead logo icons, an untested slotCode that silently returned P-00, repeated helpers. */}
+{/* – A worry that was wrong: drafts leaving gaps in slot numbering. Velite already strips drafts in production, so nothing changed. Checked before acting. */}
+{/* – Sonar then flagged &:hover nested in a Tailwind @utility; fixed with @variant hover. */}
+{/* - The critique and polish pass: the contact call hung at the end of every article and project (the author slot). */}
+{/* - CodeRabbit: aria-pressed on a link; also empty filter state, aria-current, required fields, refocus after "Send another". */}
+{/* - Closer: the CodeRabbit finding he declined. It asked for the branch history to be rewritten to remove a private chat quote. */}
+{/* – The agent worked out why that wouldn't help: squash merges keep the commit out of main, and GitHub keeps PR refs anyway. */}
+{/* – He checked the reasoning and declined. His call on the agent's reasoning, not his own argument. Don't say what the quote was. */}
+
+## What I'd do differently
+
+{/* - Get an independent spec before the build. */}
+{/* - DESIGN.md was written from the finished build, so the spec half of the agent review was partly checking the build against itself. */}
+{/* - His own phone and CodeRabbit had no such blind spot. */}
+{/* - Links allowed: the a2c9cc9 commit and the live site only. */}
