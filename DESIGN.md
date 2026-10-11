@@ -247,7 +247,7 @@ Flat at rest. Depth comes from the slot construction itself: a plate sits over a
 
 ### Shadow Vocabulary
 
-- **Lift** (day `0 14px 24px -10px oklch(0.2 0.01 250 / 0.35), 0 3px 6px -2px oklch(0.2 0.01 250 / 0.2)`; night `0 16px 28px -10px oklch(0 0 0 / 0.6), 0 3px 6px -2px oklch(0 0 0 / 0.4)`): a linked plate on hover or focus, translated 4px left and 20px up over 500ms, far enough to uncover the stencil code beneath; and the first frame of the arrival settle.
+- **Lift** (day `0 14px 24px -10px oklch(0.2 0.01 250 / 0.35), 0 3px 6px -2px oklch(0.2 0.01 250 / 0.2)`; night `0 16px 28px -10px oklch(0 0 0 / 0.6), 0 3px 6px -2px oklch(0 0 0 / 0.4)`): a linked plate on hover or focus, translated 4px left and 20px up over 500ms, far enough to uncover the stencil code beneath. The arrival settle starts from the same shadow but a shorter rise (4px left, 10px up).
 
 ### Named Rules
 

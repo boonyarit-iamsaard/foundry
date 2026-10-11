@@ -62,6 +62,7 @@ export function Slot({
       {code ? (
         <span className="tape absolute -top-3 left-4 z-20">{code}</span>
       ) : null}
+      {/* The code sits 2px off the bottom so the plate's 20px lift uncovers it. */}
       <div
         aria-hidden="true"
         className="absolute inset-1.5 flex items-end justify-end rounded-md bg-paint px-2 pb-0.5"
