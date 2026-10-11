@@ -15,9 +15,7 @@ const linkClassName = 'stamp tape-link inline-flex items-center gap-1 text-xs';
 export function ProjectHeader({ project }: ProjectHeaderProps) {
   return (
     <header className="space-y-6 pt-14 pb-10 sm:pt-20">
-      <h1 className="font-display font-extrabold text-[clamp(2.75rem,6.4vw,5.5rem)] uppercase leading-[0.88]">
-        {project.title}
-      </h1>
+      <h1 className="type-headline">{project.title}</h1>
       <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
         <ProjectStatusLine status={project.status} />
         <p className="text-muted-foreground text-sm tabular-nums">
@@ -33,28 +31,30 @@ export function ProjectHeader({ project }: ProjectHeaderProps) {
             <Tag key={tag} tag={tag} resource="projects" />
           ))}
         </div>
-        {project.preview ? (
-          <a
-            href={project.preview}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={linkClassName}
-          >
-            Live site
-            <ArrowUpRightIcon className="size-3.5" aria-hidden="true" />
-          </a>
-        ) : null}
-        {project.github ? (
-          <a
-            href={project.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={linkClassName}
-          >
-            Source
-            <ArrowUpRightIcon className="size-3.5" aria-hidden="true" />
-          </a>
-        ) : null}
+        <div className="flex gap-6">
+          {project.preview ? (
+            <a
+              href={project.preview}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={linkClassName}
+            >
+              Live site
+              <ArrowUpRightIcon className="size-3.5" aria-hidden="true" />
+            </a>
+          ) : null}
+          {project.github ? (
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={linkClassName}
+            >
+              Source
+              <ArrowUpRightIcon className="size-3.5" aria-hidden="true" />
+            </a>
+          ) : null}
+        </div>
       </div>
     </header>
   );

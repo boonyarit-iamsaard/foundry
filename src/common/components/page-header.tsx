@@ -19,9 +19,7 @@ export function PageHeader({
     <header
       className={cn('container space-y-5 pt-14 pb-10 sm:pt-20', className)}
     >
-      <h1 className="font-display font-extrabold text-[clamp(3rem,7vw,6rem)] uppercase leading-[0.86]">
-        {title}
-      </h1>
+      <h1 className="type-display">{title}</h1>
       {description ? (
         <p className="max-w-[56ch] text-lg text-muted-foreground sm:text-xl">
           {description}

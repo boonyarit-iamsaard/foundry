@@ -24,13 +24,13 @@ colors:
 typography:
   display:
     fontFamily: 'Big Shoulders, ui-sans-serif, sans-serif'
-    fontSize: 'clamp(3.25rem, 6.6vw, 6rem)'
+    fontSize: 'clamp(2.75rem, 5vw, 4.5rem)'
     fontWeight: 800
     lineHeight: 0.86
     letterSpacing: '0.005em'
   headline:
     fontFamily: 'Big Shoulders, ui-sans-serif, sans-serif'
-    fontSize: 'clamp(2.25rem, 4.4vw, 3.75rem)'
+    fontSize: 'clamp(2.25rem, 3.6vw, 3.25rem)'
     fontWeight: 800
     lineHeight: 0.9
   title:
@@ -219,8 +219,8 @@ A near-neutral industrial palette with one safety-yellow accent; neutrals lean f
 
 ### Hierarchy
 
-- **Display** (800, clamp(3.25rem, 6.6vw, 6rem), 0.86, uppercase): the home name plate and page titles (page titles use clamp(3rem, 7vw, 6rem)).
-- **Headline** (800, clamp(2.25rem, 4.4vw, 3.75rem) to clamp(2.5rem, 5vw, 4.25rem), 0.88–0.9, uppercase): section headings on the home board and detail-page titles.
+- **Display** (`type-display`: 800, clamp(2.75rem, 5vw, 4.5rem), 0.86, uppercase): every page title at one size: the home name plate, About, the Projects and Articles indexes, and the 404 title.
+- **Headline** (`type-headline`: 800, clamp(2.25rem, 3.6vw, 3.25rem), 0.9, uppercase): section headings on the home board and article and project detail titles. It stays about 1.4x below Display so the two roles never read as one.
 - **Title** (700, 1.875rem, 0.95, uppercase): project and article titles on plates; 1.5rem in compact slots.
 - **Prose Heading** (Barlow 700, sentence case): in-article h2 at 1.5rem (2rem from sm) with 1.15–1.2 leading and -0.01em tracking; h3 at 1.375rem, 1.3 leading. Article headings are often full sentences, so they speak in Barlow rather than shout in lettering.
 - **Body** (400, 1.125rem, 1.625): running prose, capped at 62–68ch; 1rem for card descriptions; 1.25rem for lead lines.

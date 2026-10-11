@@ -18,7 +18,7 @@ import { Textarea } from '@/common/components/ui/textarea';
 
 import { useContactForm } from '../hooks/use-contact-form';
 
-const labelClassName = 'stamp text-foreground text-xs';
+const labelClassName = 'stamp font-bold text-foreground text-xs';
 
 export function ContactForm() {
   const { form, handleSubmitWithAction, isSending, sentTo, startOver } =

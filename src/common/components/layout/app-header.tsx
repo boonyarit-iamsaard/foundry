@@ -40,6 +40,36 @@ function isCurrent(pathname: string, href: string): boolean {
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
+/**
+ * On the home page the hero already sets the name large, so the header
+ * wordmark waits until the hero heading scrolls out of view.
+ */
+function useHeroInView(pathname: string): boolean {
+  const [isInView, setIsInView] = useState(pathname === '/');
+
+  useEffect(() => {
+    const heading =
+      pathname === '/' ? document.getElementById('board-heading') : null;
+
+    if (!heading) {
+      setIsInView(false);
+
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => setIsInView(entries[0]?.isIntersecting ?? false),
+      { rootMargin: '-64px 0px 0px 0px' },
+    );
+
+    observer.observe(heading);
+
+    return () => observer.disconnect();
+  }, [pathname]);
+
+  return isInView;
+}
+
 function getHeaderClasses(
   shouldRenderDrawer: boolean,
   isScrolled: boolean,
@@ -60,6 +90,7 @@ export function AppHeader() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [shouldRenderDrawer, setShouldRenderDrawer] = useState(false);
   const pathname = usePathname();
+  const isHeroInView = useHeroInView(pathname);
 
   const handleDrawerOpenChange = useCallback((open: boolean) => {
     if (open) {
@@ -124,7 +155,7 @@ export function AppHeader() {
       <div className="container flex h-16 items-center justify-between gap-4">
         <Link
           href="/"
-          className="flex items-center gap-3"
+          className="flex items-center"
           aria-label="Boonyarit Iamsa-ard, home"
         >
           <span className="relative block size-8 shrink-0 overflow-hidden rounded-[3px] border-2 border-paint">
@@ -136,12 +167,23 @@ export function AppHeader() {
               className="object-cover grayscale-[35%]"
             />
           </span>
-          <span className="flex items-baseline gap-2.5">
-            <span className="font-display font-extrabold text-[1.375rem] uppercase leading-none tracking-[0.03em]">
-              Boonyarit Iamsa-ard
-            </span>
-            <span className="stamp hidden text-muted-foreground text-xs leading-none lg:inline">
-              Software Engineer
+          {/* Collapses to nothing while hidden, so the link shrinks to the avatar. */}
+          <span
+            aria-hidden={isHeroInView || undefined}
+            className={cn(
+              'grid transition-[grid-template-columns,opacity] duration-300 ease-out motion-reduce:transition-none',
+              isHeroInView ? 'grid-cols-[0fr] opacity-0' : 'grid-cols-[1fr]',
+            )}
+          >
+            <span className="min-w-0 overflow-hidden">
+              <span className="flex items-baseline gap-2.5 whitespace-nowrap pl-3">
+                <span className="font-display font-extrabold text-[1.375rem] uppercase leading-none tracking-[0.03em]">
+                  Boonyarit Iamsa-ard
+                </span>
+                <span className="stamp hidden text-muted-foreground text-xs leading-none lg:inline">
+                  Software Engineer
+                </span>
+              </span>
             </span>
           </span>
         </Link>

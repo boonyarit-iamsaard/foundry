@@ -8,10 +8,7 @@ export function PathSection() {
     >
       <Slot code="L-01" plateClassName="grid lg:grid-cols-12">
         <div className="space-y-6 p-6 sm:p-10 lg:col-span-7">
-          <h2
-            id="path-heading"
-            className="font-display font-extrabold text-[clamp(2.25rem,4.4vw,3.75rem)] uppercase leading-[0.9]"
-          >
+          <h2 id="path-heading" className="type-headline">
             From the hangar floor to the codebase
           </h2>
           <div className="max-w-[62ch] space-y-4 text-lg leading-relaxed">

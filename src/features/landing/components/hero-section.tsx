@@ -42,10 +42,7 @@ export function HeroSection() {
           style={settleOrder(0)}
         >
           <div className="space-y-5">
-            <h1
-              id="board-heading"
-              className="font-display font-extrabold text-[clamp(3.25rem,6.6vw,6rem)] uppercase leading-[0.86] tracking-[0.005em]"
-            >
+            <h1 id="board-heading" className="type-display">
               Boonyarit
               <br />
               Iamsa-ard

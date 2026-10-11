@@ -264,6 +264,27 @@
 }
 
 /* A label in the board's lettering: small, upright, tracked. */
+/* Page titles: the home name plate and every index page. One size, so the
+   name never outranks or trails the rest of the site. */
+@utility type-display {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.75rem, 5vw, 4.5rem);
+  line-height: 0.86;
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+}
+
+/* Section headings on the board and detail-page titles. Kept a clear step
+   (about 1.4x) below display so the two never read as the same role. */
+@utility type-headline {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.25rem, 3.6vw, 3.25rem);
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+
 @utility stamp {
   font-family: var(--font-display);
   font-weight: 700;

@@ -20,9 +20,7 @@ export default function AboutPage() {
     <div>
       <section className="container pt-14 pb-12 sm:pt-20">
         <div className="space-y-6">
-          <h1 className="font-display font-extrabold text-[clamp(3rem,7vw,6rem)] uppercase leading-[0.86]">
-            Boonyarit Iamsa-ard
-          </h1>
+          <h1 className="type-display">Boonyarit Iamsa-ard</h1>
           <p className="stamp text-muted-foreground">
             Software Engineer · Bangkok, Thailand
           </p>

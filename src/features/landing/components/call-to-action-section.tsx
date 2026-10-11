@@ -16,10 +16,7 @@ export function CallToActionSection() {
     >
       <div className="container grid gap-12 py-20 sm:py-28 lg:grid-cols-12 lg:gap-8">
         <div className="space-y-6 lg:col-span-5">
-          <h2
-            id="contact-heading"
-            className="font-display font-extrabold text-[clamp(2.5rem,5vw,4.25rem)] uppercase leading-[0.88]"
-          >
+          <h2 id="contact-heading" className="type-headline">
             Write to me
           </h2>
           <div className="max-w-[44ch] space-y-3 text-lg">
