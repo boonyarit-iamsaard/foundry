@@ -19,6 +19,7 @@ colors:
   foam-text: 'oklch(0.94 0.004 165)'
   foam-muted: 'oklch(0.76 0.003 90)'
   foam-rim: 'oklch(0.48 0.003 90)'
+  foam-field-edge: 'oklch(0.55 0.003 90)'
   foam-fault: 'oklch(0.7 0.17 30)'
 typography:
   display:
@@ -152,7 +153,7 @@ Density is moderate and structured: a 12-column board on desktop, slots of unequ
 **Key Characteristics:**
 
 - Every unit of content is a slot: painted outline, 6px gap, plate inside.
-- Position codes (B-00, C-01, R-01, L-01, P-nn, W-nn) on yellow stencil tape at each slot's top-left.
+- Position codes (B-00, C-nn, R-01, L-nn, P-nn, W-nn) on yellow stencil tape at each slot's top-left: C-01 is the home contact call and C-02 the contact form; L-01 is the home path story and L-02 the About body.
 - Project status is drawn as the outline's line type, never as colour.
 - Painted shadow is ink-black by day and safety yellow by night.
 - Condensed uppercase display (Big Shoulders) over a plain humanist body (Barlow).
@@ -177,7 +178,7 @@ A near-neutral industrial palette with one safety-yellow accent; neutrals lean f
 - **Rim Grey** (`rim-grey`) and **Field Edge** (`field-edge`): generic hairline borders and the 2px input stroke.
 - **Tape Ink** (`tape-ink`): text on yellow, in both modes.
 - **Tool Foam** (`foam`), **Foam Plate** (`foam-plate`), **Foam Recess** (`foam-recess`): night board, night plates, night muted fills.
-- **Foam Text** (`foam-text`), **Foam Muted** (`foam-muted`), **Foam Rim** (`foam-rim`): night text, secondary text and hairlines.
+- **Foam Text** (`foam-text`), **Foam Muted** (`foam-muted`), **Foam Rim** (`foam-rim`), **Foam Field Edge** (`foam-field-edge`): night text, secondary text, hairlines and the 2px input stroke.
 
 ### Status
 
@@ -251,7 +252,7 @@ The board's unit. An outline, a 6px gap, and a plate.
 - **Painted shadow:** fills the inside at 6px inset, 6px radius, with the stencil code bottom-right in `paint-ink`.
 - **Tape:** optional, 12px above the top edge and 16px from the left; a slot without a code is plain fixture.
 - **Plate:** enamel (`plate`), 6px radius, sits above the paint. Link slots lift (see Elevation); the whole plate is the hit area via the title link.
-- **Focus:** when a link inside is keyboard-focused, the slot shows a 2px ring 4px out.
+- **Focus:** when the slot's own title link (marked `data-slot-link`) is keyboard-focused, the slot shows a 2px ring 4px out and the plate lifts. Other links inside (tags, Live, Source) take the global focus ring on themselves.
 - **Empty slot:** outline and painted shadow with no plate, used on the 404 page ("Missing").
 
 ### Status Line

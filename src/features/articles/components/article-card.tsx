@@ -7,10 +7,9 @@ import { Slot } from '@/common/components/board/slot';
 import { Tag } from '@/common/components/tag';
 import { cn } from '@/common/helpers/cn';
 import { formatDate } from '@/common/helpers/date';
-import { slotCode } from '@/common/helpers/slot-code';
+import { articleCode } from '@/features/articles/code';
 
 import type { Article } from '@/velite';
-import { articles } from '@/velite';
 
 type ArticleCardProps = Readonly<{
   article: Article;
@@ -51,6 +50,7 @@ export function ArticleCard({
     >
       <Link
         href={article.permalink}
+        data-slot-link
         className="after:absolute after:inset-0 after:z-10 focus-visible:outline-none"
       >
         {article.title}
@@ -60,7 +60,7 @@ export function ArticleCard({
 
   return (
     <Slot
-      code={slotCode('W', articles, article.slug)}
+      code={articleCode(article.slug)}
       lift
       className={className}
       style={style}

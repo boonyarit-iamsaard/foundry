@@ -5,7 +5,7 @@ import { PageHeader } from '@/common/components/page-header';
 import type { SearchParams } from '@/common/definitions/search-params';
 import { filterByTags } from '@/common/helpers/tag';
 import { ProjectCard } from '@/features/projects/components/project-card';
-import { ProjectStatusKey } from '@/features/projects/status-line';
+import { ProjectStatusKey } from '@/features/projects/components/project-status-line';
 
 import { projects, tags } from '@/velite';
 
@@ -42,7 +42,7 @@ export default async function Page({ searchParams }: ProjectsPageProps) {
       <PageHeader title="Projects" description={description}>
         <div className="flex flex-wrap items-center gap-x-4 gap-y-2 pt-2">
           <span className="stamp text-muted-foreground text-xs">
-            Outline shows status
+            Outline shows project status
           </span>
           <ProjectStatusKey />
         </div>

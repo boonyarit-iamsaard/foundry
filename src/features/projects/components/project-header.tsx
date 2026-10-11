@@ -2,18 +2,16 @@ import { ArrowUpRightIcon } from 'lucide-react';
 
 import { Tag } from '@/common/components/tag';
 import { formatDate } from '@/common/helpers/date';
-import { slotCode } from '@/common/helpers/slot-code';
-import { ProjectStatusLine } from '@/features/projects/status-line';
+import { projectCode } from '@/features/projects/code';
+import { ProjectStatusLine } from '@/features/projects/components/project-status-line';
 
 import type { Project } from '@/velite';
-import { projects } from '@/velite';
 
 type ProjectHeaderProps = Readonly<{
   project: Project;
 }>;
 
-const linkClassName =
-  'stamp inline-flex items-center gap-1 text-xs underline decoration-2 decoration-tape underline-offset-[6px] hover:decoration-foreground';
+const linkClassName = 'stamp tape-link inline-flex items-center gap-1 text-xs';
 
 export function ProjectHeader({ project }: ProjectHeaderProps) {
   return (
@@ -22,7 +20,7 @@ export function ProjectHeader({ project }: ProjectHeaderProps) {
         {project.title}
       </h1>
       <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
-        <span className="tape">{slotCode('P', projects, project.slug)}</span>
+        <span className="tape">{projectCode(project.slug)}</span>
         <ProjectStatusLine status={project.status} />
         <p className="text-muted-foreground text-sm tabular-nums">
           Since {formatDate(project.date)}

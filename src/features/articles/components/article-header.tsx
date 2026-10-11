@@ -1,9 +1,8 @@
 import { Tag } from '@/common/components/tag';
 import { formatDate } from '@/common/helpers/date';
-import { slotCode } from '@/common/helpers/slot-code';
+import { articleCode } from '@/features/articles/code';
 
 import type { Article } from '@/velite';
-import { articles } from '@/velite';
 
 type ArticleHeaderProps = Readonly<{
   article: Article;
@@ -16,7 +15,7 @@ export function ArticleHeader({ article }: ArticleHeaderProps) {
         {article.title}
       </h1>
       <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-        <span className="tape">{slotCode('W', articles, article.slug)}</span>
+        <span className="tape">{articleCode(article.slug)}</span>
         <p className="flex flex-wrap gap-x-3 text-muted-foreground text-sm tabular-nums">
           <time dateTime={new Date(article.date).toISOString()}>
             {formatDate(article.date)}

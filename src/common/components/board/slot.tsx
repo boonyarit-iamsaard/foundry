@@ -24,7 +24,11 @@ type SlotProps = Readonly<
      */
     code?: string;
     line?: SlotLine;
-    /** Lift the plate off its painted shadow on hover and focus. */
+    /**
+     * Lift the plate off its painted shadow on hover and focus. Only for a
+     * slot that is one link: its title link carries `data-slot-link` and
+     * stretches over the whole plate.
+     */
     lift?: boolean;
     plateClassName?: string;
     children: ReactNode;
@@ -48,7 +52,7 @@ export function Slot({
     <div
       data-slot-code={code}
       className={cn(
-        'group/slot relative rounded-lg border-paint p-1.5 has-[a:focus-visible]:outline-2 has-[a:focus-visible]:outline-ring has-[a:focus-visible]:outline-offset-4',
+        'group/slot relative rounded-lg border-paint p-1.5 has-[[data-slot-link]:focus-visible]:outline-2 has-[[data-slot-link]:focus-visible]:outline-ring has-[[data-slot-link]:focus-visible]:outline-offset-4',
         lineClasses[line],
         className,
       )}
@@ -63,16 +67,14 @@ export function Slot({
         className="absolute inset-1.5 flex items-end justify-end rounded-md bg-paint p-2"
       >
         {code ? (
-          <span className="font-bold font-stencil text-paint-ink text-xs tracking-[0.12em]">
-            {code}
-          </span>
+          <span className="code-stencil text-paint-ink">{code}</span>
         ) : null}
       </div>
       <div
         className={cn(
           'relative z-10 h-full rounded-md bg-plate text-card-foreground',
           lift &&
-            'transition-[translate,box-shadow] duration-500 ease-lift group-focus-within/slot:shadow-(--lift-shadow) group-hover/slot:shadow-(--lift-shadow) motion-safe:group-hover/slot:-translate-x-1 motion-safe:group-hover/slot:-translate-y-2 motion-safe:group-focus-within/slot:-translate-x-1 motion-safe:group-focus-within/slot:-translate-y-2',
+            'transition-[translate,box-shadow] duration-500 ease-lift group-hover/slot:shadow-(--lift-shadow) group-has-[[data-slot-link]:focus-visible]/slot:shadow-(--lift-shadow) motion-safe:group-has-[[data-slot-link]:focus-visible]/slot:-translate-x-1 motion-safe:group-has-[[data-slot-link]:focus-visible]/slot:-translate-y-2 motion-safe:group-hover/slot:-translate-x-1 motion-safe:group-hover/slot:-translate-y-2',
           plateClassName,
         )}
       >

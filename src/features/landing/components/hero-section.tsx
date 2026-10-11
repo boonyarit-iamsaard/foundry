@@ -27,7 +27,10 @@ export function HeroSection() {
   const latestArticles = listedArticles(articles)
     .toSorted(byNewest)
     .slice(0, 2);
-  const slotCount = 3 + (latestProject ? 1 : 0) + latestArticles.length;
+  // B-00, C-01 and R-01 always hang; the work slots depend on the content.
+  const fixtureSlots = 3;
+  const slotCount =
+    fixtureSlots + (latestProject ? 1 : 0) + latestArticles.length;
 
   return (
     <section aria-labelledby="board-heading" className="pegboard">
@@ -61,7 +64,6 @@ export function HeroSection() {
         <div className="grid gap-y-8 sm:col-span-2 sm:grid-cols-2 sm:gap-x-6 lg:col-span-4 lg:grid-cols-1">
           <Slot
             code="C-01"
-            lift
             plateClassName="settle flex h-full flex-col gap-4 p-5"
             style={settleOrder(1)}
           >
@@ -85,7 +87,6 @@ export function HeroSection() {
           </Slot>
           <Slot
             code="R-01"
-            lift
             plateClassName="settle flex h-full flex-col gap-4 p-5"
             style={settleOrder(2)}
           >
@@ -130,16 +131,10 @@ export function HeroSection() {
             Board check: {slotCount} of {slotCount} slots filled
           </p>
           <div className="flex gap-6">
-            <Link
-              href="/projects"
-              className="stamp text-xs underline decoration-2 decoration-tape underline-offset-[6px] hover:decoration-foreground"
-            >
+            <Link href="/projects" className="stamp tape-link text-xs">
               All projects
             </Link>
-            <Link
-              href="/articles"
-              className="stamp text-xs underline decoration-2 decoration-tape underline-offset-[6px] hover:decoration-foreground"
-            >
+            <Link href="/articles" className="stamp tape-link text-xs">
               All articles
             </Link>
           </div>

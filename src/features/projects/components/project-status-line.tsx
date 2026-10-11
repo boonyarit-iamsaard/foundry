@@ -43,7 +43,7 @@ export function ProjectStatusLine({
             x2="24"
             y2="1.5"
             strokeWidth="2.5"
-            strokeDasharray="8 3 2 3"
+            strokeDasharray="12 4 2.5 4"
             className="stroke-paint"
           />
         </svg>
@@ -58,7 +58,7 @@ export function ProjectStatusLine({
   );
 }
 
-const statuses: Project['status'][] = [
+const projectStatuses: Project['status'][] = [
   'active',
   'stable',
   'experimental',
@@ -72,8 +72,8 @@ export function ProjectStatusKey({
     <dl
       className={cn('flex flex-wrap items-center gap-x-6 gap-y-2', className)}
     >
-      <dt className="sr-only">Outline key</dt>
-      {statuses.map((status) => (
+      <dt className="sr-only">Project status outline key</dt>
+      {projectStatuses.map((status) => (
         <dd key={status}>
           <ProjectStatusLine status={status} />
         </dd>

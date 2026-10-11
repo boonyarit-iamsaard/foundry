@@ -9,14 +9,13 @@ import { Slot } from '@/common/components/board/slot';
 import { Tag } from '@/common/components/tag';
 import { cn } from '@/common/helpers/cn';
 import { formatDate } from '@/common/helpers/date';
-import { slotCode } from '@/common/helpers/slot-code';
+import { projectCode } from '@/features/projects/code';
 import {
   ProjectStatusLine,
   projectStatusLine,
-} from '@/features/projects/status-line';
+} from '@/features/projects/components/project-status-line';
 
 import type { Project } from '@/velite';
-import { projects } from '@/velite';
 
 type ProjectCardProps = Readonly<{
   project: Project;
@@ -38,7 +37,7 @@ export function ProjectCard({
 }: ProjectCardProps) {
   return (
     <Slot
-      code={slotCode('P', projects, project.slug)}
+      code={projectCode(project.slug)}
       line={projectStatusLine[project.status]}
       lift
       className={className}
@@ -78,6 +77,7 @@ export function ProjectCard({
         <h3 className="font-bold font-display text-3xl uppercase leading-[0.95] tracking-[0.01em]">
           <Link
             href={project.permalink}
+            data-slot-link
             className="after:absolute after:inset-0 after:z-10 focus-visible:outline-none"
           >
             {project.title}
@@ -101,7 +101,7 @@ export function ProjectCard({
                 href={project.preview}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="stamp relative z-20 inline-flex items-center gap-1 text-xs underline decoration-2 decoration-tape underline-offset-[6px]"
+                className="stamp tape-link relative z-20 inline-flex items-center gap-1 text-xs"
               >
                 Live
                 <ArrowUpRightIcon className="size-3.5" aria-hidden="true" />
@@ -112,7 +112,7 @@ export function ProjectCard({
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="stamp relative z-20 inline-flex items-center gap-1 text-xs underline decoration-2 decoration-tape underline-offset-[6px]"
+                className="stamp tape-link relative z-20 inline-flex items-center gap-1 text-xs"
               >
                 Source
                 <ArrowUpRightIcon className="size-3.5" aria-hidden="true" />

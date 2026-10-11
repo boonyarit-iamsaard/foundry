@@ -5,7 +5,7 @@ import { notFound } from 'next/navigation';
 import { appConfig } from '@/core/configs/app.config';
 import { DetailBody } from '@/common/components/detail-body';
 import { MDX } from '@/common/components/mdx';
-import { slotCode } from '@/common/helpers/slot-code';
+import { articleCode } from '@/features/articles/code';
 import { ArticleHeader } from '@/features/articles/components/article-header';
 
 import { articles } from '@/velite';
@@ -78,10 +78,7 @@ export default async function Page({ params }: PageProps) {
   return (
     <article className="container-content pb-24">
       <ArticleHeader article={article} />
-      <DetailBody
-        code={slotCode('W', articles, article.slug)}
-        cover={article.cover}
-      >
+      <DetailBody code={articleCode(article.slug)} cover={article.cover}>
         <MDX content={article.content} />
       </DetailBody>
     </article>

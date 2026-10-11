@@ -17,7 +17,7 @@ Constraints: keep the contact form, resume download, light and dark themes, and 
 
 THESIS: The site is a tool-control shadow board. Every piece of work hangs in its own painted outline, so a visitor sees at a glance that everything is accounted for. It refuses the centered-avatar hero over a row of equal cards.
 
-OWN-WORLD: Day mode is a cool grey powder-coated board with a faint pegboard perforation; night mode is charcoal tool foam. Items are enamel plates set inside a painted shadow rim: ink-black by day, safety yellow by night (the foam under-layer). Yellow label tape carries stencil position codes (P-01, W-01). Big Shoulders sets display, Big Shoulders Stencil sets codes only, and Barlow sets body. A slot's outline line type encodes project status: solid is Stable, dashed is Experimental, heavy is Active, dash-dot (an SVG chain line) is Maintenance. Tape carries position codes only (B-00, C-01, R-01, L-01, P-nn, W-nn); words never go on tape.
+OWN-WORLD: Day mode is a cool grey powder-coated board with a faint pegboard perforation; night mode is charcoal tool foam. Items are enamel plates set inside a painted shadow rim: ink-black by day, safety yellow by night (the foam under-layer). Yellow label tape carries stencil position codes (P-01, W-01). Big Shoulders sets display, Big Shoulders Stencil sets codes only, and Barlow sets body. A slot's outline line type encodes project status: solid is Stable, dashed is Experimental, heavy is Active, dash-dot (an SVG chain line) is Maintenance. Tape carries position codes only (B-00, C-nn, R-01, L-nn, P-nn, W-nn); words never go on tape.
 
 STORY: The visitor sees an engineer whose work is organized and complete. They read the path from aircraft mechanic to software engineer, then download the resume (hiring) or send a message or project inquiry (clients).
 
@@ -25,10 +25,10 @@ FIRST VIEWPORT: A header rail styled as the board's placard, carrying a 32px ava
 
 SIGNATURE INTERACTION: On hover or focus, an item lifts off its board and reveals the painted shadow and stencil code beneath. On the 404 page the outline remains with its item missing.
 
-FORM: The Shadow Board, #1 of my seven grounded candidates (taken as the pick), seed d2eca18d.
+FORM: The Shadow Board.
 
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
 
 ## Amendments
 
-- Portrait removed from the home board and the About page at the user's request during the build: "one thing I want in this redesigning, lower priority of my face ha ha", then "much lower I mean", then "may in avatar on the header if appropriate". The face appears only as the header avatar.
+- Portrait removed from the home board and the About page at the owner's request during the build. The face appears only as the header avatar.

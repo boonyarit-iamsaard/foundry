@@ -7,7 +7,7 @@ import { cva } from 'class-variance-authority';
 import { cn } from '@/common/helpers/cn';
 
 const buttonVariants = cva(
-  "inline-flex shrink-0 cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-sm font-bold font-display text-[0.9375rem] uppercase tracking-[0.08em] outline-none transition-[background-color,color,translate] duration-200 ease-lift disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+  "inline-flex shrink-0 cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-sm font-bold font-display text-[0.9375rem] uppercase tracking-[0.08em] transition-[background-color,color,translate] duration-200 ease-lift disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
   {
     variants: {
       variant: {
@@ -21,7 +21,7 @@ const buttonVariants = cva(
           'bg-secondary text-secondary-foreground hover:bg-secondary/70',
         tape: 'bg-tape text-tape-ink hover:bg-tape/85 active:translate-y-px',
         ghost: 'hover:bg-foreground/8',
-        link: 'h-auto px-0 text-foreground underline decoration-2 decoration-tape underline-offset-[6px] hover:decoration-foreground',
+        link: 'tape-link h-auto px-0 text-foreground',
       },
       size: {
         default: 'h-10 px-4 has-[>svg]:px-3.5',

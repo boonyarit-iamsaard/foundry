@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 
 import { DetailBody } from '@/common/components/detail-body';
 import { MDX } from '@/common/components/mdx';
-import { slotCode } from '@/common/helpers/slot-code';
+import { projectCode } from '@/features/projects/code';
 import { ProjectHeader } from '@/features/projects/components/project-header';
 
 import { projects } from '@/velite';
@@ -68,10 +68,7 @@ export default async function Page({ params }: PageProps) {
   return (
     <article className="container-content pb-24">
       <ProjectHeader project={project} />
-      <DetailBody
-        code={slotCode('P', projects, project.slug)}
-        cover={project.cover}
-      >
+      <DetailBody code={projectCode(project.slug)} cover={project.cover}>
         <MDX content={project.content} />
       </DetailBody>
     </article>

@@ -259,6 +259,21 @@
           "oklch(0.95 0.003 90)"
         ]
       },
+      "foam-field-edge": {
+        "role": "neutral",
+        "displayName": "Foam Field Edge",
+        "canonical": "oklch(0.55 0.003 90)",
+        "tonalRamp": [
+          "oklch(0.15 0.003 90)",
+          "oklch(0.26 0.003 90)",
+          "oklch(0.37 0.003 90)",
+          "oklch(0.48 0.003 90)",
+          "oklch(0.6 0.003 90)",
+          "oklch(0.72 0.003 90)",
+          "oklch(0.84 0.003 90)",
+          "oklch(0.95 0.003 90)"
+        ]
+      },
       "foam-fault": {
         "role": "status",
         "displayName": "Night Fault Red",
@@ -439,7 +454,7 @@
     "overview": "The site is a hangar tool-control board. Every piece of work (a project, an article, the contact form, the resume) hangs as an enamel plate inside its own painted outline, labelled with a yellow tape strip carrying a stencilled position code. A visitor reads the board the way a mechanic reads a tool board at shift change: everything has a place, and every place is accounted for. The home board closes with an inventory line (\"Board check: 6 of 6 slots filled\") that makes the claim literal.\n\nDay and night are two materials, not one palette inverted. Day is a cool grey powder-coated board with a faint perforation, plates in near-white enamel, outlines painted ink-black. Night is charcoal tool foam: no perforation, plates in a lighter charcoal, and the painted outlines turn safety yellow, as if the foam's under-layer shows through the cut-outs. Yellow label tape is the only chromatic accent in both.\n\nDensity is moderate and structured: a 12-column board on desktop, slots of unequal size, generous section breaks. Type is condensed, uppercase, and industrial for display and labels; body copy stays in a plain, readable sans in the owner's first-person voice. Motion is limited to two authored behaviours: plates settle into their outlines on arrival, and linked plates lift off their painted shadow on hover or focus.",
     "keyCharacteristics": [
       "Every unit of content is a slot: painted outline, 6px gap, plate inside.",
-      "Position codes (B-00, C-01, R-01, L-01, P-nn, W-nn) on yellow stencil tape at each slot's top-left.",
+      "Position codes (B-00, C-nn, R-01, L-nn, P-nn, W-nn) on yellow stencil tape at each slot's top-left.",
       "Project status is drawn as the outline's line type, never as colour.",
       "Painted shadow is ink-black by day and safety yellow by night.",
       "Condensed uppercase display (Big Shoulders) over a plain humanist body (Barlow).",
