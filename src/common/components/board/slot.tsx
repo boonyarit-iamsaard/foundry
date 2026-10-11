@@ -90,7 +90,7 @@ function DashDotOutline() {
   return (
     <svg
       aria-hidden="true"
-      className="pointer-events-none absolute -top-[1.25px] -left-[1.25px] h-[calc(100%+2.5px)] w-[calc(100%+2.5px)] overflow-visible"
+      className="pointer-events-none absolute top-[-1.25px] left-[-1.25px] h-[calc(100%+2.5px)] w-[calc(100%+2.5px)] overflow-visible"
     >
       <rect
         width="100%"
