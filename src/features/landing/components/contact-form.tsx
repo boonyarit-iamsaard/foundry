@@ -34,7 +34,7 @@ export function ContactForm() {
 
   if (sentTo) {
     return (
-      <div role="status" className="flex min-h-80 flex-col items-start gap-5">
+      <div className="flex min-h-80 flex-col items-start gap-5">
         <CheckIcon className="size-8" aria-hidden="true" />
         <div className="space-y-3">
           <h3
@@ -44,10 +44,10 @@ export function ContactForm() {
           >
             Message sent
           </h3>
-          <p className="max-w-[44ch] text-lg">
+          <output className="block max-w-[44ch] text-lg">
             It&apos;s in my inbox. I&apos;ll reply to{' '}
             <span className="font-semibold">{sentTo}</span>.
-          </p>
+          </output>
         </div>
         <Button variant="outline" className="mt-auto" onClick={startOver}>
           Send another
