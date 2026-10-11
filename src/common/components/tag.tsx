@@ -22,7 +22,7 @@ export function Tag({ tag, resource, activeTags = [] }: TagProps) {
     <Link
       href={href}
       scroll={false}
-      aria-pressed={isActive}
+      aria-current={isActive ? 'true' : undefined}
       className={cn(
         'stamp relative z-20 inline-flex h-7 items-center rounded-[2px] border-[1.5px] px-2 text-xs transition-colors duration-200 pointer-coarse:after:absolute pointer-coarse:after:inset-x-0 pointer-coarse:after:-inset-y-2',
         isActive
