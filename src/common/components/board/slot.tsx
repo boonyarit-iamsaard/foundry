@@ -62,9 +62,10 @@ export function Slot({
       {code ? (
         <span className="tape absolute -top-3 left-4 z-20">{code}</span>
       ) : null}
+      {/* The code sits 2px off the bottom so the plate's 20px lift uncovers it. */}
       <div
         aria-hidden="true"
-        className="absolute inset-1.5 flex items-end justify-end rounded-md bg-paint p-2"
+        className="absolute inset-1.5 flex items-end justify-end rounded-md bg-paint px-2 pb-0.5"
       >
         {code ? (
           <span className="code-stencil text-paint-ink">{code}</span>
@@ -74,7 +75,7 @@ export function Slot({
         className={cn(
           'relative z-10 h-full rounded-md bg-plate text-card-foreground',
           lift &&
-            'transition-[translate,box-shadow] duration-500 ease-lift group-hover/slot:shadow-(--lift-shadow) group-has-[[data-slot-link]:focus-visible]/slot:shadow-(--lift-shadow) motion-safe:group-has-[[data-slot-link]:focus-visible]/slot:-translate-x-1 motion-safe:group-has-[[data-slot-link]:focus-visible]/slot:-translate-y-2 motion-safe:group-hover/slot:-translate-x-1 motion-safe:group-hover/slot:-translate-y-2',
+            'transition-[translate,box-shadow] duration-500 ease-lift group-hover/slot:shadow-(--lift-shadow) group-has-[[data-slot-link]:focus-visible]/slot:shadow-(--lift-shadow) motion-safe:group-has-[[data-slot-link]:focus-visible]/slot:-translate-x-1 motion-safe:group-has-[[data-slot-link]:focus-visible]/slot:-translate-y-5 motion-safe:group-hover/slot:-translate-x-1 motion-safe:group-hover/slot:-translate-y-5',
           plateClassName,
         )}
       >
@@ -89,7 +90,7 @@ function DashDotOutline() {
   return (
     <svg
       aria-hidden="true"
-      className="pointer-events-none absolute -top-[1.25px] -left-[1.25px] h-[calc(100%+2.5px)] w-[calc(100%+2.5px)] overflow-visible"
+      className="pointer-events-none absolute top-[-1.25px] left-[-1.25px] h-[calc(100%+2.5px)] w-[calc(100%+2.5px)] overflow-visible"
     >
       <rect
         width="100%"

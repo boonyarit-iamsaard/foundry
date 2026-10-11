@@ -1,0 +1,4 @@
+{
+  "prompt": "Origin: screenshot of the site running locally under next dev (Chromium via Playwright), converted from PNG to WebP with sharp; content not altered apart from hiding the Next.js dev indicator. Day theme (prefers-color-scheme: light): the W-02 article slot on the home page with the pointer hovering it, so the plate is lifted 4px left and 20px up and the stencil code on the painted shadow shows beneath it. Cropped with 40px of board around the slot, at 2x device scale. Captured with the lift from commit 1b31e43.",
+  "createdAt": "2026-10-11T12:59:04.470Z"
+}

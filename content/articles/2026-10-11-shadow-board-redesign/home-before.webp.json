@@ -1,0 +1,4 @@
+{
+  "prompt": "Origin: screenshot of the site running locally under next dev (Chromium via Playwright), converted from PNG to WebP with sharp; content not altered apart from hiding the Next.js dev indicator. Before state (commit 8afb6ab), day theme (prefers-color-scheme: light): the top 1440x900 of a full-page capture of the home page at 1440px wide, which is the first viewport.",
+  "createdAt": "2026-10-11T12:54:35.050Z"
+}

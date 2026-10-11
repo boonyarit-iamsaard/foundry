@@ -247,7 +247,7 @@ Flat at rest. Depth comes from the slot construction itself: a plate sits over a
 
 ### Shadow Vocabulary
 
-- **Lift** (day `0 14px 24px -10px oklch(0.2 0.01 250 / 0.35), 0 3px 6px -2px oklch(0.2 0.01 250 / 0.2)`; night `0 16px 28px -10px oklch(0 0 0 / 0.6), 0 3px 6px -2px oklch(0 0 0 / 0.4)`): a linked plate on hover or focus, translated 4px left and 8px up over 500ms, revealing the painted shadow and its stencil code beneath; and the first frame of the arrival settle.
+- **Lift** (day `0 14px 24px -10px oklch(0.2 0.01 250 / 0.35), 0 3px 6px -2px oklch(0.2 0.01 250 / 0.2)`; night `0 16px 28px -10px oklch(0 0 0 / 0.6), 0 3px 6px -2px oklch(0 0 0 / 0.4)`): a linked plate on hover or focus, translated 4px left and 20px up over 500ms, far enough to uncover the stencil code beneath. The arrival settle starts from the same shadow but a shorter rise (4px left, 10px up).
 
 ### Named Rules
 
@@ -268,7 +268,7 @@ Borders are painted, not hairline: 2px is the standard stroke for outlines, sect
 The board's unit. An outline, a 6px gap, and a plate.
 
 - **Outline:** 8px radius, painted (`paint`). Line type: solid 2px (default, Stable), dashed 2px (Experimental), heavy 3.5px (Active), chain line 2.5px drawn as an SVG long-dash-dot `12 4 2.5 4` (Maintenance).
-- **Painted shadow:** fills the inside at 6px inset, 6px radius, with the stencil code bottom-right in `paint-ink`.
+- **Painted shadow:** fills the inside at 6px inset, 6px radius, with the stencil code bottom-right in `paint-ink`, 2px off the bottom so a lifted plate uncovers it.
 - **Tape:** optional, 12px above the top edge and 16px from the left; a slot without a code is plain fixture.
 - **Plate:** enamel (`plate`), 6px radius, sits above the paint. Link slots lift (see Elevation); the whole plate is the hit area via the title link.
 - **Focus:** when the slot's own title link (marked `data-slot-link`) is keyboard-focused, the slot shows a 2px ring 4px out and the plate lifts. Other links inside (tags, Live, Source) take the global focus ring on themselves.
