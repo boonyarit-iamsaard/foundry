@@ -50,3 +50,7 @@ public/static
 
 # SonarQube
 /.sonar-reports/
+
+# impeccable session artifacts
+/.impeccable/questions/
+/.impeccable/review/
