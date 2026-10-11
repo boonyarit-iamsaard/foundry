@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
@@ -75,18 +75,18 @@ export function AppHeader() {
     }, 50);
   }, []);
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: pathname closes the drawer on route change
+  // Close the drawer only when the route actually changes. Reacting to the
+  // drawer's own open state here would close it the moment it opens.
+  const previousPathnameRef = useRef(pathname);
+
   useEffect(() => {
-    if (!isDrawerOpen && !shouldRenderDrawer) {
+    if (previousPathnameRef.current === pathname) {
       return;
     }
 
-    const closeDrawerTimeout = window.setTimeout(() => {
-      handleDrawerOpenChange(false);
-    }, 0);
-
-    return () => window.clearTimeout(closeDrawerTimeout);
-  }, [handleDrawerOpenChange, isDrawerOpen, pathname, shouldRenderDrawer]);
+    previousPathnameRef.current = pathname;
+    handleDrawerOpenChange(false);
+  }, [handleDrawerOpenChange, pathname]);
 
   useEffect(() => {
     const threshold = 16;
