@@ -16,6 +16,8 @@ if (!process.env.VELITE_STARTED && isDev) {
 }
 
 const nextConfig: NextConfig = {
+  // AGENTS.md is hand-written; stop `next dev` from managing a block in it.
+  agentRules: false,
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
 };
 
