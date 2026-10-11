@@ -23,6 +23,12 @@ const keywords = Array.from(
 
 const description = 'Things I have built, and where each one is in its life.';
 
+// The status key and tag filter earn their place once there is more than one
+// thing to tell apart.
+const hasSeveralStatuses =
+  new Set(projects.map((project) => project.status)).size > 1;
+const hasSeveralProjects = projects.length > 1;
+
 export const metadata: Metadata = {
   title: 'Projects',
   description,
@@ -40,28 +46,33 @@ export default async function Page({ searchParams }: ProjectsPageProps) {
   return (
     <div>
       <PageHeader title="Projects" description={description}>
-        <div className="flex flex-wrap items-center gap-x-4 gap-y-2 pt-2">
-          <span className="stamp text-muted-foreground text-xs">
-            Outline shows project status
-          </span>
-          <ProjectStatusKey />
-        </div>
+        {hasSeveralStatuses ? (
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 pt-2">
+            <span className="stamp text-muted-foreground text-xs">
+              Outline shows project status
+            </span>
+            <ProjectStatusKey />
+          </div>
+        ) : null}
       </PageHeader>
       <section
         aria-label="Projects"
         className="pegboard border-paint border-t-2"
       >
         <div className="container space-y-10 pt-10 pb-20">
-          <FilterByTags
-            resourceTags={resourceTags}
-            activeTags={activeTags}
-            resource="projects"
-          />
+          {hasSeveralProjects ? (
+            <FilterByTags
+              resourceTags={resourceTags}
+              activeTags={activeTags}
+              resource="projects"
+            />
+          ) : null}
           <div className="grid gap-x-6 gap-y-10 md:grid-cols-2">
-            {filteredResource.map((project) => (
+            {filteredResource.map((project, index) => (
               <ProjectCard
                 key={project.slug}
                 project={project}
+                eager={index === 0}
                 activeTags={activeTags}
                 wide={filteredResource.length === 1}
                 className={

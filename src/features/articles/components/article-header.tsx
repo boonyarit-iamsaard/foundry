@@ -1,6 +1,5 @@
 import { Tag } from '@/common/components/tag';
 import { formatDate } from '@/common/helpers/date';
-import { articleCode } from '@/features/articles/code';
 
 import type { Article } from '@/velite';
 
@@ -14,18 +13,13 @@ export function ArticleHeader({ article }: ArticleHeaderProps) {
       <h1 className="font-display font-extrabold text-[clamp(2.5rem,5.6vw,4.75rem)] uppercase leading-[0.9]">
         {article.title}
       </h1>
-      <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-        <span className="tape">{articleCode(article.slug)}</span>
-        <p className="flex flex-wrap gap-x-3 text-muted-foreground text-sm tabular-nums">
-          <time dateTime={new Date(article.date).toISOString()}>
-            {formatDate(article.date)}
-          </time>
-          <span>{article.metadata.readingTime} min read</span>
-          <span>
-            {article.metadata.wordCount.toLocaleString('en-US')} words
-          </span>
-        </p>
-      </div>
+      <p className="flex flex-wrap gap-x-3 text-muted-foreground text-sm tabular-nums">
+        <time dateTime={new Date(article.date).toISOString()}>
+          {formatDate(article.date)}
+        </time>
+        <span>{article.metadata.readingTime} min read</span>
+        <span>{article.metadata.wordCount.toLocaleString('en-US')} words</span>
+      </p>
       <p className="text-lg text-muted-foreground sm:text-xl">
         {article.description}
       </p>

@@ -16,6 +16,8 @@ type ArticleCardProps = Readonly<{
   activeTags?: string[];
   /** Drop the cover and tags for a tight slot on the home board. */
   compact?: boolean;
+  /** Load the cover straight away: it is the largest image above the fold. */
+  eager?: boolean;
   className?: string;
   plateClassName?: string;
   style?: CSSProperties;
@@ -25,6 +27,7 @@ export function ArticleCard({
   article,
   activeTags,
   compact = false,
+  eager = false,
   className,
   plateClassName,
   style,
@@ -79,6 +82,7 @@ export function ArticleCard({
             sizes="(max-width: 640px) 100vw, 30vw"
             className="object-cover"
             quality={85}
+            loading={eager ? 'eager' : 'lazy'}
           />
         </div>
       )}

@@ -1,3 +1,6 @@
+import Link from 'next/link';
+
+import { appConfig } from '@/core/configs/app.config';
 import { SocialLinks } from '@/common/components/social-links';
 
 export function AppFooter() {
@@ -13,7 +16,21 @@ export function AppFooter() {
             Thailand
           </p>
         </div>
-        <SocialLinks />
+        <div className="flex flex-col gap-4 md:items-end">
+          <ul className="flex flex-wrap items-center gap-x-5 gap-y-2">
+            <li>
+              <Link href="/#contact" className="stamp tape-link">
+                Write to me
+              </Link>
+            </li>
+            <li>
+              <a href={appConfig.resume} download className="stamp tape-link">
+                Download resume
+              </a>
+            </li>
+          </ul>
+          <SocialLinks />
+        </div>
       </div>
     </footer>
   );

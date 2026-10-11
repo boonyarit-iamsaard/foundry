@@ -51,6 +51,7 @@
   --color-paint-ink: var(--paint-ink);
   --color-tape: var(--tape);
   --color-tape-ink: var(--tape-ink);
+  --color-tape-edge: var(--tape-edge);
 
   --font-sans: var(--font-sans), "Barlow", ui-sans-serif, system-ui, sans-serif;
   --font-display:
@@ -80,6 +81,12 @@
   --paint-ink: oklch(0.872 0.005 165);
   --tape: oklch(0.86 0.17 92);
   --tape-ink: oklch(0.2 0.01 250);
+  /* By day yellow and grey board share a lightness, so tape used as a state
+     marker gets an ink edge. At night the foam is dark enough on its own. */
+  --tape-edge: var(--paint);
+  /* Link underlines are drawn in paint: ink by day, yellow by night. */
+  --link-line: var(--paint);
+  --link-line-hover: var(--tape);
 
   --background: var(--board);
   --foreground: oklch(0.21 0.008 250);
@@ -106,6 +113,19 @@
     0 14px 24px -10px oklch(0.2 0.01 250 / 0.35),
     0 3px 6px -2px oklch(0.2 0.01 250 / 0.2);
 
+  /* Code on the reading plate: the board's own neutrals, no second hue. */
+  --shiki-foreground: var(--foreground);
+  --shiki-background: var(--muted);
+  --shiki-token-keyword: var(--paint);
+  --shiki-token-constant: oklch(0.36 0.05 250);
+  --shiki-token-string: oklch(0.4 0.05 165);
+  --shiki-token-string-expression: oklch(0.4 0.05 165);
+  --shiki-token-comment: oklch(0.46 0.008 250);
+  --shiki-token-function: var(--foreground);
+  --shiki-token-parameter: oklch(0.36 0.02 250);
+  --shiki-token-punctuation: oklch(0.45 0.008 250);
+  --shiki-token-link: var(--foreground);
+
   color-scheme: light;
 }
 
@@ -117,6 +137,8 @@
   --paint-ink: oklch(0.2 0.01 250);
   --tape: oklch(0.86 0.17 92);
   --tape-ink: oklch(0.2 0.01 250);
+  --tape-edge: var(--tape);
+  --link-line-hover: var(--foreground);
 
   --foreground: oklch(0.94 0.004 165);
   --primary: oklch(0.86 0.17 92);
@@ -128,11 +150,18 @@
   --destructive: oklch(0.7 0.17 30);
   --destructive-foreground: oklch(0.2 0.01 250);
   --border: oklch(0.48 0.003 90);
-  --input: oklch(0.55 0.003 90);
+  --input: oklch(0.62 0.003 90);
   --ring: oklch(0.86 0.17 92);
 
   --lift-shadow:
     0 16px 28px -10px oklch(0 0 0 / 0.6), 0 3px 6px -2px oklch(0 0 0 / 0.4);
+
+  --shiki-token-constant: oklch(0.85 0.04 250);
+  --shiki-token-string: oklch(0.84 0.05 165);
+  --shiki-token-string-expression: oklch(0.84 0.05 165);
+  --shiki-token-comment: oklch(0.68 0.004 90);
+  --shiki-token-parameter: oklch(0.86 0.01 250);
+  --shiki-token-punctuation: oklch(0.72 0.004 90);
 
   color-scheme: dark;
 }
@@ -221,16 +250,16 @@
   border-radius: 1px;
 }
 
-/* An inline link: a yellow tape underline that turns ink on hover. */
+/* An inline link: a painted underline (ink by day, yellow by night). */
 @utility tape-link {
   text-decoration-line: underline;
   text-decoration-thickness: 2px;
-  text-decoration-color: var(--tape);
+  text-decoration-color: var(--link-line);
   text-underline-offset: 6px;
   transition: text-decoration-color 200ms;
 
   @variant hover {
-    text-decoration-color: var(--foreground);
+    text-decoration-color: var(--link-line-hover);
   }
 }
 

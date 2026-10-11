@@ -1,6 +1,8 @@
 'use client';
 
-import { SendIcon } from 'lucide-react';
+import { useEffect, useRef } from 'react';
+
+import { CheckIcon, SendIcon } from 'lucide-react';
 
 import { Button } from '@/common/components/ui/button';
 import {
@@ -19,7 +21,40 @@ import { useContactForm } from '../hooks/use-contact-form';
 const labelClassName = 'stamp text-foreground text-xs';
 
 export function ContactForm() {
-  const { form, handleSubmitWithAction, isSending } = useContactForm();
+  const { form, handleSubmitWithAction, isSending, sentTo, startOver } =
+    useContactForm();
+  const confirmationRef = useRef<HTMLHeadingElement>(null);
+
+  // The form is replaced by the confirmation, so move focus with it.
+  useEffect(() => {
+    if (sentTo) {
+      confirmationRef.current?.focus();
+    }
+  }, [sentTo]);
+
+  if (sentTo) {
+    return (
+      <div role="status" className="flex min-h-80 flex-col items-start gap-5">
+        <CheckIcon className="size-8" aria-hidden="true" />
+        <div className="space-y-3">
+          <h3
+            ref={confirmationRef}
+            tabIndex={-1}
+            className="font-bold font-display text-[1.875rem] uppercase leading-[0.95] focus:outline-none"
+          >
+            Message sent
+          </h3>
+          <p className="max-w-[44ch] text-lg">
+            It&apos;s in my inbox. I&apos;ll reply to{' '}
+            <span className="font-semibold">{sentTo}</span>.
+          </p>
+        </div>
+        <Button variant="outline" className="mt-auto" onClick={startOver}>
+          Send another
+        </Button>
+      </div>
+    );
+  }
 
   return (
     <Form {...form}>

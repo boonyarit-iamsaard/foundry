@@ -3,11 +3,12 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 
-import { MenuIcon } from 'lucide-react';
+import { ArrowRightIcon, DownloadIcon, MenuIcon } from 'lucide-react';
 
 import profile from '@/core/assets/images/profile.webp';
+import { appConfig } from '@/core/configs/app.config';
 import { Button } from '@/common/components/ui/button';
 import {
   Drawer,
@@ -58,7 +59,6 @@ export function AppHeader() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [shouldRenderDrawer, setShouldRenderDrawer] = useState(false);
-  const router = useRouter();
   const pathname = usePathname();
 
   const handleDrawerOpenChange = useCallback((open: boolean) => {
@@ -158,10 +158,10 @@ export function AppHeader() {
                       href={item.href}
                       aria-current={current ? 'page' : undefined}
                       className={cn(
-                        'stamp inline-flex h-9 items-center rounded-sm px-3 transition-colors duration-200',
+                        'stamp inline-flex h-9 items-center rounded-sm border-2 px-3 transition-colors duration-200',
                         current
-                          ? 'bg-tape text-tape-ink'
-                          : 'text-foreground hover:bg-foreground/8',
+                          ? 'border-tape-edge bg-tape text-tape-ink'
+                          : 'border-transparent text-foreground hover:bg-foreground/8',
                       )}
                     >
                       {item.label}
@@ -190,14 +190,13 @@ export function AppHeader() {
             {shouldRenderDrawer ? (
               <DrawerContent className="pegboard flex flex-col border-paint border-r-2 shadow-none">
                 <DrawerHeader className="bg-board">
-                  <DrawerTitle
-                    className="text-left font-display font-extrabold text-xl uppercase tracking-[0.03em]"
-                    onClick={() => {
-                      handleDrawerOpenChange(false);
-                      router.push('/');
-                    }}
-                  >
-                    Boonyarit Iamsa-ard
+                  <DrawerTitle className="text-left font-display font-extrabold text-xl uppercase tracking-[0.03em]">
+                    <Link
+                      href="/"
+                      onClick={() => handleDrawerOpenChange(false)}
+                    >
+                      Boonyarit Iamsa-ard
+                    </Link>
                   </DrawerTitle>
                   <DrawerDescription className="sr-only">
                     Navigate to different sections of the website.
@@ -225,6 +224,28 @@ export function AppHeader() {
                       </Link>
                     );
                   })}
+                  <div className="mt-auto grid gap-3 pt-6">
+                    <Button asChild variant="tape" size="lg">
+                      <Link
+                        href="/#contact"
+                        onClick={() => handleDrawerOpenChange(false)}
+                      >
+                        Write to me
+                        <ArrowRightIcon aria-hidden="true" />
+                      </Link>
+                    </Button>
+                    <Button
+                      asChild
+                      variant="outline"
+                      size="lg"
+                      className="bg-plate"
+                    >
+                      <a href={appConfig.resume} download>
+                        <DownloadIcon aria-hidden="true" />
+                        Download resume
+                      </a>
+                    </Button>
+                  </div>
                 </nav>
                 <div className="flex items-center justify-between border-paint border-t-2 bg-board p-4">
                   <span className="stamp text-muted-foreground text-xs">

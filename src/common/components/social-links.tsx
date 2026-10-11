@@ -19,7 +19,7 @@ const socialLinks: SocialLink[] = [
     icon: 'gitHub',
   },
   {
-    href: 'https://linkedin.com/in/boonyarit-iamsaard',
+    href: 'https://www.linkedin.com/in/boonyarit-iamsaard/',
     label: 'LinkedIn',
     icon: 'linkedIn',
   },
@@ -47,7 +47,7 @@ export function SocialLinks({ className }: Readonly<{ className?: string }>) {
               {...(external
                 ? { target: '_blank', rel: 'noopener noreferrer' }
                 : {})}
-              className="stamp inline-flex items-center gap-2 underline decoration-2 decoration-transparent underline-offset-[6px] transition-colors duration-200 hover:decoration-tape"
+              className="stamp inline-flex items-center gap-2 underline decoration-2 decoration-transparent underline-offset-[6px] transition-colors duration-200 hover:decoration-(--link-line)"
             >
               <IconComponent className="size-4" aria-hidden="true" />
               {link.label}

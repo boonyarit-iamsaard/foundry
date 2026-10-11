@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 
 import { notFound } from 'next/navigation';
 
+import { AuthorSlot } from '@/common/components/board/author-slot';
 import { DetailBody } from '@/common/components/detail-body';
 import { MDX } from '@/common/components/mdx';
 import { projectCode } from '@/features/projects/code';
@@ -71,6 +72,7 @@ export default async function Page({ params }: PageProps) {
       <DetailBody code={projectCode(project.slug)} cover={project.cover}>
         <MDX content={project.content} />
       </DetailBody>
+      <AuthorSlot heading="Built by Boonyarit Iamsa-ard" className="mt-14" />
     </article>
   );
 }

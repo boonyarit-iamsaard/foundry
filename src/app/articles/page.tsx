@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 
+import Link from 'next/link';
+
 import { EmptySlot } from '@/common/components/board/slot';
 import { FilterByTags } from '@/common/components/filter-by-tags';
 import { PageHeader } from '@/common/components/page-header';
@@ -61,14 +63,20 @@ export default async function Page({ searchParams }: ArticlesPageProps) {
                   <p className="font-bold font-display text-2xl uppercase">
                     Nothing in this slot
                   </p>
-                  <p>No articles match these tags. Remove a tag to see more.</p>
+                  <p>
+                    No articles match these tags.{' '}
+                    <Link href="/articles" className="tape-link font-semibold">
+                      Clear the filter
+                    </Link>
+                  </p>
                 </div>
               </EmptySlot>
             ) : (
-              filteredResource.map((article) => (
+              filteredResource.map((article, index) => (
                 <ArticleCard
                   key={article.slug}
                   article={article}
+                  eager={index === 0}
                   activeTags={activeTags}
                 />
               ))

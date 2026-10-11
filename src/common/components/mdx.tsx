@@ -46,7 +46,7 @@ const sharedComponents: MDXComponents = {
   a: ({ className, ...props }: ComponentProps<'a'>) => (
     <a
       className={cn(
-        'font-medium underline decoration-2 decoration-tape underline-offset-4 hover:decoration-foreground',
+        'font-medium underline decoration-(--link-line) decoration-2 underline-offset-4 transition-[text-decoration-color] duration-200 hover:decoration-(--link-line-hover)',
         className,
       )}
       {...props}

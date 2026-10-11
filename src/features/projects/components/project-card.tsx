@@ -22,6 +22,8 @@ type ProjectCardProps = Readonly<{
   activeTags?: string[];
   /** Lay the cover beside the text instead of above it. */
   wide?: boolean;
+  /** Load the cover straight away: it is the largest image above the fold. */
+  eager?: boolean;
   className?: string;
   plateClassName?: string;
   style?: CSSProperties;
@@ -31,6 +33,7 @@ export function ProjectCard({
   project,
   activeTags,
   wide = false,
+  eager = false,
   className,
   plateClassName,
   style,
@@ -65,6 +68,7 @@ export function ProjectCard({
           }
           className="object-cover object-left-top"
           quality={85}
+          loading={eager ? 'eager' : 'lazy'}
         />
       </div>
       <div className="flex flex-col gap-3 p-5">

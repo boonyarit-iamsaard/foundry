@@ -1,7 +1,13 @@
+import type { Metadata } from 'next';
+
 import Link from 'next/link';
 
 import { EmptySlot } from '@/common/components/board/slot';
 import { Button } from '@/common/components/ui/button';
+
+export const metadata: Metadata = {
+  title: 'Page not found',
+};
 
 export default function NotFound() {
   return (

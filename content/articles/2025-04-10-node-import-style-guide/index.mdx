@@ -49,7 +49,7 @@ Node.js has come a long way from `require()`. With ES modules (ESM) support stab
 
 But here's the catch, you've got options. Let's break them down.
 
-### 🔹 Default Import
+### Default Import
 
 ```js
 import fs from 'fs';
@@ -61,7 +61,7 @@ import fs from 'fs';
 - Less efficient for bundlers and tree-shaking.
 - Fine for quick scripts, but suboptimal for larger apps.
 
-### 🔹 Named Import
+### Named Import
 
 ```js
 import { readFile } from 'fs';
@@ -73,7 +73,7 @@ import { readFile } from 'fs';
 - More readable and efficient.
 - Plays nicely with tree-shaking and autocomplete.
 
-### 🔹 Node Protocol Import
+### Node Protocol Import
 
 ```js
 import fs from 'node:fs';
@@ -84,7 +84,7 @@ import fs from 'node:fs';
 - The `node:` prefix tells both humans and tools it's a built-in module.
 - Reduces ambiguity, especially in monorepos or when mixing npm packages with similar names.
 
-### ✅ The Sweet Spot: Named + `node:` Prefix
+### The Sweet Spot: Named + `node:` Prefix
 
 ```js
 import { readFile } from 'node:fs/promises';
@@ -97,7 +97,7 @@ import { join } from 'node:path';
 - Clear, focused, and modern.
 - Supported in Node.js 16+.
 
-## 📚 Common Module Examples
+## Common Module Examples
 
 Here's how to apply these patterns across popular built-in modules:
 
@@ -126,7 +126,7 @@ import { fileURLToPath } from 'node:url';
 import { promisify } from 'node:util';
 ```
 
-## ✅ Best Practices Checklist
+## Best Practices Checklist
 
 **Use this:**
 
@@ -142,10 +142,10 @@ import { method } from 'node:module';
 - Easier to audit and refactor
 - Plays well with ESM and future tooling
 
-## 🧠 Final Thoughts
+## Final Thoughts
 
 Think of your imports as the opening sentence of your code's story. The clearer and more intentional they are, the easier it is for others (and future-you) to follow along. By using the `node:` protocol and named imports, you're writing Node.js the way it's meant to be written in 2025.
 
 Small choices add up—so import smart, stay sharp, and keep your codebase clean.
 
-Happy coding 🚀
+Happy coding.

@@ -15,7 +15,7 @@ export function DetailBody({ code, cover, children }: DetailBodyProps) {
   return (
     <div className="space-y-10">
       <Slot code={code} plateClassName="overflow-hidden">
-        <div className="relative aspect-[16/9]">
+        <div className="relative aspect-[2/1] sm:aspect-[21/9]">
           <Image
             src={cover}
             alt=""

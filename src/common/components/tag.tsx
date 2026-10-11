@@ -24,9 +24,9 @@ export function Tag({ tag, resource, activeTags = [] }: TagProps) {
       scroll={false}
       aria-pressed={isActive}
       className={cn(
-        'stamp relative z-20 inline-flex h-7 items-center rounded-[2px] border-[1.5px] px-2 text-xs transition-colors duration-200',
+        'stamp relative z-20 inline-flex h-7 items-center rounded-[2px] border-[1.5px] px-2 text-xs transition-colors duration-200 pointer-coarse:after:absolute pointer-coarse:after:inset-x-0 pointer-coarse:after:-inset-y-2',
         isActive
-          ? 'border-tape bg-tape text-tape-ink'
+          ? 'border-tape-edge bg-tape text-tape-ink'
           : 'border-foreground/40 text-foreground hover:border-foreground',
       )}
     >

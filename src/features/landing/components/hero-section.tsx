@@ -79,7 +79,7 @@ export function HeroSection() {
               </Button>
               <a
                 href={`mailto:${email}`}
-                className="relative z-20 block text-muted-foreground text-sm underline decoration-transparent underline-offset-4 hover:text-foreground hover:decoration-tape"
+                className="relative z-20 block text-muted-foreground text-sm underline decoration-transparent underline-offset-4 hover:text-foreground hover:decoration-(--link-line)"
               >
                 {email}
               </a>
@@ -94,12 +94,12 @@ export function HeroSection() {
               <h2 className="font-bold font-display text-2xl uppercase leading-[0.95]">
                 Resume
               </h2>
-              <p className="text-muted-foreground text-sm">PDF download</p>
+              <p className="text-muted-foreground text-sm">PDF</p>
             </div>
-            <Button asChild className="mt-auto w-full">
+            <Button asChild variant="outline" className="mt-auto w-full">
               <a href={appConfig.resume} download>
                 <DownloadIcon aria-hidden="true" />
-                Download
+                Download resume
               </a>
             </Button>
           </Slot>
@@ -109,6 +109,7 @@ export function HeroSection() {
           <ProjectCard
             project={latestProject}
             wide
+            eager
             className="sm:col-span-2 lg:col-span-6"
             plateClassName="settle"
             style={settleOrder(3)}

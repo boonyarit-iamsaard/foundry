@@ -2,7 +2,6 @@ import { ArrowUpRightIcon } from 'lucide-react';
 
 import { Tag } from '@/common/components/tag';
 import { formatDate } from '@/common/helpers/date';
-import { projectCode } from '@/features/projects/code';
 import { ProjectStatusLine } from '@/features/projects/components/project-status-line';
 
 import type { Project } from '@/velite';
@@ -20,7 +19,6 @@ export function ProjectHeader({ project }: ProjectHeaderProps) {
         {project.title}
       </h1>
       <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
-        <span className="tape">{projectCode(project.slug)}</span>
         <ProjectStatusLine status={project.status} />
         <p className="text-muted-foreground text-sm tabular-nums">
           Since {formatDate(project.date)}

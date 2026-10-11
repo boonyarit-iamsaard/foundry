@@ -26,7 +26,7 @@ type RootLayoutProps = Readonly<{
 export const metadata: Metadata = {
   metadataBase: new URL(appConfig.url),
   title: {
-    default: appConfig.title,
+    default: `${appConfig.title} · Software Engineer`,
     template: `%s | ${appConfig.title}`,
   },
   description: appConfig.description,

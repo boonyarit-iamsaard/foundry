@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 import { appConfig } from '@/core/configs/app.config';
+import { AuthorSlot } from '@/common/components/board/author-slot';
 import { DetailBody } from '@/common/components/detail-body';
 import { MDX } from '@/common/components/mdx';
 import { articleCode } from '@/features/articles/code';
@@ -81,6 +82,7 @@ export default async function Page({ params }: PageProps) {
       <DetailBody code={articleCode(article.slug)} cover={article.cover}>
         <MDX content={article.content} />
       </DetailBody>
+      <AuthorSlot heading="Written by Boonyarit Iamsa-ard" className="mt-14" />
     </article>
   );
 }

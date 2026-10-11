@@ -20,7 +20,7 @@ export function CallToActionSection() {
             id="contact-heading"
             className="font-display font-extrabold text-[clamp(2.5rem,5vw,4.25rem)] uppercase leading-[0.88]"
           >
-            Hiring, or have something to build?
+            Write to me
           </h2>
           <div className="max-w-[44ch] space-y-3 text-lg">
             <p>
