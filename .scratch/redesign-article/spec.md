@@ -37,9 +37,11 @@ three short first-person paragraphs.
 ## Outline
 
 1. **The old site.** A generic stack of sections: a large round portrait, equal
-   cards, a "Tools" logo grid. The titles didn't agree ("Full Stack Developer"
-   in the hero, "Backend Engineer" on About). One line on settling on Software
-   Engineer.
+   cards, a "Tools" logo grid. The site was out of date and showed two past
+   titles: "Full Stack Developer" in the hero (the title he searched for and
+   was hired under in his first role) and "Backend Engineer" on About (his
+   title at a later company). Software Engineer is his current title, not a
+   new label he picked for the redesign.
 2. **What I told it at init.** Six questions in about five minutes:
    - the title change, plus Spring Boot and React Native, with the resume as a
      placeholder;
@@ -81,7 +83,10 @@ three short first-person paragraphs.
    - **The critique and polish pass:** the contact call hung at the end of
      every article and project (the author slot).
    - **CodeRabbit:** `aria-pressed` on a link.
-   - **Closer:** the CodeRabbit finding he declined. It asked for the branch
+   - **Cut after review:** the declined finding below raised a question the
+     article couldn't answer and pointed at private material. The
+     draft-numbering check carries the "verify before acting" lesson instead.
+   - **(Cut) Closer:** the CodeRabbit finding he declined. It asked for the branch
      history to be rewritten to remove a private chat quote. The agent worked
      out why that wouldn't help (squash merges keep the commit out of `main`;
      GitHub keeps PR refs anyway). He checked the reasoning and declined.
@@ -96,8 +101,9 @@ three short first-person paragraphs.
 
 - **Source of truth:** PR #26 (all 18 commits and its review threads). The
   squash merge `a2c9cc9` on `main` is the shipped result.
-- **Links:** only the `a2c9cc9` commit and the live site. Never link PR #26: it
-  exposes the commit that still holds the private quote.
+- **Links:** only the live site. Never link PR #26, which exposes the commit
+  that still holds the private quote. The `a2c9cc9` commit is out too: its
+  message `(#26)` links to the PR automatically.
 - Paraphrase private conversations; never quote them.
 - No resume-style tech matrices or logo grids, in the article or its images.
 - Say "article status" or "project status", never a bare "status"
