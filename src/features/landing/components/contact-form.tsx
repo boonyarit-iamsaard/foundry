@@ -24,13 +24,22 @@ export function ContactForm() {
   const { form, handleSubmitWithAction, isSending, sentTo, startOver } =
     useContactForm();
   const confirmationRef = useRef<HTMLHeadingElement>(null);
+  const isStartingOverRef = useRef(false);
 
-  // The form is replaced by the confirmation, so move focus with it.
+  // The form and the confirmation replace each other, so move focus with them.
   useEffect(() => {
     if (sentTo) {
       confirmationRef.current?.focus();
+    } else if (isStartingOverRef.current) {
+      isStartingOverRef.current = false;
+      form.setFocus('name');
     }
-  }, [sentTo]);
+  }, [sentTo, form]);
+
+  const handleStartOver = () => {
+    isStartingOverRef.current = true;
+    startOver();
+  };
 
   if (sentTo) {
     return (
@@ -49,7 +58,7 @@ export function ContactForm() {
             <span className="font-semibold">{sentTo}</span>.
           </output>
         </div>
-        <Button variant="outline" className="mt-auto" onClick={startOver}>
+        <Button variant="outline" className="mt-auto" onClick={handleStartOver}>
           Send another
         </Button>
       </div>
@@ -72,7 +81,7 @@ export function ContactForm() {
               <FormItem>
                 <FormLabel className={labelClassName}>Name</FormLabel>
                 <FormControl>
-                  <Input autoComplete="name" {...field} />
+                  <Input autoComplete="name" required {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -85,7 +94,12 @@ export function ContactForm() {
               <FormItem>
                 <FormLabel className={labelClassName}>Email</FormLabel>
                 <FormControl>
-                  <Input type="email" autoComplete="email" {...field} />
+                  <Input
+                    type="email"
+                    autoComplete="email"
+                    required
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -102,6 +116,7 @@ export function ContactForm() {
                 <Textarea
                   placeholder="The role, or the project you have in mind"
                   className="min-h-40"
+                  required
                   {...field}
                 />
               </FormControl>
