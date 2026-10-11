@@ -64,7 +64,7 @@ export function Slot({
       ) : null}
       <div
         aria-hidden="true"
-        className="absolute inset-1.5 flex items-end justify-end rounded-md bg-paint p-2"
+        className="absolute inset-1.5 flex items-end justify-end rounded-md bg-paint px-2 pb-0.5"
       >
         {code ? (
           <span className="code-stencil text-paint-ink">{code}</span>
@@ -74,7 +74,7 @@ export function Slot({
         className={cn(
           'relative z-10 h-full rounded-md bg-plate text-card-foreground',
           lift &&
-            'transition-[translate,box-shadow] duration-500 ease-lift group-hover/slot:shadow-(--lift-shadow) group-has-[[data-slot-link]:focus-visible]/slot:shadow-(--lift-shadow) motion-safe:group-has-[[data-slot-link]:focus-visible]/slot:-translate-x-1 motion-safe:group-has-[[data-slot-link]:focus-visible]/slot:-translate-y-2 motion-safe:group-hover/slot:-translate-x-1 motion-safe:group-hover/slot:-translate-y-2',
+            'transition-[translate,box-shadow] duration-500 ease-lift group-hover/slot:shadow-(--lift-shadow) group-has-[[data-slot-link]:focus-visible]/slot:shadow-(--lift-shadow) motion-safe:group-has-[[data-slot-link]:focus-visible]/slot:-translate-x-1 motion-safe:group-has-[[data-slot-link]:focus-visible]/slot:-translate-y-5 motion-safe:group-hover/slot:-translate-x-1 motion-safe:group-hover/slot:-translate-y-5',
           plateClassName,
         )}
       >
