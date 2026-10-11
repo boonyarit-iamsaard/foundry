@@ -39,6 +39,17 @@ typography:
     fontWeight: 700
     lineHeight: 0.95
     letterSpacing: '0.01em'
+  prose-heading:
+    fontFamily: 'Barlow, ui-sans-serif, system-ui, sans-serif'
+    fontSize: '2rem'
+    fontWeight: 700
+    lineHeight: 1.15
+    letterSpacing: '-0.01em'
+  prose-subheading:
+    fontFamily: 'Barlow, ui-sans-serif, system-ui, sans-serif'
+    fontSize: '1.375rem'
+    fontWeight: 700
+    lineHeight: 1.3
   body:
     fontFamily: 'Barlow, ui-sans-serif, system-ui, sans-serif'
     fontSize: '1.125rem'
@@ -203,7 +214,8 @@ A near-neutral industrial palette with one safety-yellow accent; neutrals lean f
 
 - **Display** (800, clamp(3.25rem, 6.6vw, 6rem), 0.86, uppercase): the home name plate and page titles (page titles use clamp(3rem, 7vw, 6rem)).
 - **Headline** (800, clamp(2.25rem, 4.4vw, 3.75rem) to clamp(2.5rem, 5vw, 4.25rem), 0.88–0.9, uppercase): section headings on the home board and detail-page titles.
-- **Title** (700, 1.875rem, 0.95, uppercase): project and article titles on plates; 1.5rem in compact slots and for in-article h3; 2rem for in-article h2.
+- **Title** (700, 1.875rem, 0.95, uppercase): project and article titles on plates; 1.5rem in compact slots.
+- **Prose Heading** (Barlow 700, sentence case): in-article h2 at 1.5rem (2rem from sm) with 1.15–1.2 leading and -0.01em tracking; h3 at 1.375rem, 1.3 leading. Article headings are often full sentences, so they speak in Barlow rather than shout in lettering.
 - **Body** (400, 1.125rem, 1.625): running prose, capped at 62–68ch; 1rem for card descriptions; 1.25rem for lead lines.
 - **Label / Stamp** (700, 0.875rem or 0.75rem, 0.1em tracking, uppercase, Big Shoulders): metadata labels, nav items, tags, form labels, inline links in utility rows, the status line name, table headers.
 - **Code** (Big Shoulders Stencil 700, 0.8125rem, 0.08em, uppercase, tabular): position codes on tape and on the painted shadow. Nothing else.
@@ -292,7 +304,7 @@ Cards are slots. Project and article cards put a 16:9 cover on top (or beside it
 
 ### Reading Plate
 
-Article, project and About bodies sit on one plate in the reading column, under a cover slot carrying the item's code. Prose is Barlow 1.125rem at 1.625, h2/h3 in Big Shoulders uppercase, links underlined in yellow, square list markers, code blocks with a 2px painted frame and 6px radius, tables with a painted header rule.
+Article, project and About bodies sit on one plate in the reading column, under a cover slot carrying the item's code. Prose is Barlow 1.125rem at 1.625, h2/h3 as Barlow 700 sentence-case prose headings, links underlined in yellow, square list markers, code blocks with a 2px painted frame and 6px radius, tables with a painted header rule.
 
 ## Do's and Don'ts
 

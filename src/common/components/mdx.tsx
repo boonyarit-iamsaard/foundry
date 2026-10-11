@@ -18,7 +18,7 @@ const sharedComponents: MDXComponents = {
   h2: ({ className, children, ...props }: ComponentProps<'h2'>) => (
     <h2
       className={cn(
-        'mt-14 mb-4 font-bold font-display text-[2rem] uppercase leading-[0.95] first:mt-0',
+        'mt-14 mb-4 font-bold font-sans text-2xl leading-[1.2] tracking-[-0.01em] first:mt-0 sm:text-[2rem] sm:leading-[1.15]',
         className,
       )}
       {...props}
@@ -29,7 +29,7 @@ const sharedComponents: MDXComponents = {
   h3: ({ className, children, ...props }: ComponentProps<'h3'>) => (
     <h3
       className={cn(
-        'mt-10 mb-3 font-bold font-display text-2xl uppercase leading-none',
+        'mt-10 mb-3 font-bold font-sans text-[1.375rem] leading-[1.3] tracking-[-0.005em]',
         className,
       )}
       {...props}
