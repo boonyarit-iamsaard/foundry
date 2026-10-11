@@ -54,3 +54,7 @@ public/static
 # impeccable session artifacts
 /.impeccable/questions/
 /.impeccable/review/
+/.impeccable/critique/
+
+# Claude Code local preview config
+/.claude/launch.json
