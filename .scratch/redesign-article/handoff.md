@@ -38,6 +38,8 @@ He writes the prose himself, in his own voice. The agent supplies raw material, 
 
 ## Raw material (read these; don't re-derive)
 
+- **[`fact-sheet.md`](fact-sheet.md): start here.** It is self-contained, because the session that produced it ran on another machine, and its memory and transcript don't travel with the repo. It covers the timeline, before vs after, the author's decisions, every review finding with its fix, the Sonar issue, and how the fixes were verified.
+
 - **Commits on `feat/shadow-board-redesign`** (no upstream yet):
   - `0a33585`: the redesign itself
   - `af0219b`: ignore impeccable session artifacts
