@@ -9,6 +9,16 @@
     "ignoreUnknown": true,
     "includes": ["**", "!public"]
   },
+  "plugins": [
+    {
+      "path": "./biome-plugins/no-site-url-construction.grit",
+      "includes": ["**/src/**", "!**/src/common/helpers/url.ts"]
+    },
+    {
+      "path": "./biome-plugins/no-named-arrow-functions.grit",
+      "includes": ["**/src/**", "!**/src/common/components/ui/**"]
+    }
+  ],
   "formatter": {
     "enabled": true,
     "indentStyle": "space"
