@@ -1,6 +1,6 @@
 # Shared metadata builder, default preview image, and icons
 
-Status: needs-triage
+Status: wontfix
 
 ## Problem
 
@@ -28,3 +28,9 @@ no image, despite `twitter.card` being `summary_large_image`.
   site-wide defaults from `app.config.ts`, so a page passes only what differs.
 - A default preview image exists for pages without a cover.
 - The site has an Apple touch icon alongside `favicon.ico`.
+
+## Comments
+
+Superseded by the SEO overhaul in `.scratch/seo/` (see `spec.md`). The
+shared builder is `issues/01`, and preview images are `issues/04`. Icons
+already exist (`src/app/icon.png`, `src/app/apple-icon.png`).
