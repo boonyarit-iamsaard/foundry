@@ -29,3 +29,10 @@ twice as a literal:
 - Titles and descriptions a page header and its preview image both show: the
   same `listing.ts` objects.
 - Full site URLs: `absoluteUrl` in `src/common/helpers/url.ts` (lint-enforced).
+- The owner's name in site chrome (header, footer, drawer): `appConfig.title`
+  in `src/core/configs/app.config.ts`. Page prose and test fixtures may spell
+  it out.
+- A DOM id one module renders and another looks up: an exported constant in
+  a small module both import, such as `heroHeadingId` in
+  `src/features/landing/hero.ts`. A component file is the wrong home: client
+  code importing it pulls in everything the component imports.
