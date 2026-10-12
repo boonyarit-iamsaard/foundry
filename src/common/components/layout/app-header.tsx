@@ -123,7 +123,7 @@ export function AppHeader() {
     const threshold = 16;
     let scrollTimeout: number | null = null;
 
-    const handleScroll = () => {
+    function handleScroll() {
       if (scrollTimeout) {
         clearTimeout(scrollTimeout);
       }
@@ -131,7 +131,7 @@ export function AppHeader() {
       scrollTimeout = window.setTimeout(() => {
         setIsScrolled(window.scrollY > threshold);
       }, 100);
-    };
+    }
 
     window.addEventListener('scroll', handleScroll, { passive: true });
 

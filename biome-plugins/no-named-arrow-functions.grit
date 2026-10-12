@@ -1,0 +1,6 @@
+language js
+
+`const $name = $value` where {
+  $value <: JsArrowFunctionExpression(),
+  register_diagnostic(span=$name, message="Declare named functions with `function`; keep arrows for inline callbacks.")
+}

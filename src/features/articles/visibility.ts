@@ -24,3 +24,13 @@ export function visibleArticles<T extends WithStatus>(
 export function listedArticles<T extends WithStatus>(articles: T[]): T[] {
   return articles.filter((article) => article.status !== 'archived');
 }
+
+/**
+ * Articles search engines are pointed to. Drafts never qualify, even in
+ * development, and Archived articles are no longer listed anywhere.
+ */
+export function publishedArticles<T extends WithStatus>(
+  articles: readonly T[],
+): T[] {
+  return articles.filter((article) => article.status === 'published');
+}

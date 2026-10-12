@@ -6,9 +6,11 @@ import { EmptySlot } from '@/common/components/board/slot';
 import { FilterByTags } from '@/common/components/filter-by-tags';
 import { PageHeader } from '@/common/components/page-header';
 import type { SearchParams } from '@/common/definitions/search-params';
+import { buildMetadata } from '@/common/helpers/metadata';
 import { filterByTags } from '@/common/helpers/tag';
 import { ProjectCard } from '@/features/projects/components/project-card';
 import { ProjectStatusKey } from '@/features/projects/components/project-status-line';
+import { projectsListing } from '@/features/projects/listing';
 
 import { projects, tags } from '@/velite';
 
@@ -16,27 +18,17 @@ type ProjectsPageProps = Readonly<{
   searchParams: SearchParams;
 }>;
 
-const keywords = Array.from(
-  new Set(
-    projects
-      .flatMap((project) => project.keywords)
-      .filter((k) => k !== undefined),
-  ),
-);
-
-const description = 'Things I have built, and where each one is in its life.';
-
 // The status key and tag filter earn their place once there is more than one
 // thing to tell apart.
 const hasSeveralStatuses =
   new Set(projects.map((project) => project.status)).size > 1;
 const hasSeveralProjects = projects.length > 1;
 
-export const metadata: Metadata = {
-  title: 'Projects',
-  description,
-  keywords,
-};
+export const metadata: Metadata = buildMetadata({
+  title: projectsListing.title,
+  description: projectsListing.description,
+  path: projectsListing.path,
+});
 
 export default async function Page({ searchParams }: ProjectsPageProps) {
   const { filteredResource, activeTags, resourceTags } = await filterByTags(
@@ -48,7 +40,10 @@ export default async function Page({ searchParams }: ProjectsPageProps) {
 
   return (
     <div>
-      <PageHeader title="Projects" description={description}>
+      <PageHeader
+        title={projectsListing.title}
+        description={projectsListing.description}
+      >
         {hasSeveralStatuses ? (
           <div className="flex flex-wrap items-center gap-x-4 gap-y-2 pt-2">
             <span className="stamp text-muted-foreground text-xs">
@@ -71,7 +66,7 @@ export default async function Page({ searchParams }: ProjectsPageProps) {
             />
           ) : null}
           {filteredResource.length === 0 ? (
-            <EmptySlot code="P-00" className="min-h-48">
+            <EmptySlot code={projectsListing.code} className="min-h-48">
               <div className="space-y-1 text-center">
                 <p className="font-bold font-display text-2xl uppercase">
                   Nothing in this slot

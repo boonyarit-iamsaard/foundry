@@ -18,34 +18,24 @@ import { ThemeProvider } from '@/common/components/theme-provider';
 import { Toaster } from '@/common/components/ui/sonner';
 import { TooltipProvider } from '@/common/components/ui/tooltip';
 import { cn } from '@/common/helpers/cn';
+import {
+  buildMetadata,
+  defaultTitle,
+  titleTemplate,
+} from '@/common/helpers/metadata';
 
 type RootLayoutProps = Readonly<{
   children: ReactNode;
 }>;
 
+// No canonical URL here: every page sets its own, and one set here would leak
+// to pages that do not.
 export const metadata: Metadata = {
-  metadataBase: new URL(appConfig.url),
+  ...buildMetadata(),
+  metadataBase: appConfig.url,
   title: {
-    default: `${appConfig.title} · Software Engineer`,
-    template: `%s | ${appConfig.title}`,
-  },
-  description: appConfig.description,
-  authors: appConfig.authors,
-  keywords: appConfig.keywords,
-  openGraph: {
-    type: 'website',
-    title: appConfig.title,
-    description: appConfig.description,
-    url: appConfig.url,
-    siteName: appConfig.name,
-    images: [],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: appConfig.title,
-    description: appConfig.description,
-    creator: appConfig.creator,
-    images: [],
+    default: defaultTitle,
+    template: titleTemplate,
   },
 };
 

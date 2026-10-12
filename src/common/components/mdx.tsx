@@ -9,10 +9,10 @@ import { runSync } from '@mdx-js/mdx';
 
 import { cn } from '@/common/helpers/cn';
 
-type MDXProps = {
+type MDXProps = Readonly<{
   content: string;
   components?: Record<string, ComponentType>;
-};
+}>;
 
 const sharedComponents: MDXComponents = {
   h2: ({ className, children, ...props }: ComponentProps<'h2'>) => (
@@ -154,9 +154,9 @@ function useMDXComponent(content: string): MDXContent {
   }, [content]);
 }
 
-export const MDX = ({ content, components }: MDXProps) => {
+export function MDX({ content, components }: MDXProps) {
   const Component = useMDXComponent(content);
 
   // Compiled MDX is memoized by content, so this is stable across renders.
   return <Component components={{ ...sharedComponents, ...components }} />;
-};
+}

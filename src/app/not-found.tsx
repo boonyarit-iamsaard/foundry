@@ -4,10 +4,10 @@ import Link from 'next/link';
 
 import { EmptySlot } from '@/common/components/board/slot';
 import { Button } from '@/common/components/ui/button';
+import { buildMetadata } from '@/common/helpers/metadata';
 
-export const metadata: Metadata = {
-  title: 'Page not found',
-};
+// No path: this page answers any missing URL, so it has no canonical one.
+export const metadata: Metadata = buildMetadata({ title: 'Page not found' });
 
 export default function NotFound() {
   return (

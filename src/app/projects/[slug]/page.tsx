@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 import { AuthorSlot } from '@/common/components/board/author-slot';
 import { DetailBody } from '@/common/components/detail-body';
 import { MDX } from '@/common/components/mdx';
+import { buildMetadata, coverPreviewImage } from '@/common/helpers/metadata';
 import { projectCode } from '@/features/projects/code';
 import { ProjectHeader } from '@/features/projects/components/project-header';
 
@@ -28,26 +29,12 @@ export async function generateMetadata({
     return {};
   }
 
-  return {
+  return buildMetadata({
     title: project.title,
     description: project.description,
-    authors: [
-      {
-        name: 'Boonyarit Iamsa-ard',
-        url: 'https://boonyarit.me',
-      },
-    ],
-    keywords: project.keywords,
-    openGraph: {
-      siteName: 'boonyarit.me',
-      url: `https://boonyarit.me/projects/${project.slug}`,
-      images: [
-        {
-          url: project.cover.src,
-        },
-      ],
-    },
-  };
+    path: project.permalink,
+    previewImage: coverPreviewImage(project),
+  });
 }
 
 export function generateStaticParams() {

@@ -11,3 +11,7 @@ Default canonical labels (`needs-triage`, `needs-info`, `ready-for-agent`, `read
 ### Domain docs
 
 Single-context: one root `GLOSSARY.md` and `docs/adr/`. See `docs/agents/domain.md`.
+
+### Coding standards
+
+Reviewing a diff: apply `CODING_STANDARDS.md`.

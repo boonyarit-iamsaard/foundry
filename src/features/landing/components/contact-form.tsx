@@ -36,10 +36,10 @@ export function ContactForm() {
     }
   }, [sentTo, form]);
 
-  const handleStartOver = () => {
+  function handleStartOver() {
     isStartingOverRef.current = true;
     startOver();
-  };
+  }
 
   if (sentTo) {
     return (

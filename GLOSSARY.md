@@ -45,3 +45,9 @@ _Avoid_: done, complete
 **Maintenance**:
 A project kept running with updates and fixes only; it gains no new features.
 _Avoid_: legacy, archived
+
+### Sharing
+
+**Preview image**:
+The image shown when a link to a page is shared: the page's cover when it has one, otherwise one generated in the board's style from the page's title.
+_Avoid_: OG image, social card, thumbnail

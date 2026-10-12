@@ -6,8 +6,9 @@ type TagEntry = {
   count: { total: number; articles: number; projects: number };
 };
 
-const countTagged = (items: Tagged[], name: string) =>
-  items.filter((item) => item.tags.includes(name)).length;
+function countTagged(items: Tagged[], name: string): number {
+  return items.filter((item) => item.tags.includes(name)).length;
+}
 
 /**
  * Derives every tag from the content that uses it, counting articles and

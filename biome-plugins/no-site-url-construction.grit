@@ -1,0 +1,5 @@
+language js
+
+`new URL($path, appConfig.url)` as $url where {
+  register_diagnostic(span=$url, message="Build site URLs with absoluteUrl from @/common/helpers/url, so every full URL is written one way.")
+}
