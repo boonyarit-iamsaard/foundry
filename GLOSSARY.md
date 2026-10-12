@@ -49,5 +49,5 @@ _Avoid_: legacy, archived
 ### Sharing
 
 **Preview image**:
-The image shown when a link to a page is shared; a page's cover when it has one.
+The image shown when a link to a page is shared: the page's cover when it has one, otherwise one generated in the board's style from the page's title.
 _Avoid_: OG image, social card, thumbnail

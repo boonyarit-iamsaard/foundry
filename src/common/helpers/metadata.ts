@@ -6,12 +6,21 @@ export const defaultTitle = `${appConfig.title} · Software Engineer`;
 
 export const titleTemplate = `%s | ${appConfig.title}`;
 
+/** An image a link preview shows, with the size and alt text crawlers read. */
+export type PreviewImage = Readonly<{
+  url: string;
+  width: number;
+  height: number;
+  alt: string;
+}>;
+
 type PageMetadata = Readonly<{
   title?: string;
   description?: string;
   /** The page's own path, which becomes its canonical URL. */
   path?: string;
-  previewImage?: string;
+  /** Without one, the route's generated `opengraph-image` card is used. */
+  previewImage?: PreviewImage;
   type?: 'website' | 'article';
 }>;
 
@@ -29,7 +38,9 @@ export function buildMetadata({
 }: PageMetadata = {}): Metadata {
   const url = path ? canonicalUrl(path) : undefined;
   const shareTitle = title ?? defaultTitle;
-  const images = previewImage ? [{ url: previewImage }] : undefined;
+  // An own `images` key, even an undefined one, stops Next from filling it
+  // from the route's `opengraph-image` file.
+  const imagesField = previewImage ? { images: [previewImage] } : {};
 
   return {
     // Left unset without a page title, so the layout's default applies
@@ -44,13 +55,13 @@ export function buildMetadata({
       url,
       title: shareTitle,
       description,
-      images,
+      ...imagesField,
     },
     twitter: {
       card: 'summary_large_image',
       title: shareTitle,
       description,
-      images,
+      ...imagesField,
     },
   };
 }

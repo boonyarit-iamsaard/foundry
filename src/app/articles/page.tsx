@@ -9,6 +9,7 @@ import type { SearchParams } from '@/common/definitions/search-params';
 import { buildMetadata } from '@/common/helpers/metadata';
 import { filterByTags } from '@/common/helpers/tag';
 import { ArticleCard } from '@/features/articles/components/article-card';
+import { articlesListing } from '@/features/articles/listing';
 import { listedArticles } from '@/features/articles/visibility';
 
 import { articles, tags } from '@/velite';
@@ -19,12 +20,8 @@ type ArticlesPageProps = Readonly<{
   searchParams: SearchParams;
 }>;
 
-const description =
-  'Practical notes from the work: the conventions I use, and why.';
-
 export const metadata: Metadata = buildMetadata({
-  title: 'Articles',
-  description,
+  ...articlesListing,
   path: '/articles',
 });
 
@@ -38,7 +35,10 @@ export default async function Page({ searchParams }: ArticlesPageProps) {
 
   return (
     <div>
-      <PageHeader title="Articles" description={description} />
+      <PageHeader
+        title={articlesListing.title}
+        description={articlesListing.description}
+      />
       <section
         aria-label="Articles"
         className="pegboard border-paint border-t-2"

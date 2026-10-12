@@ -25,7 +25,12 @@ describe('buildMetadata', () => {
     const metadata = buildMetadata({
       title: 'Node.js Import Style Guide',
       description: 'How I import built-in modules.',
-      previewImage: '/static/cover-abc123.png',
+      previewImage: {
+        url: '/static/cover-abc123.png',
+        width: 1600,
+        height: 900,
+        alt: 'Node.js Import Style Guide',
+      },
       type: 'article',
     });
 
@@ -36,14 +41,37 @@ describe('buildMetadata', () => {
       siteName: 'boonyarit.me',
       title: 'Node.js Import Style Guide',
       description: 'How I import built-in modules.',
-      images: [{ url: '/static/cover-abc123.png' }],
+      images: [
+        {
+          url: '/static/cover-abc123.png',
+          width: 1600,
+          height: 900,
+          alt: 'Node.js Import Style Guide',
+        },
+      ],
     });
     expect(metadata.twitter).toMatchObject({
       card: 'summary_large_image',
       title: 'Node.js Import Style Guide',
       description: 'How I import built-in modules.',
-      images: [{ url: '/static/cover-abc123.png' }],
+      images: [
+        {
+          url: '/static/cover-abc123.png',
+          width: 1600,
+          height: 900,
+          alt: 'Node.js Import Style Guide',
+        },
+      ],
     });
+  });
+
+  it('leaves images unset without a preview image', () => {
+    // An own `images` key, even undefined, stops Next from using the
+    // route's generated opengraph-image card.
+    const metadata = buildMetadata();
+
+    expect(metadata.openGraph).not.toHaveProperty('images');
+    expect(metadata.twitter).not.toHaveProperty('images');
   });
 
   it('resolves the canonical URL against the site URL', () => {

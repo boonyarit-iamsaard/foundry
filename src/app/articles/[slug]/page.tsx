@@ -33,7 +33,12 @@ export async function generateMetadata({
     title: article.title,
     description: article.description,
     path: article.permalink,
-    previewImage: article.cover.src,
+    previewImage: {
+      url: article.cover.src,
+      width: article.cover.width,
+      height: article.cover.height,
+      alt: article.title,
+    },
     type: 'article',
   });
 }

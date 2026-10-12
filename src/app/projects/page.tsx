@@ -10,14 +10,13 @@ import { buildMetadata } from '@/common/helpers/metadata';
 import { filterByTags } from '@/common/helpers/tag';
 import { ProjectCard } from '@/features/projects/components/project-card';
 import { ProjectStatusKey } from '@/features/projects/components/project-status-line';
+import { projectsListing } from '@/features/projects/listing';
 
 import { projects, tags } from '@/velite';
 
 type ProjectsPageProps = Readonly<{
   searchParams: SearchParams;
 }>;
-
-const description = 'Things I have built, and where each one is in its life.';
 
 // The status key and tag filter earn their place once there is more than one
 // thing to tell apart.
@@ -26,8 +25,7 @@ const hasSeveralStatuses =
 const hasSeveralProjects = projects.length > 1;
 
 export const metadata: Metadata = buildMetadata({
-  title: 'Projects',
-  description,
+  ...projectsListing,
   path: '/projects',
 });
 
@@ -41,7 +39,10 @@ export default async function Page({ searchParams }: ProjectsPageProps) {
 
   return (
     <div>
-      <PageHeader title="Projects" description={description}>
+      <PageHeader
+        title={projectsListing.title}
+        description={projectsListing.description}
+      >
         {hasSeveralStatuses ? (
           <div className="flex flex-wrap items-center gap-x-4 gap-y-2 pt-2">
             <span className="stamp text-muted-foreground text-xs">
