@@ -6,6 +6,7 @@ import { EmptySlot } from '@/common/components/board/slot';
 import { FilterByTags } from '@/common/components/filter-by-tags';
 import { PageHeader } from '@/common/components/page-header';
 import type { SearchParams } from '@/common/definitions/search-params';
+import { buildMetadata } from '@/common/helpers/metadata';
 import { filterByTags } from '@/common/helpers/tag';
 import { ProjectCard } from '@/features/projects/components/project-card';
 import { ProjectStatusKey } from '@/features/projects/components/project-status-line';
@@ -16,14 +17,6 @@ type ProjectsPageProps = Readonly<{
   searchParams: SearchParams;
 }>;
 
-const keywords = Array.from(
-  new Set(
-    projects
-      .flatMap((project) => project.keywords)
-      .filter((k) => k !== undefined),
-  ),
-);
-
 const description = 'Things I have built, and where each one is in its life.';
 
 // The status key and tag filter earn their place once there is more than one
@@ -32,11 +25,11 @@ const hasSeveralStatuses =
   new Set(projects.map((project) => project.status)).size > 1;
 const hasSeveralProjects = projects.length > 1;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: 'Projects',
   description,
-  keywords,
-};
+  path: '/projects',
+});
 
 export default async function Page({ searchParams }: ProjectsPageProps) {
   const { filteredResource, activeTags, resourceTags } = await filterByTags(

@@ -42,3 +42,37 @@ site.
   and the canonical URL is resolved.
 - The old `.scratch/site-metadata` issue is marked `wontfix`, with a pointer
   here.
+
+## Comments
+
+### Implementation notes
+
+- The builder is `buildMetadata` in `src/common/helpers/metadata.ts`. The root
+  layout spreads it and adds `metadataBase` and the title template.
+- `not-found` has no canonical link. It answers any missing URL, so it has no
+  path of its own, and 404 responses are not indexed anyway.
+- `appConfig.openGraph` and `appConfig.twitter` held only empty `images`
+  arrays and nothing read them, so they went too. Issue 04 adds the default
+  preview image through the builder.
+
+### Descriptions to rewrite
+
+These read weakly as search snippets. Boonyarit to rewrite; no copy was
+changed here.
+
+- `content/articles/2025-04-04-conventional-commit-types-guide/index.mdx`
+  (171 chars): over the ~155 limit, so it gets cut off. It also reads as
+  generic marketing ("helping you write more meaningful commit messages")
+  rather than first person.
+- `content/articles/2025-04-10-node-import-style-guide/index.mdx` (120
+  chars): length is fine, but "A practical guide to…" is impersonal, unlike
+  the first-person voice elsewhere.
+- `content/projects/portfolio/index.mdx` (95 chars): ends with "(this site)"
+  and no full stop. The parenthetical makes sense on the site but not in a
+  search result.
+- `content/about.mdx` (64 chars): good voice, but short. It never names
+  Boonyarit or Bangkok, which a search for the name would want to see.
+
+The `/articles` (62) and `/projects` (55) descriptions are short but in voice.
+They can stay. The site-wide default (139 chars), which home and not-found
+use, and `2026-10-11-shadow-board-redesign` (111) read fine.

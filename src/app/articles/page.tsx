@@ -6,6 +6,7 @@ import { EmptySlot } from '@/common/components/board/slot';
 import { FilterByTags } from '@/common/components/filter-by-tags';
 import { PageHeader } from '@/common/components/page-header';
 import type { SearchParams } from '@/common/definitions/search-params';
+import { buildMetadata } from '@/common/helpers/metadata';
 import { filterByTags } from '@/common/helpers/tag';
 import { ArticleCard } from '@/features/articles/components/article-card';
 import { listedArticles } from '@/features/articles/visibility';
@@ -18,22 +19,14 @@ type ArticlesPageProps = Readonly<{
   searchParams: SearchParams;
 }>;
 
-const keywords = Array.from(
-  new Set(
-    listed
-      .flatMap((article) => article.keywords)
-      .filter((k) => k !== undefined),
-  ),
-);
-
 const description =
   'Practical notes from the work: the conventions I use, and why.';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: 'Articles',
   description,
-  keywords,
-};
+  path: '/articles',
+});
 
 export default async function Page({ searchParams }: ArticlesPageProps) {
   const { filteredResource, activeTags, resourceTags } = await filterByTags(

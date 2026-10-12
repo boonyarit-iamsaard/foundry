@@ -7,13 +7,15 @@ import { Slot } from '@/common/components/board/slot';
 import { MDX } from '@/common/components/mdx';
 import { SocialLinks } from '@/common/components/social-links';
 import { Button } from '@/common/components/ui/button';
+import { buildMetadata } from '@/common/helpers/metadata';
 
 import { about } from '@/velite';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: 'About',
   description: about.description,
-};
+  path: about.permalink,
+});
 
 export default function AboutPage() {
   return (

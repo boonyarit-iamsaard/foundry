@@ -12,8 +12,6 @@ const count = s
   .object({ total: s.number(), articles: s.number(), projects: s.number() })
   .default({ total: 0, articles: 0, projects: 0 });
 
-const keywords = s.array(s.string()).optional();
-
 const tag = s
   .string()
   .toLowerCase()
@@ -48,7 +46,6 @@ const articles = defineCollection({
       cover: s.image(),
       slug: s.slug('article'),
       tags: s.array(tag),
-      keywords,
       date: s.isodate(),
       metadata: s.metadata(),
       content: s.mdx(),
@@ -74,7 +71,6 @@ const projects = defineCollection({
       cover: s.image(),
       slug: s.slug('project'),
       tags: s.array(tag),
-      keywords,
       github: s.string().url().optional(),
       preview: s.string().url().optional(),
       date: s.isodate(),

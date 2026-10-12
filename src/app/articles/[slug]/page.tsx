@@ -2,10 +2,10 @@ import type { Metadata } from 'next';
 
 import { notFound } from 'next/navigation';
 
-import { appConfig } from '@/core/configs/app.config';
 import { AuthorSlot } from '@/common/components/board/author-slot';
 import { DetailBody } from '@/common/components/detail-body';
 import { MDX } from '@/common/components/mdx';
+import { buildMetadata } from '@/common/helpers/metadata';
 import { articleCode } from '@/features/articles/code';
 import { ArticleHeader } from '@/features/articles/components/article-header';
 
@@ -29,35 +29,13 @@ export async function generateMetadata({
     return {};
   }
 
-  return {
+  return buildMetadata({
     title: article.title,
     description: article.description,
-    authors: appConfig.authors,
-    keywords: article.keywords,
-    openGraph: {
-      type: 'article',
-      title: article.title,
-      description: article.description,
-      siteName: appConfig.name,
-      url: `${appConfig.url}/articles/${article.slug}`,
-      images: [
-        {
-          url: article.cover.src,
-        },
-      ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: article.title,
-      description: article.description,
-      creator: appConfig.creator,
-      images: [
-        {
-          url: article.cover.src,
-        },
-      ],
-    },
-  };
+    path: article.permalink,
+    previewImage: article.cover.src,
+    type: 'article',
+  });
 }
 
 export function generateStaticParams() {
