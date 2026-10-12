@@ -97,7 +97,5 @@ export function buildMetadata({
 // Filtered views such as `/articles?tags=node` share the unfiltered page's
 // canonical URL, so search engines see one page rather than one per filter.
 function canonicalUrl(path: string) {
-  const { pathname } = new URL(path, appConfig.url);
-
-  return absoluteUrl(pathname);
+  return absoluteUrl(path.replace(/[?#].*$/, ''));
 }

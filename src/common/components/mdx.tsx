@@ -154,9 +154,9 @@ function useMDXComponent(content: string): MDXContent {
   }, [content]);
 }
 
-export const MDX = ({ content, components }: MDXProps) => {
+export function MDX({ content, components }: MDXProps) {
   const Component = useMDXComponent(content);
 
   // Compiled MDX is memoized by content, so this is stable across renders.
   return <Component components={{ ...sharedComponents, ...components }} />;
-};
+}

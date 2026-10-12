@@ -15,7 +15,7 @@ type FilteredResource<T extends BaseResource> = {
 
 type ResourceType = 'articles' | 'projects';
 
-const getTagsFromParams = (params: Awaited<SearchParams>): string[] => {
+function getTagsFromParams(params: Awaited<SearchParams>): string[] {
   const selectedTags: string[] = [];
   const parsedTags = tagsParamSchema.safeParse(params);
   if (parsedTags.success && parsedTags.data.tags) {
@@ -27,13 +27,13 @@ const getTagsFromParams = (params: Awaited<SearchParams>): string[] => {
   }
 
   return selectedTags;
-};
+}
 
-const getActiveResourceTags = (
+function getActiveResourceTags(
   resource: 'articles' | 'projects',
   selectedTags: string[],
   tags: Tag[],
-): { activeTags: string[]; resourceTags: Tag[] } => {
+): { activeTags: string[]; resourceTags: Tag[] } {
   const resourceTags = tags.filter((tag) => tag.count[resource] > 0);
   const activeTags = selectedTags.filter((tag) =>
     resourceTags.some((t) => t.name === tag),
@@ -43,7 +43,7 @@ const getActiveResourceTags = (
     activeTags,
     resourceTags,
   };
-};
+}
 
 export async function filterByTags<T extends BaseResource>(
   resource: T[],

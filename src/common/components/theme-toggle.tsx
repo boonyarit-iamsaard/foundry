@@ -13,7 +13,11 @@ const themes = [
   { value: 'system', label: 'Match system', icon: MonitorIcon },
 ];
 
-const subscribe = () => () => {};
+// The mounted flag never changes after hydration, so there is nothing to
+// subscribe to.
+function subscribe() {
+  return () => {};
+}
 
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
