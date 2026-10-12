@@ -30,3 +30,22 @@ pages only by following links.
   and Draft articles are excluded.
 - `## Comments` notes the manual step for Boonyarit: verify the domain in
   Search Console through DNS, then submit the sitemap.
+
+## Comments
+
+### Implementation notes
+
+- Entry selection is `sitemapEntries` in `src/common/helpers/sitemap.ts`.
+  It keeps only `published` articles, so drafts stay out even in development,
+  where velite keeps them.
+- "Newest content overall" means the newest Published article or project. The
+  about page's own `date` is not counted.
+- A list page with nothing to list has no `lastModified`.
+
+### Manual step for Boonyarit
+
+After deploy:
+
+1. In Google Search Console, add a **Domain** property for `boonyarit.me`
+   and verify it with the DNS TXT record it gives you.
+2. Under **Sitemaps**, submit `https://boonyarit.me/sitemap.xml`.

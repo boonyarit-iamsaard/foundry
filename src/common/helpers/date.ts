@@ -6,7 +6,7 @@ export function formatDate(date: string | number | Date): string {
   });
 }
 
-type Dated = Readonly<{ date: string; updated?: string }>;
+export type Dated = Readonly<{ date: string; updated?: string }>;
 
 /**
  * When content last changed: its `updated` date, or its publish date if it
