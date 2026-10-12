@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from 'react';
 
+import { heroHeadingId } from '@/features/landing/hero';
+
 /**
  * On the home page the hero already sets the name large, so the header
  * wordmark waits until the hero heading scrolls out of view.
@@ -11,7 +13,7 @@ export function useHeroInView(pathname: string): boolean {
 
   useEffect(() => {
     const heading =
-      pathname === '/' ? document.getElementById('board-heading') : null;
+      pathname === '/' ? document.getElementById(heroHeadingId) : null;
 
     if (!heading) {
       setIsInView(false);

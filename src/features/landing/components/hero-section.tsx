@@ -11,6 +11,7 @@ import { Button } from '@/common/components/ui/button';
 import { fixtureCodes } from '@/common/definitions/fixture-codes';
 import { ArticleCard } from '@/features/articles/components/article-card';
 import { listedArticles } from '@/features/articles/visibility';
+import { heroHeadingId } from '@/features/landing/hero';
 import { ProjectCard } from '@/features/projects/components/project-card';
 
 import { articles, projects } from '@/velite';
@@ -34,7 +35,7 @@ export function HeroSection() {
     fixtureSlots + (latestProject ? 1 : 0) + latestArticles.length;
 
   return (
-    <section aria-labelledby="board-heading" className="pegboard">
+    <section aria-labelledby={heroHeadingId} className="pegboard">
       <div className="container grid grid-cols-1 gap-x-6 gap-y-8 pt-10 pb-8 sm:grid-cols-2 lg:grid-cols-12 lg:pt-7">
         <Slot
           code={fixtureCodes.home}
@@ -43,7 +44,7 @@ export function HeroSection() {
           style={settleOrder(0)}
         >
           <div className="space-y-5">
-            <h1 id="board-heading" className="type-display">
+            <h1 id={heroHeadingId} className="type-display">
               Boonyarit
               <br />
               Iamsa-ard
