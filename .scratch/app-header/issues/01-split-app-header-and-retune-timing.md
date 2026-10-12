@@ -1,6 +1,7 @@
 # Split AppHeader and retune its timing
 
 Status: ready-for-agent
+Progress: resolved
 
 ## Problem
 
@@ -79,9 +80,15 @@ also has a three-state `HeaderState` (`drawerOpen` / `closedScrolled` /
 **Key interfaces:**
 
 - `AppHeader()`: same export and rendered output, minus the drawer lifecycle
-  and scroll logic.
-- `useIsScrolled(): boolean` (name may vary): true once the page is scrolled
-  more than 16px.
+  and scroll logic, plus a hidden 16px marker `<div>` rendered before
+  `<header>`. The marker is pinned to the top of `<body>`, which must stay
+  `relative`. Changed during implementation: the observer needs an element at
+  the top of the page, and the header owns it.
+- `useIsScrolled(scrollThresholdRef: RefObject<HTMLElement | null>): boolean`:
+  true once the page has scrolled past the marker. Changed during
+  implementation from `useIsScrolled(): boolean`: passing the marker as a ref
+  avoids a second DOM id that the header and the hook would both have to agree
+  on.
 - `useHeroInView(pathname: string): boolean`: unchanged signature and behavior.
 - Mobile nav component: no props required. It reads the pathname itself.
 - Nav items: `{ href: string; label: string }[]` plus
