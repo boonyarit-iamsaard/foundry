@@ -9,8 +9,10 @@ export const previewImageSize = { width: 1200, height: 630 };
 
 export const previewImageContentType = 'image/png';
 
-// The day board from DESIGN.md. The card is always drawn by day: a preview has
+// The day board from DESIGN.md. The image is always drawn by day: a preview has
 // no theme to follow, and the light board reads on both light and dark feeds.
+// Satori can't read the site's oklch tokens, so these are their hex values:
+// change one here when its token changes.
 const colors = {
   board: '#d2d6d4',
   perforation: '#babfbd',
@@ -21,7 +23,7 @@ const colors = {
   tapeInk: '#13161a',
 };
 
-// Satori reads neither WOFF2 nor variable fonts, so the card uses static WOFF
+// Satori reads neither WOFF2 nor variable fonts, so the image uses static WOFF
 // instances of the site's own faces at the weights it sets.
 const fontsDir = join(process.cwd(), 'src/core/assets/fonts');
 
@@ -47,7 +49,7 @@ function loadFonts() {
   );
 }
 
-type PreviewImageProps = Readonly<{
+type PreviewImageContent = Readonly<{
   /** The page's position code on the board, stencilled on the tape. */
   code: string;
   title: string;
@@ -62,7 +64,7 @@ export async function renderPreviewImage({
   code,
   title,
   subtitle,
-}: PreviewImageProps) {
+}: PreviewImageContent) {
   return new ImageResponse(
     <div
       style={{
@@ -78,7 +80,7 @@ export async function renderPreviewImage({
     >
       {/* The slot: painted outline, a gap, then the enamel plate. Its
           metrics are DESIGN.md's at about 2.5x, so the outline and tape
-          still read when the card is shown as a small thumbnail. */}
+          still read when the image is shown small. */}
       <div
         style={{
           display: 'flex',

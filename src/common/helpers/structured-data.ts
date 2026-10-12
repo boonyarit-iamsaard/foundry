@@ -1,26 +1,75 @@
 import { appConfig } from '@/core/configs/app.config';
 import type { Dated } from '@/common/helpers/date';
 import { modifiedDate } from '@/common/helpers/date';
+import { absoluteUrl } from '@/common/helpers/url';
 
 import type { Article } from '@/velite';
 
-const context = 'https://schema.org';
+const context = 'https://schema.org' as const;
 
 // The one Person node every other entity points at, so search engines join
 // them into a single person rather than one per page.
-const personId = new URL('/#person', appConfig.url).toString();
+const personId = absoluteUrl('/#person');
+
+type PersonReference = Readonly<{
+  '@type': 'Person';
+  '@id': string;
+  name: string;
+  url: string;
+}>;
 
 // Article pages don't carry the full Person node, so the reference repeats the
 // name search engines need to show an author.
-const personReference = {
+const personReference: PersonReference = {
   '@type': 'Person',
   '@id': personId,
   name: appConfig.title,
-  url: appConfig.url.toString(),
+  url: absoluteUrl('/'),
 };
 
+type Schema = Readonly<{ '@context': typeof context }>;
+
+/** The full Person node: who the site belongs to. */
+export type PersonSchema = Schema &
+  PersonReference &
+  Readonly<{
+    jobTitle: string;
+    image: string;
+    sameAs: readonly string[];
+    address: Readonly<{
+      '@type': 'PostalAddress';
+      addressLocality: string;
+      addressCountry: string;
+    }>;
+  }>;
+
+/** The site itself, published by its owner. */
+export type WebsiteSchema = Schema &
+  Readonly<{
+    '@type': 'WebSite';
+    name: string;
+    url: string;
+    publisher: PersonReference;
+  }>;
+
+/** One article, written by the site owner. */
+export type BlogPostingSchema = Schema &
+  Readonly<{
+    '@type': 'BlogPosting';
+    headline: string;
+    description: string;
+    image: string;
+    datePublished: string;
+    dateModified: string;
+    url: string;
+    mainEntityOfPage: Readonly<{ '@type': 'WebPage'; '@id': string }>;
+    author: PersonReference;
+  }>;
+
 /** The site owner, for the home page. */
-export function personSchema({ photo }: Readonly<{ photo: string }>) {
+export function personSchema({
+  photo,
+}: Readonly<{ photo: string }>): PersonSchema {
   return {
     '@context': context,
     ...personReference,
@@ -36,12 +85,12 @@ export function personSchema({ photo }: Readonly<{ photo: string }>) {
 }
 
 /** The site itself, for the home page. */
-export function websiteSchema() {
+export function websiteSchema(): WebsiteSchema {
   return {
     '@context': context,
     '@type': 'WebSite',
     name: appConfig.name,
-    url: appConfig.url.toString(),
+    url: absoluteUrl('/'),
     publisher: personReference,
   };
 }
@@ -51,7 +100,9 @@ type BlogPostingSource = Dated &
   Readonly<{ cover: Pick<Article['cover'], 'src'> }>;
 
 /** One article, for its own page. */
-export function blogPostingSchema(article: BlogPostingSource) {
+export function blogPostingSchema(
+  article: BlogPostingSource,
+): BlogPostingSchema {
   const url = absoluteUrl(article.permalink);
 
   return {
@@ -66,8 +117,4 @@ export function blogPostingSchema(article: BlogPostingSource) {
     mainEntityOfPage: { '@type': 'WebPage', '@id': url },
     author: personReference,
   };
-}
-
-function absoluteUrl(path: string) {
-  return new URL(path, appConfig.url).toString();
 }

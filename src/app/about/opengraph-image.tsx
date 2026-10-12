@@ -4,6 +4,7 @@ import {
   previewImageSize,
   renderPreviewImage,
 } from '@/common/components/preview-image';
+import { fixtureCodes } from '@/common/definitions/fixture-codes';
 
 import { about } from '@/velite';
 
@@ -15,7 +16,7 @@ export const contentType = previewImageContentType;
 
 export default function Image() {
   return renderPreviewImage({
-    code: 'L-02',
+    code: fixtureCodes.about,
     title: 'About',
     subtitle: about.description,
   });

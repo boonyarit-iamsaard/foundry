@@ -17,11 +17,16 @@ In priority order:
   them, and the list breaks the "no bare keyword dumps" brand line.
 - **`twitter:creator` is dropped.** The `@boonyarit_iam` handle is not used.
   The `twitter:card` tags stay, because X still reads them for previews.
-- **Every page sets a self-referencing canonical URL.** Filtered list views
-  such as `/articles?tags=node` use the unfiltered path as their canonical.
+- **Every page sets a self-referencing canonical URL**, except not-found,
+  which answers any missing URL and so has no path of its own. Filtered list
+  views such as `/articles?tags=node` use the unfiltered path as their
+  canonical. Home is written `https://boonyarit.me`, with no trailing slash,
+  in the canonical link, sitemap, and structured data alike.
 - **Preview image**: detail pages use their cover. Home, about, `/articles`,
-  `/projects`, and not-found use one generated card (`next/og`) in the board's
-  visual language, rendered in the light theme only.
+  `/projects`, and not-found use one generated image (`next/og`) in the
+  board's visual language, rendered in the light theme only. A cover much
+  narrower than 2:1 gets X's `summary` preview, so it is shown whole rather
+  than cropped.
 - **Sitemap and robots**: drafts never appear. Archived articles are left out
   of the sitemap but stay indexable (no `noindex`), so existing links keep
   their value. `lastModified` is `updated ?? date`.

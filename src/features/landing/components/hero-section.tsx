@@ -8,6 +8,7 @@ import { appConfig } from '@/core/configs/app.config';
 import { Slot } from '@/common/components/board/slot';
 import { email } from '@/common/components/social-links';
 import { Button } from '@/common/components/ui/button';
+import { fixtureCodes } from '@/common/definitions/fixture-codes';
 import { ArticleCard } from '@/features/articles/components/article-card';
 import { listedArticles } from '@/features/articles/visibility';
 import { ProjectCard } from '@/features/projects/components/project-card';
@@ -36,7 +37,7 @@ export function HeroSection() {
     <section aria-labelledby="board-heading" className="pegboard">
       <div className="container grid grid-cols-1 gap-x-6 gap-y-8 pt-10 pb-8 sm:grid-cols-2 lg:grid-cols-12 lg:pt-7">
         <Slot
-          code="B-00"
+          code={fixtureCodes.home}
           className="sm:col-span-2 lg:col-span-8"
           plateClassName="settle flex flex-col justify-between gap-8 p-6 sm:p-8"
           style={settleOrder(0)}

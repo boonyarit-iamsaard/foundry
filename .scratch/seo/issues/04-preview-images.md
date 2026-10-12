@@ -17,8 +17,8 @@ Pages without a cover show no **preview image** when shared, even though
 - Home, `/about`, `/articles`, `/projects`, and not-found get a generated card
   built with `next/og` (`opengraph-image.tsx`, 1200×630).
 - One shared card template takes a title and a subtitle. It uses the board's
-  visual language from `DESIGN.md` (stencil display type and the board
-  palette), shows "Boonyarit Iamsa-ard · Software Engineer", and is always
+  visual language from `DESIGN.md` (the display face for the title, the
+  stencil face for the position code, and the board palette), shows "Boonyarit Iamsa-ard · Software Engineer", and is always
   rendered in the light theme.
 - Load fonts from `src/core/assets/fonts/`.
 
@@ -60,6 +60,8 @@ Pages without a cover show no **preview image** when shared, even though
 ### Check after deploy
 
 - Article and project covers are WebP, and the Node.js import article's cover
-  is square (1000×1000), so `summary_large_image` crops it. Confirm both in
-  the LinkedIn Post Inspector; if LinkedIn drops WebP, the covers need a
-  PNG or JPEG variant.
+  is square (1000×1000). A cover narrower than 1.5:1 now gets
+  `twitter:card` `summary`, so X shows it whole; LinkedIn reads only
+  `og:image` and may still crop it. Confirm both in the LinkedIn Post
+  Inspector; if LinkedIn drops WebP, the covers need a PNG or JPEG
+  variant.

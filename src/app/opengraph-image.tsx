@@ -4,6 +4,7 @@ import {
   previewImageSize,
   renderPreviewImage,
 } from '@/common/components/preview-image';
+import { fixtureCodes } from '@/common/definitions/fixture-codes';
 
 export const alt = appConfig.title;
 
@@ -13,7 +14,7 @@ export const contentType = previewImageContentType;
 
 export default function Image() {
   return renderPreviewImage({
-    code: 'B-00',
+    code: fixtureCodes.home,
     title: appConfig.title,
     subtitle: appConfig.description,
   });

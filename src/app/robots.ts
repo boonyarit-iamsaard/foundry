@@ -1,10 +1,10 @@
 import type { MetadataRoute } from 'next';
 
-import { appConfig } from '@/core/configs/app.config';
+import { absoluteUrl } from '@/common/helpers/url';
 
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: { userAgent: '*', allow: '/' },
-    sitemap: new URL('/sitemap.xml', appConfig.url).toString(),
+    sitemap: absoluteUrl('/sitemap.xml'),
   };
 }

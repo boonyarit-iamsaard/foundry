@@ -1,17 +1,19 @@
 import type { MetadataRoute } from 'next';
 
-import { appConfig } from '@/core/configs/app.config';
 import type { Dated } from '@/common/helpers/date';
 import { modifiedDate } from '@/common/helpers/date';
+import { absoluteUrl } from '@/common/helpers/url';
+import { articlesListing } from '@/features/articles/listing';
 import { publishedArticles } from '@/features/articles/visibility';
+import { projectsListing } from '@/features/projects/listing';
 
 import type { Article } from '@/velite';
 
 type DatedPage = Dated & Readonly<{ permalink: string }>;
 
 type SitemapContent = Readonly<{
-  articles: (DatedPage & Pick<Article, 'status'>)[];
-  projects: DatedPage[];
+  articles: readonly (DatedPage & Pick<Article, 'status'>)[];
+  projects: readonly DatedPage[];
 }>;
 
 /**
@@ -33,13 +35,13 @@ export function sitemapEntries({
   return [
     entry('/', siteModified),
     entry('/about', siteModified),
-    entry('/articles', latestModifiedDate(published)),
-    entry('/projects', latestModifiedDate(projects)),
+    entry(articlesListing.path, latestModifiedDate(published)),
+    entry(projectsListing.path, latestModifiedDate(projects)),
     ...pages.map((page) => entry(page.permalink, modifiedDate(page))),
   ];
 }
 
-function latestModifiedDate(content: Dated[]): string | undefined {
+function latestModifiedDate(content: readonly Dated[]): string | undefined {
   return content
     .map(modifiedDate)
     .reduce<string | undefined>(
@@ -50,7 +52,7 @@ function latestModifiedDate(content: Dated[]): string | undefined {
 
 function entry(path: string, lastModified: string | undefined) {
   return {
-    url: new URL(path, appConfig.url).toString(),
+    url: absoluteUrl(path),
     ...(lastModified ? { lastModified } : {}),
   };
 }

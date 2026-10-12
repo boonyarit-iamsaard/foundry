@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 
 import { appConfig } from '@/core/configs/app.config';
+import { absoluteUrl } from '@/common/helpers/url';
 
 export const defaultTitle = `${appConfig.title} · Software Engineer`;
 
@@ -14,12 +15,39 @@ export type PreviewImage = Readonly<{
   alt: string;
 }>;
 
+type Covered = Readonly<{
+  title: string;
+  cover: Readonly<{ src: string; width: number; height: number }>;
+}>;
+
+/** An article's or project's cover as its preview image. */
+export function coverPreviewImage({ title, cover }: Covered): PreviewImage {
+  return {
+    url: cover.src,
+    width: cover.width,
+    height: cover.height,
+    alt: title,
+  };
+}
+
+// X crops a large preview to 2:1, so an image much narrower than that, like a
+// square cover, is shown whole as a small summary preview instead.
+const largePreviewMinAspectRatio = 1.5;
+
+function twitterCard(previewImage: PreviewImage | undefined) {
+  const isNarrow =
+    previewImage !== undefined &&
+    previewImage.width / previewImage.height < largePreviewMinAspectRatio;
+
+  return isNarrow ? 'summary' : 'summary_large_image';
+}
+
 type PageMetadata = Readonly<{
   title?: string;
   description?: string;
   /** The page's own path, which becomes its canonical URL. */
   path?: string;
-  /** Without one, the route's generated `opengraph-image` card is used. */
+  /** Without one, the route's generated `opengraph-image` is used. */
   previewImage?: PreviewImage;
   type?: 'website' | 'article';
 }>;
@@ -58,7 +86,7 @@ export function buildMetadata({
       ...imagesField,
     },
     twitter: {
-      card: 'summary_large_image',
+      card: twitterCard(previewImage),
       title: shareTitle,
       description,
       ...imagesField,
@@ -69,9 +97,7 @@ export function buildMetadata({
 // Filtered views such as `/articles?tags=node` share the unfiltered page's
 // canonical URL, so search engines see one page rather than one per filter.
 function canonicalUrl(path: string) {
-  const url = new URL(path, appConfig.url);
-  url.search = '';
-  url.hash = '';
+  const { pathname } = new URL(path, appConfig.url);
 
-  return url.toString();
+  return absoluteUrl(pathname);
 }

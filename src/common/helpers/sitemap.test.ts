@@ -2,11 +2,13 @@ import { describe, expect, it } from 'vitest';
 
 import { sitemapEntries } from './sitemap';
 
-const article = (
+function article(
   slug: string,
   status: 'published' | 'archived' | 'draft',
   date = '2025-04-04T00:00:00.000Z',
-) => ({ permalink: `/articles/${slug}`, status, date });
+) {
+  return { permalink: `/articles/${slug}`, status, date };
+}
 
 describe('sitemapEntries', () => {
   it('lists published articles and leaves out archived and draft ones', () => {
@@ -43,7 +45,7 @@ describe('sitemapEntries', () => {
 
     expect(entries).toEqual([
       {
-        url: 'https://boonyarit.me/',
+        url: 'https://boonyarit.me',
         lastModified: '2025-06-01T00:00:00.000Z',
       },
       {

@@ -6,7 +6,7 @@ import { AuthorSlot } from '@/common/components/board/author-slot';
 import { DetailBody } from '@/common/components/detail-body';
 import { JsonLd } from '@/common/components/json-ld';
 import { MDX } from '@/common/components/mdx';
-import { buildMetadata } from '@/common/helpers/metadata';
+import { buildMetadata, coverPreviewImage } from '@/common/helpers/metadata';
 import { blogPostingSchema } from '@/common/helpers/structured-data';
 import { articleCode } from '@/features/articles/code';
 import { ArticleHeader } from '@/features/articles/components/article-header';
@@ -35,12 +35,7 @@ export async function generateMetadata({
     title: article.title,
     description: article.description,
     path: article.permalink,
-    previewImage: {
-      url: article.cover.src,
-      width: article.cover.width,
-      height: article.cover.height,
-      alt: article.title,
-    },
+    previewImage: coverPreviewImage(article),
     type: 'article',
   });
 }

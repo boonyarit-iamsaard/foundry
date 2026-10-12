@@ -14,7 +14,7 @@ export const contentType = previewImageContentType;
 
 export default function Image() {
   return renderPreviewImage({
-    code: 'W-00',
+    code: articlesListing.code,
     title: articlesListing.title,
     subtitle: articlesListing.description,
   });

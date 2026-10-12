@@ -21,8 +21,9 @@ type ArticlesPageProps = Readonly<{
 }>;
 
 export const metadata: Metadata = buildMetadata({
-  ...articlesListing,
-  path: '/articles',
+  title: articlesListing.title,
+  description: articlesListing.description,
+  path: articlesListing.path,
 });
 
 export default async function Page({ searchParams }: ArticlesPageProps) {
@@ -51,7 +52,7 @@ export default async function Page({ searchParams }: ArticlesPageProps) {
           />
           <div className="grid gap-y-10">
             {filteredResource.length === 0 ? (
-              <EmptySlot code="W-00" className="min-h-48">
+              <EmptySlot code={articlesListing.code} className="min-h-48">
                 <div className="space-y-1 text-center">
                   <p className="font-bold font-display text-2xl uppercase">
                     Nothing in this slot

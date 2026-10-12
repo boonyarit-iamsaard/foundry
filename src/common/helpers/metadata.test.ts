@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { buildMetadata } from './metadata';
+import { buildMetadata, coverPreviewImage } from './metadata';
 
 describe('buildMetadata', () => {
   it('applies the site-wide defaults', () => {
@@ -65,9 +65,17 @@ describe('buildMetadata', () => {
     });
   });
 
+  it('shows a square preview image whole as a summary preview', () => {
+    const metadata = buildMetadata({
+      previewImage: { url: '/cover.webp', width: 1000, height: 1000, alt: '' },
+    });
+
+    expect(metadata.twitter).toMatchObject({ card: 'summary' });
+  });
+
   it('leaves images unset without a preview image', () => {
     // An own `images` key, even undefined, stops Next from using the
-    // route's generated opengraph-image card.
+    // route's generated opengraph-image.
     const metadata = buildMetadata();
 
     expect(metadata.openGraph).not.toHaveProperty('images');
@@ -93,7 +101,29 @@ describe('buildMetadata', () => {
     );
   });
 
+  it('writes the home canonical URL without a trailing slash', () => {
+    expect(buildMetadata({ path: '/' }).alternates?.canonical).toBe(
+      'https://boonyarit.me',
+    );
+  });
+
   it('sets no canonical URL without a path', () => {
     expect(buildMetadata().alternates).toBeUndefined();
+  });
+});
+
+describe('coverPreviewImage', () => {
+  it('uses the cover with the title as alt text', () => {
+    expect(
+      coverPreviewImage({
+        title: 'Portfolio',
+        cover: { src: '/static/cover.webp', width: 1600, height: 900 },
+      }),
+    ).toEqual({
+      url: '/static/cover.webp',
+      width: 1600,
+      height: 900,
+      alt: 'Portfolio',
+    });
   });
 });

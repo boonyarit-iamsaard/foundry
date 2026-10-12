@@ -16,7 +16,7 @@ describe('personSchema', () => {
       '@id': 'https://boonyarit.me/#person',
       name: 'Boonyarit Iamsa-ard',
       jobTitle: 'Software Engineer',
-      url: 'https://boonyarit.me/',
+      url: 'https://boonyarit.me',
       image: 'https://boonyarit.me/_next/static/media/profile.webp',
       sameAs: [
         'https://github.com/boonyarit-iamsaard',
@@ -39,12 +39,12 @@ describe('websiteSchema', () => {
       '@context': 'https://schema.org',
       '@type': 'WebSite',
       name: 'boonyarit.me',
-      url: 'https://boonyarit.me/',
+      url: 'https://boonyarit.me',
       publisher: {
         '@type': 'Person',
         '@id': 'https://boonyarit.me/#person',
         name: 'Boonyarit Iamsa-ard',
-        url: 'https://boonyarit.me/',
+        url: 'https://boonyarit.me',
       },
     });
     expect(website.publisher['@id']).toBe(personSchema({ photo })['@id']);
@@ -83,7 +83,7 @@ describe('blogPostingSchema', () => {
         '@type': 'Person',
         '@id': 'https://boonyarit.me/#person',
         name: 'Boonyarit Iamsa-ard',
-        url: 'https://boonyarit.me/',
+        url: 'https://boonyarit.me',
       },
     });
     expect(posting.author['@id']).toBe(personSchema({ photo })['@id']);

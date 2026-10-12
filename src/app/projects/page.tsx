@@ -25,8 +25,9 @@ const hasSeveralStatuses =
 const hasSeveralProjects = projects.length > 1;
 
 export const metadata: Metadata = buildMetadata({
-  ...projectsListing,
-  path: '/projects',
+  title: projectsListing.title,
+  description: projectsListing.description,
+  path: projectsListing.path,
 });
 
 export default async function Page({ searchParams }: ProjectsPageProps) {
@@ -65,7 +66,7 @@ export default async function Page({ searchParams }: ProjectsPageProps) {
             />
           ) : null}
           {filteredResource.length === 0 ? (
-            <EmptySlot code="P-00" className="min-h-48">
+            <EmptySlot code={projectsListing.code} className="min-h-48">
               <div className="space-y-1 text-center">
                 <p className="font-bold font-display text-2xl uppercase">
                   Nothing in this slot
