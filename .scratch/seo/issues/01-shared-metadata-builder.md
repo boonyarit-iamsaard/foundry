@@ -1,6 +1,7 @@
 # Shared metadata builder
 
 Status: ready-for-agent
+Progress: resolved
 
 ## Problem
 

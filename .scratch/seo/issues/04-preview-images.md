@@ -1,6 +1,7 @@
 # Preview images
 
 Status: ready-for-agent
+Progress: resolved
 
 Blocked by: 01
 

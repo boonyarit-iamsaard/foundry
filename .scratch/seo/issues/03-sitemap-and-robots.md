@@ -1,6 +1,7 @@
 # Sitemap and robots
 
 Status: ready-for-agent
+Progress: resolved
 
 Blocked by: 02
 

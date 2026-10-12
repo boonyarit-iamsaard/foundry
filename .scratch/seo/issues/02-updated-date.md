@@ -1,6 +1,7 @@
 # Optional updated date
 
 Status: ready-for-agent
+Progress: resolved
 
 ## Problem
 

@@ -1,6 +1,7 @@
 # Structured data
 
 Status: ready-for-agent
+Progress: resolved
 
 Blocked by: 01, 02
 
