@@ -23,3 +23,15 @@ cannot tell when an article was revised.
 - An article with `updated` shows the updated date to readers.
 - A single helper resolves the effective modified date (`updated ?? date`),
   and Vitest covers it.
+
+## Comments
+
+### Implementation notes
+
+- The helper is `modifiedDate` in `src/common/helpers/date.ts`. The schema
+  leaves `updated` absent when it isn't set, so issues 03 and 05 must call
+  `modifiedDate` rather than read `updated` directly.
+- The article header shows "Updated" only when `updated` falls on a different
+  calendar day from `date`. A same-day revision would repeat the publish date.
+- Projects accept `updated` but show nothing yet; the spec asks for the
+  article page only.

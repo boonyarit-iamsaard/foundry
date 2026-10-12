@@ -47,6 +47,7 @@ const articles = defineCollection({
       slug: s.slug('article'),
       tags: s.array(tag),
       date: s.isodate(),
+      updated: s.isodate().optional(),
       metadata: s.metadata(),
       content: s.mdx(),
       status: s.union([
@@ -74,6 +75,7 @@ const projects = defineCollection({
       github: s.string().url().optional(),
       preview: s.string().url().optional(),
       date: s.isodate(),
+      updated: s.isodate().optional(),
       metadata: s.metadata(),
       content: s.mdx(),
       status: s.union([
