@@ -101,6 +101,14 @@ describe('buildMetadata', () => {
     );
   });
 
+  it('drops the fragment from the canonical URL', () => {
+    const metadata = buildMetadata({ path: '/articles#latest' });
+
+    expect(metadata.alternates?.canonical).toBe(
+      'https://boonyarit.me/articles',
+    );
+  });
+
   it('writes the home canonical URL without a trailing slash', () => {
     expect(buildMetadata({ path: '/' }).alternates?.canonical).toBe(
       'https://boonyarit.me',

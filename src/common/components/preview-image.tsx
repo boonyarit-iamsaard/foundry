@@ -56,6 +56,18 @@ type PreviewImageContent = Readonly<{
   subtitle: string;
 }>;
 
+// A title can repeat a word, so each key counts the word's earlier uses.
+function keyedWords(title: string) {
+  const uses = new Map<string, number>();
+
+  return title.split(' ').map((word) => {
+    const use = uses.get(word) ?? 0;
+    uses.set(word, use + 1);
+
+    return { key: `${word}-${use}`, word };
+  });
+}
+
 /**
  * A page's link preview: one slot on the pegboard holding the page title,
  * with the owner's name stamped along the bottom of the plate.
@@ -117,10 +129,8 @@ export async function renderPreviewImage({
                 textTransform: 'uppercase',
               }}
             >
-              {title.split(' ').map((word, index) => (
-                // A title can repeat a word, and its words never reorder.
-                // biome-ignore lint/suspicious/noArrayIndexKey: see above
-                <span key={index}>{word}</span>
+              {keyedWords(title).map(({ key, word }) => (
+                <span key={key}>{word}</span>
               ))}
             </div>
             <div

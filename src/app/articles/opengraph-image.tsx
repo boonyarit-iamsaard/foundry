@@ -1,16 +1,13 @@
 import { appConfig } from '@/core/configs/app.config';
-import {
-  previewImageContentType,
-  previewImageSize,
-  renderPreviewImage,
-} from '@/common/components/preview-image';
+import { renderPreviewImage } from '@/common/components/preview-image';
 import { articlesListing } from '@/features/articles/listing';
 
 export const alt = `${articlesListing.title} by ${appConfig.title}`;
 
-export const size = previewImageSize;
-
-export const contentType = previewImageContentType;
+export {
+  previewImageContentType as contentType,
+  previewImageSize as size,
+} from '@/common/components/preview-image';
 
 export default function Image() {
   return renderPreviewImage({
