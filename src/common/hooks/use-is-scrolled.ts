@@ -5,15 +5,17 @@ import type { RefObject } from 'react';
 import { useEffect, useState } from 'react';
 
 /**
- * Whether the page has scrolled past `marker`, an element pinned to the top
- * of the page whose height is the scroll threshold. Observing it updates
- * while scrolling, with no scroll listener to debounce.
+ * Whether the page has scrolled past an element pinned to the top of the page
+ * whose height is the scroll threshold. Observing it updates while scrolling,
+ * with no scroll listener to debounce.
  */
-export function useIsScrolled(marker: RefObject<HTMLElement | null>): boolean {
+export function useIsScrolled(
+  scrollThresholdRef: RefObject<HTMLElement | null>,
+): boolean {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    const element = marker.current;
+    const element = scrollThresholdRef.current;
 
     if (!element) {
       return;
@@ -26,7 +28,7 @@ export function useIsScrolled(marker: RefObject<HTMLElement | null>): boolean {
     observer.observe(element);
 
     return () => observer.disconnect();
-  }, [marker]);
+  }, [scrollThresholdRef]);
 
   return isScrolled;
 }

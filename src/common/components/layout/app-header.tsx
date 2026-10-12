@@ -6,17 +6,18 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 import profile from '@/core/assets/images/profile.webp';
+import { appConfig } from '@/core/configs/app.config';
 import { cn } from '@/common/helpers/cn';
-import { useHeroInView } from '@/common/hooks/use-hero-in-view';
 import { useIsScrolled } from '@/common/hooks/use-is-scrolled';
 
 import { ThemeToggle } from '../theme-toggle';
 import { MobileNav } from './mobile-nav';
 import { isCurrent, navItems } from './nav-items';
+import { useHeroInView } from './use-hero-in-view';
 
 export function AppHeader() {
-  const scrollMarkerRef = useRef<HTMLDivElement>(null);
-  const isScrolled = useIsScrolled(scrollMarkerRef);
+  const scrollThresholdRef = useRef<HTMLDivElement>(null);
+  const isScrolled = useIsScrolled(scrollThresholdRef);
   const pathname = usePathname();
   const isHeroInView = useHeroInView(pathname);
 
@@ -25,7 +26,7 @@ export function AppHeader() {
       {/* Its 16px height is how far the page scrolls before the border shows.
           Pinned to the top of the page because <body> is its containing block. */}
       <div
-        ref={scrollMarkerRef}
+        ref={scrollThresholdRef}
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-0 top-0 h-4"
       />
@@ -39,7 +40,7 @@ export function AppHeader() {
           <Link
             href="/"
             className="flex items-center"
-            aria-label="Boonyarit Iamsa-ard, home"
+            aria-label={`${appConfig.title}, home`}
           >
             <span className="relative block size-8 shrink-0 overflow-hidden rounded-[3px] border-2 border-paint">
               <Image
@@ -61,7 +62,7 @@ export function AppHeader() {
               <span className="min-w-0 overflow-hidden">
                 <span className="flex items-baseline gap-2.5 whitespace-nowrap pl-3">
                   <span className="font-display font-extrabold text-[1.375rem] uppercase leading-none tracking-[0.03em]">
-                    Boonyarit Iamsa-ard
+                    {appConfig.title}
                   </span>
                   <span className="stamp hidden text-muted-foreground text-xs leading-none lg:inline">
                     Software Engineer

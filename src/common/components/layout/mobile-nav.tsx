@@ -52,7 +52,7 @@ export function MobileNav() {
         <DrawerHeader className="bg-board">
           <DrawerTitle className="text-left font-display font-extrabold text-xl uppercase tracking-[0.03em]">
             <Link href="/" onClick={close}>
-              Boonyarit Iamsa-ard
+              {appConfig.title}
             </Link>
           </DrawerTitle>
           <DrawerDescription className="sr-only">
