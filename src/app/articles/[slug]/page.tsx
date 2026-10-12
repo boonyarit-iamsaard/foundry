@@ -4,8 +4,10 @@ import { notFound } from 'next/navigation';
 
 import { AuthorSlot } from '@/common/components/board/author-slot';
 import { DetailBody } from '@/common/components/detail-body';
+import { JsonLd } from '@/common/components/json-ld';
 import { MDX } from '@/common/components/mdx';
 import { buildMetadata } from '@/common/helpers/metadata';
+import { blogPostingSchema } from '@/common/helpers/structured-data';
 import { articleCode } from '@/features/articles/code';
 import { ArticleHeader } from '@/features/articles/components/article-header';
 
@@ -61,6 +63,7 @@ export default async function Page({ params }: PageProps) {
 
   return (
     <article className="container-content pb-24">
+      <JsonLd data={blogPostingSchema(article)} />
       <ArticleHeader article={article} />
       <DetailBody code={articleCode(article.slug)} cover={article.cover}>
         <MDX content={article.content} />

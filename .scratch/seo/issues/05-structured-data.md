@@ -31,3 +31,18 @@ presentation.
 - Home and every article page pass Google's Rich Results Test with no errors.
 - Vitest covers the shape of each object, including the shared Person `@id`
   reference.
+
+## Comments
+
+### Implementation notes
+
+- The builders are `personSchema`, `websiteSchema` and `blogPostingSchema` in
+  `src/common/helpers/structured-data.ts`. They render through `JsonLd` in
+  `src/common/components/json-ld.tsx`, which escapes `<`.
+- `publisher` and `author` carry `@type`, `name` and `url` as well as the
+  Person `@id`. Article pages don't include the full Person node, and Google
+  reads the author's name from the page itself.
+- The Rich Results Test offers no rich result for `Person` or `WebSite`, so
+  for the home page it reports "no items detected", not a pass. Check the home
+  page with the Schema.org validator, and the article pages with the Rich
+  Results Test.
