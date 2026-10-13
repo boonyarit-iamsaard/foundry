@@ -8,12 +8,14 @@ Every command below uses `$S`, the session's scratchpad directory.
 ## 1. Start
 
 Run `next` directly under `setsid`, so the server and every worker it spawns
-share one session that step 4 stops as a unit:
+share one session that step 4 stops as a unit. Each mode records its port in
+`$S/dev.port`, which every later step reads:
 
 ```bash
-setsid node_modules/.bin/next dev --turbopack >"$S/dev.log" 2>&1 </dev/null &
+echo 3000 >"$S/dev.port"
+setsid node_modules/.bin/next dev --turbopack -p 3000 >"$S/dev.log" 2>&1 </dev/null &
 echo $! >"$S/dev.sid"
-timeout 90 bash -c 'until curl -sf -o /dev/null http://localhost:3000; do sleep 1; done'
+timeout 90 bash -c "until curl -sf -o /dev/null http://localhost:$(cat "$S/dev.port"); do sleep 1; done"
 ```
 
 The server is up when the `curl` loop exits 0. Server errors land in
@@ -21,13 +23,14 @@ The server is up when the `curl` loop exits 0. Server errors land in
 
 **Production build.** Lazy-loaded chunks and anything performance-related only
 behave for real in a production build. Build, then start in place of `next dev`
-on its own port, and use that port everywhere below:
+on its own port:
 
 ```bash
 pnpm build
+echo 3100 >"$S/dev.port"
 setsid node_modules/.bin/next start -p 3100 >"$S/dev.log" 2>&1 </dev/null &
 echo $! >"$S/dev.sid"
-timeout 30 bash -c 'until curl -sf -o /dev/null http://localhost:3100; do sleep 1; done'
+timeout 30 bash -c "until curl -sf -o /dev/null http://localhost:$(cat "$S/dev.port"); do sleep 1; done"
 ```
 
 ## 2. Install the driver
@@ -42,7 +45,8 @@ ls -d ~/.cache/ms-playwright/chromium-*/chrome-linux64/chrome | tail -1
 
 ## 3. Drive
 
-Write the check as an `.mjs` script in `$S/pw` and run it from there:
+Write the check as an `.mjs` script in `$S/pw` and run it from there with
+`PORT="$(cat "$S/dev.port")" node <script>.mjs`:
 
 ```js
 import { chromium } from 'playwright-core';
@@ -63,7 +67,7 @@ const frames = () =>
       new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r))),
   );
 
-await page.goto('http://localhost:3000/');
+await page.goto(`http://localhost:${process.env.PORT}/`);
 await page.waitForLoadState('networkidle');
 // ...checks...
 console.log('errors', errors);
@@ -93,7 +97,7 @@ Stop the whole session, then confirm the port is free:
 ```bash
 pkill -s "$(cat "$S/dev.sid")"
 timeout 10 bash -c "while pgrep -s $(cat "$S/dev.sid") >/dev/null; do sleep 0.5; done"
-lsof -iTCP:3000 -sTCP:LISTEN || echo 'port free'  # 3100 for a production build
+lsof -iTCP:"$(cat "$S/dev.port")" -sTCP:LISTEN || echo 'port free'
 ```
 
 The server is stopped when this prints `port free`.
