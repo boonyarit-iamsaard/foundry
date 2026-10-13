@@ -1,7 +1,5 @@
 'use client';
 
-import type { RefObject } from 'react';
-
 import Link from 'next/link';
 
 import { ArrowRightIcon, DownloadIcon } from 'lucide-react';
@@ -24,15 +22,15 @@ type MobileNavDrawerProps = Readonly<{
   open: boolean;
   onOpenChange: (open: boolean) => void;
   pathname: string;
-  // The menu button lives outside the drawer, so focus is handed back by hand.
-  triggerRef: RefObject<HTMLButtonElement | null>;
+  // The menu button lives outside the drawer, so the owner puts focus back.
+  onReturnFocus: () => void;
 }>;
 
 export function MobileNavDrawer({
   open,
   onOpenChange,
   pathname,
-  triggerRef,
+  onReturnFocus,
 }: MobileNavDrawerProps) {
   // Links close the drawer themselves too, so a link to the current page
   // (or a hash on it, like /#contact) still closes it.
@@ -46,7 +44,7 @@ export function MobileNavDrawer({
         className="pegboard flex flex-col border-paint border-r-2 shadow-none"
         onCloseAutoFocus={(event) => {
           event.preventDefault();
-          triggerRef.current?.focus();
+          onReturnFocus();
         }}
       >
         <DrawerHeader className="bg-board">

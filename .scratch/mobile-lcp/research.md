@@ -90,7 +90,7 @@ These figures are arithmetic from the constants above, not a re-simulation.
 
 **Applied to this repo (candidates to confirm with `next analyze`, not measured):**
 
-- `src/app/layout.tsx` renders these client boundaries on every route: `ThemeProvider` (next-themes), `TooltipProvider` (Radix tooltip), `AppLayout` → `AppHeader` (`'use client'`) → `MobileNav` (vaul drawer and Radix dialog, opened only on tap), `ThemeToggle`, `Toaster` (sonner, only needed once a toast fires), `<Analytics/>`, `<SpeedInsights/>`.
+- `src/app/layout.tsx` renders these client boundaries on every route: `ThemeProvider` (next-themes), `TooltipProvider` (Radix tooltip; since removed, as nothing renders a tooltip), `AppLayout` → `AppHeader` (`'use client'`) → `MobileNav` (vaul drawer and Radix dialog, opened only on tap), `ThemeToggle`, `Toaster` (sonner, only needed once a toast fires), `<Analytics/>`, `<SpeedInsights/>`.
 - The home page adds `ContactForm` (`'use client'`; react-hook-form, zod, next-safe-action) by way of `CallToActionSection`.
 - The drawer body and the Toaster are natural `next/dynamic` targets from inside client files. The contact form sits below the fold, so it is another candidate.
 - `@vercel/analytics/next` 2.0.1 and `@vercel/speed-insights/next` 2.0.0 (`dist/next/index.mjs`) are `"use client"` wrappers in `<Suspense fallback={null}>`. They call `inject()` in `useEffect`, which appends `<script defer src="/_vercel/insights/script.js">` (or `/_vercel/speed-insights/script.js`). The real tracker therefore loads after hydration. Only the wrapper (~7 KB unminified source each) is in the bundle.

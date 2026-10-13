@@ -30,7 +30,7 @@ export function MobileNav() {
     setIsOpen(false);
   }
 
-  function open() {
+  function openDrawer() {
     setHasOpened(true);
     setIsOpen(true);
   }
@@ -43,7 +43,7 @@ export function MobileNav() {
         size="icon"
         aria-haspopup="dialog"
         aria-expanded={isOpen}
-        onClick={open}
+        onClick={openDrawer}
       >
         <MenuIcon className="size-5" />
         <span className="sr-only">Open menu</span>
@@ -53,7 +53,7 @@ export function MobileNav() {
           open={isOpen}
           onOpenChange={setIsOpen}
           pathname={pathname}
-          triggerRef={triggerRef}
+          onReturnFocus={() => triggerRef.current?.focus()}
         />
       ) : null}
     </>
