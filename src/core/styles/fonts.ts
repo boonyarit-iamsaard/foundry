@@ -49,6 +49,8 @@ export const fontStencil = localFont({
 export const fontMono = localFont({
   src: '../assets/fonts/jetbrains-mono-latin-variable.woff2',
   display: 'swap',
+  // Only MDX code uses it, so a preload just competes with the hero.
+  preload: false,
   variable: '--font-mono',
   weight: '100 800',
 });

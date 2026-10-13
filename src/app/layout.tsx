@@ -16,7 +16,6 @@ import {
 import { AppLayout } from '@/common/components/layout/app-layout';
 import { ThemeProvider } from '@/common/components/theme-provider';
 import { Toaster } from '@/common/components/ui/sonner';
-import { TooltipProvider } from '@/common/components/ui/tooltip';
 import { cn } from '@/common/helpers/cn';
 import {
   buildMetadata,
@@ -57,9 +56,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           enableSystem
           disableTransitionOnChange
         >
-          <TooltipProvider>
-            <AppLayout>{children}</AppLayout>
-          </TooltipProvider>
+          <AppLayout>{children}</AppLayout>
           <Analytics />
           <SpeedInsights />
           <Toaster />
