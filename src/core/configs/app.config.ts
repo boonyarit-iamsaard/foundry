@@ -17,5 +17,3 @@ export const appConfig = {
     email: 'mailto:boonyarit.iamsaard@gmail.com',
   },
 };
-
-export type AppConfig = typeof appConfig;
