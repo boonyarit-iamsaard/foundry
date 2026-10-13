@@ -34,7 +34,7 @@ A software engineer who came to code from aircraft maintenance. Years of precise
 - Content is MDX built by Velite from `content/` (articles, projects, about, tags). Each article and project has a cover image.
 - Articles carry an **article status** (Draft, Published, Archived). Projects carry a **project status** (Experimental, Active, Stable, Maintenance). The two are separate, so always name which one is meant (see `GLOSSARY.md`).
 - Contact form: a server action validated with zod and sent by email (Resend or nodemailer, with React Email templates). It must keep working.
-- Resume download: `public/assets/boonyarit-iamsaard-2025-04-15.pdf`. The file is a placeholder until a newer resume replaces it.
+- Resume download: `public/assets/boonyarit-iamsaard-2026-10-13.pdf`.
 - Light and dark themes with a toggle (next-themes) must both be kept.
 - Stack: Next.js 16 (App Router), React 19, Tailwind CSS 4, Radix and shadcn-style primitives, deployed on Vercel with Analytics and Speed Insights.
 - Social links: GitHub (`boonyarit-iamsaard`), LinkedIn (`boonyarit-iamsaard`), and email.
