@@ -58,3 +58,7 @@ public/static
 
 # Claude Code local preview config
 /.claude/launch.json
+
+# chrome-launcher under WSL drops Windows-style profile dirs (C:\Users\...) into
+# the cwd; ignoring them also keeps Tailwind's source scan off their sockets.
+/C:*
