@@ -53,8 +53,8 @@ export function ProjectCard({
     >
       <div
         className={cn(
-          'relative aspect-[16/9] border-paint border-b-2',
-          wide && 'sm:aspect-auto sm:border-r-2 sm:border-b-0',
+          'relative aspect-[16/9] border-rim border-b',
+          wide && 'sm:aspect-auto sm:border-r sm:border-b-0',
         )}
       >
         <Image

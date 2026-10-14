@@ -5,7 +5,7 @@ import { SocialLinks } from '@/common/components/social-links';
 
 export function AppFooter() {
   return (
-    <footer className="border-paint border-t-2 bg-board">
+    <footer className="border-rim border-t bg-board">
       <div className="container flex flex-col gap-6 py-8 md:flex-row md:items-center md:justify-between">
         <div className="space-y-1">
           <p className="font-display font-extrabold text-lg uppercase tracking-[0.03em]">

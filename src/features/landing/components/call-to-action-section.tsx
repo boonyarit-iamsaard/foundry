@@ -12,7 +12,7 @@ export function CallToActionSection() {
     <section
       id="contact"
       aria-labelledby="contact-heading"
-      className="pegboard border-paint border-t-2"
+      className="pegboard border-rim border-t"
     >
       <div className="container grid gap-12 py-20 sm:py-28 lg:grid-cols-12 lg:gap-8">
         <div className="space-y-6 lg:col-span-5">

@@ -74,7 +74,7 @@ export function ArticleCard({
       )}
     >
       {compact ? null : (
-        <div className="relative aspect-[16/9] border-paint border-b-2 sm:aspect-auto sm:border-r-2 sm:border-b-0">
+        <div className="relative aspect-[16/9] border-rim border-b sm:aspect-auto sm:border-r sm:border-b-0">
           <Image
             src={article.cover}
             alt=""

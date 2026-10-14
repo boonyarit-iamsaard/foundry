@@ -40,10 +40,7 @@ export default async function Page({ searchParams }: ArticlesPageProps) {
         title={articlesListing.title}
         description={articlesListing.description}
       />
-      <section
-        aria-label="Articles"
-        className="pegboard border-paint border-t-2"
-      >
+      <section aria-label="Articles" className="border-rim border-t">
         <div className="container space-y-10 pt-10 pb-20">
           <FilterByTags
             resourceTags={resourceTags}

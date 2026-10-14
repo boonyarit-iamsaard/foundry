@@ -31,7 +31,7 @@ export function PathSection() {
             </p>
           </div>
         </div>
-        <div className="border-paint border-t-2 p-6 sm:p-10 lg:col-span-5 lg:border-t-0 lg:border-l-2">
+        <div className="border-rim border-t p-6 sm:p-10 lg:col-span-5 lg:border-t-0 lg:border-l">
           <h3 className="stamp mb-6 text-muted-foreground">What I build</h3>
           <div className="max-w-[46ch] space-y-4 text-lg leading-relaxed">
             <p>

@@ -3,17 +3,30 @@ import type { ComponentProps, ReactNode } from 'react';
 import { cn } from '@/common/helpers/cn';
 
 /**
- * How a slot's painted outline is drawn. Projects use it to carry their
- * project status, so state reads from the line itself and never from colour.
+ * How a slot's outline is drawn. Projects use it to carry their project
+ * status, so state reads from the line itself and never from colour.
  */
 export type SlotLine = 'solid' | 'dashed' | 'heavy' | 'dashdot';
 
+// Thin lines in rim grey; heavy is the one clearly thicker line. Dashed and
+// dash-dot get half a pixel more so their breaks still read at 1x.
 const lineClasses: Record<SlotLine, string> = {
-  solid: 'border-2 border-solid',
-  dashed: 'border-2 border-dashed',
-  heavy: 'border-[3.5px] border-solid',
+  solid: 'border border-solid',
+  dashed: 'border-[1.5px] border-dashed',
+  heavy: 'border-[3px] border-solid',
   // CSS borders have no chain line; DashDotOutline draws it over a clear border.
-  dashdot: 'border-[2.5px] border-transparent',
+  dashdot: 'border-[1.5px] border-transparent',
+};
+
+// The chain line as an SVG dash pattern: long dash, gap, dot, gap.
+const chainStrokeWidth = 1.5;
+const chainDash = `12 4 ${chainStrokeWidth} 4`;
+
+// A short sample of each line, drawn with the same widths as the outline.
+const sampleClasses: Record<Exclude<SlotLine, 'dashdot'>, string> = {
+  solid: 'border-t border-solid',
+  dashed: 'border-t-[1.5px] border-dashed',
+  heavy: 'border-t-[3px] border-solid',
 };
 
 type SlotProps = Readonly<
@@ -53,7 +66,7 @@ export function Slot({
     <div
       data-slot-code={code}
       className={cn(
-        'group/slot relative rounded-lg border-paint p-1.5 has-[[data-slot-link]:focus-visible]:outline-2 has-[[data-slot-link]:focus-visible]:outline-ring has-[[data-slot-link]:focus-visible]:outline-offset-4',
+        'group/slot relative rounded-lg border-rim p-1.5 has-[[data-slot-link]:focus-visible]:outline-2 has-[[data-slot-link]:focus-visible]:outline-ring has-[[data-slot-link]:focus-visible]:outline-offset-4',
         lineClasses[line],
         className,
       )}
@@ -91,18 +104,44 @@ function DashDotOutline() {
   return (
     <svg
       aria-hidden="true"
-      className="pointer-events-none absolute top-[-1.25px] left-[-1.25px] h-[calc(100%+2.5px)] w-[calc(100%+2.5px)] overflow-visible"
+      className="pointer-events-none absolute top-[-0.75px] left-[-0.75px] h-[calc(100%+1.5px)] w-[calc(100%+1.5px)] overflow-visible"
     >
       <rect
         width="100%"
         height="100%"
         rx="8"
         fill="none"
-        strokeWidth="2.5"
-        strokeDasharray="12 4 2.5 4"
-        className="stroke-paint"
+        strokeWidth={chainStrokeWidth}
+        strokeDasharray={chainDash}
+        className="stroke-rim"
       />
     </svg>
+  );
+}
+
+/** A 24px sample of a slot line, for a status key or a status label. */
+export function SlotLineSample({ line }: Readonly<{ line: SlotLine }>) {
+  if (line === 'dashdot') {
+    return (
+      <svg aria-hidden="true" className="h-[1.5px] w-6 overflow-visible">
+        <line
+          x1="0"
+          y1={chainStrokeWidth / 2}
+          x2="24"
+          y2={chainStrokeWidth / 2}
+          strokeWidth={chainStrokeWidth}
+          strokeDasharray={chainDash}
+          className="stroke-rim"
+        />
+      </svg>
+    );
+  }
+
+  return (
+    <span
+      aria-hidden="true"
+      className={cn('inline-block w-6 border-rim', sampleClasses[line])}
+    />
   );
 }
 
@@ -117,7 +156,7 @@ export function EmptySlot({
   return (
     <div
       className={cn(
-        'relative rounded-lg border-2 border-paint border-solid p-1.5',
+        'relative rounded-lg border border-rim border-solid p-1.5',
         className,
       )}
     >

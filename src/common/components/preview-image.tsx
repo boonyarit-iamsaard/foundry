@@ -14,10 +14,11 @@ export const previewImageContentType = 'image/png';
 // Satori can't read the site's oklch tokens, so these are their hex values:
 // change one here when its token changes.
 const colors = {
-  board: '#d2d6d4',
-  perforation: '#babfbd',
-  plate: '#f3f5f4',
-  paint: '#16191c',
+  board: '#eaeeec',
+  perforation: '#d5d8d6',
+  plate: '#fbfcfb',
+  rim: '#9a9fa1',
+  ink: '#16191c',
   muted: '#494e52',
 };
 
@@ -80,16 +81,16 @@ export async function renderPreviewImage({
         backgroundSize: '36px 36px',
       }}
     >
-      {/* The slot: painted outline, a gap, then the enamel plate. Its
-          metrics are DESIGN.md's at about 2.5x, so the outline still
-          reads when the image is shown small. */}
+      {/* The slot: a thin rim, a gap, then the enamel plate. Its metrics
+          are DESIGN.md's at about 2x, so the rim still shows when the
+          image is shown small, yet stays lighter than the lettering. */}
       <div
         style={{
           display: 'flex',
           position: 'relative',
           flex: 1,
           padding: 12,
-          border: `5px solid ${colors.paint}`,
+          border: `2px solid ${colors.rim}`,
           borderRadius: 18,
         }}
       >
@@ -102,7 +103,7 @@ export async function renderPreviewImage({
             padding: '52px 56px 36px',
             backgroundColor: colors.plate,
             borderRadius: 12,
-            color: colors.paint,
+            color: colors.ink,
           }}
         >
           <div style={{ display: 'flex', flexDirection: 'column', gap: 22 }}>
@@ -138,7 +139,7 @@ export async function renderPreviewImage({
             style={{
               display: 'flex',
               paddingTop: 20,
-              borderTop: `4px solid ${colors.paint}`,
+              borderTop: `2px solid ${colors.rim}`,
               fontFamily: 'Big Shoulders',
               fontSize: 30,
               fontWeight: 700,

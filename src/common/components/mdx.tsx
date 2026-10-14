@@ -80,7 +80,7 @@ const sharedComponents: MDXComponents = {
   ),
   hr: ({ className, ...props }: ComponentProps<'hr'>) => (
     <hr
-      className={cn('my-12 border-0 border-paint border-t-2', className)}
+      className={cn('my-12 border-0 border-rim border-t', className)}
       {...props}
     />
   ),
@@ -105,7 +105,7 @@ const sharedComponents: MDXComponents = {
   pre: ({ className, ...props }: ComponentProps<'pre'>) => (
     <pre
       className={cn(
-        'my-6 overflow-x-auto rounded-md border-2 border-paint p-5 font-mono text-sm leading-relaxed',
+        'my-6 overflow-x-auto rounded-md border border-rim p-5 font-mono text-sm leading-relaxed',
         className,
       )}
       {...props}
@@ -124,10 +124,7 @@ const sharedComponents: MDXComponents = {
   ),
   th: ({ className, ...props }: ComponentProps<'th'>) => (
     <th
-      className={cn(
-        'stamp border-paint border-b-2 py-2 pr-4 text-xs',
-        className,
-      )}
+      className={cn('stamp border-rim border-b py-2 pr-4 text-xs', className)}
       {...props}
     />
   ),

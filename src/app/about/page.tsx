@@ -42,7 +42,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-      <section className="pegboard border-paint border-t-2 py-14">
+      <section className="border-rim border-t py-14">
         <div className="container-content">
           <Slot plateClassName="px-5 py-8 sm:px-10 sm:py-12">
             <MDX content={about.content} />

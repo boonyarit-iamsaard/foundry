@@ -53,10 +53,7 @@ export default async function Page({ searchParams }: ProjectsPageProps) {
           </div>
         ) : null}
       </PageHeader>
-      <section
-        aria-label="Projects"
-        className="pegboard border-paint border-t-2"
-      >
+      <section aria-label="Projects" className="border-rim border-t">
         <div className="container space-y-10 pt-10 pb-20">
           {hasSeveralProjects ? (
             <FilterByTags

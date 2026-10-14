@@ -47,6 +47,7 @@
   /* Shadow board */
   --color-board: var(--board);
   --color-plate: var(--plate);
+  --color-rim: var(--rim);
   --color-paint: var(--paint);
   --color-paint-ink: var(--paint-ink);
   --color-tape: var(--tape);
@@ -69,23 +70,33 @@
 }
 
 /*
- * Day: a cool grey powder-coated tool board, items on enamel plates,
- * shadows painted ink-black. Night: charcoal tool foam whose cut-outs
- * reveal the safety-yellow under-layer. Yellow label tape is the only accent.
+ * Day: a near-white powder-coated tool board, items on white enamel plates.
+ * Night: charcoal tool foam. In both the board is drawn lightly around the
+ * words: text is always the darkest, strongest thing on the page. Yellow
+ * label tape is the only accent. It marks tape, selection and hovered link
+ * underlines, and at night also the main button and the focus ring; never an
+ * outline.
  */
 :root {
-  --board: oklch(0.872 0.005 165);
-  --board-perf: oklch(0.8 0.006 165);
-  --plate: oklch(0.968 0.003 165);
+  --board: oklch(0.945 0.004 165);
+  --board-perf: oklch(0.88 0.005 165);
+  --plate: oklch(0.99 0.002 165);
+  /* The rim: every slot outline and board rule, 1px in mid grey. About 2.3:1
+     against the board and 2.6:1 against a plate, so it frames without
+     competing with the text (decoration, so WCAG 1.4.11 does not apply). */
+  --rim: oklch(0.7 0.006 220);
+  /* The painted shadow under each plate, seen only when a plate lifts, and
+     the code stencilled on it. */
   --paint: oklch(0.21 0.008 250);
-  --paint-ink: oklch(0.872 0.005 165);
+  --paint-ink: var(--board);
   --tape: oklch(0.86 0.17 92);
   --tape-ink: oklch(0.2 0.01 250);
-  /* By day yellow and grey board share a lightness, so tape used as a state
+  /* Yellow tape on the light board barely separates, so tape used as a state
      marker gets an ink edge. At night the foam is dark enough on its own. */
-  --tape-edge: var(--paint);
-  /* Link underlines are drawn in paint: ink by day, yellow by night. */
-  --link-line: var(--paint);
+  --tape-edge: var(--foreground);
+  /* Link underlines are the muted text colour in both themes; yellow only on
+     hover. */
+  --link-line: var(--muted-foreground);
   --link-line-hover: var(--tape);
 
   --background: var(--board);
@@ -95,7 +106,7 @@
   --popover: var(--plate);
   --popover-foreground: var(--foreground);
   --primary: oklch(0.21 0.008 250);
-  --primary-foreground: oklch(0.968 0.003 165);
+  --primary-foreground: var(--plate);
   --secondary: oklch(0.92 0.004 165);
   --secondary-foreground: var(--foreground);
   --muted: oklch(0.92 0.004 165);
@@ -104,7 +115,7 @@
   --accent-foreground: var(--foreground);
   --destructive: oklch(0.5 0.19 27);
   --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(0.62 0.008 220);
+  --border: var(--rim);
   --input: oklch(0.55 0.01 220);
   --ring: oklch(0.21 0.008 250);
   --radius: 0.375rem;
@@ -116,7 +127,7 @@
   /* Code on the reading plate: the board's own neutrals, no second hue. */
   --shiki-foreground: var(--foreground);
   --shiki-background: var(--muted);
-  --shiki-token-keyword: var(--paint);
+  --shiki-token-keyword: var(--foreground);
   --shiki-token-constant: oklch(0.36 0.05 250);
   --shiki-token-string: oklch(0.4 0.05 165);
   --shiki-token-string-expression: oklch(0.4 0.05 165);
@@ -133,12 +144,16 @@
   --board: oklch(0.225 0.002 90);
   --board-perf: transparent;
   --plate: oklch(0.29 0.003 90);
-  --paint: oklch(0.86 0.17 92);
-  --paint-ink: oklch(0.2 0.01 250);
+  /* A grey rim, never yellow: about 2.9:1 against the foam, 2.4:1 against a
+     plate. */
+  --rim: oklch(0.5 0.003 90);
+  /* The painted shadow is a hole cut deeper than the foam, its code in the
+     muted text colour (about 9:1). */
+  --paint: oklch(0.17 0.002 90);
+  --paint-ink: oklch(0.76 0.003 90);
   --tape: oklch(0.86 0.17 92);
   --tape-ink: oklch(0.2 0.01 250);
   --tape-edge: var(--tape);
-  --link-line-hover: var(--foreground);
 
   --foreground: oklch(0.94 0.004 165);
   --primary: oklch(0.86 0.17 92);
@@ -149,7 +164,6 @@
   --accent: oklch(0.33 0.003 90);
   --destructive: oklch(0.7 0.17 30);
   --destructive-foreground: oklch(0.2 0.01 250);
-  --border: oklch(0.48 0.003 90);
   --input: oklch(0.62 0.003 90);
   --ring: oklch(0.86 0.17 92);
 
@@ -212,8 +226,7 @@
 }
 
 /*
- * Pegboard perforation: only on open board; long-form reading text always
- * sits on a plate.
+ * Pegboard perforation: the home page only. Every other page is plain board.
  * Night is cut foam, which has none; its --board-perf is transparent.
  */
 @utility pegboard {
@@ -250,7 +263,7 @@
   border-radius: 1px;
 }
 
-/* An inline link: a painted underline (ink by day, yellow by night). */
+/* An inline link: a muted underline that turns yellow on hover. */
 @utility tape-link {
   text-decoration-line: underline;
   text-decoration-thickness: 2px;
