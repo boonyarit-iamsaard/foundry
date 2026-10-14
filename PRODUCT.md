@@ -48,7 +48,7 @@ A software engineer who came to code from aircraft maintenance. Years of precise
 ## Evidence on Hand
 
 - Profile photo: `src/core/assets/images/profile.webp` (and `.png`).
-- Articles: "Conventional Commit Types – A Rule of Thumb Guide" (2025-04-04) and "Node.js Import Style Guide" (2025-04-10), each with a cover image.
+- Articles: "Conventional commit types – a rule of thumb guide" (2025-04-04), "Node.js import style guide" (2025-04-10) and "Redesigning my site with an AI design tool" (2026-10-11), each with a cover image.
 - Projects: one, this site (`content/projects/portfolio`).
 - About copy: `content/about.mdx`. The "Current Focus" and "Skills" sections still describe the old Backend Engineer title and stack and need updating.
 - Employer: Omise (current). It may be named on the site.
