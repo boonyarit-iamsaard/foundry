@@ -7,7 +7,7 @@ import { Slot } from '@/common/components/board/slot';
 import { Button } from '@/common/components/ui/button';
 
 /**
- * The contact call, hung at the end of a reading plate so a visitor who
+ * The contact call, hung at the end of the reading text so a visitor who
  * landed deep on an article or project is still one step from the form and
  * the resume.
  */

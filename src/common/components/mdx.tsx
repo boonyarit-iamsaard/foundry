@@ -38,10 +38,7 @@ const sharedComponents: MDXComponents = {
     </h3>
   ),
   p: ({ className, ...props }: ComponentProps<'p'>) => (
-    <p
-      className={cn('mb-5 max-w-[68ch] text-lg leading-relaxed', className)}
-      {...props}
-    />
+    <p className={cn('mb-5 text-lg leading-relaxed', className)} {...props} />
   ),
   a: ({ className, ...props }: ComponentProps<'a'>) => (
     <a
@@ -60,7 +57,7 @@ const sharedComponents: MDXComponents = {
   ul: ({ className, ...props }: ComponentProps<'ul'>) => (
     <ul
       className={cn(
-        'my-6 ml-6 max-w-[66ch] text-lg leading-relaxed [list-style-type:square] marker:text-foreground/60 [&>li]:mt-2 [&>li]:pl-1',
+        'my-6 ml-6 text-lg leading-relaxed [list-style-type:square] marker:text-foreground/60 [&>li]:mt-2 [&>li]:pl-1',
         className,
       )}
       {...props}
@@ -69,7 +66,7 @@ const sharedComponents: MDXComponents = {
   ol: ({ className, ...props }: ComponentProps<'ol'>) => (
     <ol
       className={cn(
-        'my-6 ml-6 max-w-[66ch] list-decimal text-lg leading-relaxed marker:font-semibold marker:tabular-nums [&>li]:mt-2 [&>li]:pl-1',
+        'my-6 ml-6 list-decimal text-lg leading-relaxed marker:font-semibold marker:tabular-nums [&>li]:mt-2 [&>li]:pl-1',
         className,
       )}
       {...props}
@@ -96,7 +93,7 @@ const sharedComponents: MDXComponents = {
   code: ({ className, ...props }: ComponentProps<'code'>) => (
     <code
       className={cn(
-        'not-[pre>code]:rounded-[3px] not-[pre>code]:bg-board not-[pre>code]:px-1.5 not-[pre>code]:py-0.5 font-mono not-[pre>code]:text-[0.875em]',
+        'not-[pre>code]:rounded-[3px] not-[pre>code]:bg-muted not-[pre>code]:px-1.5 not-[pre>code]:py-0.5 font-mono not-[pre>code]:text-[0.875em]',
         className,
       )}
       {...props}

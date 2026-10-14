@@ -1,6 +1,7 @@
 # 05: Long text off the board
 
 Status: ready-for-agent
+Progress: resolved
 Blocked by: 03, 04
 
 Spec: `.scratch/board-quieter/spec.md`
@@ -21,9 +22,9 @@ slot. It sits directly on the page, in the same reading column, capped at about
 
 ## Acceptance criteria
 
-- [ ] Browser test: on an article page, the body text is not inside a slot, and the cover is
-- [ ] The same is true on a project page and on `/about`
-- [ ] At 390px, the text column is wider than in the before screenshots
-- [ ] The line length stays at about 68ch or less at 1280px
-- [ ] `DESIGN.md` describes long text on the page, not on a plate
-- [ ] `pnpm test`, `pnpm lint:check`, the browser tests and the build pass
+- [x] Browser test: on an article page, the body text is not inside a slot, and the cover is
+- [x] The same is true on a project page and on `/about`
+- [x] At 390px, the text column is wider than in the before screenshots
+- [x] The line length stays at about 68ch or less at 1280px
+- [x] `DESIGN.md` describes long text on the page, not on a plate
+- [x] `pnpm test`, `pnpm lint:check`, the browser tests and the build pass

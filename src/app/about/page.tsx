@@ -3,7 +3,6 @@ import type { Metadata } from 'next';
 import { DownloadIcon } from 'lucide-react';
 
 import { appConfig } from '@/core/configs/app.config';
-import { Slot } from '@/common/components/board/slot';
 import { MDX } from '@/common/components/mdx';
 import { SocialLinks } from '@/common/components/social-links';
 import { Button } from '@/common/components/ui/button';
@@ -44,9 +43,9 @@ export default function AboutPage() {
       </section>
       <section className="border-rim border-t py-14">
         <div className="container-content">
-          <Slot plateClassName="px-5 py-8 sm:px-10 sm:py-12">
+          <div className="reading-measure">
             <MDX content={about.content} />
-          </Slot>
+          </div>
         </div>
       </section>
     </div>

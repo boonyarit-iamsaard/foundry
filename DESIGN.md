@@ -170,8 +170,8 @@ Density is moderate and structured: a 12-column board on desktop, slots of unequ
 
 **Key Characteristics:**
 
-- Every unit of content is a slot: a thin grey outline, 6px gap, plate inside.
-- Position codes on yellow stencil tape at the top-left of work slots only: P-nn for projects and W-nn for articles. Every other slot (the name plate, contact, resume, the path story, the About body) is plain: outline and plate, no tape.
+- Every unit of content is a slot: a thin grey outline, 6px gap, plate inside. Long reading text is the one exception: it sits straight on the plain board.
+- Position codes on yellow stencil tape at the top-left of work slots only: P-nn for projects and W-nn for articles. Every other slot (the name plate, contact, resume, the path story, the author slot) is plain: outline and plate, no tape.
 - Project status is drawn as the outline's line type, never as colour.
 - The painted shadow under a plate shows only when the plate lifts: ink-black by day, a hole darker than the foam by night.
 - Condensed uppercase display (Big Shoulders) over a plain humanist body (Barlow).
@@ -229,7 +229,7 @@ A near-neutral industrial palette with one safety-yellow accent; neutrals lean f
 - **Headline** (`type-headline`: 800, clamp(2.25rem, 3.6vw, 3.25rem), 0.9, uppercase): section headings on the home board and article and project detail titles. It stays about 1.4x below Display so the two roles never read as one.
 - **Title** (700, 1.875rem, 0.95, uppercase): project and article titles on plates; 1.5rem in compact slots.
 - **Prose Heading** (Barlow 700, sentence case): in-article h2 at 1.5rem (2rem from sm) with 1.15–1.2 leading and -0.01em tracking; h3 at 1.375rem, 1.3 leading. Article headings are often full sentences, so they speak in Barlow rather than shout in lettering.
-- **Body** (400, 1.125rem, 1.625): running prose, capped at 62–68ch; 1rem for card descriptions; 1.25rem for lead lines.
+- **Body** (400, 1.125rem, 1.625): running prose, capped at 36rem (about 70 characters a line); 1rem for card descriptions; 1.25rem for lead lines.
 - **Label / Stamp** (700, 0.875rem or 0.75rem, 0.1em tracking, uppercase, Big Shoulders): metadata labels, nav items, tags, form labels, inline links in utility rows, the status line name, table headers.
 - **Code** (Big Shoulders Stencil 700, 0.8125rem, 0.08em, uppercase, tabular): position codes on tape and on the painted shadow. Nothing else.
 
@@ -241,11 +241,11 @@ A near-neutral industrial palette with one safety-yellow accent; neutrals lean f
 
 ## Layout
 
-Two containers: the board (max 80rem, 1rem side padding, 2rem from 40rem up) and the reading column (max 46rem, same padding) used for article, project and About bodies.
+Two containers: the board (max 80rem, 1rem side padding, 2rem from 40rem up) and the reading column (max 46rem, same padding) used for article, project and About pages. Long text inside it is capped at 36rem, about 70 characters per line in Barlow at 18px (CSS `68ch` would run near 90 in this narrow face); on a phone it fills the column to the 16px gutters.
 
 The home board is a 12-column grid on large screens (two columns at sm, one on mobile) with a 24px column gutter and 32px row gap so tape strips have room above each slot. Slots are deliberately unequal: the name plate spans 8 columns, contact and resume stack in the remaining 4, then a 6-column project slot beside two 3-column article slots. Listing pages use a two-column slot grid (one wide slot when only one item exists). Sections break with 80px (112px from sm) vertical padding and a 1px rim rule.
 
-Slot rhythm: outline, 6px inset, plate; plate padding 20px for cards, 24–32px for feature plates, 20–40px horizontal and 32–48px vertical for reading plates. Perforated pegboard covers the home page's open board only (the home board and the contact section); every other page, and the mobile drawer, is plain board. Long-form reading text always sits on a plate, never directly on the perforation.
+Slot rhythm: outline, 6px inset, plate; plate padding 20px for cards, 24–32px for feature plates. Perforated pegboard covers the home page's open board only (the home board and the contact section); every other page, and the mobile drawer, is plain board. Long-form reading text sits directly on the plain board, never in a slot and never on the perforation.
 
 ## Elevation & Depth
 
@@ -257,7 +257,7 @@ Flat at rest. Depth comes from the slot construction itself: a thin outline, a 6
 
 ### Named Rules
 
-**The Lift Reveals Rule.** A plate lifts only when the whole slot is a link. Lifting must expose something true: the painted shadow and its code. Static slots (name plate, contact form, path, reading plates) never lift.
+**The Lift Reveals Rule.** A plate lifts only when the whole slot is a link. Lifting must expose something true: the painted shadow and its code. Static slots (name plate, contact form, path, cover, author slot) never lift.
 
 **The One Arrival Rule.** On load, home plates settle into their outlines in sequence (800ms, 80ms stagger, ease-lift `cubic-bezier(0.16, 1, 0.3, 1)`), visible from the first frame. Both motions respect reduced motion.
 
@@ -316,9 +316,9 @@ Cards are slots. Project and article cards put a 16:9 cover on top (or beside it
 - **Footer:** board colour under a 1px rim rule; name in display lettering, muted copyright line, "Write to me" and "Download resume" as stamps with a muted underline, then social links as stamps with icons and a muted underline on hover.
 - **Skip link:** "Skip to content" as a yellow stamp cell with a `tape-edge` stroke, hidden above the rail until focused.
 
-### Reading Plate
+### Reading Column
 
-Article, project and About bodies sit on one plate in the reading column, under a cover slot carrying the item's code. Prose is Barlow 1.125rem at 1.625, h2/h3 as Barlow 700 sentence-case prose headings, links underlined in the muted text colour, square list markers, code blocks on the muted recess with a 1px rim frame and 6px radius, tables with a 1px rim header rule. The cover slot is a 2:1 strip (21:9 from sm) so prose starts early, and it alone carries the item's code; the page header shows no second tape.
+Article, project and About bodies sit directly on the plain board in the reading column, with no outline or plate: the board frames the work, not the words. On articles and projects they sit under a cover slot carrying the item's code, and they end at the author slot, which keeps its outline. Prose is Barlow 1.125rem at 1.625, h2/h3 as Barlow 700 sentence-case prose headings, links underlined in the muted text colour, square list markers, inline code and code blocks on the muted recess (blocks with a 1px rim frame and 6px radius), tables with a 1px rim header rule. The cover slot is a 2:1 strip (21:9 from sm) so prose starts early, and it alone carries the item's code; the page header shows no second tape.
 
 ### Author Slot
 
@@ -332,12 +332,12 @@ A sent message replaces the contact form in place: a check, "Message sent", the 
 
 ### Do:
 
-- **Do** put every unit of content in a slot: thin outline, 6px gap, plate.
+- **Do** put every unit of content in a slot: thin outline, 6px gap, plate. Long reading text is the exception.
 - **Do** give each article and project a position code on tape (P project, W writing) and number them oldest-first so codes stay stable. No other slot carries a code.
 - **Do** encode project status with the outline's line type (solid, dashed, heavy, chain) and show the key wherever several statuses appear together.
 - **Do** draw every outline and rule through the `rim` token at 1px, so the text stays the strongest thing on the page.
 - **Do** keep the pegboard perforation to the home page.
-- **Do** keep long-form text on a plate in the 46rem reading column, capped at about 68ch.
+- **Do** set long-form text directly on the plain board in the 46rem reading column, capped at 36rem (about 70 characters a line).
 - **Do** keep the face to the 32px header avatar only.
 
 ### Don't:
@@ -349,5 +349,5 @@ A sent message replaces the contact form in place: a check, "Message sent", the 
 - **Don't** draw an outline, a rule or a resting link underline in yellow or in the text colour.
 - **Don't** add shadows at rest or lift a slot that is not a link.
 - **Don't** round anything beyond 8px or make pill and circle shapes.
-- **Don't** set long-form reading text directly on the perforated pegboard.
+- **Don't** put long-form reading text in a slot or on the perforated pegboard.
 - **Don't** reintroduce a portrait slot or a large photo of the owner on any page.

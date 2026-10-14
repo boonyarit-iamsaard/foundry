@@ -64,6 +64,7 @@ export function Slot({
 }: SlotProps) {
   return (
     <div
+      data-slot="slot"
       data-slot-code={code}
       className={cn(
         'group/slot relative rounded-lg border-rim p-1.5 has-[[data-slot-link]:focus-visible]:outline-2 has-[[data-slot-link]:focus-visible]:outline-ring has-[[data-slot-link]:focus-visible]:outline-offset-4',
