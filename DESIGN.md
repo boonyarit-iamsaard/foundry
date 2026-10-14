@@ -161,7 +161,7 @@ components:
 
 **Creative North Star: "The Shadow Board"**
 
-The site is a hangar tool-control board. Every piece of work (a project, an article, the contact form, the resume) hangs as an enamel plate inside its own painted outline, labelled with a yellow tape strip carrying a stencilled position code. A visitor reads the board the way a mechanic reads a tool board at shift change: everything has a place, and every place is accounted for. The home board closes with an inventory line ("Board check: 6 of 6 slots filled") that makes the claim literal.
+The site is a hangar tool-control board. Every unit of content (a project, an article, the contact form, the resume) hangs as an enamel plate inside its own painted outline. Articles and projects, the work itself, are labelled with a yellow tape strip carrying a stencilled position code. A visitor reads the board the way a mechanic reads a tool board at shift change: everything has a place, and every place is accounted for. The home board closes with one plain line that says so for a visitor who has never seen a tool board ("Like a hangar tool board: every piece of work hangs in its own outlined place.").
 
 Day and night are two materials, not one palette inverted. Day is a cool grey powder-coated board with a faint perforation, plates in near-white enamel, outlines painted ink-black. Night is charcoal tool foam: no perforation, plates in a lighter charcoal, and the painted outlines turn safety yellow, as if the foam's under-layer shows through the cut-outs. Yellow label tape is the only chromatic accent in both.
 
@@ -170,7 +170,7 @@ Density is moderate and structured: a 12-column board on desktop, slots of unequ
 **Key Characteristics:**
 
 - Every unit of content is a slot: painted outline, 6px gap, plate inside.
-- Position codes (B-00, C-nn, R-01, L-nn, P-nn, W-nn) on yellow stencil tape at each slot's top-left: C-01 is the contact call (on the home board and at the end of every article and project) and C-02 the contact form; L-01 is the home path story and L-02 the About body.
+- Position codes on yellow stencil tape at the top-left of work slots only: P-nn for projects and W-nn for articles. Every other slot (the name plate, contact, resume, the path story, the About body) is plain: outline and plate, no tape.
 - Project status is drawn as the outline's line type, never as colour.
 - Painted shadow is ink-black by day and safety yellow by night.
 - Condensed uppercase display (Big Shoulders) over a plain humanist body (Barlow).
@@ -229,7 +229,7 @@ A near-neutral industrial palette with one safety-yellow accent; neutrals lean f
 
 ### Named Rules
 
-**The Stencil Is For Codes Rule.** Big Shoulders Stencil sets position codes (B-00, P-01, W-02, 404) and nothing else. Words never go on the stencilled tape strip.
+**The Stencil Is For Codes Rule.** Big Shoulders Stencil sets position codes (P-01, W-02, 404) and nothing else. Words never go on the stencilled tape strip.
 
 **The Uppercase Lettering Rule.** Every Big Shoulders setting is uppercase; Barlow is never uppercase. If it shouts, it is lettering on the board; if it speaks, it is Barlow.
 
@@ -269,7 +269,7 @@ The board's unit. An outline, a 6px gap, and a plate.
 
 - **Outline:** 8px radius, painted (`paint`). Line type: solid 2px (default, Stable), dashed 2px (Experimental), heavy 3.5px (Active), chain line 2.5px drawn as an SVG long-dash-dot `12 4 2.5 4` (Maintenance).
 - **Painted shadow:** fills the inside at 6px inset, 6px radius, with the stencil code bottom-right in `paint-ink`, 2px off the bottom so a lifted plate uncovers it.
-- **Tape:** optional, 12px above the top edge and 16px from the left; a slot without a code is plain fixture.
+- **Tape:** optional, 12px above the top edge and 16px from the left; only article and project slots carry a code. A slot without one is plain: outline and plate, no tape.
 - **Plate:** enamel (`plate`), 6px radius, sits above the paint. Link slots lift (see Elevation); the whole plate is the hit area via the title link.
 - **Focus:** when the slot's own title link (marked `data-slot-link`) is keyboard-focused, the slot shows a 2px ring 4px out and the plate lifts. Other links inside (tags, Live, Source) take the global focus ring on themselves.
 - **Empty slot:** outline and painted shadow with no plate, used on the 404 page ("Missing").
@@ -316,18 +316,18 @@ Article, project and About bodies sit on one plate in the reading column, under 
 
 ### Author Slot
 
-Every article and project ends with C-01, the contact call: "Written by" or "Built by Boonyarit Iamsa-ard", one sentence of the mechanic story, then "Write to me" (tape, to `/#contact`) and "Download resume" (outline). A reader who lands deep is one step from both.
+Every article and project ends with the contact call, a plain slot with no code: "Written by" or "Built by Boonyarit Iamsa-ard", one sentence of the mechanic story, then "Write to me" (tape, to `/#contact`) and "Download resume" (outline). A reader who lands deep is one step from both.
 
 ### Contact Confirmation
 
-A sent message replaces the C-02 form in place: a check, "Message sent", the address the reply goes to, and an outline "Send another". Focus moves to the heading. Failures stay a toast and keep the input.
+A sent message replaces the contact form in place: a check, "Message sent", the address the reply goes to, and an outline "Send another". Focus moves to the heading. Failures stay a toast and keep the input.
 
 ## Do's and Don'ts
 
 ### Do:
 
 - **Do** put every unit of content in a slot: painted outline, 6px gap, plate.
-- **Do** give each slot a position code on tape (prefix by kind: B board, C contact, R resume, L long-form, P project, W writing) and number content oldest-first so codes stay stable.
+- **Do** give each article and project a position code on tape (P project, W writing) and number them oldest-first so codes stay stable. No other slot carries a code.
 - **Do** encode project status with the outline's line type (solid, dashed, heavy, chain) and show the key wherever several statuses appear together.
 - **Do** route every painted element through the `paint` token so it turns yellow at night.
 - **Do** keep long-form text on a plate in the 46rem reading column, capped at about 68ch.
@@ -336,6 +336,7 @@ A sent message replaces the C-02 form in place: a check, "Message sent", the add
 ### Don't:
 
 - **Don't** put words on the stencilled tape strip, or use Big Shoulders Stencil for anything but codes.
+- **Don't** give a slot that holds no article or project a position code; a code must point to a piece of work.
 - **Don't** signal project status with colour, badges or pills.
 - **Don't** introduce a second accent hue; red is for faults only.
 - **Don't** add shadows at rest or lift a slot that is not a link.

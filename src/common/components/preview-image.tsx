@@ -19,8 +19,6 @@ const colors = {
   plate: '#f3f5f4',
   paint: '#16191c',
   muted: '#494e52',
-  tape: '#f9cc21',
-  tapeInk: '#13161a',
 };
 
 // Satori reads neither WOFF2 nor variable fonts, so the image uses static WOFF
@@ -30,11 +28,6 @@ const fontsDir = join(process.cwd(), 'src/core/assets/fonts');
 const fonts = [
   { name: 'Big Shoulders', file: 'big-shoulders-latin-800.woff', weight: 800 },
   { name: 'Big Shoulders', file: 'big-shoulders-latin-700.woff', weight: 700 },
-  {
-    name: 'Big Shoulders Stencil',
-    file: 'big-shoulders-stencil-latin-700.woff',
-    weight: 700,
-  },
   { name: 'Barlow', file: 'barlow-latin-500.woff', weight: 500 },
 ] as const;
 
@@ -50,8 +43,6 @@ function loadFonts() {
 }
 
 type PreviewImageContent = Readonly<{
-  /** The page's position code on the board, stencilled on the tape. */
-  code: string;
   title: string;
   subtitle: string;
 }>;
@@ -73,7 +64,6 @@ function keyedWords(title: string) {
  * with the owner's name stamped along the bottom of the plate.
  */
 export async function renderPreviewImage({
-  code,
   title,
   subtitle,
 }: PreviewImageContent) {
@@ -91,8 +81,8 @@ export async function renderPreviewImage({
       }}
     >
       {/* The slot: painted outline, a gap, then the enamel plate. Its
-          metrics are DESIGN.md's at about 2.5x, so the outline and tape
-          still read when the image is shown small. */}
+          metrics are DESIGN.md's at about 2.5x, so the outline still
+          reads when the image is shown small. */}
       <div
         style={{
           display: 'flex',
@@ -158,25 +148,6 @@ export async function renderPreviewImage({
           >
             {defaultTitle}
           </div>
-        </div>
-        {/* Drawn after the plate so the tape lies over its edge. */}
-        <div
-          style={{
-            display: 'flex',
-            position: 'absolute',
-            top: -26,
-            left: 40,
-            padding: '4px 16px 2px',
-            backgroundColor: colors.tape,
-            color: colors.tapeInk,
-            borderRadius: 2,
-            fontFamily: 'Big Shoulders Stencil',
-            fontSize: 36,
-            letterSpacing: 3,
-            lineHeight: 1.2,
-          }}
-        >
-          {code}
         </div>
       </div>
     </div>,

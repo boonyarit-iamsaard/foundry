@@ -37,7 +37,6 @@ export function CallToActionSection() {
           <SocialLinks className="pt-2" />
         </div>
         <Slot
-          code="C-02"
           className="lg:col-span-6 lg:col-start-7"
           plateClassName="p-6 sm:p-8"
         >

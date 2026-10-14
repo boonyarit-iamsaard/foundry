@@ -17,7 +17,6 @@ export function AuthorSlot({
 }: Readonly<{ heading: string; className?: string }>) {
   return (
     <Slot
-      code="C-01"
       className={className}
       plateClassName="grid gap-6 p-6 sm:grid-cols-[1fr_auto] sm:items-end sm:p-8"
     >

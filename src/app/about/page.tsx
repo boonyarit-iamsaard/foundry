@@ -7,7 +7,6 @@ import { Slot } from '@/common/components/board/slot';
 import { MDX } from '@/common/components/mdx';
 import { SocialLinks } from '@/common/components/social-links';
 import { Button } from '@/common/components/ui/button';
-import { fixtureCodes } from '@/common/definitions/fixture-codes';
 import { buildMetadata } from '@/common/helpers/metadata';
 
 import { about } from '@/velite';
@@ -45,10 +44,7 @@ export default function AboutPage() {
       </section>
       <section className="pegboard border-paint border-t-2 py-14">
         <div className="container-content">
-          <Slot
-            code={fixtureCodes.about}
-            plateClassName="px-5 py-8 sm:px-10 sm:py-12"
-          >
+          <Slot plateClassName="px-5 py-8 sm:px-10 sm:py-12">
             <MDX content={about.content} />
           </Slot>
         </div>

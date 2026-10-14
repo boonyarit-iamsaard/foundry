@@ -6,7 +6,7 @@ export function PathSection() {
       aria-labelledby="path-heading"
       className="container py-20 sm:py-28"
     >
-      <Slot code="L-01" plateClassName="grid lg:grid-cols-12">
+      <Slot plateClassName="grid lg:grid-cols-12">
         <div className="space-y-6 p-6 sm:p-10 lg:col-span-7">
           <h2 id="path-heading" className="type-headline">
             From the hangar floor to the codebase

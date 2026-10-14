@@ -1,8 +1,8 @@
 /**
- * The kind of thing hung in a slot: B board, C contact, R resume,
- * L long-form, P project, W writing.
+ * The kind of work hung in a slot: P project, W writing. Only work carries a
+ * position code; every other slot is plain.
  */
-export type SlotPrefix = 'B' | 'C' | 'R' | 'L' | 'P' | 'W';
+export type SlotPrefix = 'P' | 'W';
 
 type Dated = Readonly<{ slug: string; date: string }>;
 

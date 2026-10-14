@@ -23,9 +23,8 @@ two disagree.
 A value that two places must agree on is read from one module, never written
 twice as a literal:
 
-- A page's path and position code, shared by the page, its preview image, and
-  the sitemap: `src/features/*/listing.ts` for list pages, `fixtureCodes` in
-  `src/common/definitions/fixture-codes.ts` for fixed slots.
+- A list page's path, shared by the page, its preview image, and the sitemap:
+  `src/features/*/listing.ts`.
 - Titles and descriptions a page header and its preview image both show: the
   same `listing.ts` objects.
 - Full site URLs: `absoluteUrl` in `src/common/helpers/url.ts` (lint-enforced).

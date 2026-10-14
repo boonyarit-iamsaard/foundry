@@ -66,7 +66,7 @@ export default async function Page({ searchParams }: ProjectsPageProps) {
             />
           ) : null}
           {filteredResource.length === 0 ? (
-            <EmptySlot code={projectsListing.code} className="min-h-48">
+            <EmptySlot className="min-h-48">
               <div className="space-y-1 text-center">
                 <p className="font-bold font-display text-2xl uppercase">
                   Nothing in this slot

@@ -19,8 +19,9 @@ const lineClasses: Record<SlotLine, string> = {
 type SlotProps = Readonly<
   Omit<ComponentProps<'div'>, 'children'> & {
     /**
-     * Position code stencilled on the slot's label tape, e.g. "P-01". A slot
-     * without one is plain fixture: outline and shadow, no tape.
+     * Position code stencilled on the slot's label tape, e.g. "P-01". Only
+     * articles and projects carry one; any other slot is plain: outline and
+     * plate, no tape.
      */
     code?: string;
     line?: SlotLine;
@@ -112,7 +113,7 @@ export function EmptySlot({
   code,
   className,
   children,
-}: Readonly<{ code: string; className?: string; children?: ReactNode }>) {
+}: Readonly<{ code?: string; className?: string; children?: ReactNode }>) {
   return (
     <div
       className={cn(
@@ -120,7 +121,9 @@ export function EmptySlot({
         className,
       )}
     >
-      <span className="tape absolute -top-3 left-4 z-20">{code}</span>
+      {code ? (
+        <span className="tape absolute -top-3 left-4 z-20">{code}</span>
+      ) : null}
       <div className="flex h-full items-center justify-center rounded-md bg-paint p-6 text-paint-ink">
         {children}
       </div>
