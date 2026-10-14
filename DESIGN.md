@@ -210,7 +210,7 @@ A near-neutral industrial palette with one safety-yellow accent; neutrals lean f
 
 **The One Tape Rule.** Safety yellow is the only accent. No second hue enters the board; red is reserved for faults. Code highlighting follows it too: tokens are drawn from the board's own neutrals through the `--shiki-*` variables (keywords in ink, strings and constants as faint tints of the board and ink hues), never a bundled editor theme.
 
-**The Quiet Rim Rule.** Outlines and rules are drawn in grey in both themes, through the `rim` token, never in ink and never in yellow. Anything drawn as part of the board (slot outlines, the theme-toggle frame, header and footer rules, section dividers, cover borders, code-block frames) uses it at 1px, so it frames the words without competing with them. At night yellow stays on tape, the primary button and the focus ring only.
+**The Quiet Rim Rule.** Outlines and rules are drawn in grey in both themes, through the `rim` token, never in ink and never in yellow. Anything drawn as part of the board (slot outlines, the theme-toggle frame, header and footer rules, section dividers, cover borders, code-block frames) uses it at 1px, so it frames the words without competing with them. At night yellow stays on tape, the primary button, the focus ring, text selection and hovered link underlines.
 
 **The Muted Link Rule.** Link underlines are the muted text colour in both themes. Yellow appears on an underline only on hover.
 
