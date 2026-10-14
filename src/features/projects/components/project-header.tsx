@@ -10,12 +10,13 @@ type ProjectHeaderProps = Readonly<{
   project: Project;
 }>;
 
-const linkClassName = 'stamp tape-link inline-flex items-center gap-1 text-xs';
+const linkClassName =
+  'tape-link inline-flex items-center gap-1 font-semibold text-sm';
 
 export function ProjectHeader({ project }: ProjectHeaderProps) {
   return (
     <header className="space-y-6 pt-14 pb-10 sm:pt-20">
-      <h1 className="type-headline">{project.title}</h1>
+      <h1 className="type-title">{project.title}</h1>
       <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
         <ProjectStatusLine status={project.status} />
         <p className="text-muted-foreground text-sm tabular-nums">

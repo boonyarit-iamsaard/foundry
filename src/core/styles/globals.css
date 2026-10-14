@@ -282,7 +282,6 @@
   }
 }
 
-/* A label in the board's lettering: small, upright, tracked. */
 /* Page titles: the home name plate and every index page. One size, so the
    name never outranks or trails the rest of the site. */
 @utility type-display {
@@ -294,7 +293,7 @@
   text-transform: uppercase;
 }
 
-/* Section headings on the board and detail-page titles. Kept a clear step
+/* Short section headings on the board. Kept a clear step
    (about 1.4x) below display so the two never read as the same role. */
 @utility type-headline {
   font-family: var(--font-display);
@@ -304,6 +303,30 @@
   text-transform: uppercase;
 }
 
+/* Article and project titles are full sentences, so they speak in Barlow
+   rather than shout in lettering. Detail pages step 1.5x above the 2rem
+   prose h2 underneath. */
+@utility type-title {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: clamp(2.25rem, 4vw, 3rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+/* The same voice on a card plate: one step above the 1rem description. */
+@utility type-card-title {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+/* Short labels in the board's lettering: the nav, short headings, utility
+   links. Metadata, tags and form labels speak in Barlow instead. */
 @utility stamp {
   font-family: var(--font-display);
   font-weight: 700;

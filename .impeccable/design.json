@@ -312,11 +312,19 @@
       },
       "headline": {
         "displayName": "Headline",
-        "purpose": "Section headings and detail-page titles."
+        "purpose": "Short section headings on the home board; Big Shoulders 800 uppercase."
       },
       "title": {
         "displayName": "Title",
-        "purpose": "Project and article titles on plates; in-article h2/h3."
+        "purpose": "Article and project detail titles; Barlow 700, sentence case."
+      },
+      "card-title": {
+        "displayName": "Card Title",
+        "purpose": "Article and project titles on plates; Barlow 700, sentence case."
+      },
+      "meta": {
+        "displayName": "Meta",
+        "purpose": "Dates, reading time, tags, project status names and form labels; Barlow, normal case."
       },
       "body": {
         "displayName": "Body",
@@ -324,7 +332,7 @@
       },
       "label": {
         "displayName": "Stamp",
-        "purpose": "Uppercase tracked labels: metadata, nav, tags, form labels, utility links."
+        "purpose": "Uppercase tracked labels of a few words: nav, short sub-headings, utility links."
       },
       "code-stencil": {
         "displayName": "Stencil Code",
@@ -408,16 +416,16 @@
       "kind": "card",
       "refersTo": "slot-plate",
       "description": "The board unit: a 1px rim-grey outline, 6px gap, enamel plate; tape code above for work slots. A linked plate lifts off its painted shadow (ink by day) to uncover its stencil code.",
-      "html": "<a class=\"ds-slot\" href=\"#\"><span class=\"ds-slot-tape\">P-01</span><span class=\"ds-slot-paint\"><span>P-01</span></span><span class=\"ds-slot-plate\"><span class=\"ds-slot-title\">BOONYARIT.ME</span><span class=\"ds-slot-desc\">My personal site, where I publish articles and projects</span></span></a>",
-      "css": ".ds-slot{position:relative;display:block;width:280px;padding:6px;border:1px solid var(--rim,oklch(0.7 0.006 220));border-radius:8px;text-decoration:none;color:inherit}.ds-slot-tape{position:absolute;top:-12px;left:16px;z-index:3;background:var(--tape,oklch(0.86 0.17 92));color:var(--tape-ink,oklch(0.2 0.01 250));font-family:'Big Shoulders Stencil',sans-serif;font-weight:700;font-size:0.8125rem;letter-spacing:0.08em;padding:2px 8px 1px;border-radius:1px}.ds-slot-paint{position:absolute;inset:6px;display:flex;align-items:flex-end;justify-content:flex-end;padding:0 8px 2px;border-radius:6px;background:var(--paint,oklch(0.21 0.008 250));color:var(--paint-ink,oklch(0.945 0.004 165));font-family:'Big Shoulders Stencil',sans-serif;font-weight:700;font-size:0.8125rem;letter-spacing:0.08em}.ds-slot-plate{position:relative;z-index:2;display:flex;flex-direction:column;gap:12px;padding:20px;border-radius:6px;background:var(--plate,oklch(0.99 0.002 165));transition:translate 500ms cubic-bezier(0.16,1,0.3,1),box-shadow 500ms cubic-bezier(0.16,1,0.3,1)}.ds-slot:hover .ds-slot-plate,.ds-slot:focus-visible .ds-slot-plate{translate:-4px -20px;box-shadow:0 14px 24px -10px oklch(0.2 0.01 250 / 0.35),0 3px 6px -2px oklch(0.2 0.01 250 / 0.2)}.ds-slot:focus-visible{outline:2px solid var(--ring,oklch(0.21 0.008 250));outline-offset:4px}.ds-slot-title{font-family:'Big Shoulders',sans-serif;font-weight:700;font-size:1.875rem;line-height:0.95;text-transform:uppercase}.ds-slot-desc{font-family:Barlow,sans-serif;color:oklch(0.42 0.01 250)}"
+      "html": "<a class=\"ds-slot\" href=\"#\"><span class=\"ds-slot-tape\">P-01</span><span class=\"ds-slot-paint\"><span>P-01</span></span><span class=\"ds-slot-plate\"><span class=\"ds-slot-title\">boonyarit.me</span><span class=\"ds-slot-desc\">My personal site, where I publish articles and projects</span></span></a>",
+      "css": ".ds-slot{position:relative;display:block;width:280px;padding:6px;border:1px solid var(--rim,oklch(0.7 0.006 220));border-radius:8px;text-decoration:none;color:inherit}.ds-slot-tape{position:absolute;top:-12px;left:16px;z-index:3;background:var(--tape,oklch(0.86 0.17 92));color:var(--tape-ink,oklch(0.2 0.01 250));font-family:'Big Shoulders Stencil',sans-serif;font-weight:700;font-size:0.8125rem;letter-spacing:0.08em;padding:2px 8px 1px;border-radius:1px}.ds-slot-paint{position:absolute;inset:6px;display:flex;align-items:flex-end;justify-content:flex-end;padding:0 8px 2px;border-radius:6px;background:var(--paint,oklch(0.21 0.008 250));color:var(--paint-ink,oklch(0.945 0.004 165));font-family:'Big Shoulders Stencil',sans-serif;font-weight:700;font-size:0.8125rem;letter-spacing:0.08em}.ds-slot-plate{position:relative;z-index:2;display:flex;flex-direction:column;gap:12px;padding:20px;border-radius:6px;background:var(--plate,oklch(0.99 0.002 165));transition:translate 500ms cubic-bezier(0.16,1,0.3,1),box-shadow 500ms cubic-bezier(0.16,1,0.3,1)}.ds-slot:hover .ds-slot-plate,.ds-slot:focus-visible .ds-slot-plate{translate:-4px -20px;box-shadow:0 14px 24px -10px oklch(0.2 0.01 250 / 0.35),0 3px 6px -2px oklch(0.2 0.01 250 / 0.2)}.ds-slot:focus-visible{outline:2px solid var(--ring,oklch(0.21 0.008 250));outline-offset:4px}.ds-slot-title{font-family:Barlow,sans-serif;font-weight:700;font-size:1.5rem;line-height:1.2;letter-spacing:-0.01em}.ds-slot-desc{font-family:Barlow,sans-serif;color:oklch(0.42 0.01 250)}"
     },
     {
       "name": "Status Line",
       "kind": "custom",
       "refersTo": "slot-plate",
-      "description": "Project status as a 24px sample of the slot's line type in rim grey (solid 1px, dashed 1.5px, heavy 3px, chain 1.5px) plus a stamp name.",
-      "html": "<span class=\"ds-status\"><span class=\"ds-status-solid\"></span>STABLE</span> <span class=\"ds-status\"><span class=\"ds-status-heavy\"></span>ACTIVE</span> <span class=\"ds-status\"><span class=\"ds-status-dashed\"></span>EXPERIMENTAL</span> <span class=\"ds-status\"><svg width=\"24\" height=\"2\" style=\"overflow:visible\"><line x1=\"0\" y1=\"0.75\" x2=\"24\" y2=\"0.75\" stroke=\"oklch(0.7 0.006 220)\" stroke-width=\"1.5\" stroke-dasharray=\"12 4 1.5 4\"/></svg>MAINTENANCE</span>",
-      "css": ".ds-status{display:inline-flex;align-items:center;gap:8px;margin-right:24px;font-family:'Big Shoulders',sans-serif;font-weight:700;font-size:0.75rem;letter-spacing:0.1em;color:oklch(0.21 0.008 250)}.ds-status-solid,.ds-status-dashed,.ds-status-heavy{display:inline-block;width:24px;border-top:1px solid var(--rim,oklch(0.7 0.006 220))}.ds-status-dashed{border-top-width:1.5px;border-top-style:dashed}.ds-status-heavy{border-top-width:3px}"
+      "description": "Project status as a 24px sample of the slot's line type in rim grey (solid 1px, dashed 1.5px, heavy 3px, chain 1.5px) plus the status name in Barlow.",
+      "html": "<span class=\"ds-status\"><span class=\"ds-status-solid\"></span>Stable</span> <span class=\"ds-status\"><span class=\"ds-status-heavy\"></span>Active</span> <span class=\"ds-status\"><span class=\"ds-status-dashed\"></span>Experimental</span> <span class=\"ds-status\"><svg width=\"24\" height=\"2\" style=\"overflow:visible\"><line x1=\"0\" y1=\"0.75\" x2=\"24\" y2=\"0.75\" stroke=\"oklch(0.7 0.006 220)\" stroke-width=\"1.5\" stroke-dasharray=\"12 4 1.5 4\"/></svg>Maintenance</span>",
+      "css": ".ds-status{display:inline-flex;align-items:center;gap:8px;margin-right:24px;font-family:Barlow,sans-serif;font-weight:500;font-size:0.875rem;color:oklch(0.21 0.008 250)}.ds-status-solid,.ds-status-dashed,.ds-status-heavy{display:inline-block;width:24px;border-top:1px solid var(--rim,oklch(0.7 0.006 220))}.ds-status-dashed{border-top-width:1.5px;border-top-style:dashed}.ds-status-heavy{border-top-width:3px}"
     },
     {
       "name": "Primary Button",
@@ -455,17 +463,17 @@
       "name": "Text Field",
       "kind": "input",
       "refersTo": "input",
-      "description": "2px field-edge stroke on enamel (a control, so it keeps 3:1), stamp label above.",
-      "html": "<label class=\"ds-field\"><span>EMAIL</span><input class=\"ds-input\" type=\"email\" placeholder=\"you@company.com\"></label>",
-      "css": ".ds-field{display:grid;gap:8px;width:280px}.ds-field span{font-family:'Big Shoulders',sans-serif;font-weight:700;font-size:0.75rem;letter-spacing:0.1em}.ds-input{height:44px;padding:8px 12px;border:2px solid var(--input,oklch(0.55 0.01 220));border-radius:4px;background:var(--plate,oklch(0.99 0.002 165));color:oklch(0.21 0.008 250);font-family:Barlow,sans-serif;font-size:1rem;outline:none;transition:border-color 200ms}.ds-input::placeholder{color:oklch(0.42 0.01 250)}.ds-input:hover{border-color:oklch(0.21 0.008 250 / 0.7)}.ds-input:focus-visible{border-color:oklch(0.21 0.008 250);outline:2px solid var(--ring,oklch(0.21 0.008 250));outline-offset:3px}"
+      "description": "2px field-edge stroke on enamel (a control, so it keeps 3:1), Barlow label above.",
+      "html": "<label class=\"ds-field\"><span>Email</span><input class=\"ds-input\" type=\"email\" placeholder=\"you@company.com\"></label>",
+      "css": ".ds-field{display:grid;gap:8px;width:280px}.ds-field span{font-family:Barlow,sans-serif;font-weight:600;font-size:0.875rem}.ds-input{height:44px;padding:8px 12px;border:2px solid var(--input,oklch(0.55 0.01 220));border-radius:4px;background:var(--plate,oklch(0.99 0.002 165));color:oklch(0.21 0.008 250);font-family:Barlow,sans-serif;font-size:1rem;outline:none;transition:border-color 200ms}.ds-input::placeholder{color:oklch(0.42 0.01 250)}.ds-input:hover{border-color:oklch(0.21 0.008 250 / 0.7)}.ds-input:focus-visible{border-color:oklch(0.21 0.008 250);outline:2px solid var(--ring,oklch(0.21 0.008 250));outline-offset:3px}"
     },
     {
       "name": "Tag",
       "kind": "chip",
       "refersTo": "tag",
-      "description": "Stamp filter chip with a 1.5px stroke at 40% foreground; selected fills with safety yellow inside a tape-edge stroke.",
-      "html": "<a class=\"ds-tag\" href=\"#\">NEXTJS</a> <a class=\"ds-tag ds-tag-active\" href=\"#\" aria-pressed=\"true\">TYPESCRIPT</a>",
-      "css": ".ds-tag{display:inline-flex;align-items:center;height:28px;padding:0 8px;border:1.5px solid oklch(0.21 0.008 250 / 0.4);border-radius:2px;color:oklch(0.21 0.008 250);font-family:'Big Shoulders',sans-serif;font-weight:700;font-size:0.75rem;letter-spacing:0.1em;text-decoration:none;transition:border-color 200ms}.ds-tag:hover{border-color:oklch(0.21 0.008 250)}.ds-tag-active{border-color:var(--tape-edge,oklch(0.21 0.008 250));background:oklch(0.86 0.17 92);color:oklch(0.2 0.01 250)}.ds-tag:focus-visible{outline:2px solid var(--ring,oklch(0.21 0.008 250));outline-offset:3px}"
+      "description": "Barlow filter chip with a 1.5px stroke at 40% foreground; selected fills with safety yellow inside a tape-edge stroke.",
+      "html": "<a class=\"ds-tag\" href=\"#\">nextjs</a> <a class=\"ds-tag ds-tag-active\" href=\"#\" aria-pressed=\"true\">typescript</a>",
+      "css": ".ds-tag{display:inline-flex;align-items:center;height:28px;padding:0 8px;border:1.5px solid oklch(0.21 0.008 250 / 0.4);border-radius:2px;color:oklch(0.21 0.008 250);font-family:Barlow,sans-serif;font-weight:500;font-size:0.875rem;text-decoration:none;transition:border-color 200ms}.ds-tag:hover{border-color:oklch(0.21 0.008 250)}.ds-tag-active{border-color:var(--tape-edge,oklch(0.21 0.008 250));background:oklch(0.86 0.17 92);color:oklch(0.2 0.01 250)}.ds-tag:focus-visible{outline:2px solid var(--ring,oklch(0.21 0.008 250));outline-offset:3px}"
     },
     {
       "name": "Header Navigation",
@@ -478,13 +486,13 @@
   ],
   "narrative": {
     "northStar": "The Shadow Board",
-    "overview": "**Creative North Star: \"The Shadow Board\"**\n\nThe site is a hangar tool-control board. Every unit of content (a project, an article, the contact form, the resume) hangs as an enamel plate inside its own outlined place. Articles and projects, the work itself, are labelled with a yellow tape strip carrying a stencilled position code. A visitor reads the board the way a mechanic reads a tool board at shift change: everything has a place, and every place is accounted for. The home board closes with one plain line that says so for a visitor who has never seen a tool board (\"Like a hangar tool board: every piece of work hangs in its own outlined place.\").\n\nDay and night are two materials, not one palette inverted. Day is a near-white powder-coated board, plates in white enamel, outlines drawn thin in a mid grey. Night is charcoal tool foam: plates in a lighter charcoal, outlines in a grey rim. In both the board is drawn lightly around the words, so the text is always the darkest, strongest thing on the page. Yellow label tape is the only chromatic accent in both. The pegboard perforation appears on the home page only.\n\nDensity is moderate and structured: a 12-column board on desktop, slots of unequal size, generous section breaks. Type is condensed, uppercase, and industrial for display and labels; body copy stays in a plain, readable sans in the owner's first-person voice. Motion is limited to two authored behaviours: plates settle into their outlines on arrival, and linked plates lift off their painted shadow on hover or focus.",
+    "overview": "**Creative North Star: \"The Shadow Board\"**\n\nThe site is a hangar tool-control board. Every unit of content (a project, an article, the contact form, the resume) hangs as an enamel plate inside its own outlined place. Articles and projects, the work itself, are labelled with a yellow tape strip carrying a stencilled position code. A visitor reads the board the way a mechanic reads a tool board at shift change: everything has a place, and every place is accounted for. The home board closes with one plain line that says so for a visitor who has never seen a tool board (\"Like a hangar tool board: every piece of work hangs in its own outlined place.\").\n\nDay and night are two materials, not one palette inverted. Day is a near-white powder-coated board, plates in white enamel, outlines drawn thin in a mid grey. Night is charcoal tool foam: plates in a lighter charcoal, outlines in a grey rim. In both the board is drawn lightly around the words, so the text is always the darkest, strongest thing on the page. Yellow label tape is the only chromatic accent in both. The pegboard perforation appears on the home page only.\n\nDensity is moderate and structured: a 12-column board on desktop, slots of unequal size, generous section breaks. Short lettering (the name, the nav, short headings, buttons) is condensed, uppercase and industrial; everything that reads as a sentence, from article titles to dates and tags, stays in a plain, readable sans in the owner's first-person voice. Motion is limited to two authored behaviours: plates settle into their outlines on arrival, and linked plates lift off their painted shadow on hover or focus.",
     "keyCharacteristics": [
       "Every unit of content is a slot: a thin grey outline, 6px gap, plate inside. Long reading text is the one exception: it sits straight on the plain board.",
       "Position codes on yellow stencil tape at the top-left of work slots only: P-nn for projects and W-nn for articles. Every other slot (the name plate, contact, resume, the path story, the author slot) is plain: outline and plate, no tape.",
       "Project status is drawn as the outline's line type, never as colour.",
       "The painted shadow under a plate shows only when the plate lifts: ink-black by day, a hole darker than the foam by night.",
-      "Condensed uppercase display (Big Shoulders) over a plain humanist body (Barlow).",
+      "Condensed uppercase lettering (Big Shoulders) for short labels only; titles, metadata and body in a plain humanist sans (Barlow), sentence case.",
       "Flat at rest; the only shadow belongs to a lifted plate."
     ],
     "rules": [
@@ -509,8 +517,8 @@
         "section": "typography"
       },
       {
-        "name": "The Uppercase Lettering Rule",
-        "body": "Every Big Shoulders setting is uppercase; Barlow is never uppercase. If it shouts, it is lettering on the board; if it speaks, it is Barlow.",
+        "name": "The Short Lettering Rule",
+        "body": "Big Shoulders is always uppercase, so it is kept to a few words: the name, the nav, short headings, buttons and stamps. Anything that reads as a sentence (an article or project title, a question, a role line) or as data (dates, reading time, tags, form labels) is Barlow in its authored case. Barlow is never uppercase. On the home page's first screen at 1280px, uppercase stays at about ten items.",
         "section": "typography"
       },
       {

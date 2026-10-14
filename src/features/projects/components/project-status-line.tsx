@@ -29,7 +29,7 @@ export function ProjectStatusLine({
   return (
     <span className={cn('inline-flex items-center gap-2', className)}>
       <SlotLineSample line={projectStatusLine[status]} />
-      <span className="stamp text-xs">{projectStatusLabel[status]}</span>
+      <span className="font-medium text-sm">{projectStatusLabel[status]}</span>
     </span>
   );
 }

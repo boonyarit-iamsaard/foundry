@@ -35,11 +35,17 @@ typography:
     fontWeight: 800
     lineHeight: 0.9
   title:
-    fontFamily: 'Big Shoulders, ui-sans-serif, sans-serif'
-    fontSize: '1.875rem'
+    fontFamily: 'Barlow, ui-sans-serif, system-ui, sans-serif'
+    fontSize: 'clamp(2.25rem, 4vw, 3rem)'
     fontWeight: 700
-    lineHeight: 0.95
-    letterSpacing: '0.01em'
+    lineHeight: 1.1
+    letterSpacing: '-0.02em'
+  card-title:
+    fontFamily: 'Barlow, ui-sans-serif, system-ui, sans-serif'
+    fontSize: '1.5rem'
+    fontWeight: 700
+    lineHeight: 1.2
+    letterSpacing: '-0.01em'
   prose-heading:
     fontFamily: 'Barlow, ui-sans-serif, system-ui, sans-serif'
     fontSize: '2rem'
@@ -56,6 +62,11 @@ typography:
     fontSize: '1.125rem'
     fontWeight: 400
     lineHeight: 1.625
+  meta:
+    fontFamily: 'Barlow, ui-sans-serif, system-ui, sans-serif'
+    fontSize: '0.875rem'
+    fontWeight: 500
+    lineHeight: 1.4
   label:
     fontFamily: 'Big Shoulders, ui-sans-serif, sans-serif'
     fontSize: '0.875rem'
@@ -127,7 +138,7 @@ components:
   tag:
     backgroundColor: 'transparent'
     textColor: '{colors.ink-paint}'
-    typography: '{typography.label}'
+    typography: '{typography.meta}'
     rounded: '{rounded.tag}'
     padding: '0 8px'
     height: '28px'
@@ -166,7 +177,7 @@ The site is a hangar tool-control board. Every unit of content (a project, an ar
 
 Day and night are two materials, not one palette inverted. Day is a near-white powder-coated board, plates in white enamel, outlines drawn thin in a mid grey. Night is charcoal tool foam: plates in a lighter charcoal, outlines in a grey rim. In both the board is drawn lightly around the words, so the text is always the darkest, strongest thing on the page. Yellow label tape is the only chromatic accent in both. The pegboard perforation appears on the home page only.
 
-Density is moderate and structured: a 12-column board on desktop, slots of unequal size, generous section breaks. Type is condensed, uppercase, and industrial for display and labels; body copy stays in a plain, readable sans in the owner's first-person voice. Motion is limited to two authored behaviours: plates settle into their outlines on arrival, and linked plates lift off their painted shadow on hover or focus.
+Density is moderate and structured: a 12-column board on desktop, slots of unequal size, generous section breaks. Short lettering (the name, the nav, short headings, buttons) is condensed, uppercase and industrial; everything that reads as a sentence, from article titles to dates and tags, stays in a plain, readable sans in the owner's first-person voice. Motion is limited to two authored behaviours: plates settle into their outlines on arrival, and linked plates lift off their painted shadow on hover or focus.
 
 **Key Characteristics:**
 
@@ -174,7 +185,7 @@ Density is moderate and structured: a 12-column board on desktop, slots of unequ
 - Position codes on yellow stencil tape at the top-left of work slots only: P-nn for projects and W-nn for articles. Every other slot (the name plate, contact, resume, the path story, the author slot) is plain: outline and plate, no tape.
 - Project status is drawn as the outline's line type, never as colour.
 - The painted shadow under a plate shows only when the plate lifts: ink-black by day, a hole darker than the foam by night.
-- Condensed uppercase display (Big Shoulders) over a plain humanist body (Barlow).
+- Condensed uppercase lettering (Big Shoulders) for short labels only; titles, metadata and body in a plain humanist sans (Barlow), sentence case.
 - Flat at rest; the only shadow belongs to a lifted plate.
 
 ## Colors
@@ -192,7 +203,7 @@ A near-neutral industrial palette with one safety-yellow accent; neutrals lean f
 - **Perforation Grey** (`board-perforation`): 2px peg holes on a 28px pitch, on the home page only, day only.
 - **Enamel Plate** (`plate`): every plate surface and form-field fill by day. A shade lighter than the board; the outline does the rest of the work of making it read as a plate.
 - **Plate Recess** (`plate-recess`): secondary/muted fills by day.
-- **Stamped Grey** (`ink-muted`): secondary text: dates, reading time, descriptions, muted stamps.
+- **Stamped Grey** (`ink-muted`): secondary text: dates, reading time, descriptions, muted labels.
 - **Rim Grey** (`rim-grey`, token `rim`): every slot outline and painted rule (section dividers, header and footer rules, cover separators, code-block frames, the theme-toggle frame, the avatar frame), 1px. About 2.3:1 against the board and 2.6:1 against a plate: decoration, kept well below the text.
 - **Field Edge** (`field-edge`): the 2px input stroke. Inputs are controls, so their edge keeps 3:1.
 - **Tape Ink** (`tape-ink`): text on yellow, in both modes.
@@ -204,7 +215,7 @@ A near-neutral industrial palette with one safety-yellow accent; neutrals lean f
 
 ### Status
 
-- **Fault Red** (`fault-red`, night `foam-fault`): form errors, invalid fields and the article Draft stamp only.
+- **Fault Red** (`fault-red`, night `foam-fault`): form errors, invalid fields and the article Draft marker only.
 
 ### Named Rules
 
@@ -221,23 +232,25 @@ A near-neutral industrial palette with one safety-yellow accent; neutrals lean f
 **Code Font:** Big Shoulders Stencil (position codes only)
 **Mono Font:** JetBrains Mono (code in articles)
 
-**Character:** Big Shoulders is the board's painted lettering: condensed, uppercase, set tight. Barlow is the plain voice underneath it, low-contrast and quiet, so the owner's sentences read as speech rather than signage.
+**Character:** Big Shoulders is the board's painted lettering: condensed, uppercase, set tight, and kept to a few words at a time. Barlow is the plain voice underneath it, low-contrast and quiet, so the owner's sentences, and every title that is a sentence, read as speech rather than signage.
 
 ### Hierarchy
 
 - **Display** (`type-display`: 800, clamp(2.75rem, 5vw, 4.5rem), 0.86, uppercase): every page title at one size: the home name plate, About, the Projects and Articles indexes, and the 404 title.
-- **Headline** (`type-headline`: 800, clamp(2.25rem, 3.6vw, 3.25rem), 0.9, uppercase): section headings on the home board and article and project detail titles. It stays about 1.4x below Display so the two roles never read as one.
-- **Title** (700, 1.875rem, 0.95, uppercase): project and article titles on plates; 1.5rem in compact slots.
+- **Headline** (`type-headline`: 800, clamp(2.25rem, 3.6vw, 3.25rem), 0.9, uppercase): short section headings on the home board and the contact section. It stays about 1.4x below Display so the two roles never read as one.
+- **Title** (`type-title`: Barlow 700, clamp(2.25rem, 4vw, 3rem), 1.1, -0.02em, sentence case, balanced): the article and project detail `h1`. It sits 1.5x above the 2rem prose h2 beneath it.
+- **Card Title** (`type-card-title`: Barlow 700, 1.5rem, 1.2, -0.01em, sentence case, balanced): article and project titles on plates, 1.25rem in compact home slots, and the hero contact question. Short plate headings ("Resume", "Written by…", "Message sent") stay in Big Shoulders 700 uppercase at 1.5–1.875rem.
 - **Prose Heading** (Barlow 700, sentence case): in-article h2 at 1.5rem (2rem from sm) with 1.15–1.2 leading and -0.01em tracking; h3 at 1.375rem, 1.3 leading. Article headings are often full sentences, so they speak in Barlow rather than shout in lettering.
 - **Body** (400, 1.125rem, 1.625): running prose, capped at 36rem (about 70 characters a line); 1rem for card descriptions; 1.25rem for lead lines.
-- **Label / Stamp** (700, 0.875rem or 0.75rem, 0.1em tracking, uppercase, Big Shoulders): metadata labels, nav items, tags, form labels, inline links in utility rows, the status line name, table headers.
+- **Meta** (Barlow 500–600, 0.875rem, muted, tabular where numeric, normal case): dates, reading time, word counts, the role line under the name, the project status name on a status line, tags, form labels, the Draft marker, and Live/Source links on work.
+- **Label / Stamp** (`stamp`: Big Shoulders 700, 0.875rem or 0.75rem, 0.1em tracking, uppercase): a few words at most, for example nav items, the skip link, social links, the "Filter by tag" and "Theme" labels, short sub-headings such as "What I build", footer and "All projects"/"All articles" utility links, table headers.
 - **Code** (Big Shoulders Stencil 700, 0.8125rem, 0.08em, uppercase, tabular): position codes on tape and on the painted shadow. Nothing else.
 
 ### Named Rules
 
 **The Stencil Is For Codes Rule.** Big Shoulders Stencil sets position codes (P-01, W-02, 404) and nothing else. Words never go on the stencilled tape strip.
 
-**The Uppercase Lettering Rule.** Every Big Shoulders setting is uppercase; Barlow is never uppercase. If it shouts, it is lettering on the board; if it speaks, it is Barlow.
+**The Short Lettering Rule.** Big Shoulders is always uppercase, so it is kept to a few words: the name, the nav, short headings, buttons and stamps. Anything that reads as a sentence (an article or project title, a question, a role line) or as data (dates, reading time, tags, form labels) is Barlow in its authored case. Barlow is never uppercase. On the home page's first screen at 1280px, uppercase stays at about ten items.
 
 ## Layout
 
@@ -282,7 +295,7 @@ The board's unit. An outline, a 6px gap, and a plate.
 
 ### Status Line
 
-Project status as a 24px line sample in the slot's own line type, followed by the status name as a stamp. Projects pages carry a key of all four.
+Project status as a 24px line sample in the slot's own line type, followed by the status name in Barlow 500 (meta). Projects pages carry a key of all four.
 
 ### Buttons
 
@@ -294,22 +307,22 @@ Project status as a 24px line sample in the slot's own line type, followed by th
 
 ### Tags
 
-- **Style:** stamp lettering at 0.75rem, 28px tall, 2px radius, 1.5px stroke at 40% foreground.
+- **Style:** Barlow 500 at 0.875rem in the tag's authored case, 28px tall, 2px radius, 1.5px stroke at 40% foreground.
 - **State:** hover strengthens the stroke to full foreground; active (selected filter) fills with safety yellow and tape ink inside a `tape-edge` stroke. On coarse pointers the hit area extends 8px above and below.
 
 ### Cards / Containers
 
-Cards are slots. Project and article cards put a 16:9 cover on top (or beside it in wide/listing layouts) divided by a 1px rim rule, then 20px padding holding meta (Barlow, muted, tabular), a title, a muted description and tags or utility links. Compact article slots on the home board drop cover and tags and clamp the description to three lines.
+Cards are slots. Project and article cards put a 16:9 cover on top (or beside it in wide/listing layouts) divided by a 1px rim rule, then 20px padding holding meta (Barlow, muted, tabular), a Barlow card title in sentence case, a muted description and tags or utility links. Compact article slots on the home board drop cover and tags and clamp the description to three lines.
 
 ### Inputs / Fields
 
 - **Style:** 44px tall (textarea min 128–160px), 2px `field-edge` stroke, enamel fill, 4px radius, Barlow 1rem.
 - **Hover / Focus:** stroke rises to 70% foreground on hover and full foreground on focus, plus the global 2px focus ring.
-- **Labels:** stamps at 0.75rem above the field. **Error:** fault-red stroke and message.
+- **Labels:** Barlow 600 at 0.875rem above the field. **Error:** fault-red stroke and message.
 
 ### Navigation
 
-- **Header:** sticky 64px rail on board colour; 32px avatar in a 1px rim frame, the name in Big Shoulders 800 at 1.375rem, a muted "Software Engineer" stamp on large screens. A 1px rim bottom rule appears only after scrolling.
+- **Header:** sticky 64px rail on board colour; 32px avatar in a 1px rim frame, the name in Big Shoulders 800 at 1.375rem, a muted "Software Engineer" in Barlow 0.875rem on large screens. A 1px rim bottom rule appears only after scrolling.
 - **Links:** stamps in 36px-tall cells with 4px radius; hover 8% tint; current page fills with safety yellow inside a 2px `tape-edge` stroke.
 - **Theme toggle:** three 32px radio cells (Day, Night, Match system) inside a 1px rim frame; the selected cell fills with the text colour.
 - **Mobile:** a left drawer on plain board with a 1px rim right edge; each link is a full-width plate in a 1px rim, current one yellow. Below the links hang "Write to me" (tape) and "Download resume" (outline).

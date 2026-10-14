@@ -22,7 +22,7 @@ export default function AboutPage() {
       <section className="container pt-14 pb-12 sm:pt-20">
         <div className="space-y-6">
           <h1 className="type-display">Boonyarit Iamsa-ard</h1>
-          <p className="stamp text-muted-foreground">
+          <p className="font-medium text-lg text-muted-foreground">
             Software Engineer · Bangkok, Thailand
           </p>
           <p className="max-w-[52ch] text-lg sm:text-xl">

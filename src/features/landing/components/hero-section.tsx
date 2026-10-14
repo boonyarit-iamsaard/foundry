@@ -43,7 +43,7 @@ export function HeroSection() {
               <br />
               Iamsa-ard
             </h1>
-            <p className="stamp text-muted-foreground">
+            <p className="font-medium text-lg text-muted-foreground">
               Software Engineer · Bangkok, Thailand
             </p>
           </div>
@@ -59,7 +59,7 @@ export function HeroSection() {
             plateClassName="settle flex h-full flex-col gap-4 p-5"
             style={settleOrder(1)}
           >
-            <h2 className="font-bold font-display text-2xl uppercase leading-[0.95]">
+            <h2 className="type-card-title">
               Hiring, or have something to build?
             </h2>
             <div className="mt-auto space-y-3">

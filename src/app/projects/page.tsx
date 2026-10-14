@@ -46,7 +46,7 @@ export default async function Page({ searchParams }: ProjectsPageProps) {
       >
         {hasSeveralStatuses ? (
           <div className="flex flex-wrap items-center gap-x-4 gap-y-2 pt-2">
-            <span className="stamp text-muted-foreground text-xs">
+            <span className="text-muted-foreground text-sm">
               Outline shows project status
             </span>
             <ProjectStatusKey />

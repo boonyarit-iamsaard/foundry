@@ -64,7 +64,7 @@ export function AppHeader() {
                   <span className="font-display font-extrabold text-[1.375rem] uppercase leading-none tracking-[0.03em]">
                     {appConfig.title}
                   </span>
-                  <span className="stamp hidden text-muted-foreground text-xs leading-none lg:inline">
+                  <span className="hidden text-muted-foreground text-sm leading-none lg:inline">
                     Software Engineer
                   </span>
                 </span>
