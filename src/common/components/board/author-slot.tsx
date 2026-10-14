@@ -28,8 +28,9 @@ export function AuthorSlot({
           I was an aircraft mechanic before I wrote code. Now I build backend,
           web and mobile software, and check it before it ships.
         </p>
+        {/* Draft copy: the owner approves the final wording. */}
         <p className="text-muted-foreground">
-          Hiring, or have something to build?
+          Hiring, or want to talk about something I wrote?
         </p>
       </div>
       <div className="grid gap-3 sm:w-56">

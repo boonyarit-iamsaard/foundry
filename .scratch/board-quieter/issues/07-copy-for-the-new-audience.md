@@ -23,9 +23,18 @@ owner writes the final wording. No Impeccable: this is voice, not design.
 
 ## Acceptance criteria
 
-- [ ] Browser test: the hero has a GitHub link next to the resume download
-- [ ] No page still asks "have something to build?" or talks about a project to build
-- [ ] The home page and About name the role and Omise in one sentence each
-- [ ] About has no list of tools or skills
+- [x] Browser test: the hero has a GitHub link next to the resume download
+- [x] No page still asks "have something to build?" or talks about a project to build
+- [x] The home page and About name the role and Omise in one sentence each
+- [x] About has no list of tools or skills
 - [ ] The owner has approved every sentence
-- [ ] `pnpm test`, `pnpm lint:check`, the browser tests and the build pass
+- [x] `pnpm test`, `pnpm lint:check`, the browser tests and the build pass
+
+## Comments
+
+- Agent draft in place, each marked `Draft copy` in the source: the Omise
+  sentence in the hero and About, the contact line in the hero and author
+  slot, and the contact section paragraph. About had no "Skills" section left;
+  "Current Focus" is now prose with no tool names. The redesign article still
+  quotes the old "have something to build?" line as history; ticket 08's
+  update note is the place to address it. Waiting on the owner's wording.

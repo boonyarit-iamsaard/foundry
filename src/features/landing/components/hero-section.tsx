@@ -6,7 +6,7 @@ import { ArrowDownIcon, DownloadIcon } from 'lucide-react';
 
 import { appConfig } from '@/core/configs/app.config';
 import { Slot } from '@/common/components/board/slot';
-import { email } from '@/common/components/social-links';
+import { email, GitHubLink } from '@/common/components/social-links';
 import { Button } from '@/common/components/ui/button';
 import { ArticleCard } from '@/features/articles/components/article-card';
 import { listedArticles } from '@/features/articles/visibility';
@@ -47,11 +47,15 @@ export function HeroSection() {
               Software Engineer · Bangkok, Thailand
             </p>
           </div>
-          <p className="max-w-[46ch] text-lg leading-snug sm:text-xl">
-            I was an aircraft mechanic before I wrote code. In a hangar, nothing
-            is released until every task is inspected and every tool is back on
-            its board. I build software the same way.
-          </p>
+          <div className="max-w-[46ch] space-y-3 text-lg leading-snug sm:text-xl">
+            <p>
+              I was an aircraft mechanic before I wrote code. In a hangar,
+              nothing is released until every task is inspected and every tool
+              is back on its board. I build software the same way.
+            </p>
+            {/* Draft copy: the owner approves the final wording. */}
+            <p>Today I&apos;m a Software Engineer at Omise.</p>
+          </div>
         </Slot>
 
         <div className="grid gap-y-8 sm:col-span-2 sm:grid-cols-2 sm:gap-x-6 lg:col-span-4 lg:grid-cols-1">
@@ -59,8 +63,9 @@ export function HeroSection() {
             plateClassName="settle flex h-full flex-col gap-4 p-5"
             style={settleOrder(1)}
           >
+            {/* Draft copy: the owner approves the final wording. */}
             <h2 className="type-card-title">
-              Hiring, or have something to build?
+              Hiring, or want to talk about something I wrote?
             </h2>
             <div className="mt-auto space-y-3">
               <Button asChild variant="tape" className="w-full">
@@ -93,6 +98,7 @@ export function HeroSection() {
                 Download resume
               </a>
             </Button>
+            <GitHubLink className="self-center" />
           </Slot>
         </div>
 

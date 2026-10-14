@@ -20,9 +20,11 @@ export function CallToActionSection() {
             Write to me
           </h2>
           <div className="max-w-[44ch] space-y-3 text-lg">
+            {/* Draft copy: the owner approves the final wording. */}
             <p>
               If you&apos;re hiring, tell me about the role and the team. If you
-              have a project, tell me what it should do and when you need it.
+              read something I wrote, tell me what you think, or where I got it
+              wrong.
             </p>
             <p className="text-muted-foreground">
               The message comes straight to my inbox.

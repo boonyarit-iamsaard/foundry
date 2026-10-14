@@ -50,7 +50,7 @@ A software engineer who came to code from aircraft maintenance. Years of precise
 - Profile photo: `src/core/assets/images/profile.webp` (and `.png`).
 - Articles: "Conventional commit types – a rule of thumb guide" (2025-04-04), "Node.js import style guide" (2025-04-10) and "Redesigning my site with an AI design tool" (2026-10-11), each with a cover image.
 - Projects: one, this site (`content/projects/portfolio`).
-- About copy: `content/about.mdx`. The "Current Focus" and "Skills" sections still describe the old Backend Engineer title and stack and need updating.
+- About copy: `content/about.mdx`. "Current Focus" names the Software Engineer title and Omise in prose; its wording is a draft until the owner approves it.
 - Employer: Omise (current). It may be named on the site.
 - Absent: testimonials, client logos, metrics, and case-study results. Future work must not invent them.
 
