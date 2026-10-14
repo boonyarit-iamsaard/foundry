@@ -8,15 +8,14 @@ web
 
 ## Users
 
-- **Hiring teams** (primary): recruiters and engineering managers deciding whether Boonyarit is worth an interview. They skim, judge craft and judgment quickly, and leave with either a message sent or a resume downloaded.
-- **Freelance clients** (primary): people with something to build, deciding whether to send an inquiry.
-- **Fellow engineers** (secondary): developers who arrive through an article and read it for its practical guidance.
+1. **Developers**: engineers who arrive through an article, usually from a shared link or a search, and read it for its practical guidance. They may follow Boonyarit or get in touch once they finish.
+2. **Hiring teams**: recruiters and engineering managers confirming who Boonyarit is. They skim, judge craft and judgment quickly, and want his role, employer and work within seconds, then leave with a message sent or a resume downloaded.
 
-When these pull in different directions, hiring teams and freelance clients win. The writing and projects are the evidence that persuades them.
+When these pull in different directions, developers win on article pages and hiring teams win on the home page's first screen. The contact form still accepts any message.
 
 ## Product Purpose
 
-The personal site of Boonyarit Iamsa-ard (boonyarit.me; the repository is called Foundry): the articles he writes and the projects he builds, plus a way to get in touch. Success is a hiring team or client contacting him or downloading his resume after reading his work.
+The personal site of Boonyarit Iamsa-ard (boonyarit.me; the repository is called Foundry): the articles he writes and the projects he builds, plus a way to get in touch. Success is a developer reading an article to the end and then following Boonyarit or getting in touch, and a hiring team seeing who he is, where he works and what he builds within 10 seconds.
 
 ## Positioning
 
@@ -24,9 +23,8 @@ A software engineer who came to code from aircraft maintenance. Years of precise
 
 ## Operating Context
 
-- Visitors usually arrive from a job application, a LinkedIn or GitHub profile, a referral, or a search hit on an article.
-- Hiring visitors decide fast and often look at more than one candidate in a sitting.
-- Article readers land deep on `/articles/[slug]`, not on the home page.
+- Developers usually arrive through a shared link or a search hit on an article, and land deep on `/articles/[slug]`, not on the home page.
+- Hiring visitors arrive from a job application, a LinkedIn or GitHub profile, or a referral. They decide fast and often look at more than one candidate in a sitting.
 
 ## Capabilities and Constraints
 
@@ -53,12 +51,13 @@ A software engineer who came to code from aircraft maintenance. Years of precise
 - Articles: "Conventional Commit Types – A Rule of Thumb Guide" (2025-04-04) and "Node.js Import Style Guide" (2025-04-10), each with a cover image.
 - Projects: one, this site (`content/projects/portfolio`).
 - About copy: `content/about.mdx`. The "Current Focus" and "Skills" sections still describe the old Backend Engineer title and stack and need updating.
-- Absent: testimonials, client logos, employer names, metrics, and case-study results. Future work must not invent them.
+- Employer: Omise (current). It may be named on the site.
+- Absent: testimonials, client logos, metrics, and case-study results. Future work must not invent them.
 
 ## Product Principles
 
 1. **Show the work, don't claim it.** Articles and projects are the proof. Adjectives about himself are not.
-2. **Make contact effortless for the people who matter.** Hiring teams and clients should always be one step from the contact form or the resume.
+2. **Make contact effortless for the people who matter.** Developers and hiring teams should always be one step from the contact form, GitHub or the resume.
 3. **Let the unusual path be an asset.** The mechanic's precision is the through-line, told plainly and not as a gimmick.
 4. **Writing has to stand on its own.** An article page should serve a reader who never sees the home page.
 5. **Tell the truth about scale.** A small body of work, presented honestly, beats padding.

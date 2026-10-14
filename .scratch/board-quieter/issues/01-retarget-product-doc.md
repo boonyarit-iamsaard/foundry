@@ -1,6 +1,7 @@
 # 01: Point PRODUCT.md at the new audience
 
 Status: ready-for-agent
+Progress: resolved
 Blocked by: None (can start immediately)
 
 Spec: `.scratch/board-quieter/spec.md`
@@ -24,7 +25,7 @@ any design work, so it must be right before tickets 03–06 run.
 
 ## Acceptance criteria
 
-- [ ] Users lists developers first and hiring teams second, with no freelance clients
-- [ ] The success definition matches the spec
-- [ ] Omise is listed as evidence on hand, and nothing else moves out of _Absent_
-- [ ] No other part of `PRODUCT.md` still aims at freelance clients
+- [x] Users lists developers first and hiring teams second, with no freelance clients
+- [x] The success definition matches the spec
+- [x] Omise is listed as evidence on hand, and nothing else moves out of _Absent_
+- [x] No other part of `PRODUCT.md` still aims at freelance clients
