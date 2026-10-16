@@ -29,7 +29,7 @@ The site also aims at the wrong people. `PRODUCT.md` treats freelance clients
 as a primary audience. But Boonyarit is not looking for clients, and his role
 is secure. His real visitors are mostly developers who arrive through an
 article, and hiring teams who need to confirm who he is quickly. A hiring
-visitor cannot see where he works now, and GitHub is hard to find.
+visitor cannot see what he works on now, and GitHub is hard to find.
 
 ## Solution
 
@@ -43,8 +43,8 @@ strongest thing on every page. The board is drawn lightly around them.
   projects, where they mean something.
 - The day background becomes close to white.
 - The audience changes to developers first and hiring teams second. The copy,
-  the About page and the hero now say where Boonyarit works, and they point to
-  GitHub.
+  the About page and the hero now say what Boonyarit works on, without naming
+  the employer, and they point to GitHub.
 
 A browser test checks what a visitor sees at phone and desktop width,
 starting with the phone menu bug that no review caught.

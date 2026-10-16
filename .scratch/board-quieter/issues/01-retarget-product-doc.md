@@ -14,10 +14,12 @@ any design work, so it must be right before tickets 03–06 run.
 - Users: 1. developers who read the writing, 2. hiring teams. Freelance
   clients are no longer a target. The contact form still accepts any message.
 - Product Purpose: success is "a developer reads an article to the end and then
-  follows Boonyarit or gets in touch, and a hiring team can see who he is, where
-  he works and what he builds within 10 seconds."
-- The employer name (Omise) moves from _Absent_ to evidence on hand.
-  Testimonials, metrics and client logos stay absent.
+  follows Boonyarit or gets in touch, and a hiring team can see who he is and
+  what he builds within 10 seconds."
+- The employer's name stays _Absent_, with testimonials, metrics and client
+  logos. (Changed 2026-10-16: an earlier draft moved it to evidence on hand;
+  the owner reversed that, and the reason is in the spec's Audience and
+  product docs.)
 - The principle "Make contact effortless for the people who matter" names
   developers and hiring teams.
 - Remove every other mention of freelance clients or "something to build" as a
@@ -27,7 +29,7 @@ any design work, so it must be right before tickets 03–06 run.
 
 - [x] Users lists developers first and hiring teams second, with no freelance clients
 - [x] The success definition matches the spec
-- [x] Omise is listed as evidence on hand, and nothing else moves out of _Absent_
+- [x] The employer's name stays under _Absent_, and nothing moves out of it
 - [x] No other part of `PRODUCT.md` still aims at freelance clients
 
 ## Comments
