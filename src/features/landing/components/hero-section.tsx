@@ -47,15 +47,13 @@ export function HeroSection() {
               Software Engineer · Bangkok, Thailand
             </p>
           </div>
-          <div className="max-w-[46ch] space-y-3 text-lg leading-snug sm:text-xl">
-            <p>
-              I was an aircraft mechanic before I wrote code. In a hangar,
-              nothing is released until every task is inspected and every tool
-              is back on its board. I build software the same way.
-            </p>
-            {/* Draft copy: the owner approves the final wording. */}
-            <p>Today I build payment software.</p>
-          </div>
+          {/* Draft copy: the owner approves the last sentence's wording. */}
+          <p className="max-w-[46ch] text-lg leading-snug sm:text-xl">
+            I was an aircraft mechanic before I wrote code. In a hangar, nothing
+            is released until every task is inspected and every tool is back on
+            its board. Now I build software the same way, across the backend,
+            the web and mobile.
+          </p>
         </Slot>
 
         <div className="grid gap-y-8 sm:col-span-2 sm:grid-cols-2 sm:gap-x-6 lg:col-span-4 lg:grid-cols-1">
