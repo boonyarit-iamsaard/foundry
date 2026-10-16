@@ -91,7 +91,9 @@ export function HeroSection() {
             <Button asChild variant="outline" className="mt-auto w-full">
               <a href={appConfig.resume} download>
                 <DownloadIcon aria-hidden="true" />
-                Download resume
+                {/* The slot's heading already says "Resume"; the link's name
+                    keeps it for anyone browsing links out of context. */}
+                Download<span className="sr-only"> resume</span>
               </a>
             </Button>
             <GitHubLink className="self-center" />
