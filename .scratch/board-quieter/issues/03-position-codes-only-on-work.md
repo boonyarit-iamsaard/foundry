@@ -33,3 +33,7 @@ redesign:** keep the Shadow Board, its fonts, tape, lift and status line types.
 - [x] A card still lifts on hover and shows its code on the painted shadow
 - [x] `DESIGN.md` describes codes on content only
 - [x] `pnpm test`, `pnpm lint:check`, the browser tests and the build pass
+
+## Comments
+
+- 2026-10-16: the owner approved the board line as drafted (see ticket 07).

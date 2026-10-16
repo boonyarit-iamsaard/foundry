@@ -47,7 +47,6 @@ export function HeroSection() {
               Software Engineer · Bangkok, Thailand
             </p>
           </div>
-          {/* Draft copy: the owner approves the last sentence's wording. */}
           <p className="max-w-[46ch] text-lg leading-snug sm:text-xl">
             I was an aircraft mechanic before I wrote code. In a hangar, nothing
             is released until every task is inspected and every tool is back on
@@ -61,7 +60,6 @@ export function HeroSection() {
             plateClassName="settle flex h-full flex-col gap-4 p-5"
             style={settleOrder(1)}
           >
-            {/* Draft copy: the owner approves the final wording. */}
             <h2 className="type-card-title">
               Hiring, or want to talk about something I wrote?
             </h2>
@@ -122,7 +120,6 @@ export function HeroSection() {
         ))}
 
         <div className="order-last flex flex-wrap items-center justify-between gap-x-6 gap-y-3 sm:order-none sm:col-span-2 lg:col-span-12">
-          {/* Draft copy: the owner approves the final wording. */}
           <p className="max-w-[62ch] text-muted-foreground">
             Like a hangar tool board: every piece of work hangs in its own
             outlined place.

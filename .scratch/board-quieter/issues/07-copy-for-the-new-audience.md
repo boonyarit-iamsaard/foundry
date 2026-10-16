@@ -1,6 +1,7 @@
 # 07: Hero, contact copy and About for the new audience
 
 Status: ready-for-human
+Progress: resolved
 Blocked by: 01, 02
 
 Spec: `.scratch/board-quieter/spec.md`
@@ -29,7 +30,7 @@ owner writes the final wording. No Impeccable: this is voice, not design.
 - [x] The home page and About say what he works on in one sentence each, and
       no page names the employer
 - [x] About has no list of tools or skills
-- [ ] The owner has approved every sentence
+- [x] The owner has approved every sentence
 - [x] `pnpm test`, `pnpm lint:check`, the browser tests and the build pass
 
 ## Comments
@@ -40,3 +41,5 @@ owner writes the final wording. No Impeccable: this is voice, not design.
   "Current Focus" is now prose with no tool names. The redesign article still
   quotes the old "have something to build?" line as history; ticket 08's
   update note is the place to address it. Waiting on the owner's wording.
+- 2026-10-16: the owner approved every sentence, including the board line
+  from ticket 03. The `Draft copy` markers are removed.
