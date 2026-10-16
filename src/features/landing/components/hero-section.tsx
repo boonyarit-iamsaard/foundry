@@ -30,7 +30,7 @@ export function HeroSection() {
     .slice(0, 2);
 
   return (
-    <section aria-labelledby={heroHeadingId} className="pegboard">
+    <section aria-labelledby={heroHeadingId}>
       <div className="container grid grid-cols-1 gap-x-6 gap-y-8 pt-10 pb-8 sm:grid-cols-2 lg:grid-cols-12 lg:pt-7">
         <Slot
           className="sm:col-span-2 lg:col-span-8"

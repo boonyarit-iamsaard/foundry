@@ -19,21 +19,6 @@
           "oklch(0.95 0.004 165)"
         ]
       },
-      "board-perforation": {
-        "role": "neutral",
-        "displayName": "Perforation Grey",
-        "canonical": "oklch(0.88 0.005 165)",
-        "tonalRamp": [
-          "oklch(0.15 0.005 165)",
-          "oklch(0.26 0.005 165)",
-          "oklch(0.37 0.005 165)",
-          "oklch(0.48 0.005 165)",
-          "oklch(0.6 0.005 165)",
-          "oklch(0.72 0.005 165)",
-          "oklch(0.84 0.005 165)",
-          "oklch(0.95 0.005 165)"
-        ]
-      },
       "plate": {
         "role": "neutral",
         "displayName": "Enamel Plate",
@@ -401,10 +386,6 @@
         "value": "max 46rem, 1rem/2rem side padding; long text capped at 36rem (about 70 characters a line), directly on the plain board"
       }
     ],
-    "pegboard": {
-      "value": "radial-gradient(circle, board-perforation 0 2px, transparent 2.5px) at 28px pitch, offset 14px",
-      "purpose": "The home page's open board only (home board and contact section), day only; night perforation is transparent. Every other page is plain board."
-    },
     "rim": {
       "value": "1px solid var(--rim)",
       "purpose": "Every slot outline and board rule in both themes: rim grey by day (about 2.9:1 on the board), foam rim by night (about 2.9:1 on the foam). Never ink, never yellow."
@@ -486,7 +467,7 @@
   ],
   "narrative": {
     "northStar": "The Shadow Board",
-    "overview": "**Creative North Star: \"The Shadow Board\"**\n\nThe site is a hangar tool-control board. Every unit of content (a project, an article, the contact form, the resume) hangs as an enamel plate inside its own outlined place. Articles and projects, the work itself, are labelled with a yellow tape strip carrying a stencilled position code. A visitor reads the board the way a mechanic reads a tool board at shift change: everything has a place, and every place is accounted for. The home board closes with one plain line that says so for a visitor who has never seen a tool board (\"Like a hangar tool board: every piece of work hangs in its own outlined place.\").\n\nDay and night are two materials, not one palette inverted. Day is a near-white powder-coated board, plates in white enamel, outlines drawn thin in a mid grey. Night is charcoal tool foam: plates in a lighter charcoal, outlines in a grey rim. In both the board is drawn lightly around the words, so the text is always the darkest, strongest thing on the page. Yellow label tape is the only chromatic accent in both. The pegboard perforation appears on the home page only.\n\nDensity is moderate and structured: a 12-column board on desktop, slots of unequal size, generous section breaks. Short lettering (the name, the nav, short headings, buttons) is condensed, uppercase and industrial; everything that reads as a sentence, from article titles to dates and tags, stays in a plain, readable sans in the owner's first-person voice. Motion is limited to two authored behaviours: plates settle into their outlines on arrival, and linked plates lift off their painted shadow on hover or focus.",
+    "overview": "**Creative North Star: \"The Shadow Board\"**\n\nThe site is a hangar tool-control board. Every unit of content (a project, an article, the contact form, the resume) hangs as an enamel plate inside its own outlined place. Articles and projects, the work itself, are labelled with a yellow tape strip carrying a stencilled position code. A visitor reads the board the way a mechanic reads a tool board at shift change: everything has a place, and every place is accounted for. The home board closes with one plain line that says so for a visitor who has never seen a tool board (\"Like a hangar tool board: every piece of work hangs in its own outlined place.\").\n\nDay and night are two materials, not one palette inverted. Day is a near-white powder-coated board, plates in white enamel, outlines drawn thin in a mid grey. Night is charcoal tool foam: plates in a lighter charcoal, outlines in a grey rim. In both the board is drawn lightly around the words, so the text is always the darkest, strongest thing on the page. Yellow label tape is the only chromatic accent in both. Neither board carries a texture: the outlines alone draw it.\n\nDensity is moderate and structured: a 12-column board on desktop, slots of unequal size, generous section breaks. Short lettering (the name, the nav, short headings, buttons) is condensed, uppercase and industrial; everything that reads as a sentence, from article titles to dates and tags, stays in a plain, readable sans in the owner's first-person voice. Motion is limited to two authored behaviours: plates settle into their outlines on arrival, and linked plates lift off their painted shadow on hover or focus.",
     "keyCharacteristics": [
       "Every unit of content is a slot: a thin grey outline, 6px gap, plate inside. Long reading text is the one exception: it sits straight on the plain board.",
       "Position codes on yellow stencil tape at the top-left of work slots only: P-nn for projects and W-nn for articles. Every other slot (the name plate, contact, resume, the path story, the author slot) is plain: outline and plate, no tape.",
@@ -537,7 +518,7 @@
       "Do give each article and project a position code on tape (P project, W writing) and number them oldest-first so codes stay stable. No other slot carries a code.",
       "Do encode project status with the outline's line type (solid, dashed, heavy, chain) and show the key wherever several statuses appear together.",
       "Do draw every outline and rule through the `rim` token at 1px, so the text stays the strongest thing on the page.",
-      "Do keep the pegboard perforation to the home page.",
+      "Do keep the board plain in both themes: the outlines, tape and codes carry the tool board, not a surface texture.",
       "Do set long-form text directly on the plain board in the 46rem reading column, capped at 36rem (about 70 characters a line).",
       "Do keep the face to the 32px header avatar only."
     ],
@@ -549,7 +530,7 @@
       "Don't draw an outline, a rule or a resting link underline in yellow or in the text colour.",
       "Don't add shadows at rest or lift a slot that is not a link.",
       "Don't round anything beyond 8px or make pill and circle shapes.",
-      "Don't put long-form reading text in a slot or on the perforated pegboard.",
+      "Don't put long-form reading text in a slot.",
       "Don't reintroduce a portrait slot or a large photo of the owner on any page."
     ]
   }

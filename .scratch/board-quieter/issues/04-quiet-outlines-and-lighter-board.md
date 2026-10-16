@@ -23,7 +23,7 @@ every page.
   hover.
 - The day board becomes close to white (about L 0.94–0.95 in oklch). Plates
   still read as plates.
-- Pegboard dots appear on the home page only.
+- No page has pegboard dots (changed 2026-10-16: on wide screens the dots filled the margins like wallpaper, so they were removed after a design critique).
 - The preview image's hex copies of the tokens and its outline match the new
   board.
 - Update `DESIGN.md` (colours, elevation, the night paint rule) and the style
@@ -34,7 +34,7 @@ every page.
 - [x] Outline contrast is between about 2:1 and 3:1, and body text contrast still meets WCAG AA in both themes
 - [x] The four project status line types are still distinguishable at both widths
 - [x] At night, no outline or link underline is yellow, and tape, the main button and focus still are
-- [x] Dots show on `/` and on no other page
+- [x] No page shows pegboard dots
 - [x] Preview images use the new colours and a thin outline
 - [x] `DESIGN.md` and token comments match what ships
 - [x] `pnpm test`, `pnpm lint:check`, the browser tests and the build pass
@@ -53,3 +53,7 @@ every page.
 - 2026-10-16: the owner found the day outline too faint, like a hairline. The
   day rim is now `oklch(0.64 0.006 220)`, about 2.9:1 on the board, the same
   weight as the night rim. It is still 1px and still inside 2–3:1.
+- 2026-10-16: the owner disliked the day dots, which filled the margins of a
+  wide screen. A critique agreed, so the dots are gone in both themes, the
+  `pegboard` utility and the perforation token are removed, and the preview
+  image is a plain board. Spec and ticket text are updated.

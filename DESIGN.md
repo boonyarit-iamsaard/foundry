@@ -3,7 +3,6 @@ name: Boonyarit Iamsa-ard
 description: The personal site of a software engineer who came from aircraft maintenance, laid out as a tool-control shadow board.
 colors:
   board: 'oklch(0.945 0.004 165)'
-  board-perforation: 'oklch(0.88 0.005 165)'
   plate: 'oklch(0.99 0.002 165)'
   plate-recess: 'oklch(0.92 0.004 165)'
   ink-paint: 'oklch(0.21 0.008 250)'
@@ -175,7 +174,7 @@ components:
 
 The site is a hangar tool-control board. Every unit of content (a project, an article, the contact form, the resume) hangs as an enamel plate inside its own outlined place. Articles and projects, the work itself, are labelled with a yellow tape strip carrying a stencilled position code. A visitor reads the board the way a mechanic reads a tool board at shift change: everything has a place, and every place is accounted for. The home board closes with one plain line that says so for a visitor who has never seen a tool board ("Like a hangar tool board: every piece of work hangs in its own outlined place.").
 
-Day and night are two materials, not one palette inverted. Day is a near-white powder-coated board, plates in white enamel, outlines drawn thin in a mid grey. Night is charcoal tool foam: plates in a lighter charcoal, outlines in a grey rim. In both the board is drawn lightly around the words, so the text is always the darkest, strongest thing on the page. Yellow label tape is the only chromatic accent in both. The pegboard perforation appears on the home page only.
+Day and night are two materials, not one palette inverted. Day is a near-white powder-coated board, plates in white enamel, outlines drawn thin in a mid grey. Night is charcoal tool foam: plates in a lighter charcoal, outlines in a grey rim. In both the board is drawn lightly around the words, so the text is always the darkest, strongest thing on the page. Yellow label tape is the only chromatic accent in both. Neither board carries a texture: the outlines alone draw it.
 
 Density is moderate and structured: a 12-column board on desktop, slots of unequal size, generous section breaks. Short lettering (the name, the nav, short headings, buttons) is condensed, uppercase and industrial; everything that reads as a sentence, from article titles to dates and tags, stays in a plain, readable sans in the owner's first-person voice. Motion is limited to two authored behaviours: plates settle into their outlines on arrival, and linked plates lift off their painted shadow on hover or focus.
 
@@ -200,7 +199,6 @@ A near-neutral industrial palette with one safety-yellow accent; neutrals lean f
 ### Neutral
 
 - **Powder-Coat Board** (`board`): page background by day, close to white; also the inline-code chip and the sticky header.
-- **Perforation Grey** (`board-perforation`): 2px peg holes on a 28px pitch, on the home page only, day only.
 - **Enamel Plate** (`plate`): every plate surface and form-field fill by day. A shade lighter than the board; the outline does the rest of the work of making it read as a plate.
 - **Plate Recess** (`plate-recess`): secondary/muted fills by day.
 - **Stamped Grey** (`ink-muted`): secondary text: dates, reading time, descriptions, muted labels.
@@ -258,7 +256,7 @@ Two containers: the board (max 80rem, 1rem side padding, 2rem from 40rem up) and
 
 The home board is a 12-column grid on large screens (two columns at sm, one on mobile) with a 24px column gutter and 32px row gap so tape strips have room above each slot. Slots are deliberately unequal: the name plate spans 8 columns, contact and resume stack in the remaining 4, then a 6-column project slot beside two 3-column article slots. Listing pages use a two-column slot grid (one wide slot when only one item exists). Sections break with 80px (112px from sm) vertical padding and a 1px rim rule.
 
-Slot rhythm: outline, 6px inset, plate; plate padding 20px for cards, 24–32px for feature plates. Perforated pegboard covers the home page's open board only (the home board and the contact section); every other page, and the mobile drawer, is plain board. Long-form reading text sits directly on the plain board, never in a slot and never on the perforation.
+Slot rhythm: outline, 6px inset, plate; plate padding 20px for cards, 24–32px for feature plates. Every page, and the mobile drawer, is plain board with no perforation or texture, so the margins of a wide screen stay empty. Long-form reading text sits directly on the plain board, never in a slot.
 
 ## Elevation & Depth
 
@@ -349,7 +347,7 @@ A sent message replaces the contact form in place: a check, "Message sent", the 
 - **Do** give each article and project a position code on tape (P project, W writing) and number them oldest-first so codes stay stable. No other slot carries a code.
 - **Do** encode project status with the outline's line type (solid, dashed, heavy, chain) and show the key wherever several statuses appear together.
 - **Do** draw every outline and rule through the `rim` token at 1px, so the text stays the strongest thing on the page.
-- **Do** keep the pegboard perforation to the home page.
+- **Do** keep the board plain in both themes: the outlines, tape and codes carry the tool board, not a surface texture.
 - **Do** set long-form text directly on the plain board in the 46rem reading column, capped at 36rem (about 70 characters a line).
 - **Do** keep the face to the 32px header avatar only.
 
@@ -362,5 +360,5 @@ A sent message replaces the contact form in place: a check, "Message sent", the 
 - **Don't** draw an outline, a rule or a resting link underline in yellow or in the text colour.
 - **Don't** add shadows at rest or lift a slot that is not a link.
 - **Don't** round anything beyond 8px or make pill and circle shapes.
-- **Don't** put long-form reading text in a slot or on the perforated pegboard.
+- **Don't** put long-form reading text in a slot.
 - **Don't** reintroduce a portrait slot or a large photo of the owner on any page.

@@ -15,7 +15,6 @@ export const previewImageContentType = 'image/png';
 // change one here when its token changes.
 const colors = {
   board: '#eaeeec',
-  perforation: '#d5d8d6',
   plate: '#fbfcfb',
   rim: '#888d8f',
   ink: '#16191c',
@@ -61,7 +60,7 @@ function keyedWords(title: string) {
 }
 
 /**
- * A page's link preview: one slot on the pegboard holding the page title,
+ * A page's link preview: one slot on the board holding the page title,
  * with the owner's name stamped along the bottom of the plate.
  */
 export async function renderPreviewImage({
@@ -76,9 +75,6 @@ export async function renderPreviewImage({
         height: '100%',
         padding: '52px 48px 40px',
         backgroundColor: colors.board,
-        // Satori draws a radial gradient only when the circle has a size.
-        backgroundImage: `radial-gradient(circle 4px at center, ${colors.perforation} 0%, ${colors.perforation} 75%, transparent 100%)`,
-        backgroundSize: '36px 36px',
       }}
     >
       {/* The slot: a thin rim, a gap, then the enamel plate. Its metrics

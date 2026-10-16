@@ -35,3 +35,4 @@ Show the change, and keep the published redesign story honest.
 - 2026-10-16: tickets 04 and 06 are now closed. Their changes were already
   on the branch when the after screenshots were taken.
 - 2026-10-16: retook the after set after the day rim was darkened (see 04).
+- 2026-10-16: retook the after set after the day dots were removed (see 04).

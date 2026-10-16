@@ -85,7 +85,6 @@
  */
 :root {
   --board: oklch(0.945 0.004 165);
-  --board-perf: oklch(0.88 0.005 165);
   --plate: oklch(0.99 0.002 165);
   /* The rim: every slot outline and board rule, 1px in mid grey. About 2.9:1
      against the board and 3.3:1 against a plate, the same weight as the night
@@ -148,7 +147,6 @@
 
 .dark {
   --board: oklch(0.225 0.002 90);
-  --board-perf: transparent;
   --plate: oklch(0.29 0.003 90);
   /* A grey rim, never yellow: about 2.9:1 against the foam, 2.4:1 against a
      plate. */
@@ -229,21 +227,6 @@
   p {
     text-wrap: pretty;
   }
-}
-
-/*
- * Pegboard perforation: the home page only. Every other page is plain board.
- * Night is cut foam, which has none; its --board-perf is transparent.
- */
-@utility pegboard {
-  background-color: var(--board);
-  background-image: radial-gradient(
-    circle at center,
-    var(--board-perf) 0 2px,
-    transparent 2.5px
-  );
-  background-size: 28px 28px;
-  background-position: 14px 14px;
 }
 
 /* A position code in stencil lettering: on tape, or on the painted shadow. */

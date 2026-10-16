@@ -103,8 +103,8 @@ starting with the phone menu bug that no review caught.
     projects, so that every code I see points to a piece of work.
 18. As a first-time visitor, I do not want a "Board check" line I cannot
     understand, so that the page has no inside jokes.
-19. As a first-time visitor, I want the board's pegboard dots only on the home
-    page, so that other pages are plain and easy to read.
+19. As a first-time visitor, I want every page on a plain board with no dots,
+    so that pages are easy to read (changed 2026-10-16: on wide screens the dots filled the margins like wallpaper, so they were removed after a design critique).
 20. As a first-time visitor, I want far fewer uppercase labels on the first
     screen, so that the page does not feel like it is shouting.
 21. As a first-time visitor, I want short labels such as the name, the nav and
@@ -188,7 +188,7 @@ starting with the phone menu bug that no review caught.
 - The day board token becomes much lighter, close to white (about L 0.94–0.95
   in oklch). Plates stay slightly lighter or white so they still read as
   plates.
-- Pegboard dots appear on the home page only.
+- No page has pegboard dots (changed 2026-10-16: on wide screens the dots filled the margins like wallpaper, so they were removed after a design critique).
 
 ### Long text
 
