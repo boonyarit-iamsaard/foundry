@@ -1,6 +1,7 @@
 # 04: Quiet outlines and a lighter board
 
 Status: ready-for-agent
+Progress: resolved
 Blocked by: 01, 02
 
 Spec: `.scratch/board-quieter/spec.md`
@@ -30,10 +31,22 @@ every page.
 
 ## Acceptance criteria
 
-- [ ] Outline contrast is between about 2:1 and 3:1, and body text contrast still meets WCAG AA in both themes
-- [ ] The four project status line types are still distinguishable at both widths
-- [ ] At night, no outline or link underline is yellow, and tape, the main button and focus still are
-- [ ] Dots show on `/` and on no other page
-- [ ] Preview images use the new colours and a thin outline
-- [ ] `DESIGN.md` and token comments match what ships
-- [ ] `pnpm test`, `pnpm lint:check`, the browser tests and the build pass
+- [x] Outline contrast is between about 2:1 and 3:1, and body text contrast still meets WCAG AA in both themes
+- [x] The four project status line types are still distinguishable at both widths
+- [x] At night, no outline or link underline is yellow, and tape, the main button and focus still are
+- [x] Dots show on `/` and on no other page
+- [x] Preview images use the new colours and a thin outline
+- [x] `DESIGN.md` and token comments match what ships
+- [x] `pnpm test`, `pnpm lint:check`, the browser tests and the build pass
+
+## Comments
+
+- 2026-10-16: checked in the production build at 390px and 1280px in both
+  themes. Slot outlines measure 2.29:1 by day and 2.84:1 at night. The weakest
+  body text measures 7.19:1 by day and 6.6:1 at night. The four line types,
+  drawn with the slot's own classes, are still distinct; the live site shows
+  only one, because all projects are active. At night the only yellow edges
+  are the current nav cell and the skip link, which are tape cells.
+  Underlines are not yellow at rest. Tape, the main button and the focus ring
+  are yellow. Only `/` has dots. The preview image's hex values match the
+  tokens to within one step of rounding.

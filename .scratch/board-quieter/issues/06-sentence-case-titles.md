@@ -1,6 +1,7 @@
 # 06: Sentence-case titles and fewer uppercase labels
 
 Status: ready-for-agent
+Progress: resolved
 Blocked by: 01, 02
 
 Spec: `.scratch/board-quieter/spec.md`
@@ -23,9 +24,18 @@ fonts, and keep body text in Barlow at its current size.
 
 ## Acceptance criteria
 
-- [ ] Article and card titles read in sentence case at both widths
-- [ ] The name, nav, short headings and buttons keep their lettering
-- [ ] About 10 or fewer uppercase items on the first screen of `/` at 1280px
-- [ ] The heading order and titles stay the same for screen readers
-- [ ] `DESIGN.md` typography matches what ships
-- [ ] `pnpm test`, `pnpm lint:check`, the browser tests and the build pass
+- [x] Article and card titles read in sentence case at both widths
+- [x] The name, nav, short headings and buttons keep their lettering
+- [x] About 10 or fewer uppercase items on the first screen of `/` at 1280px
+- [x] The heading order and titles stay the same for screen readers
+- [x] `DESIGN.md` typography matches what ships
+- [x] `pnpm test`, `pnpm lint:check`, the browser tests and the build pass
+
+## Comments
+
+- 2026-10-16: checked in the production build. Titles are in Barlow sentence
+  case on cards and detail pages at both widths. The first screen of `/` at
+  1280px has 12 visible uppercase items, against 35 before: the name twice
+  (rail and plate), 3 nav items, "Write to me", "Resume", "Download resume",
+  "GitHub" and 3 position codes. Each one is lettering this ticket keeps.
+  Heading levels and tags are unchanged; only their classes changed.

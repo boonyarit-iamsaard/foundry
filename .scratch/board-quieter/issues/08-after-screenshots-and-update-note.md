@@ -32,3 +32,5 @@ Show the change, and keep the published redesign story honest.
   old "have something to build?" quote that ticket 07 left in the article.
   Waiting on the owner to compare before and after and write the final note.
   Tickets 04 and 06 have commits but are not marked resolved yet.
+- 2026-10-16: tickets 04 and 06 are now closed. Their changes were already
+  on the branch when the after screenshots were taken.
