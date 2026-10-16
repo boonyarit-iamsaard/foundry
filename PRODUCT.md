@@ -9,13 +9,13 @@ web
 ## Users
 
 1. **Developers**: engineers who arrive through an article, usually from a shared link or a search, and read it for its practical guidance. They may follow Boonyarit or get in touch once they finish.
-2. **Hiring teams**: recruiters and engineering managers confirming who Boonyarit is. They skim, judge craft and judgment quickly, and want his role, employer and work within seconds, then leave with a message sent or a resume downloaded.
+2. **Hiring teams**: recruiters and engineering managers confirming who Boonyarit is. They skim, judge craft and judgment quickly, and want his role and work within seconds, then leave with a message sent or a resume downloaded.
 
 When these pull in different directions, developers win on article pages and hiring teams win on the home page's first screen. The contact form still accepts any message.
 
 ## Product Purpose
 
-The personal site of Boonyarit Iamsa-ard (boonyarit.me; the repository is called Foundry): the articles he writes and the projects he builds, plus a way to get in touch. Success is a developer reading an article to the end and then following Boonyarit or getting in touch, and a hiring team seeing who he is, where he works and what he builds within 10 seconds.
+The personal site of Boonyarit Iamsa-ard (boonyarit.me; the repository is called Foundry): the articles he writes and the projects he builds, plus a way to get in touch. Success is a developer reading an article to the end and then following Boonyarit or getting in touch, and a hiring team seeing who he is and what he builds within 10 seconds.
 
 ## Positioning
 
@@ -50,9 +50,8 @@ A software engineer who came to code from aircraft maintenance. Years of precise
 - Profile photo: `src/core/assets/images/profile.webp` (and `.png`).
 - Articles: "Conventional commit types – a rule of thumb guide" (2025-04-04), "Node.js import style guide" (2025-04-10) and "Redesigning my site with an AI design tool" (2026-10-11), each with a cover image.
 - Projects: one, this site (`content/projects/portfolio`).
-- About copy: `content/about.mdx`. "Current Focus" names the Software Engineer title and Omise in prose; its wording is a draft until the owner approves it.
-- Employer: Omise (current). It may be named on the site.
-- Absent: testimonials, client logos, metrics, and case-study results. Future work must not invent them.
+- About copy: `content/about.mdx`. "Current Focus" names the Software Engineer title and what he works on in prose; its wording is a draft until the owner approves it.
+- Absent: the employer's name, testimonials, client logos, metrics, and case-study results. Future work must not invent them. The employer stays off the site by the owner's choice (2026-10-16): the site is aimed at developers first, the resume and LinkedIn already answer the question for hiring teams, and naming it beside his articles invites reading them as the company's views.
 
 ## Product Principles
 

@@ -54,7 +54,7 @@ export function HeroSection() {
               is back on its board. I build software the same way.
             </p>
             {/* Draft copy: the owner approves the final wording. */}
-            <p>Today I&apos;m a Software Engineer at Omise.</p>
+            <p>Today I build payment software.</p>
           </div>
         </Slot>
 

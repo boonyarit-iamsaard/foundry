@@ -82,7 +82,7 @@ starting with the phone menu bug that no review caught.
 ### Hiring teams
 
 11. As a recruiter or engineering manager opening the home page, I want to see
-    his name, his current role and his employer in the first screen, so that I
+    his name, his current role and what he works on in the first screen, so that I
     can confirm the basics in a few seconds.
 12. As a hiring visitor, I want the resume and GitHub next to each other in the
     hero, so that I can download one and check the other without searching.
@@ -138,10 +138,10 @@ starting with the phone menu bug that no review caught.
     right people.
 29. As the owner, I want `PRODUCT.md` to define success as "a developer reads
     an article to the end and then follows or gets in touch, and a hiring team
-    can see who I am, where I work and what I build within 10 seconds", so
+    can see who I am and what I build within 10 seconds", so
     that I can judge changes against it.
-30. As the owner, I want `PRODUCT.md` to allow my employer's name, so that
-    future work does not remove it.
+30. As the owner, I want `PRODUCT.md` to keep my employer's name off the
+    site, so that future work does not add it.
 31. As the owner, I want `DESIGN.md` and the style comments to describe the
     quieter board as it ships, so that the next design session starts from the
     truth.
@@ -150,7 +150,7 @@ starting with the phone menu bug that no review caught.
 33. As the owner, I want before and after screenshots of each page at phone
     and desktop width in both themes, so that I can see the change and use it
     in the pull request and the update note.
-34. As the owner, I want to write the final contact copy, the employer sentence
+34. As the owner, I want to write the final contact copy, the role sentence
     and the update note myself, so that the site keeps my voice.
 35. As the owner, I want body text to stay in Barlow for now, so that I only
     change the font if the site still feels heavy after these changes.
@@ -163,8 +163,11 @@ starting with the phone menu bug that no review caught.
   Freelance clients are removed as a target. The contact form still accepts
   any message.
 - `PRODUCT.md` Product Purpose: success is the new definition in story 29.
-- `PRODUCT.md`: the employer name (Omise) moves from _Absent_ to evidence on
-  hand. Testimonials, metrics and client logos stay absent.
+- `PRODUCT.md`: the employer's name stays _Absent_, with testimonials, metrics
+  and client logos. (Changed 2026-10-16: an earlier draft allowed it. The
+  owner decided against naming the employer: the site aims at developers
+  first, the resume and LinkedIn already answer it for hiring teams, and
+  naming it beside the articles invites reading them as the company's views.)
 - Principle "Make contact effortless for the people who matter" now names
   developers and hiring teams.
 
@@ -219,14 +222,14 @@ starting with the phone menu bug that no review caught.
 
 ### Content and copy
 
-- Hero: one sentence names the current role and employer, in the owner's
-  voice, next to the existing mechanic story.
+- Hero: one sentence says what he works on now, without naming the employer
+  (see Audience and product docs), in the owner's voice, next to the existing mechanic story.
 - Hero: a visible GitHub link sits next to the resume download.
 - Contact copy is rewritten for hiring teams and developers in the hero
   contact slot, the author slot and the contact section. Draft: "Hiring, or
   want to talk about something I wrote?" The owner writes the final wording.
 - About: "Current Focus" and "Skills" are rewritten as short prose with the
-  Software Engineer title and the employer sentence. No skill lists, tool
+  Software Engineer title and the role sentence. No skill lists, tool
   logos or badge grids.
 - Redesign article: a short dated update note at the end. The owner writes the
   final wording.
@@ -293,7 +296,7 @@ starting with the phone menu bug that no review caught.
   grilling session on 2026-10-14.
 - Order: the browser test and the "before" screenshots come first, so every
   later change has a before image.
-- Three pieces need the owner's own words: the employer sentence, the contact
+- Three pieces need the owner's own words: the role sentence, the contact
   copy and the update note. An agent can draft them and must mark them as
   drafts. Those tickets should be `ready-for-human` or end with an owner
   review step.

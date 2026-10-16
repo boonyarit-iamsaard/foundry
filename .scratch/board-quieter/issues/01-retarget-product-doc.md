@@ -29,3 +29,9 @@ any design work, so it must be right before tickets 03–06 run.
 - [x] The success definition matches the spec
 - [x] Omise is listed as evidence on hand, and nothing else moves out of _Absent_
 - [x] No other part of `PRODUCT.md` still aims at freelance clients
+
+## Comments
+
+- 2026-10-16: the owner reversed the employer decision. Omise is back under
+  _Absent_ in `PRODUCT.md`; the reason is in the spec's Audience and product
+  docs.
