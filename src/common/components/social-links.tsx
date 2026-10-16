@@ -33,7 +33,9 @@ const socialLinks: SocialLink[] = [
   },
 ];
 
-export function SocialLinks({ className }: Readonly<{ className?: string }>) {
+type SocialLinksProps = Readonly<{ className?: string }>;
+
+export function SocialLinks({ className }: SocialLinksProps) {
   return (
     <ul
       className={cn('flex flex-wrap items-center gap-x-5 gap-y-2', className)}
@@ -47,15 +49,19 @@ export function SocialLinks({ className }: Readonly<{ className?: string }>) {
   );
 }
 
+type GitHubLinkProps = Readonly<{ className?: string }>;
+
 /** GitHub on its own, for a slot that pairs it with another action. */
-export function GitHubLink({ className }: Readonly<{ className?: string }>) {
+export function GitHubLink({ className }: GitHubLinkProps) {
   return <SocialLinkAnchor link={gitHubLink} className={className} />;
 }
 
-function SocialLinkAnchor({
-  link,
-  className,
-}: Readonly<{ link: SocialLink; className?: string }>) {
+type SocialLinkAnchorProps = Readonly<{
+  link: SocialLink;
+  className?: string;
+}>;
+
+function SocialLinkAnchor({ link, className }: SocialLinkAnchorProps) {
   const IconComponent: IconComponent =
     typeof link.icon === 'string' ? Icons[link.icon] : link.icon;
   const external = link.href.startsWith('http');

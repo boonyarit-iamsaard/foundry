@@ -132,8 +132,10 @@ function DashDotOutline() {
   );
 }
 
+type SlotLineSampleProps = Readonly<{ line: SlotLine }>;
+
 /** A 24px sample of a slot line, for a status key or a status label. */
-export function SlotLineSample({ line }: Readonly<{ line: SlotLine }>) {
+export function SlotLineSample({ line }: SlotLineSampleProps) {
   if (line === 'dashdot') {
     return (
       <svg aria-hidden="true" className="h-[1.5px] w-6 overflow-visible">
@@ -158,14 +160,16 @@ export function SlotLineSample({ line }: Readonly<{ line: SlotLine }>) {
   );
 }
 
+type EmptySlotProps = Readonly<{
+  code?: string;
+  className?: string;
+  children?: ReactNode;
+}>;
+
 /**
  * An outline whose item is missing: the silhouette shows, no plate on it.
  */
-export function EmptySlot({
-  code,
-  className,
-  children,
-}: Readonly<{ code?: string; className?: string; children?: ReactNode }>) {
+export function EmptySlot({ code, className, children }: EmptySlotProps) {
   return (
     <div
       className={cn(
