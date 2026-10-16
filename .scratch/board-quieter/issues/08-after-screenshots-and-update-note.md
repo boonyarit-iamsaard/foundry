@@ -18,7 +18,17 @@ Show the change, and keep the published redesign story honest.
 
 ## Acceptance criteria
 
-- [ ] 24 after screenshots match the before set one to one
+- [x] 24 after screenshots match the before set one to one
 - [ ] The owner has reviewed before and after and is happy with the result
 - [ ] The redesign article ends with a dated update note in the owner's words
-- [ ] `pnpm test`, `pnpm lint:check`, the browser tests and the build pass
+- [x] `pnpm test`, `pnpm lint:check`, the browser tests and the build pass
+
+## Comments
+
+- 2026-10-16: the 24 after screenshots are in
+  `.scratch/board-quieter/screenshots/after/`, with the same names as the
+  before set. The redesign article ends with a draft update note, marked
+  `Draft copy` in the source and dated October 2026. It also explains the
+  old "have something to build?" quote that ticket 07 left in the article.
+  Waiting on the owner to compare before and after and write the final note.
+  Tickets 04 and 06 have commits but are not marked resolved yet.
