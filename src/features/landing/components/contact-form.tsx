@@ -107,7 +107,7 @@ export function ContactForm() {
               <FormLabel className={labelClassName}>Message</FormLabel>
               <FormControl>
                 <Textarea
-                  placeholder="The role, or the project you have in mind"
+                  placeholder="The role and the team, or what you thought of something I wrote"
                   className="min-h-40"
                   required
                   {...field}
