@@ -1,6 +1,7 @@
 # 08: "After" screenshots and the update note
 
 Status: ready-for-human
+Progress: resolved
 Blocked by: 03, 04, 05, 06, 07
 
 Spec: `.scratch/board-quieter/spec.md`
@@ -19,8 +20,8 @@ Show the change, and keep the published redesign story honest.
 ## Acceptance criteria
 
 - [x] 24 after screenshots match the before set one to one
-- [ ] The owner has reviewed before and after and is happy with the result
-- [ ] The redesign article ends with a dated update note in the owner's words
+- [x] The owner has reviewed before and after and is happy with the result
+- [x] The redesign article ends with a dated update note in the owner's words
 - [x] `pnpm test`, `pnpm lint:check`, the browser tests and the build pass
 
 ## Comments
@@ -38,3 +39,5 @@ Show the change, and keep the published redesign story honest.
 - 2026-10-16: retook the after set after the day dots were removed (see 04).
 - 2026-10-16: retook the after set after plate corners were made concentric with
   their outlines (1px on a thin line, square on heavy).
+- 2026-10-16: the owner reviewed before and after and approved the result and
+  the update note's wording. The `Draft copy` marker is removed.
