@@ -36,3 +36,5 @@ Show the change, and keep the published redesign story honest.
   on the branch when the after screenshots were taken.
 - 2026-10-16: retook the after set after the day rim was darkened (see 04).
 - 2026-10-16: retook the after set after the day dots were removed (see 04).
+- 2026-10-16: retook the after set after plate corners were made concentric with
+  their outlines (1px on a thin line, square on heavy).

@@ -96,6 +96,7 @@ rounded:
   sm: '4px'
   md: '6px'
   lg: '8px'
+  plate: 'calc(8px - line width - 6px): 1px on a thin line, 0 on heavy'
 spacing:
   slot-inset: '6px'
   plate-sm: '20px'
@@ -274,7 +275,7 @@ Flat at rest. Depth comes from the slot construction itself: a thin outline, a 6
 
 ## Shapes
 
-Small, machined corners. Slot outlines round at 8px, plates and code blocks at 6px, buttons, inputs, nav items and the theme toggle at 4px, tags at 2px, tape at 1px, the header avatar at 3px. Nothing is pill-shaped or fully round.
+Small, machined corners. Slot outlines round at 8px; the plate and painted shadow inside follow it concentrically (see Slot); code blocks round at 6px; buttons, inputs, nav items and the theme toggle at 4px, tags at 2px, tape at 1px, the header avatar at 3px. Nothing is pill-shaped or fully round.
 
 Board lines are thin: 1px in rim grey for outlines, section rules, cover separators and frames. Controls keep a firmer stroke: 2px for inputs and outline buttons, 1.5px for tags. Outline line type is semantic (see Slot below). Covers sit flush inside plates and are divided from text by a 1px rim rule.
 
@@ -285,9 +286,9 @@ Board lines are thin: 1px in rim grey for outlines, section rules, cover separat
 The board's unit. An outline, a 6px gap, and a plate.
 
 - **Outline:** 8px radius, rim grey (`rim`). Line type: solid 1px (default, Stable), dashed 1.5px (Experimental), heavy 3px (Active, the one clearly thicker line), chain line 1.5px drawn as an SVG long-dash-dot `12 4 1.5 4` (Maintenance). Dashed and chain lines get the extra half pixel so their breaks still read at 1x.
-- **Painted shadow:** fills the inside at 6px inset, 6px radius, with the stencil code bottom-right in `paint-ink`, 2px off the bottom so a lifted plate uncovers it.
+- **Painted shadow:** fills the inside at 6px inset, with the plate's radius, with the stencil code bottom-right in `paint-ink`, 2px off the bottom so a lifted plate uncovers it.
 - **Tape:** optional, 12px above the top edge and 16px from the left; only article and project slots carry a code. A slot without one is plain: outline and plate, no tape.
-- **Plate:** enamel (`plate`), 6px radius, sits above the painted shadow. Link slots lift (see Elevation); the whole plate is the hit area via the title link.
+- **Plate:** enamel (`plate`), sits above the painted shadow. **The Concentric Corner Rule:** its radius is the outline's 8px less the line width and the 6px gap (about 1px on a thin line, square on the heavy one), so the gap stays even round every corner. Link slots lift (see Elevation); the whole plate is the hit area via the title link.
 - **Focus:** when the slot's own title link (marked `data-slot-link`) is keyboard-focused, the slot shows a 2px ring 4px out and the plate lifts. Other links inside (tags, Live, Source) take the global focus ring on themselves.
 - **Empty slot:** outline and painted shadow with no plate, used on the 404 page ("Missing"). It is the one place the painted shadow shows at rest, because showing the missing item is the page's whole message.
 

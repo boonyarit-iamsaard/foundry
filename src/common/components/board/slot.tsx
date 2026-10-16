@@ -9,14 +9,22 @@ import { cn } from '@/common/helpers/cn';
 export type SlotLine = 'solid' | 'dashed' | 'heavy' | 'dashdot';
 
 // Thin lines in rim grey; heavy is the one clearly thicker line. Dashed and
-// dash-dot get half a pixel more so their breaks still read at 1x.
+// dash-dot get half a pixel more so their breaks still read at 1x. Each line
+// also sets --slot-line, its width, for the plate radius below.
 const lineClasses: Record<SlotLine, string> = {
-  solid: 'border border-solid',
-  dashed: 'border-[1.5px] border-dashed',
-  heavy: 'border-[3px] border-solid',
+  solid: 'border border-solid [--slot-line:1px]',
+  dashed: 'border-[1.5px] border-dashed [--slot-line:1.5px]',
+  heavy: 'border-[3px] border-solid [--slot-line:3px]',
   // CSS borders have no chain line; DashDotOutline draws it over a clear border.
-  dashdot: 'border-[1.5px] border-transparent',
+  dashdot: 'border-[1.5px] border-transparent [--slot-line:1.5px]',
 };
+
+// The plate and its painted shadow sit inside the outline, offset by the line
+// and the 6px gap, so their corners are the outline's radius less that offset.
+// The gap then stays even all the way round: about 1px on a thin line, square
+// on the heavy one.
+const plateRadius =
+  'rounded-[max(0px,calc(var(--radius-lg)-var(--slot-line)-0.375rem))]';
 
 // The chain line as an SVG dash pattern: long dash, gap, dot, gap.
 const chainStrokeWidth = 1.5;
@@ -80,7 +88,10 @@ export function Slot({
       {/* The code sits 2px off the bottom so the plate's 20px lift uncovers it. */}
       <div
         aria-hidden="true"
-        className="absolute inset-1.5 flex items-end justify-end rounded-md bg-paint px-2 pb-0.5"
+        className={cn(
+          'absolute inset-1.5 flex items-end justify-end bg-paint px-2 pb-0.5',
+          plateRadius,
+        )}
       >
         {code ? (
           <span className="code-stencil text-paint-ink">{code}</span>
@@ -88,7 +99,8 @@ export function Slot({
       </div>
       <div
         className={cn(
-          'relative z-10 h-full rounded-md bg-plate text-card-foreground',
+          'relative z-10 h-full bg-plate text-card-foreground',
+          plateRadius,
           lift &&
             'transition-[translate,box-shadow] duration-500 ease-lift group-hover/slot:shadow-(--lift-shadow) group-has-[[data-slot-link]:focus-visible]/slot:shadow-(--lift-shadow) motion-safe:group-has-[[data-slot-link]:focus-visible]/slot:-translate-x-1 motion-safe:group-has-[[data-slot-link]:focus-visible]/slot:-translate-y-5 motion-safe:group-hover/slot:-translate-x-1 motion-safe:group-hover/slot:-translate-y-5',
           plateClassName,
@@ -157,14 +169,19 @@ export function EmptySlot({
   return (
     <div
       className={cn(
-        'relative rounded-lg border border-rim border-solid p-1.5',
+        'relative rounded-lg border border-rim border-solid p-1.5 [--slot-line:1px]',
         className,
       )}
     >
       {code ? (
         <span className="tape absolute -top-3 left-4 z-20">{code}</span>
       ) : null}
-      <div className="flex h-full items-center justify-center rounded-md bg-paint p-6 text-paint-ink">
+      <div
+        className={cn(
+          'flex h-full items-center justify-center bg-paint p-6 text-paint-ink',
+          plateRadius,
+        )}
+      >
         {children}
       </div>
     </div>
