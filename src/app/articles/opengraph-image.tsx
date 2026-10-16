@@ -11,7 +11,6 @@ export {
 
 export default function Image() {
   return renderPreviewImage({
-    code: articlesListing.code,
     title: articlesListing.title,
     subtitle: articlesListing.description,
   });

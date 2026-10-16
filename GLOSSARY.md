@@ -46,6 +46,12 @@ _Avoid_: done, complete
 A project kept running with updates and fixes only; it gains no new features.
 _Avoid_: legacy, archived
 
+### Board
+
+**Position code**:
+A short label such as P-01 or W-03 that marks a project or an article's place on the board, numbered oldest first so it never changes.
+_Avoid_: slot code, ID, number
+
 ### Sharing
 
 **Preview image**:

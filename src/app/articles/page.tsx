@@ -40,10 +40,7 @@ export default async function Page({ searchParams }: ArticlesPageProps) {
         title={articlesListing.title}
         description={articlesListing.description}
       />
-      <section
-        aria-label="Articles"
-        className="pegboard border-paint border-t-2"
-      >
+      <section aria-label="Articles" className="border-rim border-t">
         <div className="container space-y-10 pt-10 pb-20">
           <FilterByTags
             resourceTags={resourceTags}
@@ -52,7 +49,7 @@ export default async function Page({ searchParams }: ArticlesPageProps) {
           />
           <div className="grid gap-y-10">
             {filteredResource.length === 0 ? (
-              <EmptySlot code={articlesListing.code} className="min-h-48">
+              <EmptySlot className="min-h-48">
                 <div className="space-y-1 text-center">
                   <p className="font-bold font-display text-2xl uppercase">
                     Nothing in this slot

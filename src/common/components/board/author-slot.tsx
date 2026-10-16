@@ -7,7 +7,7 @@ import { Slot } from '@/common/components/board/slot';
 import { Button } from '@/common/components/ui/button';
 
 /**
- * The contact call, hung at the end of a reading plate so a visitor who
+ * The contact call, hung at the end of the reading text so a visitor who
  * landed deep on an article or project is still one step from the form and
  * the resume.
  */
@@ -17,7 +17,6 @@ export function AuthorSlot({
 }: Readonly<{ heading: string; className?: string }>) {
   return (
     <Slot
-      code="C-01"
       className={className}
       plateClassName="grid gap-6 p-6 sm:grid-cols-[1fr_auto] sm:items-end sm:p-8"
     >
@@ -30,7 +29,7 @@ export function AuthorSlot({
           web and mobile software, and check it before it ships.
         </p>
         <p className="text-muted-foreground">
-          Hiring, or have something to build?
+          Hiring, or want to talk about something I wrote?
         </p>
       </div>
       <div className="grid gap-3 sm:w-56">

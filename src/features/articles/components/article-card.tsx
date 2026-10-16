@@ -39,18 +39,13 @@ export function ArticleCard({
       </time>
       <span>{article.metadata.readingTime} min read</span>
       {article.status === 'draft' ? (
-        <span className="stamp text-destructive text-xs">Draft</span>
+        <span className="font-semibold text-destructive">Draft</span>
       ) : null}
     </p>
   );
 
   const title = (
-    <h3
-      className={cn(
-        'font-bold font-display uppercase leading-[0.98] tracking-[0.01em]',
-        compact ? 'text-2xl' : 'text-3xl',
-      )}
-    >
+    <h3 className={cn('type-card-title', compact && 'text-xl/[1.2]')}>
       <Link
         href={article.permalink}
         data-slot-link
@@ -74,7 +69,7 @@ export function ArticleCard({
       )}
     >
       {compact ? null : (
-        <div className="relative aspect-[16/9] border-paint border-b-2 sm:aspect-auto sm:border-r-2 sm:border-b-0">
+        <div className="relative aspect-[16/9] border-rim border-b sm:aspect-auto sm:border-r sm:border-b-0">
           <Image
             src={article.cover}
             alt=""

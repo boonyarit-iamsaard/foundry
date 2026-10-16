@@ -12,7 +12,7 @@ export function CallToActionSection() {
     <section
       id="contact"
       aria-labelledby="contact-heading"
-      className="pegboard border-paint border-t-2"
+      className="border-rim border-t"
     >
       <div className="container grid gap-12 py-20 sm:py-28 lg:grid-cols-12 lg:gap-8">
         <div className="space-y-6 lg:col-span-5">
@@ -22,7 +22,8 @@ export function CallToActionSection() {
           <div className="max-w-[44ch] space-y-3 text-lg">
             <p>
               If you&apos;re hiring, tell me about the role and the team. If you
-              have a project, tell me what it should do and when you need it.
+              read something I wrote, tell me what you think, or where I got it
+              wrong.
             </p>
             <p className="text-muted-foreground">
               The message comes straight to my inbox.
@@ -37,7 +38,6 @@ export function CallToActionSection() {
           <SocialLinks className="pt-2" />
         </div>
         <Slot
-          code="C-02"
           className="lg:col-span-6 lg:col-start-7"
           plateClassName="p-6 sm:p-8"
         >

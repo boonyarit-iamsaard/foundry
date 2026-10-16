@@ -41,7 +41,7 @@ export function MobileNavDrawer({
   return (
     <Drawer direction="left" open={open} onOpenChange={onOpenChange} autoFocus>
       <DrawerContent
-        className="pegboard flex flex-col border-paint border-r-2 shadow-none"
+        className="flex flex-col border-rim border-r bg-board shadow-none"
         onCloseAutoFocus={(event) => {
           event.preventDefault();
           onReturnFocus();
@@ -67,7 +67,7 @@ export function MobileNavDrawer({
                 href={item.href}
                 aria-current={current ? 'page' : undefined}
                 className={cn(
-                  'flex items-center rounded-sm border-2 border-paint px-4 py-3 font-bold font-display text-lg uppercase tracking-[0.08em]',
+                  'flex items-center rounded-sm border border-rim px-4 py-3 font-bold font-display text-lg uppercase tracking-[0.08em]',
                   current ? 'bg-tape text-tape-ink' : 'bg-plate',
                 )}
                 onClick={close}
@@ -91,7 +91,7 @@ export function MobileNavDrawer({
             </Button>
           </div>
         </nav>
-        <div className="flex items-center justify-between border-paint border-t-2 bg-board p-4">
+        <div className="flex items-center justify-between border-rim border-t bg-board p-4">
           <span className="stamp text-muted-foreground text-xs">Theme</span>
           <ThemeToggle />
         </div>

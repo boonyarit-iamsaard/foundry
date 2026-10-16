@@ -18,7 +18,7 @@ import { Textarea } from '@/common/components/ui/textarea';
 
 import { useContactForm } from '../hooks/use-contact-form';
 
-const labelClassName = 'stamp font-bold text-foreground text-xs';
+const labelClassName = 'font-semibold text-foreground text-sm';
 
 export function ContactForm() {
   const { form, handleSubmitWithAction, isSending, sentTo, startOver } =
@@ -73,39 +73,32 @@ export function ContactForm() {
         className="space-y-5"
         noValidate
       >
-        <div className="grid gap-5 sm:grid-cols-2">
-          <FormField
-            control={form.control}
-            name="name"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className={labelClassName}>Name</FormLabel>
-                <FormControl>
-                  <Input autoComplete="name" required {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="email"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className={labelClassName}>Email</FormLabel>
-                <FormControl>
-                  <Input
-                    type="email"
-                    autoComplete="email"
-                    required
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        </div>
+        <FormField
+          control={form.control}
+          name="name"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className={labelClassName}>Name</FormLabel>
+              <FormControl>
+                <Input autoComplete="name" required {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className={labelClassName}>Email</FormLabel>
+              <FormControl>
+                <Input type="email" autoComplete="email" required {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
         <FormField
           control={form.control}
           name="message"
@@ -114,7 +107,7 @@ export function ContactForm() {
               <FormLabel className={labelClassName}>Message</FormLabel>
               <FormControl>
                 <Textarea
-                  placeholder="The role, or the project you have in mind"
+                  placeholder="The role and the team, or what you thought of something I wrote"
                   className="min-h-40"
                   required
                   {...field}

@@ -2,13 +2,12 @@ import type { CSSProperties } from 'react';
 
 import Link from 'next/link';
 
-import { ArrowDownIcon, CheckIcon, DownloadIcon } from 'lucide-react';
+import { ArrowDownIcon, DownloadIcon } from 'lucide-react';
 
 import { appConfig } from '@/core/configs/app.config';
 import { Slot } from '@/common/components/board/slot';
-import { email } from '@/common/components/social-links';
+import { email, GitHubLink } from '@/common/components/social-links';
 import { Button } from '@/common/components/ui/button';
-import { fixtureCodes } from '@/common/definitions/fixture-codes';
 import { ArticleCard } from '@/features/articles/components/article-card';
 import { listedArticles } from '@/features/articles/visibility';
 import { heroHeadingId } from '@/features/landing/hero';
@@ -29,16 +28,11 @@ export function HeroSection() {
   const latestArticles = listedArticles(articles)
     .toSorted(byNewest)
     .slice(0, 2);
-  // B-00, C-01 and R-01 always hang; the work slots depend on the content.
-  const fixtureSlots = 3;
-  const slotCount =
-    fixtureSlots + (latestProject ? 1 : 0) + latestArticles.length;
 
   return (
-    <section aria-labelledby={heroHeadingId} className="pegboard">
+    <section aria-labelledby={heroHeadingId}>
       <div className="container grid grid-cols-1 gap-x-6 gap-y-8 pt-10 pb-8 sm:grid-cols-2 lg:grid-cols-12 lg:pt-7">
         <Slot
-          code={fixtureCodes.home}
           className="sm:col-span-2 lg:col-span-8"
           plateClassName="settle flex flex-col justify-between gap-8 p-6 sm:p-8"
           style={settleOrder(0)}
@@ -49,25 +43,25 @@ export function HeroSection() {
               <br />
               Iamsa-ard
             </h1>
-            <p className="stamp text-muted-foreground">
+            <p className="font-medium text-lg text-muted-foreground">
               Software Engineer · Bangkok, Thailand
             </p>
           </div>
           <p className="max-w-[46ch] text-lg leading-snug sm:text-xl">
             I was an aircraft mechanic before I wrote code. In a hangar, nothing
             is released until every task is inspected and every tool is back on
-            its board. I build software the same way.
+            its board. Now I build software the same way, across the backend,
+            the web and mobile.
           </p>
         </Slot>
 
         <div className="grid gap-y-8 sm:col-span-2 sm:grid-cols-2 sm:gap-x-6 lg:col-span-4 lg:grid-cols-1">
           <Slot
-            code="C-01"
             plateClassName="settle flex h-full flex-col gap-4 p-5"
             style={settleOrder(1)}
           >
-            <h2 className="font-bold font-display text-2xl uppercase leading-[0.95]">
-              Hiring, or have something to build?
+            <h2 className="type-card-title">
+              Hiring, or want to talk about something I wrote?
             </h2>
             <div className="mt-auto space-y-3">
               <Button asChild variant="tape" className="w-full">
@@ -85,7 +79,6 @@ export function HeroSection() {
             </div>
           </Slot>
           <Slot
-            code="R-01"
             plateClassName="settle flex h-full flex-col gap-4 p-5"
             style={settleOrder(2)}
           >
@@ -98,9 +91,12 @@ export function HeroSection() {
             <Button asChild variant="outline" className="mt-auto w-full">
               <a href={appConfig.resume} download>
                 <DownloadIcon aria-hidden="true" />
-                Download resume
+                {/* The slot's heading already says "Resume"; the link's name
+                    keeps it for anyone browsing links out of context. */}
+                Download<span className="sr-only"> resume</span>
               </a>
             </Button>
+            <GitHubLink className="self-center" />
           </Slot>
         </div>
 
@@ -126,9 +122,9 @@ export function HeroSection() {
         ))}
 
         <div className="order-last flex flex-wrap items-center justify-between gap-x-6 gap-y-3 sm:order-none sm:col-span-2 lg:col-span-12">
-          <p className="stamp inline-flex items-center gap-2 text-xs">
-            <CheckIcon className="size-4" aria-hidden="true" />
-            Board check: {slotCount} of {slotCount} slots filled
+          <p className="max-w-[62ch] text-muted-foreground">
+            Like a hangar tool board: every piece of work hangs in its own
+            outlined place.
           </p>
           <div className="flex gap-6">
             <Link href="/projects" className="stamp tape-link text-xs">

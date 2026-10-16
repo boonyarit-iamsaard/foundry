@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Before and after</title>
+<style>
+  :root {
+    --bg: #f4f5f5; --fg: #16191c; --muted: #5a6066; --line: #c9cdcf; --cell: #fff; --on: #16191c; --on-fg: #fff;
+    color-scheme: light dark;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #1c1c1b; --fg: #eceeed; --muted: #a3a6a4; --line: #444; --cell: #262625; --on: #eceeed; --on-fg: #1c1c1b; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 15px/1.5 system-ui, sans-serif; }
+  header { position: sticky; top: 0; z-index: 1; background: var(--bg); border-bottom: 1px solid var(--line); padding: 12px 16px; display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center; }
+  h1 { font-size: 16px; margin: 0 8px 0 0; }
+  .group { border: 0; margin: 0; padding: 0; min-width: 0; display: flex; gap: 4px; flex-wrap: wrap; }
+  button { font: inherit; font-size: 14px; padding: 4px 10px; border: 1px solid var(--line); background: var(--cell); color: var(--fg); border-radius: 4px; cursor: pointer; }
+  button[aria-pressed="true"] { background: var(--on); color: var(--on-fg); border-color: var(--on); }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  main { padding: 16px; }
+  section { margin-bottom: 40px; }
+  h2 { font-size: 15px; margin: 0 0 8px; color: var(--muted); font-weight: 600; }
+  .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
+  .pair.narrow { max-width: 900px; }
+  figure { margin: 0; }
+  figcaption { font-size: 13px; color: var(--muted); margin-bottom: 4px; }
+  img { width: 100%; height: auto; display: block; border: 1px solid var(--line); }
+  @media (max-width: 600px) { .pair:not(.narrow) { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>Before and after</h1>
+  <fieldset class="group" id="width"><legend class="sr-only">Width</legend>
+    <button type="button" data-v="all">Both widths</button><button type="button" data-v="1280">1280px</button><button type="button" data-v="390">390px</button>
+  </fieldset>
+  <fieldset class="group" id="theme"><legend class="sr-only">Theme</legend>
+    <button type="button" data-v="all">Both themes</button><button type="button" data-v="day">Day</button><button type="button" data-v="night">Night</button>
+  </fieldset>
+  <fieldset class="group" id="page"><legend class="sr-only">Page</legend>
+    <button type="button" data-v="all">All pages</button>
+  </fieldset>
+</header>
+<main id="out"></main>
+<script>
+  const pages = [['home', '/'], ['articles', '/articles'], ['article', 'One article'], ['projects', '/projects'], ['project', 'One project'], ['about', '/about']];
+  const state = { width: '1280', theme: 'day', page: 'all' };
+  const pageGroup = document.getElementById('page');
+  for (const [k, label] of pages) {
+    const b = document.createElement('button');
+    b.type = 'button'; b.dataset.v = k; b.textContent = label; pageGroup.append(b);
+  }
+  for (const key of ['width', 'theme', 'page']) {
+    document.getElementById(key).addEventListener('click', (e) => {
+      const v = e.target.dataset?.v; if (!v) { return; }
+      state[key] = v; render();
+    });
+  }
+  function render() {
+    for (const key of ['width', 'theme', 'page']) {
+      for (const b of document.getElementById(key).querySelectorAll('button')) { b.setAttribute('aria-pressed', b.dataset.v === state[key]); }
+    }
+    const out = document.getElementById('out');
+    out.innerHTML = '';
+    for (const [k, label] of pages) {
+      if (state.page !== 'all' && state.page !== k) { continue; }
+      for (const w of ['1280', '390']) {
+        if (state.width !== 'all' && state.width !== w) { continue; }
+        for (const t of ['day', 'night']) {
+          if (state.theme !== 'all' && state.theme !== t) { continue; }
+          const f = `${k}-${w}-${t}.png`;
+          const s = document.createElement('section');
+          s.innerHTML = `<h2>${label} · ${w}px · ${t}</h2><div class="pair ${w === '390' ? 'narrow' : ''}">
+            <figure><figcaption>Before</figcaption><img loading="lazy" src="before/${f}" alt="${label} at ${w}px, ${t}, before"></figure>
+            <figure><figcaption>After</figcaption><img loading="lazy" src="after/${f}" alt="${label} at ${w}px, ${t}, after"></figure></div>`;
+          out.append(s);
+        }
+      }
+    }
+  }
+  render();
+</script>
+</body>
+</html>

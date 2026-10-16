@@ -19,6 +19,8 @@
     "start": "next start",
     "static-analysis": "biome ci --error-on-warnings && prettier --check \"**/*.{md,mdx,yaml,yml}\" && pnpm run type-check",
     "test": "vitest run",
+    "test:e2e": "playwright test --project=phone --project=desktop",
+    "test:screenshots": "playwright test --project=screenshots",
     "test:watch": "vitest",
     "type-check": "next typegen && tsc --noEmit"
   },
@@ -61,6 +63,7 @@
     "@commitlint/cli": "^21.2.3",
     "@commitlint/config-conventional": "^21.2.3",
     "@commitlint/types": "^21.2.3",
+    "@playwright/test": "1.64.0",
     "@tailwindcss/postcss": "^4.3.3",
     "@types/node": "^24.0.0",
     "@types/nodemailer": "^8.0.2",

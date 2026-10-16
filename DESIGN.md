@@ -2,13 +2,12 @@
 name: Boonyarit Iamsa-ard
 description: The personal site of a software engineer who came from aircraft maintenance, laid out as a tool-control shadow board.
 colors:
-  board: 'oklch(0.872 0.005 165)'
-  board-perforation: 'oklch(0.8 0.006 165)'
-  plate: 'oklch(0.968 0.003 165)'
+  board: 'oklch(0.945 0.004 165)'
+  plate: 'oklch(0.99 0.002 165)'
   plate-recess: 'oklch(0.92 0.004 165)'
   ink-paint: 'oklch(0.21 0.008 250)'
   ink-muted: 'oklch(0.42 0.01 250)'
-  rim-grey: 'oklch(0.62 0.008 220)'
+  rim-grey: 'oklch(0.64 0.006 220)'
   field-edge: 'oklch(0.55 0.01 220)'
   safety-yellow: 'oklch(0.86 0.17 92)'
   tape-ink: 'oklch(0.2 0.01 250)'
@@ -18,7 +17,8 @@ colors:
   foam-recess: 'oklch(0.33 0.003 90)'
   foam-text: 'oklch(0.94 0.004 165)'
   foam-muted: 'oklch(0.76 0.003 90)'
-  foam-rim: 'oklch(0.48 0.003 90)'
+  foam-rim: 'oklch(0.5 0.003 90)'
+  foam-paint: 'oklch(0.17 0.002 90)'
   foam-field-edge: 'oklch(0.55 0.003 90)'
   foam-fault: 'oklch(0.7 0.17 30)'
 typography:
@@ -34,11 +34,17 @@ typography:
     fontWeight: 800
     lineHeight: 0.9
   title:
-    fontFamily: 'Big Shoulders, ui-sans-serif, sans-serif'
-    fontSize: '1.875rem'
+    fontFamily: 'Barlow, ui-sans-serif, system-ui, sans-serif'
+    fontSize: 'clamp(2.25rem, 4vw, 3rem)'
     fontWeight: 700
-    lineHeight: 0.95
-    letterSpacing: '0.01em'
+    lineHeight: 1.1
+    letterSpacing: '-0.02em'
+  card-title:
+    fontFamily: 'Barlow, ui-sans-serif, system-ui, sans-serif'
+    fontSize: '1.5rem'
+    fontWeight: 700
+    lineHeight: 1.2
+    letterSpacing: '-0.01em'
   prose-heading:
     fontFamily: 'Barlow, ui-sans-serif, system-ui, sans-serif'
     fontSize: '2rem'
@@ -55,6 +61,11 @@ typography:
     fontSize: '1.125rem'
     fontWeight: 400
     lineHeight: 1.625
+  meta:
+    fontFamily: 'Barlow, ui-sans-serif, system-ui, sans-serif'
+    fontSize: '0.875rem'
+    fontWeight: 500
+    lineHeight: 1.4
   label:
     fontFamily: 'Big Shoulders, ui-sans-serif, sans-serif'
     fontSize: '0.875rem'
@@ -85,6 +96,7 @@ rounded:
   sm: '4px'
   md: '6px'
   lg: '8px'
+  plate: 'calc(8px - line width - 6px): 1px on a thin line, 0 on heavy'
 spacing:
   slot-inset: '6px'
   plate-sm: '20px'
@@ -126,7 +138,7 @@ components:
   tag:
     backgroundColor: 'transparent'
     textColor: '{colors.ink-paint}'
-    typography: '{typography.label}'
+    typography: '{typography.meta}'
     rounded: '{rounded.tag}'
     padding: '0 8px'
     height: '28px'
@@ -161,19 +173,19 @@ components:
 
 **Creative North Star: "The Shadow Board"**
 
-The site is a hangar tool-control board. Every piece of work (a project, an article, the contact form, the resume) hangs as an enamel plate inside its own painted outline, labelled with a yellow tape strip carrying a stencilled position code. A visitor reads the board the way a mechanic reads a tool board at shift change: everything has a place, and every place is accounted for. The home board closes with an inventory line ("Board check: 6 of 6 slots filled") that makes the claim literal.
+The site is a hangar tool-control board. Every unit of content (a project, an article, the contact form, the resume) hangs as an enamel plate inside its own outlined place. Articles and projects, the work itself, are labelled with a yellow tape strip carrying a stencilled position code. A visitor reads the board the way a mechanic reads a tool board at shift change: everything has a place, and every place is accounted for. The home board closes with one plain line that says so for a visitor who has never seen a tool board ("Like a hangar tool board: every piece of work hangs in its own outlined place.").
 
-Day and night are two materials, not one palette inverted. Day is a cool grey powder-coated board with a faint perforation, plates in near-white enamel, outlines painted ink-black. Night is charcoal tool foam: no perforation, plates in a lighter charcoal, and the painted outlines turn safety yellow, as if the foam's under-layer shows through the cut-outs. Yellow label tape is the only chromatic accent in both.
+Day and night are two materials, not one palette inverted. Day is a near-white powder-coated board, plates in white enamel, outlines drawn thin in a mid grey. Night is charcoal tool foam: plates in a lighter charcoal, outlines in a grey rim. In both the board is drawn lightly around the words, so the text is always the darkest, strongest thing on the page. Yellow label tape is the only chromatic accent in both. Neither board carries a texture: the outlines alone draw it.
 
-Density is moderate and structured: a 12-column board on desktop, slots of unequal size, generous section breaks. Type is condensed, uppercase, and industrial for display and labels; body copy stays in a plain, readable sans in the owner's first-person voice. Motion is limited to two authored behaviours: plates settle into their outlines on arrival, and linked plates lift off their painted shadow on hover or focus.
+Density is moderate and structured: a 12-column board on desktop, slots of unequal size, generous section breaks. Short lettering (the name, the nav, short headings, buttons) is condensed, uppercase and industrial; everything that reads as a sentence, from article titles to dates and tags, stays in a plain, readable sans in the owner's first-person voice. Motion is limited to two authored behaviours: plates settle into their outlines on arrival, and linked plates lift off their painted shadow on hover or focus.
 
 **Key Characteristics:**
 
-- Every unit of content is a slot: painted outline, 6px gap, plate inside.
-- Position codes (B-00, C-nn, R-01, L-nn, P-nn, W-nn) on yellow stencil tape at each slot's top-left: C-01 is the contact call (on the home board and at the end of every article and project) and C-02 the contact form; L-01 is the home path story and L-02 the About body.
+- Every unit of content is a slot: a thin grey outline, 6px gap, plate inside. Long reading text is the one exception: it sits straight on the plain board.
+- Position codes on yellow stencil tape at the top-left of work slots only: P-nn for projects and W-nn for articles. Every other slot (the name plate, contact, resume, the path story, the author slot) is plain: outline and plate, no tape.
 - Project status is drawn as the outline's line type, never as colour.
-- Painted shadow is ink-black by day and safety yellow by night.
-- Condensed uppercase display (Big Shoulders) over a plain humanist body (Barlow).
+- The painted shadow under a plate shows only when the plate lifts: ink-black by day, a hole darker than the foam by night.
+- Condensed uppercase lettering (Big Shoulders) for short labels only; titles, metadata and body in a plain humanist sans (Barlow), sentence case.
 - Flat at rest; the only shadow belongs to a lifted plate.
 
 ## Colors
@@ -182,31 +194,35 @@ A near-neutral industrial palette with one safety-yellow accent; neutrals lean f
 
 ### Primary
 
-- **Safety Yellow** (`safety-yellow`): label tape behind position codes, the tape button ("Write to me"), the current nav item, active filter tags, text selection, link underlines on hover by day, and (by night) the painted outlines, link underlines, primary buttons and focus ring. It is the board's only chroma.
-- **Paint Ink** (`ink-paint`): by day, the painted outline and shadow of every slot, the primary button fill, body text, and the focus ring. It is the same value as the text colour, so outlines read as part of the lettering, not as decoration.
+- **Safety Yellow** (`safety-yellow`): label tape (behind position codes, and as the state marker on the current nav item, active filter tags and the skip link), the tape button ("Write to me"), text selection, and link underlines on hover. By night it is also the primary button fill and the focus ring. It is the board's only chroma, and never an outline or a resting underline.
+- **Paint Ink** (`ink-paint`): by day, body text, the primary button fill, the focus ring and the painted shadow under each plate. Outlines never use it: the text keeps this contrast to itself.
 
 ### Neutral
 
-- **Powder-Coat Board** (`board`): page background by day; also the inline-code chip and the sticky header.
-- **Perforation Grey** (`board-perforation`): 2px peg holes on a 28px pitch across open board areas, day only.
-- **Enamel Plate** (`plate`): every plate surface and form-field fill by day.
+- **Powder-Coat Board** (`board`): page background by day, close to white; also the inline-code chip and the sticky header.
+- **Enamel Plate** (`plate`): every plate surface and form-field fill by day. A shade lighter than the board; the outline does the rest of the work of making it read as a plate.
 - **Plate Recess** (`plate-recess`): secondary/muted fills by day.
-- **Stamped Grey** (`ink-muted`): secondary text: dates, reading time, descriptions, muted stamps.
-- **Rim Grey** (`rim-grey`) and **Field Edge** (`field-edge`): generic hairline borders and the 2px input stroke.
+- **Stamped Grey** (`ink-muted`): secondary text: dates, reading time, descriptions, muted labels.
+- **Rim Grey** (`rim-grey`, token `rim`): every slot outline and painted rule (section dividers, header and footer rules, cover separators, code-block frames, the theme-toggle frame, the avatar frame), 1px. About 2.9:1 against the board and 3.3:1 against a plate, matching the night rim: decoration, kept well below the text.
+- **Field Edge** (`field-edge`): the 2px input stroke. Inputs are controls, so their edge keeps 3:1.
 - **Tape Ink** (`tape-ink`): text on yellow, in both modes.
-- **Tape Edge** (`tape-edge`): by day yellow and the grey board share a lightness, so wherever tape marks a state (current nav item, active tag, skip link) it carries a 2px ink edge. At night the edge is yellow and disappears into the fill.
+- **Tape Edge** (`tape-edge`): by day yellow barely separates from the light board, so wherever tape marks a state (current nav item, active tag, skip link) it carries a 2px ink edge. At night the edge is yellow and disappears into the fill.
 - **Tool Foam** (`foam`), **Foam Plate** (`foam-plate`), **Foam Recess** (`foam-recess`): night board, night plates, night muted fills.
-- **Foam Text** (`foam-text`), **Foam Muted** (`foam-muted`), **Foam Rim** (`foam-rim`), **Foam Field Edge** (`foam-field-edge`): night text, secondary text, hairlines and the 2px input stroke.
+- **Foam Text** (`foam-text`), **Foam Muted** (`foam-muted`), **Foam Field Edge** (`foam-field-edge`): night text, secondary text and the 2px input stroke.
+- **Foam Rim** (`foam-rim`): the night outline and rule colour, 1px; about 2.9:1 against the foam and 2.4:1 against a plate.
+- **Foam Paint** (`foam-paint`): the night painted shadow, cut deeper than the foam, carrying its code in Foam Muted (about 9:1), seen only when a plate lifts.
 
 ### Status
 
-- **Fault Red** (`fault-red`, night `foam-fault`): form errors, invalid fields and the article Draft stamp only.
+- **Fault Red** (`fault-red`, night `foam-fault`): form errors, invalid fields and the article Draft marker only.
 
 ### Named Rules
 
-**The One Tape Rule.** Safety yellow is the only accent. No second hue enters the board; red is reserved for faults. Code highlighting follows it too: tokens are drawn from the board's own neutrals through the `--shiki-*` variables (keywords in paint, strings and constants as faint tints of the board and ink hues), never a bundled editor theme.
+**The One Tape Rule.** Safety yellow is the only accent. No second hue enters the board; red is reserved for faults. Code highlighting follows it too: tokens are drawn from the board's own neutrals through the `--shiki-*` variables (keywords in ink, strings and constants as faint tints of the board and ink hues), never a bundled editor theme.
 
-**The Night Paint Rule.** The painted outline and shadow swap from ink to yellow at night, and the code on the painted shadow swaps to dark ink. Anything drawn "in paint" (slot rims, the theme-toggle rim, header and footer rules, section dividers, cover borders) follows the swap through the `paint` token, never a fixed colour.
+**The Quiet Rim Rule.** Outlines and rules are drawn in grey in both themes, through the `rim` token, never in ink and never in yellow. Anything drawn as part of the board (slot outlines, the theme-toggle frame, header and footer rules, section dividers, cover borders, code-block frames) uses it at 1px, so it frames the words without competing with them. At night yellow stays on tape, the primary button, the focus ring, text selection and hovered link underlines.
+
+**The Muted Link Rule.** Link underlines are the muted text colour in both themes. Yellow appears on an underline only on hover.
 
 ## Typography
 
@@ -215,35 +231,37 @@ A near-neutral industrial palette with one safety-yellow accent; neutrals lean f
 **Code Font:** Big Shoulders Stencil (position codes only)
 **Mono Font:** JetBrains Mono (code in articles)
 
-**Character:** Big Shoulders is the board's painted lettering: condensed, uppercase, set tight. Barlow is the plain voice underneath it, low-contrast and quiet, so the owner's sentences read as speech rather than signage.
+**Character:** Big Shoulders is the board's painted lettering: condensed, uppercase, set tight, and kept to a few words at a time. Barlow is the plain voice underneath it, low-contrast and quiet, so the owner's sentences, and every title that is a sentence, read as speech rather than signage.
 
 ### Hierarchy
 
 - **Display** (`type-display`: 800, clamp(2.75rem, 5vw, 4.5rem), 0.86, uppercase): every page title at one size: the home name plate, About, the Projects and Articles indexes, and the 404 title.
-- **Headline** (`type-headline`: 800, clamp(2.25rem, 3.6vw, 3.25rem), 0.9, uppercase): section headings on the home board and article and project detail titles. It stays about 1.4x below Display so the two roles never read as one.
-- **Title** (700, 1.875rem, 0.95, uppercase): project and article titles on plates; 1.5rem in compact slots.
+- **Headline** (`type-headline`: 800, clamp(2.25rem, 3.6vw, 3.25rem), 0.9, uppercase): short section headings on the home board and the contact section. It stays about 1.4x below Display so the two roles never read as one.
+- **Title** (`type-title`: Barlow 700, clamp(2.25rem, 4vw, 3rem), 1.1, -0.02em, sentence case, balanced): the article and project detail `h1`. It sits 1.5x above the 2rem prose h2 beneath it.
+- **Card Title** (`type-card-title`: Barlow 700, 1.5rem, 1.2, -0.01em, sentence case, balanced): article and project titles on plates, 1.25rem in compact home slots, and the hero contact question. Short plate headings ("Resume", "Written by…", "Message sent") stay in Big Shoulders 700 uppercase at 1.5–1.875rem.
 - **Prose Heading** (Barlow 700, sentence case): in-article h2 at 1.5rem (2rem from sm) with 1.15–1.2 leading and -0.01em tracking; h3 at 1.375rem, 1.3 leading. Article headings are often full sentences, so they speak in Barlow rather than shout in lettering.
-- **Body** (400, 1.125rem, 1.625): running prose, capped at 62–68ch; 1rem for card descriptions; 1.25rem for lead lines.
-- **Label / Stamp** (700, 0.875rem or 0.75rem, 0.1em tracking, uppercase, Big Shoulders): metadata labels, nav items, tags, form labels, inline links in utility rows, the status line name, table headers.
+- **Body** (400, 1.125rem, 1.625): running prose, capped at 36rem (about 70 characters a line); 1rem for card descriptions; 1.25rem for lead lines.
+- **Meta** (Barlow 500–600, 0.875rem, muted, tabular where numeric, normal case): dates, reading time, word counts, the role line under the name, the project status name on a status line, tags, form labels, the Draft marker, and Live/Source links on work.
+- **Label / Stamp** (`stamp`: Big Shoulders 700, 0.875rem or 0.75rem, 0.1em tracking, uppercase): a few words at most, for example nav items, the skip link, social links, the "Filter by tag" and "Theme" labels, short sub-headings such as "What I build", footer and "All projects"/"All articles" utility links, table headers.
 - **Code** (Big Shoulders Stencil 700, 0.8125rem, 0.08em, uppercase, tabular): position codes on tape and on the painted shadow. Nothing else.
 
 ### Named Rules
 
-**The Stencil Is For Codes Rule.** Big Shoulders Stencil sets position codes (B-00, P-01, W-02, 404) and nothing else. Words never go on the stencilled tape strip.
+**The Stencil Is For Codes Rule.** Big Shoulders Stencil sets position codes (P-01, W-02, 404) and nothing else. Words never go on the stencilled tape strip.
 
-**The Uppercase Lettering Rule.** Every Big Shoulders setting is uppercase; Barlow is never uppercase. If it shouts, it is lettering on the board; if it speaks, it is Barlow.
+**The Short Lettering Rule.** Big Shoulders is always uppercase, so it is kept to a few words: the name, the nav, short headings, buttons and stamps. Anything that reads as a sentence (an article or project title, a question, a role line) or as data (dates, reading time, tags, form labels) is Barlow in its authored case. Barlow is never uppercase. On the home page's first screen at 1280px, uppercase stays at about ten items.
 
 ## Layout
 
-Two containers: the board (max 80rem, 1rem side padding, 2rem from 40rem up) and the reading column (max 46rem, same padding) used for article, project and About bodies.
+Two containers: the board (max 80rem, 1rem side padding, 2rem from 40rem up) and the reading column (max 46rem, same padding) used for article, project and About pages. Long text inside it is capped at 36rem, about 70 characters per line in Barlow at 18px (CSS `68ch` would run near 90 in this narrow face); on a phone it fills the column to the 16px gutters.
 
-The home board is a 12-column grid on large screens (two columns at sm, one on mobile) with a 24px column gutter and 32px row gap so tape strips have room above each slot. Slots are deliberately unequal: the name plate spans 8 columns, contact and resume stack in the remaining 4, then a 6-column project slot beside two 3-column article slots. Listing pages use a two-column slot grid (one wide slot when only one item exists). Sections break with 80px (112px from sm) vertical padding and a 2px painted rule between pegboard and plain board.
+The home board is a 12-column grid on large screens (two columns at sm, one on mobile) with a 24px column gutter and 32px row gap so tape strips have room above each slot. Slots are deliberately unequal: the name plate spans 8 columns, contact and resume stack in the remaining 4, then a 6-column project slot beside two 3-column article slots. Listing pages use a two-column slot grid (one wide slot when only one item exists). Sections break with 80px (112px from sm) vertical padding and a 1px rim rule.
 
-Slot rhythm: outline, 6px inset, plate; plate padding 20px for cards, 24–32px for feature plates, 20–40px horizontal and 32–48px vertical for reading plates. Perforated pegboard covers open board areas: the home board, the contact section, listings, the About body band, the 404 page and the mobile drawer. Long-form reading text always sits on a plate, never directly on the perforation.
+Slot rhythm: outline, 6px inset, plate; plate padding 20px for cards, 24–32px for feature plates. Every page, and the mobile drawer, is plain board with no perforation or texture, so the margins of a wide screen stay empty. Long-form reading text sits directly on the plain board, never in a slot.
 
 ## Elevation & Depth
 
-Flat at rest. Depth comes from the slot construction itself: a plate sits over a solid painted shadow that is inset 6px inside the outline, so the outline, gap, and paint read as a recess the plate belongs in. Real shadow appears only when a plate leaves its recess.
+Flat at rest. Depth comes from the slot construction itself: a thin outline, a 6px gap of board, and the plate, so the outline reads as the place the plate belongs in. Under the plate, inset 6px inside the outline, sits a solid painted shadow (ink by day, darker than the foam by night) carrying the stencil code. It stays hidden until the plate lifts; the one exception is the empty slot on the 404 page, whose plate is missing. Real shadow appears only when a plate leaves its recess.
 
 ### Shadow Vocabulary
 
@@ -251,15 +269,15 @@ Flat at rest. Depth comes from the slot construction itself: a plate sits over a
 
 ### Named Rules
 
-**The Lift Reveals Rule.** A plate lifts only when the whole slot is a link. Lifting must expose something true: the painted shadow and its code. Static slots (name plate, contact form, path, reading plates) never lift.
+**The Lift Reveals Rule.** A plate lifts only when the whole slot is a link. Lifting must expose something true: the painted shadow and its code. Static slots (name plate, contact form, path, cover, author slot) never lift.
 
 **The One Arrival Rule.** On load, home plates settle into their outlines in sequence (800ms, 80ms stagger, ease-lift `cubic-bezier(0.16, 1, 0.3, 1)`), visible from the first frame. Both motions respect reduced motion.
 
 ## Shapes
 
-Small, machined corners. Slot outlines round at 8px, plates and code blocks at 6px, buttons, inputs, nav items and the theme toggle at 4px, tags at 2px, tape at 1px, the header avatar at 3px. Nothing is pill-shaped or fully round.
+Small, machined corners. Slot outlines round at 8px; the plate and painted shadow inside follow it concentrically (see Slot); code blocks round at 6px; buttons, inputs, nav items and the theme toggle at 4px, tags at 2px, tape at 1px, the header avatar at 3px. Nothing is pill-shaped or fully round.
 
-Borders are painted, not hairline: 2px is the standard stroke for outlines, section rules, cover separators, inputs and outline buttons; tags use 1.5px. Outline line type is semantic (see Slot below). Covers sit flush inside plates and are divided from text by a 2px painted rule.
+Board lines are thin: 1px in rim grey for outlines, section rules, cover separators and frames. Controls keep a firmer stroke: 2px for inputs and outline buttons, 1.5px for tags. Outline line type is semantic (see Slot below). Covers sit flush inside plates and are divided from text by a 1px rim rule.
 
 ## Components
 
@@ -267,16 +285,16 @@ Borders are painted, not hairline: 2px is the standard stroke for outlines, sect
 
 The board's unit. An outline, a 6px gap, and a plate.
 
-- **Outline:** 8px radius, painted (`paint`). Line type: solid 2px (default, Stable), dashed 2px (Experimental), heavy 3.5px (Active), chain line 2.5px drawn as an SVG long-dash-dot `12 4 2.5 4` (Maintenance).
-- **Painted shadow:** fills the inside at 6px inset, 6px radius, with the stencil code bottom-right in `paint-ink`, 2px off the bottom so a lifted plate uncovers it.
-- **Tape:** optional, 12px above the top edge and 16px from the left; a slot without a code is plain fixture.
-- **Plate:** enamel (`plate`), 6px radius, sits above the paint. Link slots lift (see Elevation); the whole plate is the hit area via the title link.
+- **Outline:** 8px radius, rim grey (`rim`). Line type: solid 1px (default, Stable), dashed 1.5px (Experimental), heavy 3px (Active, the one clearly thicker line), chain line 1.5px drawn as an SVG long-dash-dot `12 4 1.5 4` (Maintenance). Dashed and chain lines get the extra half pixel so their breaks still read at 1x.
+- **Painted shadow:** fills the inside at 6px inset, with the plate's radius, with the stencil code bottom-right in `paint-ink`, 2px off the bottom so a lifted plate uncovers it.
+- **Tape:** optional, 12px above the top edge and 16px from the left; only article and project slots carry a code. A slot without one is plain: outline and plate, no tape.
+- **Plate:** enamel (`plate`), sits above the painted shadow. **The Concentric Corner Rule:** its radius is the outline's 8px less the line width and the 6px gap (about 1px on a thin line, square on the heavy one), so the gap stays even round every corner. Link slots lift (see Elevation); the whole plate is the hit area via the title link.
 - **Focus:** when the slot's own title link (marked `data-slot-link`) is keyboard-focused, the slot shows a 2px ring 4px out and the plate lifts. Other links inside (tags, Live, Source) take the global focus ring on themselves.
-- **Empty slot:** outline and painted shadow with no plate, used on the 404 page ("Missing").
+- **Empty slot:** outline and painted shadow with no plate, used on the 404 page ("Missing"). It is the one place the painted shadow shows at rest, because showing the missing item is the page's whole message.
 
 ### Status Line
 
-Project status as a 24px line sample in the slot's own line type, followed by the status name as a stamp. Projects pages carry a key of all four.
+Project status as a 24px line sample in the slot's own line type, followed by the status name in Barlow 500 (meta). Projects pages carry a key of all four.
 
 ### Buttons
 
@@ -284,61 +302,64 @@ Project status as a 24px line sample in the slot's own line type, followed by th
 - **Primary:** paint ink fill with enamel text by day, yellow with dark ink by night; hover drops to 88% opacity, press nudges 1px down.
 - **Tape:** safety yellow with tape ink; the home contact call.
 - **Outline:** 2px foreground stroke, transparent; hover fills with foreground and inverts text. The resume download everywhere it appears (so the tape button stays the one filled call at night too), and the 404 second action.
-- **Ghost / Link:** ghost tints 8% foreground on hover (mobile menu trigger); link is a 2px painted underline at 6px offset (ink by day turning yellow on hover; yellow by night turning foreground).
+- **Ghost / Link:** ghost tints 8% foreground on hover (mobile menu trigger); link is a 2px underline at 6px offset in the muted text colour, turning yellow on hover, in both themes.
 
 ### Tags
 
-- **Style:** stamp lettering at 0.75rem, 28px tall, 2px radius, 1.5px stroke at 40% foreground.
+- **Style:** Barlow 500 at 0.875rem in the tag's authored case, 28px tall, 2px radius, 1.5px stroke at 40% foreground.
 - **State:** hover strengthens the stroke to full foreground; active (selected filter) fills with safety yellow and tape ink inside a `tape-edge` stroke. On coarse pointers the hit area extends 8px above and below.
 
 ### Cards / Containers
 
-Cards are slots. Project and article cards put a 16:9 cover on top (or beside it in wide/listing layouts) divided by a 2px painted rule, then 20px padding holding meta (Barlow, muted, tabular), a title, a muted description and tags or utility links. Compact article slots on the home board drop cover and tags and clamp the description to three lines.
+Cards are slots. Project and article cards put a 16:9 cover on top (or beside it in wide/listing layouts) divided by a 1px rim rule, then 20px padding holding meta (Barlow, muted, tabular), a Barlow card title in sentence case, a muted description and tags or utility links. Compact article slots on the home board drop cover and tags and clamp the description to three lines.
 
 ### Inputs / Fields
 
 - **Style:** 44px tall (textarea min 128–160px), 2px `field-edge` stroke, enamel fill, 4px radius, Barlow 1rem.
 - **Hover / Focus:** stroke rises to 70% foreground on hover and full foreground on focus, plus the global 2px focus ring.
-- **Labels:** stamps at 0.75rem above the field. **Error:** fault-red stroke and message.
+- **Labels:** Barlow 600 at 0.875rem above the field. **Error:** fault-red stroke and message.
 
 ### Navigation
 
-- **Header:** sticky 64px rail on board colour; 32px avatar in a 2px painted frame, the name in Big Shoulders 800 at 1.375rem, a muted "Software Engineer" stamp on large screens. A 2px painted bottom rule appears only after scrolling.
+- **Header:** sticky 64px rail on board colour; 32px avatar in a 1px rim frame, the name in Big Shoulders 800 at 1.375rem, a muted "Software Engineer" in Barlow 0.875rem on large screens. A 1px rim bottom rule appears only after scrolling.
 - **Links:** stamps in 36px-tall cells with 4px radius; hover 8% tint; current page fills with safety yellow inside a 2px `tape-edge` stroke.
-- **Theme toggle:** three 32px radio cells (Day, Night, Match system) inside a 2px painted frame; the selected cell fills with paint.
-- **Mobile:** a left drawer on pegboard with 2px painted right edge; each link is a full-width bordered plate, current one yellow. Below the links hang "Write to me" (tape) and "Download resume" (outline).
-- **Footer:** board colour under a 2px painted rule; name in display lettering, muted copyright line, "Write to me" and "Download resume" as painted-underline stamps, then social links as stamps with icons and a painted underline on hover.
+- **Theme toggle:** three 32px radio cells (Day, Night, Match system) inside a 1px rim frame; the selected cell fills with the text colour.
+- **Mobile:** a left drawer on plain board with a 1px rim right edge; each link is a full-width plate in a 1px rim, current one yellow. Below the links hang "Write to me" (tape) and "Download resume" (outline).
+- **Footer:** board colour under a 1px rim rule; name in display lettering, muted copyright line, "Write to me" and "Download resume" as stamps with a muted underline, then social links as stamps with icons and a muted underline on hover.
 - **Skip link:** "Skip to content" as a yellow stamp cell with a `tape-edge` stroke, hidden above the rail until focused.
 
-### Reading Plate
+### Reading Column
 
-Article, project and About bodies sit on one plate in the reading column, under a cover slot carrying the item's code. Prose is Barlow 1.125rem at 1.625, h2/h3 as Barlow 700 sentence-case prose headings, links underlined in paint, square list markers, code blocks on the muted recess with a 2px painted frame and 6px radius, tables with a painted header rule. The cover slot is a 2:1 strip (21:9 from sm) so prose starts early, and it alone carries the item's code; the page header shows no second tape.
+Article, project and About bodies sit directly on the plain board in the reading column, with no outline or plate: the board frames the work, not the words. On articles and projects they sit under a cover slot carrying the item's code, and they end at the author slot, which keeps its outline. Prose is Barlow 1.125rem at 1.625, h2/h3 as Barlow 700 sentence-case prose headings, links underlined in the muted text colour, square list markers, inline code and code blocks on the muted recess (blocks with a 1px rim frame and 6px radius), tables with a 1px rim header rule. The cover slot is a 2:1 strip (21:9 from sm) so prose starts early, and it alone carries the item's code; the page header shows no second tape.
 
 ### Author Slot
 
-Every article and project ends with C-01, the contact call: "Written by" or "Built by Boonyarit Iamsa-ard", one sentence of the mechanic story, then "Write to me" (tape, to `/#contact`) and "Download resume" (outline). A reader who lands deep is one step from both.
+Every article and project ends with the contact call, a plain slot with no code: "Written by" or "Built by Boonyarit Iamsa-ard", one sentence of the mechanic story, then "Write to me" (tape, to `/#contact`) and "Download resume" (outline). A reader who lands deep is one step from both.
 
 ### Contact Confirmation
 
-A sent message replaces the C-02 form in place: a check, "Message sent", the address the reply goes to, and an outline "Send another". Focus moves to the heading. Failures stay a toast and keep the input.
+A sent message replaces the contact form in place: a check, "Message sent", the address the reply goes to, and an outline "Send another". Focus moves to the heading. Failures stay a toast and keep the input.
 
 ## Do's and Don'ts
 
 ### Do:
 
-- **Do** put every unit of content in a slot: painted outline, 6px gap, plate.
-- **Do** give each slot a position code on tape (prefix by kind: B board, C contact, R resume, L long-form, P project, W writing) and number content oldest-first so codes stay stable.
+- **Do** put every unit of content in a slot: thin outline, 6px gap, plate. Long reading text is the exception.
+- **Do** give each article and project a position code on tape (P project, W writing) and number them oldest-first so codes stay stable. No other slot carries a code.
 - **Do** encode project status with the outline's line type (solid, dashed, heavy, chain) and show the key wherever several statuses appear together.
-- **Do** route every painted element through the `paint` token so it turns yellow at night.
-- **Do** keep long-form text on a plate in the 46rem reading column, capped at about 68ch.
+- **Do** draw every outline and rule through the `rim` token at 1px, so the text stays the strongest thing on the page.
+- **Do** keep the board plain in both themes: the outlines, tape and codes carry the tool board, not a surface texture.
+- **Do** set long-form text directly on the plain board in the 46rem reading column, capped at 36rem (about 70 characters a line).
 - **Do** keep the face to the 32px header avatar only.
 
 ### Don't:
 
 - **Don't** put words on the stencilled tape strip, or use Big Shoulders Stencil for anything but codes.
+- **Don't** give a slot that holds no article or project a position code; a code must point to a piece of work.
 - **Don't** signal project status with colour, badges or pills.
 - **Don't** introduce a second accent hue; red is for faults only.
+- **Don't** draw an outline, a rule or a resting link underline in yellow or in the text colour.
 - **Don't** add shadows at rest or lift a slot that is not a link.
 - **Don't** round anything beyond 8px or make pill and circle shapes.
-- **Don't** set long-form reading text directly on the perforated pegboard.
+- **Don't** put long-form reading text in a slot.
 - **Don't** reintroduce a portrait slot or a large photo of the owner on any page.

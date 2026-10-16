@@ -14,7 +14,7 @@ export function ArticleHeader({ article }: ArticleHeaderProps) {
 
   return (
     <header className="space-y-6 pt-14 pb-10 sm:pt-20">
-      <h1 className="type-headline text-balance">{article.title}</h1>
+      <h1 className="type-title">{article.title}</h1>
       <p className="flex flex-wrap gap-x-3 text-muted-foreground text-sm tabular-nums">
         <time dateTime={new Date(article.date).toISOString()}>
           {formatDate(article.date)}

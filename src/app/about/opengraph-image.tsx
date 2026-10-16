@@ -1,6 +1,5 @@
 import { appConfig } from '@/core/configs/app.config';
 import { renderPreviewImage } from '@/common/components/preview-image';
-import { fixtureCodes } from '@/common/definitions/fixture-codes';
 
 import { about } from '@/velite';
 
@@ -13,7 +12,6 @@ export {
 
 export default function Image() {
   return renderPreviewImage({
-    code: fixtureCodes.about,
     title: 'About',
     subtitle: about.description,
   });

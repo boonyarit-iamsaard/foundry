@@ -46,17 +46,14 @@ export default async function Page({ searchParams }: ProjectsPageProps) {
       >
         {hasSeveralStatuses ? (
           <div className="flex flex-wrap items-center gap-x-4 gap-y-2 pt-2">
-            <span className="stamp text-muted-foreground text-xs">
+            <span className="text-muted-foreground text-sm">
               Outline shows project status
             </span>
             <ProjectStatusKey />
           </div>
         ) : null}
       </PageHeader>
-      <section
-        aria-label="Projects"
-        className="pegboard border-paint border-t-2"
-      >
+      <section aria-label="Projects" className="border-rim border-t">
         <div className="container space-y-10 pt-10 pb-20">
           {hasSeveralProjects ? (
             <FilterByTags
@@ -66,7 +63,7 @@ export default async function Page({ searchParams }: ProjectsPageProps) {
             />
           ) : null}
           {filteredResource.length === 0 ? (
-            <EmptySlot code={projectsListing.code} className="min-h-48">
+            <EmptySlot className="min-h-48">
               <div className="space-y-1 text-center">
                 <p className="font-bold font-display text-2xl uppercase">
                   Nothing in this slot

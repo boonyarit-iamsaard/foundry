@@ -32,8 +32,8 @@ export function AppHeader() {
       />
       <header
         className={cn(
-          'sticky top-0 z-30 w-full border-b-2 bg-board transition-colors duration-200',
-          isScrolled ? 'border-paint' : 'border-transparent',
+          'sticky top-0 z-30 w-full border-b bg-board transition-colors duration-200',
+          isScrolled ? 'border-rim' : 'border-transparent',
         )}
       >
         <div className="container flex h-16 items-center justify-between gap-4">
@@ -42,7 +42,7 @@ export function AppHeader() {
             className="flex items-center"
             aria-label={`${appConfig.title}, home`}
           >
-            <span className="relative block size-8 shrink-0 overflow-hidden rounded-[3px] border-2 border-paint">
+            <span className="relative block size-8 shrink-0 overflow-hidden rounded-[3px] border border-rim">
               <Image
                 src={profile}
                 alt=""
@@ -64,7 +64,7 @@ export function AppHeader() {
                   <span className="font-display font-extrabold text-[1.375rem] uppercase leading-none tracking-[0.03em]">
                     {appConfig.title}
                   </span>
-                  <span className="stamp hidden text-muted-foreground text-xs leading-none lg:inline">
+                  <span className="hidden text-muted-foreground text-sm leading-none lg:inline">
                     Software Engineer
                   </span>
                 </span>

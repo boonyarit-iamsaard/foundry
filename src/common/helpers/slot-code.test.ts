@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, expectTypeOf, it } from 'vitest';
 
 import { slotCode } from './slot-code';
 
@@ -34,5 +34,9 @@ describe('slotCode', () => {
 
   it('refuses a slug that is not on the board', () => {
     expect(() => slotCode('P', items, 'missing')).toThrow('missing');
+  });
+
+  it('codes only projects and articles', () => {
+    expectTypeOf(slotCode).parameter(0).toEqualTypeOf<'P' | 'W'>();
   });
 });

@@ -10,7 +10,7 @@ type DetailBodyProps = Readonly<{
   children: ReactNode;
 }>;
 
-/** The cover hung in its slot, then the text on its own plate below. */
+/** The cover hung in its slot, then the text straight on the page below. */
 export function DetailBody({ code, cover, children }: DetailBodyProps) {
   return (
     <div className="space-y-10">
@@ -26,7 +26,7 @@ export function DetailBody({ code, cover, children }: DetailBodyProps) {
           />
         </div>
       </Slot>
-      <Slot plateClassName="px-5 py-8 sm:px-10 sm:py-12">{children}</Slot>
+      <div className="reading-measure">{children}</div>
     </div>
   );
 }

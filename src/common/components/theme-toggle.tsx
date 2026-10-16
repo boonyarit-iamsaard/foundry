@@ -30,7 +30,7 @@ export function ThemeToggle() {
   );
 
   return (
-    <fieldset className="flex items-center rounded-sm border-2 border-paint p-0.5">
+    <fieldset className="flex items-center rounded-sm border border-rim p-0.5">
       <legend className="sr-only">Theme</legend>
       {themes.map(({ value, label, icon: Icon }) => {
         const selected = mounted && theme === value;
@@ -42,7 +42,7 @@ export function ThemeToggle() {
             className={cn(
               'relative flex size-8 cursor-pointer items-center justify-center rounded-[2px] transition-colors duration-200 has-focus-visible:outline-2 has-focus-visible:outline-ring has-focus-visible:outline-offset-2',
               selected
-                ? 'bg-paint text-paint-ink'
+                ? 'bg-foreground text-background'
                 : 'text-foreground hover:bg-foreground/8',
             )}
           >

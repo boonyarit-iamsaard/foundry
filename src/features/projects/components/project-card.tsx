@@ -53,8 +53,8 @@ export function ProjectCard({
     >
       <div
         className={cn(
-          'relative aspect-[16/9] border-paint border-b-2',
-          wide && 'sm:aspect-auto sm:border-r-2 sm:border-b-0',
+          'relative aspect-[16/9] border-rim border-b',
+          wide && 'sm:aspect-auto sm:border-r sm:border-b-0',
         )}
       >
         <Image
@@ -78,7 +78,7 @@ export function ProjectCard({
             Since {formatDate(project.date)}
           </span>
         </div>
-        <h3 className="font-bold font-display text-3xl uppercase leading-[0.95] tracking-[0.01em]">
+        <h3 className="type-card-title">
           <Link
             href={project.permalink}
             data-slot-link
@@ -105,7 +105,7 @@ export function ProjectCard({
                 href={project.preview}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="stamp tape-link relative z-20 inline-flex items-center gap-1 text-xs"
+                className="tape-link relative z-20 inline-flex items-center gap-1 font-semibold text-sm"
               >
                 Live
                 <ArrowUpRightIcon className="size-3.5" aria-hidden="true" />
@@ -116,7 +116,7 @@ export function ProjectCard({
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="stamp tape-link relative z-20 inline-flex items-center gap-1 text-xs"
+                className="tape-link relative z-20 inline-flex items-center gap-1 font-semibold text-sm"
               >
                 Source
                 <ArrowUpRightIcon className="size-3.5" aria-hidden="true" />
