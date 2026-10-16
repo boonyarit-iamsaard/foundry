@@ -87,10 +87,10 @@
   --board: oklch(0.945 0.004 165);
   --board-perf: oklch(0.88 0.005 165);
   --plate: oklch(0.99 0.002 165);
-  /* The rim: every slot outline and board rule, 1px in mid grey. About 2.3:1
-     against the board and 2.6:1 against a plate, so it frames without
-     competing with the text (decoration, so WCAG 1.4.11 does not apply). */
-  --rim: oklch(0.7 0.006 220);
+  /* The rim: every slot outline and board rule, 1px in mid grey. About 2.9:1
+     against the board and 3.3:1 against a plate, the same weight as the night
+     rim, so it frames without competing with the text (decoration, so WCAG 1.4.11 does not apply). */
+  --rim: oklch(0.64 0.006 220);
   /* The painted shadow under each plate, seen only when a plate lifts, and
      the code stencilled on it. */
   --paint: oklch(0.21 0.008 250);

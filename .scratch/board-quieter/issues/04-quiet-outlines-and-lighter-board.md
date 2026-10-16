@@ -50,3 +50,6 @@ every page.
   Underlines are not yellow at rest. Tape, the main button and the focus ring
   are yellow. Only `/` has dots. The preview image's hex values match the
   tokens to within one step of rounding.
+- 2026-10-16: the owner found the day outline too faint, like a hairline. The
+  day rim is now `oklch(0.64 0.006 220)`, about 2.9:1 on the board, the same
+  weight as the night rim. It is still 1px and still inside 2–3:1.

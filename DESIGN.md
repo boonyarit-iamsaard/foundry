@@ -8,7 +8,7 @@ colors:
   plate-recess: 'oklch(0.92 0.004 165)'
   ink-paint: 'oklch(0.21 0.008 250)'
   ink-muted: 'oklch(0.42 0.01 250)'
-  rim-grey: 'oklch(0.7 0.006 220)'
+  rim-grey: 'oklch(0.64 0.006 220)'
   field-edge: 'oklch(0.55 0.01 220)'
   safety-yellow: 'oklch(0.86 0.17 92)'
   tape-ink: 'oklch(0.2 0.01 250)'
@@ -204,7 +204,7 @@ A near-neutral industrial palette with one safety-yellow accent; neutrals lean f
 - **Enamel Plate** (`plate`): every plate surface and form-field fill by day. A shade lighter than the board; the outline does the rest of the work of making it read as a plate.
 - **Plate Recess** (`plate-recess`): secondary/muted fills by day.
 - **Stamped Grey** (`ink-muted`): secondary text: dates, reading time, descriptions, muted labels.
-- **Rim Grey** (`rim-grey`, token `rim`): every slot outline and painted rule (section dividers, header and footer rules, cover separators, code-block frames, the theme-toggle frame, the avatar frame), 1px. About 2.3:1 against the board and 2.6:1 against a plate: decoration, kept well below the text.
+- **Rim Grey** (`rim-grey`, token `rim`): every slot outline and painted rule (section dividers, header and footer rules, cover separators, code-block frames, the theme-toggle frame, the avatar frame), 1px. About 2.9:1 against the board and 3.3:1 against a plate, matching the night rim: decoration, kept well below the text.
 - **Field Edge** (`field-edge`): the 2px input stroke. Inputs are controls, so their edge keeps 3:1.
 - **Tape Ink** (`tape-ink`): text on yellow, in both modes.
 - **Tape Edge** (`tape-edge`): by day yellow barely separates from the light board, so wherever tape marks a state (current nav item, active tag, skip link) it carries a 2px ink edge. At night the edge is yellow and disappears into the fill.

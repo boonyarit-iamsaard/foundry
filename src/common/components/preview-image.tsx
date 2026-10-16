@@ -17,7 +17,7 @@ const colors = {
   board: '#eaeeec',
   perforation: '#d5d8d6',
   plate: '#fbfcfb',
-  rim: '#9a9fa1',
+  rim: '#888d8f',
   ink: '#16191c',
   muted: '#494e52',
 };

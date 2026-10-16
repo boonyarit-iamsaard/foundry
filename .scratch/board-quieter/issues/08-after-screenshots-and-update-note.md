@@ -34,3 +34,4 @@ Show the change, and keep the published redesign story honest.
   Tickets 04 and 06 have commits but are not marked resolved yet.
 - 2026-10-16: tickets 04 and 06 are now closed. Their changes were already
   on the branch when the after screenshots were taken.
+- 2026-10-16: retook the after set after the day rim was darkened (see 04).
