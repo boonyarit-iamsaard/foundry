@@ -16,13 +16,15 @@ test('the hero has GitHub next to the resume download', async ({ page }) => {
 
   await expect(gitHub).toBeVisible();
 
-  // Close enough to read as one group: GitHub starts within 48px of the
-  // resume button's bottom edge.
+  // Close enough to read as one group: GitHub starts below the resume
+  // button, within 48px of its bottom edge.
   const resumeBox = await resume.boundingBox();
   const gitHubBox = await gitHub.boundingBox();
   expect(resumeBox).not.toBeNull();
   expect(gitHubBox).not.toBeNull();
   if (resumeBox && gitHubBox) {
-    expect(gitHubBox.y - (resumeBox.y + resumeBox.height)).toBeLessThan(48);
+    const gap = gitHubBox.y - (resumeBox.y + resumeBox.height);
+    expect(gap).toBeGreaterThanOrEqual(0);
+    expect(gap).toBeLessThan(48);
   }
 });
