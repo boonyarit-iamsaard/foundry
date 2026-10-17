@@ -1,9 +1,6 @@
-import { DownloadIcon } from 'lucide-react';
-
-import { appConfig } from '@/core/configs/app.config';
 import { Slot } from '@/common/components/board/slot';
+import { ResumeDownloadButton } from '@/common/components/resume-download-button';
 import { SocialLinks } from '@/common/components/social-links';
-import { Button } from '@/common/components/ui/button';
 
 import { ContactForm } from './contact-form';
 
@@ -22,12 +19,7 @@ export function CallToActionSection() {
           <p className="max-w-[44ch] text-lg text-muted-foreground">
             The message comes straight to my inbox.
           </p>
-          <Button asChild variant="outline">
-            <a href={appConfig.resume} download>
-              <DownloadIcon aria-hidden="true" />
-              Download resume
-            </a>
-          </Button>
+          <ResumeDownloadButton />
           <SocialLinks className="pt-2" />
         </div>
         <Slot

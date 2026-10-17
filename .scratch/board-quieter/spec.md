@@ -228,6 +228,9 @@ starting with the phone menu bug that no review caught.
 - Contact copy is rewritten for hiring teams and developers in the hero
   contact slot, the author slot and the contact section. Draft: "Hiring, or
   want to talk about something I wrote?" The owner writes the final wording.
+  (Changed 2026-10-17: the copy no longer names its audience. The hero asks
+  "Want to talk?", the author slot has no contact line, and the contact
+  section says only "The message comes straight to my inbox.")
 - About: "Current Focus" and "Skills" are rewritten as short prose with the
   Software Engineer title and the role sentence. No skill lists, tool
   logos or badge grids.

@@ -43,3 +43,9 @@ owner writes the final wording. No Impeccable: this is voice, not design.
   update note is the place to address it. Waiting on the owner's wording.
 - 2026-10-16: the owner approved every sentence, including the board line
   from ticket 03. The `Draft copy` markers are removed.
+- 2026-10-17: superseded for the contact copy. The owner decided the site
+  should not name its audience: the hero asks "Want to talk?", the author slot
+  drops its contact line, the contact section keeps only "The message comes
+  straight to my inbox.", and the message box has no placeholder. The hero's
+  contact call now sits on the name plate, with GitHub under the resume
+  download. See `PRODUCT.md`, principle 2.

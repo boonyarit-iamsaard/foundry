@@ -2,9 +2,10 @@
 
 import Link from 'next/link';
 
-import { ArrowRightIcon, DownloadIcon } from 'lucide-react';
+import { ArrowRightIcon } from 'lucide-react';
 
 import { appConfig } from '@/core/configs/app.config';
+import { ResumeDownloadButton } from '@/common/components/resume-download-button';
 import { Button } from '@/common/components/ui/button';
 import {
   Drawer,
@@ -83,12 +84,7 @@ export function MobileNavDrawer({
                 <ArrowRightIcon aria-hidden="true" />
               </Link>
             </Button>
-            <Button asChild variant="outline" size="lg" className="bg-plate">
-              <a href={appConfig.resume} download>
-                <DownloadIcon aria-hidden="true" />
-                Download resume
-              </a>
-            </Button>
+            <ResumeDownloadButton size="lg" className="bg-plate" />
           </div>
         </nav>
         <div className="flex items-center justify-between border-rim border-t bg-board p-4">

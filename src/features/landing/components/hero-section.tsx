@@ -2,11 +2,11 @@ import type { CSSProperties } from 'react';
 
 import Link from 'next/link';
 
-import { ArrowDownIcon, DownloadIcon } from 'lucide-react';
+import { ArrowDownIcon } from 'lucide-react';
 
-import { appConfig } from '@/core/configs/app.config';
 import { Slot } from '@/common/components/board/slot';
-import { email, GitHubLink } from '@/common/components/social-links';
+import { ResumeDownloadButton } from '@/common/components/resume-download-button';
+import { email, emailHref, GitHubLink } from '@/common/components/social-links';
 import { Button } from '@/common/components/ui/button';
 import { ArticleCard } from '@/features/articles/components/article-card';
 import { listedArticles } from '@/features/articles/visibility';
@@ -69,16 +69,11 @@ export function HeroSection() {
                     <ArrowDownIcon aria-hidden="true" />
                   </Link>
                 </Button>
-                <Button asChild variant="outline">
-                  <a href={appConfig.resume} download>
-                    <DownloadIcon aria-hidden="true" />
-                    Download resume
-                  </a>
-                </Button>
+                <ResumeDownloadButton />
               </div>
               <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
                 <a
-                  href={`mailto:${email}`}
+                  href={emailHref}
                   className="text-muted-foreground text-sm underline decoration-transparent underline-offset-4 hover:text-foreground hover:decoration-(--link-line)"
                 >
                   {email}
