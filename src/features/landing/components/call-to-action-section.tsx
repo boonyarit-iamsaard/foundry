@@ -19,16 +19,9 @@ export function CallToActionSection() {
           <h2 id="contact-heading" className="type-headline">
             Write to me
           </h2>
-          <div className="max-w-[44ch] space-y-3 text-lg">
-            <p>
-              If you&apos;re hiring, tell me about the role and the team. If you
-              read something I wrote, tell me what you think, or where I got it
-              wrong.
-            </p>
-            <p className="text-muted-foreground">
-              The message comes straight to my inbox.
-            </p>
-          </div>
+          <p className="max-w-[44ch] text-lg text-muted-foreground">
+            The message comes straight to my inbox.
+          </p>
           <Button asChild variant="outline">
             <a href={appConfig.resume} download>
               <DownloadIcon aria-hidden="true" />

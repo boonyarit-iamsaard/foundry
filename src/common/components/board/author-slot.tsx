@@ -28,9 +28,6 @@ export function AuthorSlot({
           I was an aircraft mechanic before I wrote code. Now I build backend,
           web and mobile software, and check it before it ships.
         </p>
-        <p className="text-muted-foreground">
-          Hiring, or want to talk about something I wrote?
-        </p>
       </div>
       <div className="grid gap-3 sm:w-56">
         <Button asChild variant="tape">

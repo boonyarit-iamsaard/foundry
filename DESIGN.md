@@ -182,7 +182,7 @@ Density is moderate and structured: a 12-column board on desktop, slots of unequ
 **Key Characteristics:**
 
 - Every unit of content is a slot: a thin grey outline, 6px gap, plate inside. Long reading text is the one exception: it sits straight on the plain board.
-- Position codes on yellow stencil tape at the top-left of work slots only: P-nn for projects and W-nn for articles. Every other slot (the name plate, contact, resume, the path story, the author slot) is plain: outline and plate, no tape.
+- Position codes on yellow stencil tape at the top-left of work slots only: P-nn for projects and W-nn for articles. Every other slot (the name plate with its contact call, the path story, the author slot) is plain: outline and plate, no tape.
 - Project status is drawn as the outline's line type, never as colour.
 - The painted shadow under a plate shows only when the plate lifts: ink-black by day, a hole darker than the foam by night.
 - Condensed uppercase lettering (Big Shoulders) for short labels only; titles, metadata and body in a plain humanist sans (Barlow), sentence case.
@@ -255,7 +255,7 @@ A near-neutral industrial palette with one safety-yellow accent; neutrals lean f
 
 Two containers: the board (max 80rem, 1rem side padding, 2rem from 40rem up) and the reading column (max 46rem, same padding) used for article, project and About pages. Long text inside it is capped at 36rem, about 70 characters per line in Barlow at 18px (CSS `68ch` would run near 90 in this narrow face); on a phone it fills the column to the 16px gutters.
 
-The home board is a 12-column grid on large screens (two columns at sm, one on mobile) with a 24px column gutter and 32px row gap so tape strips have room above each slot. Slots are deliberately unequal: the name plate spans 8 columns, contact and resume stack in the remaining 4, then a 6-column project slot beside two 3-column article slots. Listing pages use a two-column slot grid (one wide slot when only one item exists). Sections break with 80px (112px from sm) vertical padding and a 1px rim rule.
+The home board is a 12-column grid on large screens (two columns at sm, one on mobile) with a 24px column gutter and 32px row gap so tape strips have room above each slot. Slots are deliberately unequal: the name plate spans all 12 columns and carries the contact call too: the name and story on the left, then a 1px rim rule and a 22.5rem column on the right with "Want to talk?" above "Write to me", "Download resume", the email address and GitHub, its bottom level with the end of the story (on a phone the rule runs across and the contact call follows the story). Sharing one plate means the two never have to match heights. Below it, a 6-column project slot sits beside two 3-column article slots. Listing pages use a two-column slot grid (one wide slot when only one item exists). Sections break with 80px (112px from sm) vertical padding and a 1px rim rule.
 
 Slot rhythm: outline, 6px inset, plate; plate padding 20px for cards, 24–32px for feature plates. Every page, and the mobile drawer, is plain board with no perforation or texture, so the margins of a wide screen stay empty. Long-form reading text sits directly on the plain board, never in a slot.
 
