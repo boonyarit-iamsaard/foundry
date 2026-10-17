@@ -56,7 +56,7 @@ A software engineer who came to code from aircraft maintenance. Years of precise
 ## Product Principles
 
 1. **Show the work, don't claim it.** Articles and projects are the proof. Adjectives about himself are not.
-2. **Make contact effortless for the people who matter.** Developers and hiring teams should always be one step from the contact form, GitHub or the resume.
+2. **Make contact effortless for the people who matter.** Developers and hiring teams should always be one step from the contact form, GitHub or the resume. The site's copy never names who it is for: contact lines invite anyone ("Want to talk?") and let the resume and the writing signal the rest.
 3. **Let the unusual path be an asset.** The mechanic's precision is the through-line, told plainly and not as a gimmick.
 4. **Writing has to stand on its own.** An article page should serve a reader who never sees the home page.
 5. **Tell the truth about scale.** A small body of work, presented honestly, beats padding.
