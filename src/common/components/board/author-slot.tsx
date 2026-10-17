@@ -1,9 +1,9 @@
 import Link from 'next/link';
 
-import { ArrowRightIcon, DownloadIcon } from 'lucide-react';
+import { ArrowRightIcon } from 'lucide-react';
 
-import { appConfig } from '@/core/configs/app.config';
 import { Slot } from '@/common/components/board/slot';
+import { ResumeDownloadButton } from '@/common/components/resume-download-button';
 import { Button } from '@/common/components/ui/button';
 
 /**
@@ -28,9 +28,6 @@ export function AuthorSlot({
           I was an aircraft mechanic before I wrote code. Now I build backend,
           web and mobile software, and check it before it ships.
         </p>
-        <p className="text-muted-foreground">
-          Hiring, or want to talk about something I wrote?
-        </p>
       </div>
       <div className="grid gap-3 sm:w-56">
         <Button asChild variant="tape">
@@ -39,12 +36,7 @@ export function AuthorSlot({
             <ArrowRightIcon aria-hidden="true" />
           </Link>
         </Button>
-        <Button asChild variant="outline">
-          <a href={appConfig.resume} download>
-            <DownloadIcon aria-hidden="true" />
-            Download resume
-          </a>
-        </Button>
+        <ResumeDownloadButton />
       </div>
     </Slot>
   );

@@ -16,9 +16,12 @@ owner writes the final wording. No Impeccable: this is voice, not design.
   employer (changed 2026-10-16, see the spec's Audience and product docs), next to
   the mechanic story.
 - Hero: a visible GitHub link next to the resume download.
-- Contact copy for hiring teams and developers in the hero contact slot, the
-  author slot and the contact section. Draft: "Hiring, or want to talk about
-  something I wrote?"
+- Contact copy that does not name its audience: "Want to talk?" in the hero's
+  contact call on the name plate, no contact line in the author slot, and
+  only "The message comes straight to my inbox." in the contact section.
+  (Changed 2026-10-17 from copy written to hiring teams: naming one group
+  narrows who feels invited, and the resume and the writing already signal
+  who the site serves.)
 - About: rewrite "Current Focus" and "Skills" as short prose with the Software
   Engineer title and the role sentence. No skill lists, tool logos or badge
   grids.
@@ -43,3 +46,9 @@ owner writes the final wording. No Impeccable: this is voice, not design.
   update note is the place to address it. Waiting on the owner's wording.
 - 2026-10-16: the owner approved every sentence, including the board line
   from ticket 03. The `Draft copy` markers are removed.
+- 2026-10-17: superseded for the contact copy. The owner decided the site
+  should not name its audience: the hero asks "Want to talk?", the author slot
+  drops its contact line, the contact section keeps only "The message comes
+  straight to my inbox.", and the message box has no placeholder. The hero's
+  contact call now sits on the name plate, with GitHub under the resume
+  download. See `PRODUCT.md`, principle 2.

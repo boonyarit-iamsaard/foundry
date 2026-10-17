@@ -1,11 +1,8 @@
 import type { Metadata } from 'next';
 
-import { DownloadIcon } from 'lucide-react';
-
-import { appConfig } from '@/core/configs/app.config';
 import { MDX } from '@/common/components/mdx';
+import { ResumeDownloadButton } from '@/common/components/resume-download-button';
 import { SocialLinks } from '@/common/components/social-links';
-import { Button } from '@/common/components/ui/button';
 import { buildMetadata } from '@/common/helpers/metadata';
 
 import { about } from '@/velite';
@@ -31,12 +28,7 @@ export default function AboutPage() {
             leaves my hands.
           </p>
           <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
-            <Button asChild size="lg">
-              <a href={appConfig.resume} download>
-                <DownloadIcon aria-hidden="true" />
-                Download resume
-              </a>
-            </Button>
+            <ResumeDownloadButton variant="default" size="lg" />
             <SocialLinks />
           </div>
         </div>

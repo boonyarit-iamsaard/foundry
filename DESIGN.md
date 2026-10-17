@@ -173,7 +173,7 @@ components:
 
 **Creative North Star: "The Shadow Board"**
 
-The site is a hangar tool-control board. Every unit of content (a project, an article, the contact form, the resume) hangs as an enamel plate inside its own outlined place. Articles and projects, the work itself, are labelled with a yellow tape strip carrying a stencilled position code. A visitor reads the board the way a mechanic reads a tool board at shift change: everything has a place, and every place is accounted for. The home board closes with one plain line that says so for a visitor who has never seen a tool board ("Like a hangar tool board: every piece of work hangs in its own outlined place.").
+The site is a hangar tool-control board. Every unit of content (a project, an article, the contact form) hangs as an enamel plate inside its own outlined place. Articles and projects, the work itself, are labelled with a yellow tape strip carrying a stencilled position code. A visitor reads the board the way a mechanic reads a tool board at shift change: everything has a place, and every place is accounted for. The home board closes with one plain line that says so for a visitor who has never seen a tool board ("Like a hangar tool board: every piece of work hangs in its own outlined place.").
 
 Day and night are two materials, not one palette inverted. Day is a near-white powder-coated board, plates in white enamel, outlines drawn thin in a mid grey. Night is charcoal tool foam: plates in a lighter charcoal, outlines in a grey rim. In both the board is drawn lightly around the words, so the text is always the darkest, strongest thing on the page. Yellow label tape is the only chromatic accent in both. Neither board carries a texture: the outlines alone draw it.
 
@@ -182,7 +182,7 @@ Density is moderate and structured: a 12-column board on desktop, slots of unequ
 **Key Characteristics:**
 
 - Every unit of content is a slot: a thin grey outline, 6px gap, plate inside. Long reading text is the one exception: it sits straight on the plain board.
-- Position codes on yellow stencil tape at the top-left of work slots only: P-nn for projects and W-nn for articles. Every other slot (the name plate, contact, resume, the path story, the author slot) is plain: outline and plate, no tape.
+- Position codes on yellow stencil tape at the top-left of work slots only: P-nn for projects and W-nn for articles. Every other slot (the name plate with its contact call, the path story, the author slot) is plain: outline and plate, no tape.
 - Project status is drawn as the outline's line type, never as colour.
 - The painted shadow under a plate shows only when the plate lifts: ink-black by day, a hole darker than the foam by night.
 - Condensed uppercase lettering (Big Shoulders) for short labels only; titles, metadata and body in a plain humanist sans (Barlow), sentence case.
@@ -238,7 +238,7 @@ A near-neutral industrial palette with one safety-yellow accent; neutrals lean f
 - **Display** (`type-display`: 800, clamp(2.75rem, 5vw, 4.5rem), 0.86, uppercase): every page title at one size: the home name plate, About, the Projects and Articles indexes, and the 404 title.
 - **Headline** (`type-headline`: 800, clamp(2.25rem, 3.6vw, 3.25rem), 0.9, uppercase): short section headings on the home board and the contact section. It stays about 1.4x below Display so the two roles never read as one.
 - **Title** (`type-title`: Barlow 700, clamp(2.25rem, 4vw, 3rem), 1.1, -0.02em, sentence case, balanced): the article and project detail `h1`. It sits 1.5x above the 2rem prose h2 beneath it.
-- **Card Title** (`type-card-title`: Barlow 700, 1.5rem, 1.2, -0.01em, sentence case, balanced): article and project titles on plates, 1.25rem in compact home slots, and the hero contact question. Short plate headings ("Resume", "Written by…", "Message sent") stay in Big Shoulders 700 uppercase at 1.5–1.875rem.
+- **Card Title** (`type-card-title`: Barlow 700, 1.5rem, 1.2, -0.01em, sentence case, balanced): article and project titles on plates, 1.25rem in compact home slots, and the hero contact question. Short plate headings ("Written by…", "Message sent") stay in Big Shoulders 700 uppercase at 1.5–1.875rem.
 - **Prose Heading** (Barlow 700, sentence case): in-article h2 at 1.5rem (2rem from sm) with 1.15–1.2 leading and -0.01em tracking; h3 at 1.375rem, 1.3 leading. Article headings are often full sentences, so they speak in Barlow rather than shout in lettering.
 - **Body** (400, 1.125rem, 1.625): running prose, capped at 36rem (about 70 characters a line); 1rem for card descriptions; 1.25rem for lead lines.
 - **Meta** (Barlow 500–600, 0.875rem, muted, tabular where numeric, normal case): dates, reading time, word counts, the role line under the name, the project status name on a status line, tags, form labels, the Draft marker, and Live/Source links on work.
@@ -255,7 +255,7 @@ A near-neutral industrial palette with one safety-yellow accent; neutrals lean f
 
 Two containers: the board (max 80rem, 1rem side padding, 2rem from 40rem up) and the reading column (max 46rem, same padding) used for article, project and About pages. Long text inside it is capped at 36rem, about 70 characters per line in Barlow at 18px (CSS `68ch` would run near 90 in this narrow face); on a phone it fills the column to the 16px gutters.
 
-The home board is a 12-column grid on large screens (two columns at sm, one on mobile) with a 24px column gutter and 32px row gap so tape strips have room above each slot. Slots are deliberately unequal: the name plate spans 8 columns, contact and resume stack in the remaining 4, then a 6-column project slot beside two 3-column article slots. Listing pages use a two-column slot grid (one wide slot when only one item exists). Sections break with 80px (112px from sm) vertical padding and a 1px rim rule.
+The home board is a 12-column grid on large screens (two columns at sm, one on mobile) with a 24px column gutter and 32px row gap so tape strips have room above each slot. Slots are deliberately unequal: the name plate spans all 12 columns and carries the contact call too: the name and story on the left, then a 1px rim rule and a 22.5rem column on the right with "Want to talk?" above "Write to me", "Download resume", the email address and GitHub, its bottom level with the end of the story (on a phone the rule runs across and the contact call follows the story). Sharing one plate means the two never have to match heights. Below it, a 6-column project slot sits beside two 3-column article slots. Listing pages use a two-column slot grid (one wide slot when only one item exists). Sections break with 80px (112px from sm) vertical padding and a 1px rim rule.
 
 Slot rhythm: outline, 6px inset, plate; plate padding 20px for cards, 24–32px for feature plates. Every page, and the mobile drawer, is plain board with no perforation or texture, so the margins of a wide screen stay empty. Long-form reading text sits directly on the plain board, never in a slot.
 

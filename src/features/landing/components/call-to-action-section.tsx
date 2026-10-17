@@ -1,9 +1,6 @@
-import { DownloadIcon } from 'lucide-react';
-
-import { appConfig } from '@/core/configs/app.config';
 import { Slot } from '@/common/components/board/slot';
+import { ResumeDownloadButton } from '@/common/components/resume-download-button';
 import { SocialLinks } from '@/common/components/social-links';
-import { Button } from '@/common/components/ui/button';
 
 import { ContactForm } from './contact-form';
 
@@ -19,22 +16,10 @@ export function CallToActionSection() {
           <h2 id="contact-heading" className="type-headline">
             Write to me
           </h2>
-          <div className="max-w-[44ch] space-y-3 text-lg">
-            <p>
-              If you&apos;re hiring, tell me about the role and the team. If you
-              read something I wrote, tell me what you think, or where I got it
-              wrong.
-            </p>
-            <p className="text-muted-foreground">
-              The message comes straight to my inbox.
-            </p>
-          </div>
-          <Button asChild variant="outline">
-            <a href={appConfig.resume} download>
-              <DownloadIcon aria-hidden="true" />
-              Download resume
-            </a>
-          </Button>
+          <p className="max-w-[44ch] text-lg text-muted-foreground">
+            The message comes straight to my inbox.
+          </p>
+          <ResumeDownloadButton />
           <SocialLinks className="pt-2" />
         </div>
         <Slot

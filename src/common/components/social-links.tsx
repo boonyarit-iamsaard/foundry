@@ -12,6 +12,7 @@ type SocialLink = {
 };
 
 export const email = 'boonyarit.iamsaard@gmail.com';
+export const emailHref = `mailto:${email}`;
 
 const gitHubLink: SocialLink = {
   href: appConfig.links.github,
@@ -27,7 +28,7 @@ const socialLinks: SocialLink[] = [
     icon: 'linkedIn',
   },
   {
-    href: `mailto:${email}`,
+    href: emailHref,
     label: 'Email',
     icon: MailIcon,
   },
@@ -49,11 +50,9 @@ export function SocialLinks({ className }: SocialLinksProps) {
   );
 }
 
-type GitHubLinkProps = Readonly<{ className?: string }>;
-
 /** GitHub on its own, for a slot that pairs it with another action. */
-export function GitHubLink({ className }: GitHubLinkProps) {
-  return <SocialLinkAnchor link={gitHubLink} className={className} />;
+export function GitHubLink() {
+  return <SocialLinkAnchor link={gitHubLink} />;
 }
 
 type SocialLinkAnchorProps = Readonly<{

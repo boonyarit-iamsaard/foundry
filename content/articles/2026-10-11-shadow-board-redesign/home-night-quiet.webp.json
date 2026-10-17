@@ -1,0 +1,4 @@
+{
+  "prompt": "Origin: screenshot of the site running locally under next dev (Chromium via Playwright), converted from PNG to WebP with sharp; content not altered apart from hiding the Next.js dev indicator. Quieter board (commit 393a4fc): home page first viewport at 1440x900, night theme (prefers-color-scheme: dark).",
+  "createdAt": "2026-10-17T05:47:04.000Z"
+}

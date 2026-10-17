@@ -225,9 +225,14 @@ starting with the phone menu bug that no review caught.
 - Hero: one sentence says what he works on now, without naming the employer
   (see Audience and product docs), in the owner's voice, next to the existing mechanic story.
 - Hero: a visible GitHub link sits next to the resume download.
-- Contact copy is rewritten for hiring teams and developers in the hero
-  contact slot, the author slot and the contact section. Draft: "Hiring, or
-  want to talk about something I wrote?" The owner writes the final wording.
+- Contact copy does not name its audience. The hero's contact call shares the
+  name plate and asks "Want to talk?", the author slot has no contact line,
+  the contact section says only "The message comes straight to my inbox.",
+  and the message box has no placeholder. (Changed 2026-10-17 from copy
+  written to hiring teams, "Hiring, or want to talk about something I
+  wrote?": naming one group narrows who feels invited, while the resume and
+  the writing already signal who the site serves. The owner approved the
+  wording.)
 - About: "Current Focus" and "Skills" are rewritten as short prose with the
   Software Engineer title and the role sentence. No skill lists, tool
   logos or badge grids.
