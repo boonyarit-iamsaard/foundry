@@ -5,6 +5,7 @@ tags: ['design']
 cover: cover.webp
 slug: shadow-board-redesign
 date: 2026-10-11 13:00:00
+updated: 2026-10-16 22:21:00
 status: published
 ---
 
@@ -12,7 +13,7 @@ I can build a website, but I have never been trained in visual design. I can tel
 
 So for this redesign, I worked with Impeccable, an AI design tool. It suggested designs and built the pages. I accepted most of its suggestions. My part was to check the reasons, try the result, and speak up when something did not fit.
 
-Impeccable is a design skill that runs inside Claude Code, an AI coding agent. Other Claude Code sessions reviewed and fixed the work, and CodeRabbit reviewed the pull request. When I write "the tool" below, I mean Impeccable. When I write "an agent", I mean one of those other sessions.
+Impeccable is a design skill that runs inside Claude Code, an AI coding agent. Other Claude Code sessions reviewed and fixed the work, and CodeRabbit reviewed the pull request. Below, "the tool" is Impeccable and "an agent" is one of those other sessions.
 
 ## The old site
 
@@ -28,12 +29,12 @@ The tool started with an interview. It asked six questions, and it took about fi
 
 Its first question came from reading the old site: was all of this still true? It wasn't, so I corrected my title. The other answers set the direction:
 
-- **Who the site is for:** hiring teams and freelance clients first, with equal priority. Other engineers come second.
-- **What must stay:** the contact form, the resume download, the light and dark themes, and the story of how I moved from aircraft maintenance to software.
-- **The first feeling:** careful and reliable.
-- **What would feel wrong:** too many tricks, a design that could belong to anyone, too much visual noise, or too much empty space.
+- Who the site is for: hiring teams and freelance clients first, with equal priority. Other engineers come second.
+- What must stay: the contact form, the resume download, the light and dark themes, and the story of how I moved from aircraft maintenance to software.
+- The first feeling: careful and reliable.
+- What would feel wrong: too many tricks, a design that could belong to anyone, too much visual noise, or too much empty space.
 
-One rule did not come from the interview. In an earlier session, an AI agent built a grid of technologies, like a skills section on a resume. I said no, and kept one rule: no logo grids and no lists of tool names. Describing the work I do was still fine.
+I brought one rule from before the interview. In an earlier session, an AI agent had built a grid of technologies, like the skills section on a resume. I said no then, and the rule stayed: no logo grids and no lists of tool names. Describing the work itself was fine.
 
 ## Why I chose the Shadow Board
 
@@ -41,7 +42,7 @@ The tool gave me eight design ideas. It picked one at random to consider: **The 
 
 The tool's own favorite was **The Shadow Board**. In a hangar, a shadow board is a wall for tools. Each tool hangs inside its own painted outline. At the end of a shift, you look at the board. If an outline is empty, a tool is missing, and you need to find it before it ends up somewhere dangerous, like inside an engine. I worked in front of that wall for years. I chose this direction in about ninety seconds.
 
-Another idea helped shape the result. It was based on a panel of audio connections and suggested using different line styles instead of colours. On this site, the outline shows project status through solid lines, dashes, thick lines, or dashes and dots.
+One of the other ideas, based on a panel of audio connections, used line styles instead of colours. That stayed. On this site, a project's outline shows its status as a solid, dashed, thick, or dash-and-dot line.
 
 ![The redesigned home page in the night theme](./home-night.webp)
 
@@ -67,7 +68,7 @@ Another change came from a rule I had already agreed to: each article should mak
 
 ## Where I said no
 
-**Balance between visitors.** In the middle of the build, I stopped the tool. The pages were mostly speaking to hiring teams, but freelance clients were supposed to be equally important. The contact section now asks, "Hiring, or have something to build?" That small change gives both groups a reason to get in touch.
+**Balance between visitors.** In the middle of the build, I stopped the tool. The pages were mostly speaking to hiring teams, but freelance clients were supposed to be equally important. The contact section now asks, "Hiring, or have something to build?", so both groups have a reason to get in touch.
 
 **My photo.** During the build, I asked for my face to take up less space. I suggested a small photo in the header. Later, the final review asked for the large photo back because it was in the original design brief. The agent pointed to my earlier request and kept the small photo. The brief was then updated to match.
 
@@ -75,15 +76,13 @@ Another change came from a rule I had already agreed to: each article should mak
 
 ## Layers of review
 
-Different checks found different problems. The most important one was not automated.
+The most useful check was me, on my phone. While checking the preview, I opened the menu and it closed straight away. I recorded my screen and shared the video. An agent found the cause and fixed it, using Playwright, a browser testing tool, to show the menu failing before the fix and working after it.
 
-**Me, on my phone.** While checking the preview, I opened the menu and it closed straight away. I recorded my screen and shared the video. An agent found the cause and fixed it. It used Playwright, a browser testing tool, to show the menu failing before the fix and working after it.
+The bug had been on the live site since June 28, before the redesign. A code change meant to satisfy an automated check had changed when the menu closed. The closing code was supposed to run when the visitor changed pages, and now it also ran when the menu opened. The automated checks had passed and earlier reviews had missed it, but it showed up the first time I used the menu on a phone.
 
-The bug had been on the live site since June 28, before the redesign. A code change meant to satisfy an automated check had changed when the menu closed. The closing code was supposed to run when the visitor changed pages. It now also ran when the menu opened. The automated checks had passed, and earlier reviews had missed it. Trying the menu on my phone made the problem clear.
+The automated reviews found other things. Two review agents checked the first build, one against the project's coding rules and one against the design document. They found the submit button had no visible keyboard focus, and they found the list of tools. CodeRabbit then caught smaller problems in the pull request, mostly about accessibility.
 
-**The other checks.** Two review agents checked the first build, one against the project's coding rules and one against the design document. They found the submit button had no visible keyboard focus, and they found the list of tools. CodeRabbit then caught smaller problems in the pull request, mostly about accessibility.
-
-Not every finding was right. One reviewer thought draft articles would leave gaps in the numbers on the board. The agent checked before changing anything. Drafts were already removed before the numbers were given, so no change was needed. A suggestion still needs checking, even when it comes from a review.
+Not every finding was right, so the agent checked before changing anything. One reviewer thought draft articles would leave gaps in the numbers on the board. But drafts were already removed before the numbers were given, so nothing needed fixing.
 
 ## Did it work?
 
@@ -93,13 +92,13 @@ The old home page put my photo and title in the centre and left my work below th
 
 ## What I would do differently
 
-The biggest lesson came from the review itself. There was an early design brief, but the detailed design document was written from the finished site. That document then became the reference for the agent review. So the review was partly checking the build against a description of itself. Checking against that document could confirm that the build matched it. It couldn't confirm that the design met what I needed in the first place.
+There was an early design brief, but the detailed design document was written from the finished site. That document then became the reference for the agent review, so the review was partly checking the build against a description of itself. It could show that the build matched the document, but not that the design met what I needed in the first place.
 
 Next time, I would write clear requirements before the build, so the review has something outside the build to check against.
 
-I would also keep testing real tasks, such as opening the menu, reading an article and using the form with a keyboard. My phone found the worst bug because it didn't know what the design document said.
+I would also keep testing real tasks, such as opening the menu, reading an article and using the form with a keyboard. The worst bug turned up when I simply used the site on my phone.
 
-The tool brought the ideas. My experience gave me reasons to accept or challenge them, and that was enough to make this redesign my own. You can see the result on [the live site](https://boonyarit.me).
+The tool brought the ideas, and my own experience decided which ones to accept or challenge. That is what made the redesign feel like mine. You can see the result on [the live site](https://boonyarit.me).
 
 ## Update, October 2026
 
