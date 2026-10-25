@@ -28,3 +28,6 @@ overrides:
   # GHSA fixes need sharp 0.35.5; velite 0.4.0 still declares ^0.34.5. Drop
   # this once velite accepts sharp 0.35.
   velite>sharp: ^0.35.5
+  # GHSA fixes need fast-uri 3.1.9; ajv (via commitlint and react-email) still
+  # resolves 3.1.8. Drop this once ajv's range picks up the fix.
+  fast-uri: ^3.1.9
