@@ -7,6 +7,7 @@ import Image from 'next/image';
 
 import { runSync } from '@mdx-js/mdx';
 
+import { ZoomableImage } from '@/common/components/zoomable-image';
 import { cn } from '@/common/helpers/cn';
 
 type MDXProps = Readonly<{
@@ -134,6 +135,7 @@ const sharedComponents: MDXComponents = {
       {...props}
     />
   ),
+  img: ZoomableImage,
   Image,
 };
 
