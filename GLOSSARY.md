@@ -49,7 +49,7 @@ _Avoid_: legacy, archived
 ### Project dates
 
 **Start date**:
-The day work on a project began, shown as "Since …"; not the day it went live.
+The day work on a project began; not the day it went live.
 _Avoid_: launch date, release date, created date
 
 ### Board
