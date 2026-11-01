@@ -1,0 +1,46 @@
+---
+title: Bookkeeping
+description: A phone-first ledger for my household's money, where I record every transaction by hand. I built it after spreadsheets and finance apps kept getting in the way.
+tags: ['typescript', 'react', 'hono', 'postgres']
+cover: cover.webp
+slug: bookkeeping
+github: https://github.com/boonyarit-iamsaard/bookkeeping
+date: 2026-09-12 13:00:00
+status: active
+---
+
+## Overview
+
+**Bookkeeping** is a personal ledger for household money. It records what came in, what went out, and where the money sits now. I enter every transaction by hand, usually on my phone right after paying. There's no bank sync.
+
+I used to keep household money in a spreadsheet. The finance apps I tried in its place kept slowing me down, and most made me leave the entry screen just to add a category. So I built my own: a ledger I trust enough to keep, where balances match reality and corrections leave an honest history. I've kept my real ledger in it since September 2026. Sign-up is closed, because it holds my own household's money.
+
+It's still being built, and new features keep landing.
+
+## What it does
+
+- **Wallets** for cash, bank accounts and e-wallets. Each starts from a dated opening balance, and its balance on any date comes from its transactions.
+- **Income and expenses** in exact Thai baht, to the satang, filed under two-level categories. A missing category can be created without leaving the entry screen.
+- **Transfers** between my own wallets, recorded once and applied to both, and **refunds** against a specific expense.
+- **Reports** for any month: income, net expenses, spending by category, a six-month trend, and every wallet's balance on a chosen date.
+- **Corrections** that edit or delete a transaction in place, while a change history keeps what it looked like before.
+- **An installable app** with light and dark appearance, built for one-handed entry and still comfortable for review on a desktop.
+
+![Six phone screens of the Bookkeeping app, in a grid of three across and two down](./screens.webp)
+
+From left to right, top to bottom: Home, dark; Recording an expense; Transaction history; Spending by category; A wallet's history; Categories. The screenshots show a fictional demo account.
+
+## How it's built
+
+- **A single-page app and an API.** A Vite and TanStack Router client, installable as a PWA, calls a Hono API on Node.js. TypeScript throughout.
+- **PostgreSQL and Better Auth.** Data lives in PostgreSQL, and email and password sign-in uses Better Auth.
+- **Tailwind CSS and shadcn.** The interface is built from shadcn components.
+- **One contract, generated types.** The server generates an OpenAPI document from its route schemas, and the client's types are generated from that document.
+- **Balances are derived, never stored.** A wallet's balance is its opening balance plus its transactions up to a date.
+- **Exact money.** Amounts are stored and calculated in integer satang.
+- **Backups:** a nightly job encrypts a database dump and stores it in AWS S3.
+- **Hosting:** the app and its API run on Railway.
+
+## Links
+
+- [Source on GitHub](https://github.com/boonyarit-iamsaard/bookkeeping)

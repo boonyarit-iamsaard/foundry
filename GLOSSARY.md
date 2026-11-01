@@ -46,6 +46,12 @@ _Avoid_: done, complete
 A project kept running with updates and fixes only; it gains no new features.
 _Avoid_: legacy, archived
 
+### Project dates
+
+**Start date**:
+The day work on a project began; not the day it went live.
+_Avoid_: launch date, release date, created date
+
 ### Board
 
 **Position code**:
