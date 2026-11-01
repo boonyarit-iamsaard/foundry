@@ -51,7 +51,10 @@ export function ZoomableImage({
     }
 
     function updateZoomable() {
-      if (!image) {
+      // While the dialog is open, keep it and its trigger mounted: removing
+      // them skips the native close steps that hand focus back. The next
+      // resize after it closes re-measures.
+      if (!image || dialogRef.current?.open) {
         return;
       }
       setIsZoomable(
