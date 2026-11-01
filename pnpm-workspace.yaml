@@ -31,3 +31,7 @@ overrides:
   # GHSA fixes need fast-uri 3.1.9; ajv (via commitlint and react-email) still
   # resolves 3.1.8. Drop this once ajv's range picks up the fix.
   fast-uri: ^3.1.9
+  # GHSA fixes need glob 14.0.2 and minimatch 11.0.1; react-email 6.11 still
+  # declares glob ^13. glob 14 brings minimatch 11. Drop this once react-email
+  # accepts glob 14.
+  react-email>glob: ^14.0.3
