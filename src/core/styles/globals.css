@@ -201,6 +201,11 @@
     margin-right: 0 !important;
   }
 
+  /* An enlarged body image holds the page still behind it; the gutter keeps the layout put. Keyed on ZoomableImage's dialog slot. */
+  html:has(dialog[data-slot="image-zoom"][open]) {
+    overflow: hidden;
+  }
+
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "kern", "liga";
