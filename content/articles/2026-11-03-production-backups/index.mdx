@@ -20,7 +20,7 @@ I built this with Claude Code, an AI coding agent. The agent wrote the code, the
 
 Before choosing a design, I ran one read-only query against production. The database was PostgreSQL 18.6 and 8.7 MB in size. After three weeks it held about 40 transactions, so about two a day.
 
-At that rate, a nightly backup loses at most one day of entries, which for me means typing in two or three transactions again. Point-in-time recovery, which replays every change up to a chosen second, is hard to set up on a managed Railway database. At my size, it would protect almost nothing extra. So the design is one encrypted dump a night, kept off Railway.
+At that rate, a nightly backup loses at most one day of entries, which for me means typing in two or three transactions again. That holds only while the nightly runs succeed: if one fails, the gap grows until I notice and fix it, which is why a check further down emails me the next morning. Point-in-time recovery, which replays every change up to a chosen second, is hard to set up on a managed Railway database. At my size, it would protect almost nothing extra. So the design is one encrypted dump a night, kept off Railway.
 
 ## Where the job runs
 
@@ -52,7 +52,7 @@ On the first day, I checked a new key by printing the key file, and the private 
 
 Each nightly backup has two files: the encrypted dump, and an encrypted **manifest**. The manifest lists every table with its row count and a checksum of its rows.
 
-Both files come from the same moment. The job opens a read-only transaction, exports its snapshot, and points `pg_dump` at that same snapshot. Inside the same transaction, it builds the manifest. So the dump and the manifest describe exactly the same data, even if I add a transaction while the backup runs.
+Both files come from the same moment. The job opens a read-only transaction at the `REPEATABLE READ` isolation level, exports its snapshot, and points `pg_dump` at that same snapshot. Inside the same transaction, which keeps reading from that snapshot, it builds the manifest. So the dump and the manifest describe exactly the same data, even if I add a transaction while the backup runs.
 
 Later, a restore can be checked against the manifest without ever connecting to production. If the restored tables match their counts and checksums, the backup is good.
 
@@ -128,7 +128,7 @@ Each of these would have cost me time during a real incident, under stress.
 | Encrypted nightly backup     | 48 KB on Oct 19, 71 KB on Nov 1       |
 | Nightly run                  | 6 to 7 seconds                        |
 | Kept                         | 35 days nightly, 12 months monthly    |
-| Most data a failure can lose | one day                               |
+| Most data a failure can lose | one day, if the nightly run succeeded |
 | Recovery rehearsal           | 22 minutes                            |
 | AWS cost for October         | about $0.0009, estimated, for 14 days |
 | Budget alert                 | at $1 a month                         |
