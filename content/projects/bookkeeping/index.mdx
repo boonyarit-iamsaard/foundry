@@ -38,7 +38,7 @@ From left to right, top to bottom: Home, dark; Recording an expense; Transaction
 - **One contract, generated types.** The server generates an OpenAPI document from its route schemas, and the client's types are generated from that document.
 - **Balances are derived, never stored.** A wallet's balance is its opening balance plus its transactions up to a date.
 - **Exact money.** Amounts are stored and calculated in integer satang.
-- **Backups:** a nightly job encrypts a database dump and stores it in AWS S3.
+- **Backups:** a nightly job encrypts a database dump and stores it in AWS S3. [How the backups were built and tested](/articles/production-backups).
 - **Hosting:** the app and its API run on Railway.
 
 ## Links
